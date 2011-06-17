@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cache &mdash; Xitrum v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="next" title="I18n" href="i18n.html" />
+    <link rel="prev" title="Upload" href="upload.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="i18n.html" title="I18n"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="upload.html" title="Upload"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cache">
+<h1>Cache<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h1>
+<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s15.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s15.jpg" />
+<p><a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>
+is integrated for page, action, and object cache. Of course you can
+use it for other things (distributed processing etc) in your application.</p>
+<p>Cache works with async response.</p>
+<div class="section" id="page-cache">
+<h2>Page cache<a class="headerlink" href="#page-cache" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="action-cache">
+<h2>Action cache<a class="headerlink" href="#action-cache" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="object-cache">
+<h2>Object cache<a class="headerlink" href="#object-cache" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="cache-expiration">
+<h2>Cache expiration<a class="headerlink" href="#cache-expiration" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Expire page cache</li>
+<li>Expire action cache</li>
+<li>Expire object cache</li>
+</ul>
+</div>
+<div class="section" id="cache-config">
+<h2>Cache config<a class="headerlink" href="#cache-config" title="Permalink to this headline">¶</a></h2>
+<p>Hazelcast is powerful. It supports distributed cache. Please see its documentation.</p>
+<p><tt class="docutils literal"><span class="pre">config/hazelcast.xml</span></tt> sample:</p>
+<div class="highlight-python"><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-basic.xsd"
+           xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;group&gt;
+    &lt;name&gt;myapp&lt;/name&gt;
+    &lt;password&gt;dev-pass&lt;/password&gt;
+  &lt;/group&gt;
+
+  &lt;network&gt;
+    &lt;port auto-increment="true"&gt;5701&lt;/port&gt;
+    &lt;join&gt;
+      &lt;multicast enabled="true"&gt;
+        &lt;multicast-group&gt;224.2.2.3&lt;/multicast-group&gt;
+        &lt;multicast-port&gt;54327&lt;/multicast-port&gt;
+      &lt;/multicast&gt;
+      &lt;tcp-ip enabled="true"&gt;
+        &lt;interface&gt;127.0.0.1&lt;/interface&gt;
+      &lt;/tcp-ip&gt;
+    &lt;/join&gt;
+  &lt;/network&gt;
+
+  &lt;!-- For page, action, object cache --&gt;
+  &lt;map name="xitrum"&gt;
+    &lt;backup-count&gt;0&lt;/backup-count&gt;
+    &lt;eviction-policy&gt;LRU&lt;/eviction-policy&gt;
+    &lt;max-size&gt;100000&lt;/max-size&gt;
+    &lt;eviction-percentage&gt;25&lt;/eviction-percentage&gt;
+  &lt;/map&gt;
+&lt;/hazelcast&gt;</pre>
+</div>
+</div>
+<div class="section" id="internal">
+<h2>Internal<a class="headerlink" href="#internal" title="Permalink to this headline">¶</a></h2>
+<p>Upstream</p>
+<div class="highlight-python"><pre>               the action response
+               should be cached and
+request        the cache already exists?
+-------------------------+---------------NO---------------&gt;
+                         |
+&lt;---------YES------------+
+  respond from cache</pre>
+</div>
+<p>Downstream</p>
+<div class="highlight-python"><pre>               the action response
+               should be cached and
+               the cache does not exist?           response
+&lt;---------NO-------------+---------------------------------
+                         |
+&lt;---------YES------------+
+  store response to cache</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cache</a><ul>
+<li><a class="reference internal" href="#page-cache">Page cache</a></li>
+<li><a class="reference internal" href="#action-cache">Action cache</a></li>
+<li><a class="reference internal" href="#object-cache">Object cache</a></li>
+<li><a class="reference internal" href="#cache-expiration">Cache expiration</a></li>
+<li><a class="reference internal" href="#cache-config">Cache config</a></li>
+<li><a class="reference internal" href="#internal">Internal</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="upload.html"
+                        title="previous chapter">Upload</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="i18n.html"
+                        title="next chapter">I18n</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/cache.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="i18n.html" title="I18n"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="upload.html" title="Upload"
+             >previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ngoc.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

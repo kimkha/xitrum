@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>HOWTO &mdash; Xitrum v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="prev" title="Distribution directory layout" href="deploy.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="deploy.html" title="Distribution directory layout"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="howto">
+<h1>HOWTO<a class="headerlink" href="#howto" title="Permalink to this headline">¶</a></h1>
+<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" />
+<div class="section" id="serve-static-file-from-classpath-resource-in-jar-file">
+<h2>Serve static file from classpath resource (in .jar file)<a class="headerlink" href="#serve-static-file-from-classpath-resource-in-jar-file" title="Permalink to this headline">¶</a></h2>
+<p>If you are a library developer, and want to serve myimage.png from your library.</p>
+<p>Save the file in your .jar under:</p>
+<div class="highlight-python"><pre>/public/path/to/myimage.png</pre>
+</div>
+<p>Then in the web page, refer to it like this:</p>
+<div class="highlight-python"><pre>&lt;img src="/resources/public/path/to/myimage.png" /&gt;</pre>
+</div>
+</div>
+<div class="section" id="link-to-an-action">
+<h2>Link to an action<a class="headerlink" href="#link-to-an-action" title="Permalink to this headline">¶</a></h2>
+<p>Xitrum tries to be typesafe.</p>
+<p>Don&#8217;t write URL manually, use urlFor like this:</p>
+<div class="highlight-python"><pre>&lt;a href={urlFor[ArticleShowAction]("id" -&gt; myArticle.id)}&gt;{myArticle.title}&lt;/a&gt;</pre>
+</div>
+</div>
+<div class="section" id="load-config-files">
+<h2>Load config files<a class="headerlink" href="#load-config-files" title="Permalink to this headline">¶</a></h2>
+<p>Save config files in &#8220;config&#8221; directory. This directory is put in classpath by
+runner.sh, so that you can load them easily when your application is running.</p>
+<p>To load in your application:</p>
+<ul class="simple">
+<li>xitrum.Config.load(&#8220;file.txt&#8221;): returns the content of the file as a String</li>
+<li>xitrum.Config.loadProperties(&#8220;file.properties&#8221;): returns a java.util.Properties</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HOWTO</a><ul>
+<li><a class="reference internal" href="#serve-static-file-from-classpath-resource-in-jar-file">Serve static file from classpath resource (in .jar file)</a></li>
+<li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
+<li><a class="reference internal" href="#load-config-files">Load config files</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="deploy.html"
+                        title="previous chapter">Distribution directory layout</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/howto.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="deploy.html" title="Distribution directory layout"
+             >previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ngoc.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

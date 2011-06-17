@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Validation &mdash; Xitrum v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="next" title="Upload" href="upload.html" />
+    <link rel="prev" title="Writing POSTbacks" href="postback.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="upload.html" title="Upload"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="postback.html" title="Writing POSTbacks"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="validation">
+<h1>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h1>
+<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s5.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s5.jpg" />
+<p>Xitrum integrates with jQuery Validation plugin:
+<a class="reference external" href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/">http://bassistance.de/jquery-plugins/jquery-plugin-validation/</a></p>
+<p>Validation is performed on both browser side (by jQuery Validation plugin) and
+server side.</p>
+<div class="section" id="default-validators">
+<h2>Default validators<a class="headerlink" href="#default-validators" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>// See this package for a complete list of avaiable default validators
+import xitrum.validation._
+
+&lt;form postback="submit"&gt;
+  {&lt;input type="text" name="username" /&gt;.validate(new Required, new MinLength(5), new MaxLength(10)}
+  {&lt;input type="password" name="password" /&gt;.validate(new Required)}
+  {&lt;input type="passord_confirm" name="password_confirm" /&gt;.validate(new PasswordConfirm("password"))}
+&lt;/form&gt;</pre>
+</div>
+</div>
+<div class="section" id="write-custom-validators">
+<h2>Write custom validators<a class="headerlink" href="#write-custom-validators" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>import xitrum.validation.Validator
+
+class MyValidator extends Validator {
+  // Client side validation
+  //
+  // This method should output JS that uses jQuery Validation plugin to validate securedParamName
+  def render(action: Action, paramName: String, securedParamName: String) {
+    // Call jsAddToView(&lt;JS that uses jQuery Validation plugin&gt;)
+    // to add JS to the end of the web page
+  }
+
+  // Server side validation
+  def validate(action: Action, paramName: String, securedParamName: String): Boolean = {
+  }
+}</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Validation</a><ul>
+<li><a class="reference internal" href="#default-validators">Default validators</a></li>
+<li><a class="reference internal" href="#write-custom-validators">Write custom validators</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="postback.html"
+                        title="previous chapter">Writing POSTbacks</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="upload.html"
+                        title="next chapter">Upload</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/validation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="upload.html" title="Upload"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="postback.html" title="Writing POSTbacks"
+             >previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ngoc.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

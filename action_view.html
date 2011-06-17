@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Action and View &mdash; Xitrum v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="next" title="Writing RESTful APIs" href="restful.html" />
+    <link rel="prev" title="Getting started" href="sbt.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="restful.html" title="Writing RESTful APIs"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sbt.html" title="Getting started"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="action-and-view">
+<h1>Action and View<a class="headerlink" href="#action-and-view" title="Permalink to this headline">¶</a></h1>
+<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s7.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s7.jpg" />
+<p>Scala has XML feature built-in. Xitrum uses this feature as its &#8220;template engine&#8221;:</p>
+<ul class="simple">
+<li>You don&#8217;t have to learn another template engine syntax.</li>
+<li>Scala checks XML syntax at compile time =&gt; Views are typesafe.</li>
+<li>Scala automatically escapes XML =&gt; Views are XSS-free by default.</li>
+</ul>
+<p>There are 2 kinds of actions: <a class="reference internal" href="restful.html"><em>RESTful actions</em></a> and <a class="reference internal" href="postback.html"><em>POSTback actions</em></a>.</p>
+<p>Normally, you write view directly in its action.</p>
+<div class="highlight-python"><pre>import xitrum.action.Action
+import xitrum.action.annotation.GET
+
+@GET("/")
+class Index extends Action {
+  def override execute {
+    val s = "World"  // Will be automatically escaped
+
+    renderView(
+      &lt;html&gt;
+        &lt;body&gt;
+          &lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;
+    )
+  }
+}</pre>
+</div>
+<p>Of course you can refactor the view into a separate Scala file.</p>
+<p>There are many other methods for rendering things other than views:</p>
+<ul class="simple">
+<li>renderText</li>
+<li>renderBinary</li>
+<li>renderFile</li>
+</ul>
+<div class="section" id="async-response">
+<h2>Async response<a class="headerlink" href="#async-response" title="Permalink to this headline">¶</a></h2>
+<p>There is no default response. You must call renderXXX explicitly to send response
+to the client. If you don&#8217;t call renderXXX, the HTTP connection is kept for you,
+and you can call renderXXX later.</p>
+</div>
+<div class="section" id="chunked-response">
+<h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="layout">
+<h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
+<p>You typically create a parent class which has a common layout for many views, like this:</p>
+<p><tt class="docutils literal"><span class="pre">ParentAction.scala</span></tt></p>
+<div class="highlight-python"><pre>import xitrum.action.Action
+import xitrum.action.view.DocType
+
+trait ParentAction extends Action {
+  override def layout = Some(() =&gt; DocType.xhtmlTransitional(
+    &lt;html&gt;
+      &lt;body&gt;
+        {renderedView}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  ))</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">Index.scala</span></tt></p>
+<div class="highlight-python"><pre>import xitrum.action.Action
+import xitrum.action.annotation.GET
+
+@GET("/")
+class Index extends ParentAction {
+  def override execute {
+    val s = "World"  // Will be automatically escaped
+    renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;)
+  }
+}</pre>
+</div>
+</div>
+<div class="section" id="unescape-xml">
+<h2>Unescape XML<a class="headerlink" href="#unescape-xml" title="Permalink to this headline">¶</a></h2>
+<p>Use <tt class="docutils literal"><span class="pre">scala.xml.Unparsed</span></tt>:</p>
+<div class="highlight-python"><pre>import scala.xml.Unparsed
+
+&lt;script&gt;
+  {Unparsed("if (1 &lt; 2) alert('Xitrum rocks');")}
+&lt;/script&gt;</pre>
+</div>
+<p>Or use <tt class="docutils literal"><span class="pre">&lt;xml:unparsed&gt;</span></tt>:</p>
+<div class="highlight-python"><pre>&lt;script&gt;
+  &lt;xml:unparsed&gt;
+    if (1 &lt; 2) alert('Xitrum rocks');
+  &lt;/xml:unparsed&gt;
+&lt;/script&gt;</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Action and View</a><ul>
+<li><a class="reference internal" href="#async-response">Async response</a></li>
+<li><a class="reference internal" href="#chunked-response">Chunked response</a></li>
+<li><a class="reference internal" href="#layout">Layout</a></li>
+<li><a class="reference internal" href="#unescape-xml">Unescape XML</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sbt.html"
+                        title="previous chapter">Getting started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="restful.html"
+                        title="next chapter">Writing RESTful APIs</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/action_view.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="restful.html" title="Writing RESTful APIs"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sbt.html" title="Getting started"
+             >previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ngoc.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

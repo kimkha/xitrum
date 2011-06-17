@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting started &mdash; Xitrum v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="next" title="Action and View" href="action_view.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="action_view.html" title="Action and View"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s13.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s13.jpg" />
+<p>Xitrum is for Scala projects. Scala projects use SBT as the de facto build tool.
+Please use SBT 0.10.0+:
+<a class="reference external" href="https://github.com/harrah/xsbt">https://github.com/harrah/xsbt</a></p>
+<p>The discussion below assumes that you have installed SBT and had <tt class="docutils literal"><span class="pre">sbt</span></tt> command
+in your PATH.</p>
+<div class="section" id="netty-4">
+<h2>Netty 4<a class="headerlink" href="#netty-4" title="Permalink to this headline">¶</a></h2>
+<p>File upload feature in Xitrum needs Netty 4, which has not been released. You
+must download and build it yourself.</p>
+<p>Download with git:</p>
+<div class="highlight-python"><pre>$ git clone https://github.com/trustin/netty</pre>
+</div>
+<p>Add to Netty&#8217;s pom.xml:</p>
+<div class="highlight-python"><pre>&lt;repositories&gt;
+   &lt;repository&gt;
+     &lt;id&gt;repository.jboss.org&lt;/id&gt;
+     &lt;name&gt;JBoss Releases Repository&lt;/name&gt;
+     &lt;url&gt;http://repository.jboss.org/maven2&lt;/url&gt;
+   &lt;/repository&gt;
+ &lt;/repositories&gt;
+
+ &lt;pluginRepositories&gt;
+   &lt;pluginRepository&gt;
+     &lt;id&gt;repository.jboss.org&lt;/id&gt;
+     &lt;name&gt;JBoss Releases Repository&lt;/name&gt;
+     &lt;url&gt;http://repository.jboss.org/maven2&lt;/url&gt;
+   &lt;/pluginRepository&gt;
+ &lt;/pluginRepositories&gt;</pre>
+</div>
+<p>Build with Maven:</p>
+<div class="highlight-python"><pre>$ wget https://repository.jboss.org/nexus/content/repositories/releases/org/jboss/logging/jboss-logging-spi/2.1.2.GA/jboss-logging-spi-2.1.2.GA.jar
+$ mvn install:install-file -DgroupId=org.jboss.logging -DartifactId=jboss-logging-spi -Dpackaging=jar -Dversion=2.1.2.GA -Dfile=jboss-logging-spi-2.1.2.GA.jar -DgeneratePom=true
+$ MAVEN_OPTS=-Xmx512m mvn -Dmaven.test.skip=true install</pre>
+</div>
+<p>Above is the quick and dirty way. For long way: <a class="reference external" href="https://issues.jboss.org/browse/NETTY-387">https://issues.jboss.org/browse/NETTY-387</a></p>
+<p>This section will be removed when Netty 4 is officially released.</p>
+</div>
+<div class="section" id="add-xitrum-plugin-to-sbt">
+<h2>Add Xitrum plugin to SBT<a class="headerlink" href="#add-xitrum-plugin-to-sbt" title="Permalink to this headline">¶</a></h2>
+<p>Add to file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt> (or create it):</p>
+<div class="highlight-python"><pre>resolvers += "Sonatype Snapshot Repository" at "https://oss.sonatype.org/content/repositories/snapshots"
+
+libraryDependencies += "tv.cntt" %% "xitrum-plugin" % "1.1-SNAPSHOT"</pre>
+</div>
+<p>Now you have 2 commands: <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-new</span></tt> and <a class="reference internal" href="deploy.html"><em>sbt xitrum-dist</em></a>.</p>
+</div>
+<div class="section" id="xitrum-new">
+<h2>xitrum-new<a class="headerlink" href="#xitrum-new" title="Permalink to this headline">¶</a></h2>
+<p>Create a new project:</p>
+<div class="highlight-python"><pre>$ mkdir my_project
+$ cd my_project
+$ sbt
+$ sbt xitrum-new</pre>
+</div>
+<p>This skeleton will be created:</p>
+<div class="highlight-python"><pre>config
+  hazelcast.xml
+  logback.xml
+  xitrum.properties
+public
+  404.html
+  500.html
+  favicon.ico
+  robots.txt
+src
+  main
+    scala
+      my_package
+        BootClass.scala
+        IndexAction.scala
+build.sbt</pre>
+</div>
+<p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt> to run my_package.BootClass, which starts the web server.
+Then browse to <tt class="docutils literal"><span class="pre">http://localhost:8000/</span></tt> to see the web site.</p>
+<p>In build.sbt, you will see that logback-classic is a dependency. It is because
+Xitrum uses SLF4J. You must provide an SLF4J implentation.</p>
+<p>Other SBT tasks:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">update</span></tt>: Download dependencies</li>
+<li><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">compile</span></tt>: Compile .java and .scala files to <tt class="docutils literal"><span class="pre">target</span></tt> directory</li>
+<li><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">package</span></tt>: Package compiled .class files to a .jar file</li>
+</ul>
+</div>
+<div class="section" id="create-eclipse-project">
+<h2>Create Eclipse project<a class="headerlink" href="#create-eclipse-project" title="Permalink to this headline">¶</a></h2>
+<p>To create .project file so that your project becomes an Eclipse project:</p>
+<ol class="arabic simple">
+<li>Add to <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt> the contents as described at <a class="reference external" href="https://github.com/typesafehub/sbteclipse">https://github.com/typesafehub/sbteclipse</a></li>
+<li>At your SBT project directory, run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">eclipse</span></tt></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting started</a><ul>
+<li><a class="reference internal" href="#netty-4">Netty 4</a></li>
+<li><a class="reference internal" href="#add-xitrum-plugin-to-sbt">Add Xitrum plugin to SBT</a></li>
+<li><a class="reference internal" href="#xitrum-new">xitrum-new</a></li>
+<li><a class="reference internal" href="#create-eclipse-project">Create Eclipse project</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="action_view.html"
+                        title="next chapter">Action and View</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/sbt.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="action_view.html" title="Action and View"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ngoc.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
