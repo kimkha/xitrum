@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
-    <link rel="prev" title="Distribution directory layout" href="deploy.html" /> 
+    <link rel="prev" title="Prepare for distribution" href="deploy.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,7 +33,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="deploy.html" title="Distribution directory layout"
+          <a href="deploy.html" title="Prepare for distribution"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -47,14 +47,29 @@
   <div class="section" id="howto">
 <h1>HOWTO<a class="headerlink" href="#howto" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" />
+<div class="section" id="serve-static-file">
+<h2>Serve static file<a class="headerlink" href="#serve-static-file" title="Permalink to this headline">¶</a></h2>
+<p>Layout your project directory:</p>
+<div class="highlight-python"><pre>config
+public
+  img
+    myimage.png
+src
+build.sbt</pre>
+</div>
+<p>In your source code:</p>
+<div class="highlight-python"><pre>&lt;img src={urlForPublic("img/myimage.png")} /&gt;</pre>
+</div>
+</div>
 <div class="section" id="serve-static-file-from-classpath-resource-in-jar-file">
 <h2>Serve static file from classpath resource (in .jar file)<a class="headerlink" href="#serve-static-file-from-classpath-resource-in-jar-file" title="Permalink to this headline">¶</a></h2>
 <p>If you are a library developer, and want to serve myimage.png from your library.</p>
 <p>Save the file in your .jar under:</p>
-<div class="highlight-python"><pre>/public/path/to/myimage.png</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">public</span><span class="o">/</span><span class="n">my_lib</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">myimage</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
 </div>
 <p>Then in the web page, refer to it like this:</p>
-<div class="highlight-python"><pre>&lt;img src="/resources/public/path/to/myimage.png" /&gt;</pre>
+<div class="highlight-python"><pre>&lt;img src={urlForResource("my_lib/img/myimage.png")} /&gt;</pre>
 </div>
 </div>
 <div class="section" id="link-to-an-action">
@@ -85,6 +100,7 @@ runner.sh, so that you can load them easily when your application is running.</p
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">HOWTO</a><ul>
+<li><a class="reference internal" href="#serve-static-file">Serve static file</a></li>
 <li><a class="reference internal" href="#serve-static-file-from-classpath-resource-in-jar-file">Serve static file from classpath resource (in .jar file)</a></li>
 <li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
 <li><a class="reference internal" href="#load-config-files">Load config files</a></li>
@@ -94,7 +110,7 @@ runner.sh, so that you can load them easily when your application is running.</p
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="deploy.html"
-                        title="previous chapter">Distribution directory layout</a></p>
+                        title="previous chapter">Prepare for distribution</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/howto.txt"
@@ -124,7 +140,7 @@ runner.sh, so that you can load them easily when your application is running.</p
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="deploy.html" title="Distribution directory layout"
+          <a href="deploy.html" title="Prepare for distribution"
              >previous</a> |</li>
         <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
       </ul>

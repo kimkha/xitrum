@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
     <link rel="next" title="Upload" href="upload.html" />
-    <link rel="prev" title="Writing POSTbacks" href="postback.html" /> 
+    <link rel="prev" title="RequestVar and SessionVar" href="var.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +37,7 @@
           <a href="upload.html" title="Upload"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="postback.html" title="Writing POSTbacks"
+          <a href="var.html" title="RequestVar and SessionVar"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -51,10 +51,19 @@
   <div class="section" id="validation">
 <h1>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s5.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s5.jpg" />
-<p>Xitrum integrates with jQuery Validation plugin:
-<a class="reference external" href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/">http://bassistance.de/jquery-plugins/jquery-plugin-validation/</a></p>
-<p>Validation is performed on both browser side (by jQuery Validation plugin) and
-server side.</p>
+<p>Xitrum is not a full-stack web framework like <a class="reference external" href="http://rubyonrails.org/">Rails</a>
+because it does not provide M (in MVC). However, it does provide validation
+feature at Action (Controller) and View. You can use any database access library
+you want, while still can validate user input easily.</p>
+<p>Xitrum integrates with <a class="reference external" href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/">jQuery Validation plugin</a>.
+Validation is performed at both browser side and server side.</p>
+<div class="highlight-python"><pre>User input -&gt; Validation at View (browser side) -&gt; Validation before Action (server side) -&gt; Action
+                            |                                         |
+                          FAILED                                    FAILED
+                     &lt;------+                                  &lt;------+</pre>
+</div>
+<p>Xitrum provides a lot of default validators. You can also write your own custom
+validators very easily.</p>
 <div class="section" id="default-validators">
 <h2>Default validators<a class="headerlink" href="#default-validators" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><pre>// See this package for a complete list of avaiable default validators
@@ -104,8 +113,8 @@ class MyValidator extends Validator {
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="postback.html"
-                        title="previous chapter">Writing POSTbacks</a></p>
+  <p class="topless"><a href="var.html"
+                        title="previous chapter">RequestVar and SessionVar</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="upload.html"
                         title="next chapter">Upload</a></p>
@@ -141,7 +150,7 @@ class MyValidator extends Validator {
           <a href="upload.html" title="Upload"
              >next</a> |</li>
         <li class="right" >
-          <a href="postback.html" title="Writing POSTbacks"
+          <a href="var.html" title="RequestVar and SessionVar"
              >previous</a> |</li>
         <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
       </ul>

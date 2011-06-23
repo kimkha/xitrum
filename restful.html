@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
     <link rel="next" title="Writing POSTbacks" href="postback.html" />
-    <link rel="prev" title="SBT" href="sbt.html" /> 
+    <link rel="prev" title="Action and View" href="action_view.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +37,7 @@
           <a href="postback.html" title="Writing POSTbacks"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="sbt.html" title="SBT"
+          <a href="action_view.html" title="Action and View"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -52,8 +52,8 @@
 <h1>Writing RESTful APIs<a class="headerlink" href="#writing-restful-apis" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s4.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s4.jpg" />
 <p>You can write RESTful APIs for iPhone, Android applications etc. very easily.</p>
-<div class="highlight-python"><pre>import xitrum.action.Action
-import xitrum.action.annotation.{GET, GETs}
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.{GET, GETs}
 
 @GETs("/", "/articles")
 class ArticleIndex extends Action {
@@ -85,8 +85,8 @@ application has). You don&#8217;t need a seperate config file like routes.rb of 
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="sbt.html"
-                        title="previous chapter">SBT</a></p>
+  <p class="topless"><a href="action_view.html"
+                        title="previous chapter">Action and View</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="postback.html"
                         title="next chapter">Writing POSTbacks</a></p>
@@ -122,7 +122,7 @@ application has). You don&#8217;t need a seperate config file like routes.rb of 
           <a href="postback.html" title="Writing POSTbacks"
              >next</a> |</li>
         <li class="right" >
-          <a href="sbt.html" title="SBT"
+          <a href="action_view.html" title="Action and View"
              >previous</a> |</li>
         <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
       </ul>

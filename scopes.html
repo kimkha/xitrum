@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scopes &mdash; Xitrum v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="next" title="Validation" href="validation.html" />
+    <link rel="prev" title="Writing POSTbacks" href="postback.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="validation.html" title="Validation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="postback.html" title="Writing POSTbacks"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scopes">
+<h1>Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h1>
+<p>To pass things around, there are 2 scopes: request and session. Xitrum tries to
+be typesafe. RequestVar and SessionVar is a way to achieve that goal.</p>
+<div class="section" id="requestvar">
+<h2>RequestVar<a class="headerlink" href="#requestvar" title="Permalink to this headline">¶</a></h2>
+<p>To pass things around when processing a request (e.g. from action to view or layout)
+in the typesafe way, you should use RequestVar.</p>
+<p>Example:</p>
+<p><tt class="docutils literal"><span class="pre">Var.scala</span></tt></p>
+<div class="highlight-python"><pre>import xitrum.RequestVar
+
+object Var {
+  object rTitle extends RequestVar[String]
+}</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">AppAction.scala</span></tt></p>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.view.DocType
+
+trait AppAction extends Action {
+  override def layout = DocType.xhtmlTransitional(
+    &lt;html&gt;
+      &lt;head&gt;
+        {xitrumHead}
+        &lt;title&gt;{if (Var.rTitle.isDefined) "My Site - " + Var.rTitle.get else "My Site"}&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        {renderedView}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+}</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">ShowAction.scala</span></tt></p>
+<div class="highlight-python"><pre>class ShowAction extends AppAction {
+  override def execute {
+    val (title, body) = ...  // Get from DB
+    Var.rTitle.set(title)
+    renderView(body)
+  }
+}</pre>
+</div>
+</div>
+<div class="section" id="sessionvar">
+<h2>SessionVar<a class="headerlink" href="#sessionvar" title="Permalink to this headline">¶</a></h2>
+<p>For example, you want save username to session after the user has logged in:</p>
+<p>Declare the session var:</p>
+<div class="highlight-python"><pre>import xitrum.SessionVar
+
+object Var {
+  object sUsername extends SessionVar[String]
+}</pre>
+</div>
+<p>After login success:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Var</span><span class="o">.</span><span class="n">sUsername</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Display the username:</p>
+<div class="highlight-python"><pre>if (Var.sUsername.isDefined)
+  &lt;em&gt;{Var.sUsername.get}&lt;/em&gt;
+else
+  &lt;a href={urlFor[LoginAction]}&gt;Login&lt;/a&gt;</pre>
+</div>
+<ul class="simple">
+<li>To delete the session var: <tt class="docutils literal"><span class="pre">Var.sUsername.delete</span></tt></li>
+<li>To reset the whole session: <tt class="docutils literal"><span class="pre">session.reset</span></tt></li>
+</ul>
+</div>
+<div class="section" id="object-vs-val">
+<h2>object vs. val<a class="headerlink" href="#object-vs-val" title="Permalink to this headline">¶</a></h2>
+<p>Please use <tt class="docutils literal"><span class="pre">object</span></tt> instead of <tt class="docutils literal"><span class="pre">val</span></tt>. <em>Do not do like this</em>:</p>
+<div class="highlight-python"><pre>object Var {
+  val rTitle    = new RequestVar[String]
+  val rCategory = new RequestVar[String]
+
+  val sUsername = new SessionVar[String]
+  val sIsAdmin  = new SessionVar[Boolean]
+}</pre>
+</div>
+<p>The above code compiles but does not work correctly, because the Vars internally
+use class names to do look up. When using <tt class="docutils literal"><span class="pre">val</span></tt>, <tt class="docutils literal"><span class="pre">rTitle</span></tt> and <tt class="docutils literal"><span class="pre">rCategory</span></tt>
+will have the same class name (&#8220;xitrum.RequestVar&#8221;). The same for <tt class="docutils literal"><span class="pre">sUsername</span></tt>
+and <tt class="docutils literal"><span class="pre">sIsAdmin</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Scopes</a><ul>
+<li><a class="reference internal" href="#requestvar">RequestVar</a></li>
+<li><a class="reference internal" href="#sessionvar">SessionVar</a></li>
+<li><a class="reference internal" href="#object-vs-val">object vs. val</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="postback.html"
+                        title="previous chapter">Writing POSTbacks</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="validation.html"
+                        title="next chapter">Validation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/scopes.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="validation.html" title="Validation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="postback.html" title="Writing POSTbacks"
+             >previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ngoc.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

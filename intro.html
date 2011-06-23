@@ -54,21 +54,23 @@
 <p>Xitrum (&#8220;Smurf&#8221; in Vietnamese) is a lightweight Scala web framework and web
 server on top of Netty:</p>
 <ul class="simple">
-<li>It fills the gap between Scalatra and Lift:
+<li>It fills the gap between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a> and <a class="reference external" href="http://liftweb.net/">Lift</a>:
 More powerful than Scalatra but less complex than Lift.
 You can easily define URL routings (Scalatra style) and POSTbacks (Lift style).</li>
 <li>Asynchronous, in the spirit of Netty.</li>
 <li>Typesafe, in the spirit of Scala.</li>
 <li>Stateless, by default session is stored in cookie.</li>
 </ul>
+<p>Xitrum is not a full-stack web framework like <a class="reference external" href="http://rubyonrails.org/">Rails</a>
+because it does not provide M (in MVC). However, it does provide <a class="reference internal" href="validation.html"><em>validation</em></a>
+feature at Action (Controller) and View. You can use any database access library
+you want, while still can validate user input easily.</p>
 <div class="highlight-python"><pre>+-----------------+
 |    Your app     |
 +-----------------+
 |      Xitrum     |
 | +-------------+ |
-| |  Framework  | |
-| +-------------+ |
-| | Middlewares | |
+| | Action/View | |
 | +-------------+ |
 +-----------------+
 |      Netty      |

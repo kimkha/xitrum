@@ -102,7 +102,6 @@ libraryDependencies += "tv.cntt" %% "xitrum-plugin" % "1.1-SNAPSHOT"</pre>
 <p>Create a new project:</p>
 <div class="highlight-python"><pre>$ mkdir my_project
 $ cd my_project
-$ sbt
 $ sbt xitrum-new</pre>
 </div>
 <p>This skeleton will be created:</p>
@@ -118,29 +117,55 @@ public
 src
   main
     scala
-      my_package
-        BootClass.scala
-        IndexAction.scala
+      my_project
+        Boot.scala
+        action
+          AppAction.scala
+          IndexAction.scala
 build.sbt</pre>
 </div>
-<p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt> to run my_package.BootClass, which starts the web server.
+<p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt> to run my_project.Boot, which starts the web server.
 Then browse to <tt class="docutils literal"><span class="pre">http://localhost:8000/</span></tt> to see the web site.</p>
 <p>In build.sbt, you will see that logback-classic is a dependency. It is because
 Xitrum uses SLF4J. You must provide an SLF4J implentation.</p>
-<p>Other SBT tasks:</p>
+<p>Other common SBT tasks:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">update</span></tt>: Download dependencies</li>
 <li><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">compile</span></tt>: Compile .java and .scala files to <tt class="docutils literal"><span class="pre">target</span></tt> directory</li>
 <li><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">package</span></tt>: Package compiled .class files to a .jar file</li>
 </ul>
 </div>
 <div class="section" id="create-eclipse-project">
 <h2>Create Eclipse project<a class="headerlink" href="#create-eclipse-project" title="Permalink to this headline">¶</a></h2>
+<p>If you use Eclipse, there is <a class="reference external" href="http://www.scala-ide.org/">Scala plugin for Eclipse</a>.</p>
 <p>To create .project file so that your project becomes an Eclipse project:</p>
 <ol class="arabic simple">
 <li>Add to <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt> the contents as described at <a class="reference external" href="https://github.com/typesafehub/sbteclipse">https://github.com/typesafehub/sbteclipse</a></li>
 <li>At your SBT project directory, run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">eclipse</span></tt></li>
 </ol>
+<p>See <a class="reference external" href="https://github.com/harrah/xsbt/wiki/sbt-0.10-plugins-list">SBT plugins list</a>
+for plugins for other IDEs.</p>
+</div>
+<div class="section" id="jrebel">
+<h2>JRebel<a class="headerlink" href="#jrebel" title="Permalink to this headline">¶</a></h2>
+<p>In development mode, you start the web server with <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt>. Normally, when
+you change your source code, you need to rerun <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt> again and again.
+With <a class="reference external" href="http://www.zeroturnaround.com/jrebel/">JRebel</a> you can avoid that.</p>
+<p>To setup JRebel with SBT:</p>
+<ol class="arabic simple">
+<li>Download JRebel</li>
+<li>Apply for a <a class="reference external" href="http://sales.zeroturnaround.com/">free license for Scala</a></li>
+<li>Save <tt class="docutils literal"><span class="pre">jrebel.lic</span></tt> (the free license above) to the same directory with <tt class="docutils literal"><span class="pre">jrebel.jar</span></tt></li>
+<li>Add <tt class="docutils literal"><span class="pre">-noverify</span> <span class="pre">-javaagent:/path/to/jrebel/jrebel.jar</span></tt> to the <tt class="docutils literal"><span class="pre">sbt</span></tt> command line</li>
+</ol>
+<p>Now:</p>
+<ol class="arabic simple">
+<li>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt> in one console</li>
+<li>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">~compile</span></tt> in another console to compile in continuous/incremental mode</li>
+</ol>
+<p>If you use IDE like Eclipse with Scala plugin, you don&#8217;t need to run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">~compile</span></tt>,
+just save the source code, and the IDE will automatically compile for you, and
+the <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt> process will automatically load the new source code, thanks to
+JRebel.</p>
 </div>
 </div>
 
@@ -157,6 +182,7 @@ Xitrum uses SLF4J. You must provide an SLF4J implentation.</p>
 <li><a class="reference internal" href="#add-xitrum-plugin-to-sbt">Add Xitrum plugin to SBT</a></li>
 <li><a class="reference internal" href="#xitrum-new">xitrum-new</a></li>
 <li><a class="reference internal" href="#create-eclipse-project">Create Eclipse project</a></li>
+<li><a class="reference internal" href="#jrebel">JRebel</a></li>
 </ul>
 </li>
 </ul>

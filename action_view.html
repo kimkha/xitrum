@@ -59,8 +59,8 @@
 </ul>
 <p>There are 2 kinds of actions: <a class="reference internal" href="restful.html"><em>RESTful actions</em></a> and <a class="reference internal" href="postback.html"><em>POSTback actions</em></a>.</p>
 <p>Normally, you write view directly in its action.</p>
-<div class="highlight-python"><pre>import xitrum.action.Action
-import xitrum.action.annotation.GET
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.GET
 
 @GET("/")
 class Index extends Action {
@@ -97,25 +97,33 @@ and you can call renderXXX later.</p>
 <div class="section" id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
 <p>You typically create a parent class which has a common layout for many views, like this:</p>
-<p><tt class="docutils literal"><span class="pre">ParentAction.scala</span></tt></p>
-<div class="highlight-python"><pre>import xitrum.action.Action
-import xitrum.action.view.DocType
+<p><tt class="docutils literal"><span class="pre">AppAction.scala</span></tt></p>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.view.DocType
 
-trait ParentAction extends Action {
-  override def layout = Some(() =&gt; DocType.xhtmlTransitional(
+trait AppAction extends Action {
+  override def layout = DocType.xhtmlTransitional(
     &lt;html&gt;
+      &lt;head&gt;
+        {xitrumHead}
+        &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
+      &lt;/head&gt;
       &lt;body&gt;
         {renderedView}
       &lt;/body&gt;
     &lt;/html&gt;
-  ))</pre>
+  )
+}</pre>
 </div>
+<p><tt class="docutils literal"><span class="pre">xitrumHead</span></tt> includes jQuery, jQuery Validate plugin, default CSS etc.
+In <tt class="docutils literal"><span class="pre">&lt;head&gt;</span></tt>, it should be the first line, the following lines may override
+things it includes if needed.</p>
 <p><tt class="docutils literal"><span class="pre">Index.scala</span></tt></p>
-<div class="highlight-python"><pre>import xitrum.action.Action
-import xitrum.action.annotation.GET
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.GET
 
 @GET("/")
-class Index extends ParentAction {
+class Index extends AppAction {
   def override execute {
     val s = "World"  // Will be automatically escaped
     renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;)
@@ -140,6 +148,31 @@ class Index extends ParentAction {
 &lt;/script&gt;</pre>
 </div>
 </div>
+<div class="section" id="group-xml-elements">
+<h2>Group XML elements<a class="headerlink" href="#group-xml-elements" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>if (loggedIn)
+  &lt;xml:group&gt;
+    &lt;b&gt;{username}&lt;/b&gt;
+    &lt;a href={urlFor[LogoutAction]}&gt;Logout&lt;/a&gt;
+  &lt;/xml:group&gt;
+else
+  &lt;xml:group&gt;
+    &lt;a href={urlFor[LoginAction]}&gt;Login&lt;/a&gt;
+    &lt;a href={urlFor[RegisterAction]}&gt;Register&lt;/a&gt;
+  &lt;/xml:group&gt;</pre>
+</div>
+</div>
+<div class="section" id="render-xhtml">
+<h2>Render XHTML<a class="headerlink" href="#render-xhtml" title="Permalink to this headline">¶</a></h2>
+<p>Xitrum renders views and layouts as XHTML automatically.
+If you want to render it yourself (rarely), pay attention to the code below.</p>
+<div class="highlight-python"><pre>import scala.xml.Xhtml
+
+val br = &lt;br /&gt;
+br.toStirng            // =&gt; &lt;br&gt;&lt;/br&gt;, some browsers will render this as 2 &lt;br /&gt;s
+Xhtml.toXhtml(&lt;br /&gt;)  // =&gt; "&lt;br /&gt;"</pre>
+</div>
+</div>
 </div>
 
 
@@ -155,6 +188,8 @@ class Index extends ParentAction {
 <li><a class="reference internal" href="#chunked-response">Chunked response</a></li>
 <li><a class="reference internal" href="#layout">Layout</a></li>
 <li><a class="reference internal" href="#unescape-xml">Unescape XML</a></li>
+<li><a class="reference internal" href="#group-xml-elements">Group XML elements</a></li>
+<li><a class="reference internal" href="#render-xhtml">Render XHTML</a></li>
 </ul>
 </li>
 </ul>

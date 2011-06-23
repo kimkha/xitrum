@@ -15,8 +15,8 @@ Normally, you write view directly in its action.
 
 ::
 
-  import xitrum.action.Action
-  import xitrum.action.annotation.GET
+  import xitrum.Action
+  import xitrum.annotation.GET
 
   @GET("/")
   class Index extends Action {
@@ -58,31 +58,40 @@ Layout
 
 You typically create a parent class which has a common layout for many views, like this:
 
-``ParentAction.scala``
+``AppAction.scala``
 
 ::
 
-  import xitrum.action.Action
-  import xitrum.action.view.DocType
+  import xitrum.Action
+  import xitrum.view.DocType
 
-  trait ParentAction extends Action {
-    override def layout = Some(() => DocType.xhtmlTransitional(
+  trait AppAction extends Action {
+    override def layout = DocType.xhtmlTransitional(
       <html>
+        <head>
+          {xitrumHead}
+          <title>Welcome to Xitrum</title>
+        </head>
         <body>
           {renderedView}
         </body>
       </html>
-    ))
+    )
+  }
+
+``xitrumHead`` includes jQuery, jQuery Validate plugin, default CSS etc.
+In ``<head>``, it should be the first line, the following lines may override
+things it includes if needed.
 
 ``Index.scala``
 
 ::
 
-  import xitrum.action.Action
-  import xitrum.action.annotation.GET
+  import xitrum.Action
+  import xitrum.annotation.GET
 
   @GET("/")
-  class Index extends ParentAction {
+  class Index extends AppAction {
     def override execute {
       val s = "World"  // Will be automatically escaped
       renderView(<p>Hello <em>{s}</em>!</p>)
@@ -111,3 +120,33 @@ Or use ``<xml:unparsed>``:
       if (1 < 2) alert('Xitrum rocks');
     </xml:unparsed>
   </script>
+
+Group XML elements
+------------------
+
+::
+
+  if (loggedIn)
+    <xml:group>
+      <b>{username}</b>
+      <a href={urlFor[LogoutAction]}>Logout</a>
+    </xml:group>
+  else
+    <xml:group>
+      <a href={urlFor[LoginAction]}>Login</a>
+      <a href={urlFor[RegisterAction]}>Register</a>
+    </xml:group>
+
+Render XHTML
+------------
+
+Xitrum renders views and layouts as XHTML automatically.
+If you want to render it yourself (rarely), pay attention to the code below.
+
+::
+
+  import scala.xml.Xhtml
+
+  val br = <br />
+  br.toStirng            // => <br></br>, some browsers will render this as 2 <br />s
+  Xhtml.toXhtml(<br />)  // => "<br />"
