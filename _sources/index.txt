@@ -8,19 +8,22 @@ Xitrum's documentation
 
 .. image:: http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s14.jpg
 
-Xitrum is open source. Its source code is at:
-https://github.com/ngocdaothanh/xitrum
+Xitrum is open source:
 
-Contents:
+* Source code: https://github.com/ngocdaothanh/xitrum
+* Google group: http://groups.google.com/group/xitrum-framework
 
 .. toctree::
    :maxdepth: 2
 
    intro
-   sbt
+   tutorial
+   dev
    action_view
+   xml
    restful
    postback
+   static
    scopes
    validation
    upload
@@ -28,5 +31,6 @@ Contents:
    i18n
    deploy
    howto
+   handler
 
 [Images are from http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/combien.htm]

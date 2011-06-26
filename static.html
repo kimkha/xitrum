@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Static files &mdash; Xitrum v1.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
+    <link rel="next" title="Scopes" href="scopes.html" />
+    <link rel="prev" title="Writing postbacks" href="postback.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="scopes.html" title="Scopes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="postback.html" title="Writing postbacks"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="static-files">
+<h1>Static files<a class="headerlink" href="#static-files" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/be_ti_xitrum_baby_smurf.jpg" src="_images/be_ti_xitrum_baby_smurf.jpg" />
+<div class="section" id="serve-file-from-public-directory">
+<h2>Serve file from public directory<a class="headerlink" href="#serve-file-from-public-directory" title="Permalink to this headline">¶</a></h2>
+<p>Project directory layout:</p>
+<div class="highlight-python"><pre>config
+public
+  favicon.ico
+  robots.txt
+  img
+    myimage.png
+  css
+    mystyle.css
+src
+build.sbt</pre>
+</div>
+<p>Xitrum can serve files from the public directory. But URLs to them must have
+prefix <tt class="docutils literal"><span class="pre">/public/</span></tt>:</p>
+<div class="highlight-python"><pre>/public/img/myimage.png
+/public/css/mystyle.css</pre>
+</div>
+<p>This is the design decision of Xitrum for speed, to avoid checking file
+existence on every request.</p>
+<p>To refer to them in your source code:</p>
+<div class="highlight-python"><pre>&lt;img src={urlForPublic("img/myimage.png")} /&gt;</pre>
+</div>
+<div class="section" id="publicfilesnotbehindpublicurl">
+<h3>publicFilesNotBehindPublicUrl<a class="headerlink" href="#publicfilesnotbehindpublicurl" title="Permalink to this headline">¶</a></h3>
+<p>favicon.ico and robots.txt are special files, their URLs:</p>
+<div class="highlight-python"><pre>/favicon.ico
+/robots.txt</pre>
+</div>
+<p>When for example you have a file called crossdomain.xml and you want its
+URL to be <tt class="docutils literal"><span class="pre">http://mydomain.com/crossdomain.xml</span></tt> (no <tt class="docutils literal"><span class="pre">/public/</span></tt> prefix),
+put it right in the <tt class="docutils literal"><span class="pre">public</span></tt> directory, and in your boot class add this line:</p>
+<div class="highlight-python"><pre>xitrum.Config.publicFilesNotBehindPublicUrl ++= List("/crossdomain.xml")</pre>
+</div>
+</div>
+</div>
+<div class="section" id="serve-file-from-resource-in-jar-file-in-classpath">
+<h2>Serve file from resource in .jar file in classpath<a class="headerlink" href="#serve-file-from-resource-in-jar-file-in-classpath" title="Permalink to this headline">¶</a></h2>
+<p>If you are a library developer, and want to serve myimage.png from your library.</p>
+<p>Save the file in your .jar under <tt class="docutils literal"><span class="pre">public</span></tt> directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">public</span><span class="o">/</span><span class="n">my_lib</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">myimage</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<p>To refer to them in your source code:</p>
+<div class="highlight-python"><pre>&lt;img src={urlForResource("my_lib/img/myimage.png")} /&gt;</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Static files</a><ul>
+<li><a class="reference internal" href="#serve-file-from-public-directory">Serve file from public directory</a><ul>
+<li><a class="reference internal" href="#publicfilesnotbehindpublicurl">publicFilesNotBehindPublicUrl</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#serve-file-from-resource-in-jar-file-in-classpath">Serve file from resource in .jar file in classpath</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="postback.html"
+                        title="previous chapter">Writing postbacks</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="scopes.html"
+                        title="next chapter">Scopes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/static.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="scopes.html" title="Scopes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="postback.html" title="Writing postbacks"
+             >previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ngoc Dao.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

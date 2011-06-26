@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>HOWTO &mdash; Xitrum v1.0 documentation</title>
+    <title>HOWTO &mdash; Xitrum v1.1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,8 +22,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
-    <link rel="prev" title="Prepare for distribution" href="deploy.html" /> 
+    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
+    <link rel="next" title="Netty handlers" href="handler.html" />
+    <link rel="prev" title="Deploy to production server" href="deploy.html" /> 
   </head>
   <body>
     <div class="related">
@@ -33,9 +34,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="deploy.html" title="Prepare for distribution"
+          <a href="handler.html" title="Netty handlers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deploy.html" title="Deploy to production server"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,31 +51,6 @@
   <div class="section" id="howto">
 <h1>HOWTO<a class="headerlink" href="#howto" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" />
-<div class="section" id="serve-static-file">
-<h2>Serve static file<a class="headerlink" href="#serve-static-file" title="Permalink to this headline">¶</a></h2>
-<p>Layout your project directory:</p>
-<div class="highlight-python"><pre>config
-public
-  img
-    myimage.png
-src
-build.sbt</pre>
-</div>
-<p>In your source code:</p>
-<div class="highlight-python"><pre>&lt;img src={urlForPublic("img/myimage.png")} /&gt;</pre>
-</div>
-</div>
-<div class="section" id="serve-static-file-from-classpath-resource-in-jar-file">
-<h2>Serve static file from classpath resource (in .jar file)<a class="headerlink" href="#serve-static-file-from-classpath-resource-in-jar-file" title="Permalink to this headline">¶</a></h2>
-<p>If you are a library developer, and want to serve myimage.png from your library.</p>
-<p>Save the file in your .jar under:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">public</span><span class="o">/</span><span class="n">my_lib</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">myimage</span><span class="o">.</span><span class="n">png</span>
-</pre></div>
-</div>
-<p>Then in the web page, refer to it like this:</p>
-<div class="highlight-python"><pre>&lt;img src={urlForResource("my_lib/img/myimage.png")} /&gt;</pre>
-</div>
-</div>
 <div class="section" id="link-to-an-action">
 <h2>Link to an action<a class="headerlink" href="#link-to-an-action" title="Permalink to this headline">¶</a></h2>
 <p>Xitrum tries to be typesafe.</p>
@@ -100,8 +79,6 @@ runner.sh, so that you can load them easily when your application is running.</p
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">HOWTO</a><ul>
-<li><a class="reference internal" href="#serve-static-file">Serve static file</a></li>
-<li><a class="reference internal" href="#serve-static-file-from-classpath-resource-in-jar-file">Serve static file from classpath resource (in .jar file)</a></li>
 <li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
 <li><a class="reference internal" href="#load-config-files">Load config files</a></li>
 </ul>
@@ -110,7 +87,10 @@ runner.sh, so that you can load them easily when your application is running.</p
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="deploy.html"
-                        title="previous chapter">Prepare for distribution</a></p>
+                        title="previous chapter">Deploy to production server</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="handler.html"
+                        title="next chapter">Netty handlers</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/howto.txt"
@@ -140,13 +120,16 @@ runner.sh, so that you can load them easily when your application is running.</p
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="deploy.html" title="Prepare for distribution"
+          <a href="handler.html" title="Netty handlers"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deploy.html" title="Deploy to production server"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Ngoc.
+        &copy; Copyright 2011, Ngoc Dao.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Prepare for distribution &mdash; Xitrum v1.0 documentation</title>
+    <title>Deploy to production server &mdash; Xitrum v1.1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
     <link rel="next" title="HOWTO" href="howto.html" />
     <link rel="prev" title="I18n" href="i18n.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="i18n.html" title="I18n"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -48,20 +48,26 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="prepare-for-distribution">
-<h1>Prepare for distribution<a class="headerlink" href="#prepare-for-distribution" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="deploy-to-production-server">
+<h1>Deploy to production server<a class="headerlink" href="#deploy-to-production-server" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s8.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s8.jpg" />
-<p>Please see the <a class="reference internal" href="sbt.html"><em>SBT section</em></a>.</p>
-<div class="section" id="xitrum-dist">
-<h2>xitrum-dist<a class="headerlink" href="#xitrum-dist" title="Permalink to this headline">¶</a></h2>
-<p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-dist</span></tt> to prepare <tt class="docutils literal"><span class="pre">target/dist</span></tt> directory, ready for production distribution:</p>
-<div class="highlight-python"><pre>target/dist
+<p>Xitrum is designed in mind to run in production environment as multiple instances
+behind a proxy server or load balancer:</p>
+<div class="highlight-python"><pre>                              / Xitrum instance 1
+Load balancer/proxy server ---- Xitrum instance 2
+                              \ Xitrum instance 3</pre>
+</div>
+<div class="section" id="package-directory">
+<h2>Package directory<a class="headerlink" href="#package-directory" title="Permalink to this headline">¶</a></h2>
+<p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> to prepare <tt class="docutils literal"><span class="pre">target/xitrum_package</span></tt> directory,
+ready to deploy to production server:</p>
+<div class="highlight-python"><pre>target/xitrum_package
   bin
     runner.sh
   config
     [config files]
   public
-    [web static files]
+    [static files, accessible from browsers]
   lib
     [dependencies and packaged project file]</pre>
 </div>
@@ -72,12 +78,15 @@ You may want to modify runner.sh to tune JVM settings.</p>
 <p>You may need to write the above command line to INSTALL file, for example, so
 that the user of your project know how to start the web server.</p>
 </div>
-<div class="section" id="copy-additional-files-to-target-dist">
-<h2>Copy additional files to target/dist<a class="headerlink" href="#copy-additional-files-to-target-dist" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-dist</span></tt> command line simply copies <tt class="docutils literal"><span class="pre">config</span></tt> and <tt class="docutils literal"><span class="pre">public</span></tt>
-directories to <tt class="docutils literal"><span class="pre">target/dist</span></tt>. If you want it to copy additional files and
-directories (README, INSTALL, doc etc.)</p>
-<p>TODO</p>
+<div class="section" id="copy-additional-files-to-target-xitrum-package">
+<h2>Copy additional files to target/xitrum_package<a class="headerlink" href="#copy-additional-files-to-target-xitrum-package" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> command simply copies <tt class="docutils literal"><span class="pre">config</span></tt> and <tt class="docutils literal"><span class="pre">public</span></tt>
+directories to <tt class="docutils literal"><span class="pre">target/xitrum_package</span></tt>. If you want it to copy additional files
+and directories (README, INSTALL, doc etc.), config <tt class="docutils literal"><span class="pre">build.sbt</span></tt> like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">TODO</span>
+</pre></div>
+</div>
+<p>Now run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> and check <tt class="docutils literal"><span class="pre">target/xitrum_package</span></tt> directory.</p>
 </div>
 </div>
 
@@ -89,9 +98,9 @@ directories (README, INSTALL, doc etc.)</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Prepare for distribution</a><ul>
-<li><a class="reference internal" href="#xitrum-dist">xitrum-dist</a></li>
-<li><a class="reference internal" href="#copy-additional-files-to-target-dist">Copy additional files to target/dist</a></li>
+<li><a class="reference internal" href="#">Deploy to production server</a><ul>
+<li><a class="reference internal" href="#package-directory">Package directory</a></li>
+<li><a class="reference internal" href="#copy-additional-files-to-target-xitrum-package">Copy additional files to target/xitrum_package</a></li>
 </ul>
 </li>
 </ul>
@@ -136,11 +145,11 @@ directories (README, INSTALL, doc etc.)</p>
         <li class="right" >
           <a href="i18n.html" title="I18n"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Ngoc.
+        &copy; Copyright 2011, Ngoc Dao.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

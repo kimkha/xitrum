@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Writing POSTbacks &mdash; Xitrum v1.0 documentation</title>
+    <title>Writing postbacks &mdash; Xitrum v1.1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,8 +22,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
-    <link rel="next" title="RequestVar and SessionVar" href="var.html" />
+    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
+    <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="Writing RESTful APIs" href="restful.html" /> 
   </head>
   <body>
@@ -34,12 +34,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="var.html" title="RequestVar and SessionVar"
+          <a href="static.html" title="Static files"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="restful.html" title="Writing RESTful APIs"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -49,89 +49,105 @@
           <div class="body">
             
   <div class="section" id="writing-postbacks">
-<h1>Writing POSTbacks<a class="headerlink" href="#writing-postbacks" title="Permalink to this headline">¶</a></h1>
+<h1>Writing postbacks<a class="headerlink" href="#writing-postbacks" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s2.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s2.jpg" />
-<p>Please see the following links for the idea about POSTback:</p>
+<p>Please see the following links for the idea about postback:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Postback">http://en.wikipedia.org/wiki/Postback</a></li>
 <li><a class="reference external" href="http://nitrogenproject.com/doc/tutorial.html">http://nitrogenproject.com/doc/tutorial.html</a></li>
 </ul>
-<p>Xitrum supports Ajax form postback with additional features:</p>
+<p>Xitrum supports Ajax form postback, with additional features:</p>
 <ul class="simple">
-<li>Anti CSRF token, as in Rails</li>
-<li>Validation, as in Nitrogen</li>
+<li>Anti-CSRF</li>
+<li><a class="reference internal" href="validation.html"><em>Validation</em></a></li>
 </ul>
-<p>If you are loyal to this style, for web sites without APIs, you only need to
-annotate GET routes. You only need to do SEO on GET routes because these are
-the only pages that search engines follow.</p>
-<div class="highlight-python"><pre>// first: This route will be matched before others, like /articles/:id
+<div class="section" id="form">
+<h2>Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h2>
+<p>ArticleShow.scala</p>
+<div class="highlight-python"><pre>@GET("/articles/:id")
+class ArticleShow {
+  override def execute {
+    val id = param("id")
+    val article = Article.find(id)
+    renderView(
+      &lt;h1&gt;{article.title}&lt;/h1&gt;
+      {article.body}
+    )
+  }
+}</pre>
+</div>
+<p>ArticleNew.scala</p>
+<div class="highlight-python"><pre>// first=true: force this route to be matched before "/articles/:id"
 @GET(value="/articles/new", first=true)
-class ArticleNewCreate extends Action {
-  beforeFilters("authenticate") = () =&gt; session.contains("user")
-
+class ArticleNew extends Action {
   override def execute {
     renderView(
-      &lt;form post2="submit" action={urlForPostback[ArticleCreate]}&gt;  &lt;-- The URL is encrypted, the encrypted URL acts like an anti CSRF token
+      &lt;form postback="submit" action={urlForPostbackThis}&gt;
         Title:
-        {&lt;input type="text" name="title" /&gt;.validate(new Required)}&lt;br /&gt;
+        &lt;input type="text" name="title" /&gt;&lt;br /&gt;
 
         Body:
-        {textarea name="body"&gt;&lt;/textarea&gt;.validate(new Required)}&lt;br /&gt;
+        textarea name="body"&gt;&lt;/textarea&gt;&lt;br /&gt;
 
-        &lt;input type="submit" value="OK" /&gt;
+        &lt;input type="submit" value="Save" /&gt;
       &lt;/form&gt;
     )
   }
 
   override def postback {
-    val title = param("title")
-    val body  = param("body")
-    val user  = session("user").asInstanceOf[User]
+    val title   = param("title")
+    val body    = param("body")
+    val article = Article.save(title, body)
 
-    Article.save(user.id, title, body)
-    jsRedirectTo[ArticleIndex]
+    flash("Article has been saved.")
+    jsRedirectTo[ArticleShow]("id" -&gt; article.id)
   }
 }</pre>
 </div>
-<p>To make a postback, you need to know:</p>
-<ul class="simple">
-<li>The event that triggers postback</li>
-<li>The element where the event occurs</li>
-<li>The action destination on the server</li>
-<li>Parameters to send with the postback</li>
-</ul>
-<div class="section" id="general-case">
-<h2>General case<a class="headerlink" href="#general-case" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>&lt;tag1 id="form"&gt;
-  &lt;!-- form elements in this tag will be posted back --&gt;
-&lt;/tag1&gt;
+<p>When <tt class="docutils literal"><span class="pre">submit</span></tt> JavaScript event of the form is triggered, the form will be posted back
+to the current Xitrum action.</p>
+<p><tt class="docutils literal"><span class="pre">action</span></tt> attribute of <tt class="docutils literal"><span class="pre">&lt;form&gt;</span></tt> is encrypted. The encrypted URL acts as the anti-CSRF token.</p>
+</div>
+<div class="section" id="non-form">
+<h2>Non-form<a class="headerlink" href="#non-form" title="Permalink to this headline">¶</a></h2>
+<p>Postback can be set on any element, not only form.</p>
+<p>An example with link:</p>
+<div class="highlight-python"><pre>&lt;a href="#" postback="click" action={urlForPostback[LogoutAction]}&gt;Logout&lt;/a&gt;</pre>
+</div>
+<p>Clicking the link above will trigger the postback to LogoutAction.</p>
+</div>
+<div class="section" id="confirmation-dialog">
+<h2>Confirmation dialog<a class="headerlink" href="#confirmation-dialog" title="Permalink to this headline">¶</a></h2>
+<p>If you want to display a confirmation dialog:</p>
+<div class="highlight-python"><pre>&lt;a href="#" postback="click"
+            action={urlForPostback[LogoutAction]}
+            confirm="Do you want to logout?"&gt;Logout&lt;/a&gt;</pre>
+</div>
+<p>If the user clicks &#8220;Cancel&#8221;, the postback will not be sent.</p>
+</div>
+<div class="section" id="extra-params">
+<h2>Extra params<a class="headerlink" href="#extra-params" title="Permalink to this headline">¶</a></h2>
+<p>In case of form element, you can add <tt class="docutils literal"><span class="pre">&lt;input</span> <span class="pre">type=&quot;hidden&quot;...</span></tt> to send
+extra params with the postback.</p>
+<p>For other elements, you do like this:</p>
+<div class="highlight-python"><pre>&lt;a href="#"
+   postback="click"
+   action={urlForPostbackThis("itemId" -&gt; item.id)}
+   confirm={"Do you want to delete %s?".format(item.name)}&gt;Delete&lt;/a&gt;</pre>
+</div>
+<p>You may also put extra params in a separate form:</p>
+<div class="highlight-python"><pre>&lt;form id="myform" postback="submit" action={urlForPostbackThis}&gt;
+  Search:
+  &lt;input type="text" name={validate("keyword")} /&gt;
 
-&lt;tag2 postback="event" action="/url/to/action" form="form" /&gt;</pre>
+  &lt;a class="pagination"
+     href="#"
+     postback="click"
+     extra="#myform"
+     action={urlForPostbackThis("page" -&gt; page)}&gt;{page}&lt;/a&gt;
+&lt;/form&gt;</pre>
 </div>
-</div>
-<div class="section" id="special-case-1-action-is-the-same-with-the-current-page-url">
-<h2>Special case 1: action is the same with the current page URL<a class="headerlink" href="#special-case-1-action-is-the-same-with-the-current-page-url" title="Permalink to this headline">¶</a></h2>
-<p>You can leave out &#8220;action&#8221;.</p>
-<div class="highlight-python"><pre>&lt;tag1 id="form"&gt;
-  &lt;!-- form elements in this tag will be posted back --&gt;
-&lt;/tag1&gt;
-
-&lt;tag2 postback="event" form ="form" /&gt;</pre>
-</div>
-</div>
-<div class="section" id="special-case-2-tag1-and-tag2-are-the-same">
-<h2>Special case 2: tag1 and tag2 are the same<a class="headerlink" href="#special-case-2-tag1-and-tag2-are-the-same" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>&lt;tag1 postback="event" action="/url/to/action"&gt;
-  &lt;!-- form elements in this tag will be posted back --&gt;
-&lt;/tag1&gt;</pre>
-</div>
-</div>
-<div class="section" id="special-case-3-combination-of-the-above">
-<h2>Special case 3: combination of the above<a class="headerlink" href="#special-case-3-combination-of-the-above" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>&lt;tag1 postback="event"&gt;
-  &lt;!-- form elements in this tag will be posted back --&gt;
-&lt;/tag1&gt;</pre>
-</div>
+<p><tt class="docutils literal"><span class="pre">#myform</span></tt> is the jQuery selector to select the form that contains extra params.</p>
 </div>
 </div>
 
@@ -143,11 +159,11 @@ class ArticleNewCreate extends Action {
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Writing POSTbacks</a><ul>
-<li><a class="reference internal" href="#general-case">General case</a></li>
-<li><a class="reference internal" href="#special-case-1-action-is-the-same-with-the-current-page-url">Special case 1: action is the same with the current page URL</a></li>
-<li><a class="reference internal" href="#special-case-2-tag1-and-tag2-are-the-same">Special case 2: tag1 and tag2 are the same</a></li>
-<li><a class="reference internal" href="#special-case-3-combination-of-the-above">Special case 3: combination of the above</a></li>
+<li><a class="reference internal" href="#">Writing postbacks</a><ul>
+<li><a class="reference internal" href="#form">Form</a></li>
+<li><a class="reference internal" href="#non-form">Non-form</a></li>
+<li><a class="reference internal" href="#confirmation-dialog">Confirmation dialog</a></li>
+<li><a class="reference internal" href="#extra-params">Extra params</a></li>
 </ul>
 </li>
 </ul>
@@ -156,8 +172,8 @@ class ArticleNewCreate extends Action {
   <p class="topless"><a href="restful.html"
                         title="previous chapter">Writing RESTful APIs</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="var.html"
-                        title="next chapter">RequestVar and SessionVar</a></p>
+  <p class="topless"><a href="static.html"
+                        title="next chapter">Static files</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/postback.txt"
@@ -187,16 +203,16 @@ class ArticleNewCreate extends Action {
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="var.html" title="RequestVar and SessionVar"
+          <a href="static.html" title="Static files"
              >next</a> |</li>
         <li class="right" >
           <a href="restful.html" title="Writing RESTful APIs"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Ngoc.
+        &copy; Copyright 2011, Ngoc Dao.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Action and View &mdash; Xitrum v1.0 documentation</title>
+    <title>Action and View &mdash; Xitrum v1.1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,9 +22,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
-    <link rel="next" title="Writing RESTful APIs" href="restful.html" />
-    <link rel="prev" title="Getting started" href="sbt.html" /> 
+    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
+    <link rel="next" title="XML tips" href="xml.html" />
+    <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,12 +34,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="restful.html" title="Writing RESTful APIs"
+          <a href="xml.html" title="XML tips"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="sbt.html" title="Getting started"
+          <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -51,13 +51,8 @@
   <div class="section" id="action-and-view">
 <h1>Action and View<a class="headerlink" href="#action-and-view" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s7.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s7.jpg" />
-<p>Scala has XML feature built-in. Xitrum uses this feature as its &#8220;template engine&#8221;:</p>
-<ul class="simple">
-<li>You don&#8217;t have to learn another template engine syntax.</li>
-<li>Scala checks XML syntax at compile time =&gt; Views are typesafe.</li>
-<li>Scala automatically escapes XML =&gt; Views are XSS-free by default.</li>
-</ul>
-<p>There are 2 kinds of actions: <a class="reference internal" href="restful.html"><em>RESTful actions</em></a> and <a class="reference internal" href="postback.html"><em>POSTback actions</em></a>.</p>
+<p>There are 2 kinds of actions: <a class="reference internal" href="restful.html"><em>RESTful actions</em></a> and
+<a class="reference internal" href="postback.html"><em>postback actions</em></a>.</p>
 <p>Normally, you write view directly in its action.</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.annotation.GET
@@ -78,26 +73,21 @@ class Index extends Action {
 }</pre>
 </div>
 <p>Of course you can refactor the view into a separate Scala file.</p>
-<p>There are many other methods for rendering things other than views:</p>
+<p>There are methods for rendering things other than views:</p>
 <ul class="simple">
-<li>renderText</li>
-<li>renderBinary</li>
-<li>renderFile</li>
+<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: render a string without layout (see the following section)</li>
+<li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: render an array of bytes</li>
+<li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: send a file directly from disk, very fast
+because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
+(send-file) is used</li>
 </ul>
-<div class="section" id="async-response">
-<h2>Async response<a class="headerlink" href="#async-response" title="Permalink to this headline">¶</a></h2>
-<p>There is no default response. You must call renderXXX explicitly to send response
-to the client. If you don&#8217;t call renderXXX, the HTTP connection is kept for you,
-and you can call renderXXX later.</p>
-</div>
-<div class="section" id="chunked-response">
-<h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
-</div>
 <div class="section" id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
-<p>You typically create a parent class which has a common layout for many views, like this:</p>
-<p><tt class="docutils literal"><span class="pre">AppAction.scala</span></tt></p>
+<p>With <tt class="docutils literal"><span class="pre">renderView</span></tt>, layout is rendered. By default the layout is what passed to
+<tt class="docutils literal"><span class="pre">renderView</span></tt>. You can customize the layout by overriding the <tt class="docutils literal"><span class="pre">layout</span></tt> method.</p>
+<p>Typically, you create a parent class which has a common layout for many views,
+like this:</p>
+<p>AppAction.scala</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.view.DocType
 
@@ -118,60 +108,39 @@ trait AppAction extends Action {
 <p><tt class="docutils literal"><span class="pre">xitrumHead</span></tt> includes jQuery, jQuery Validate plugin, default CSS etc.
 In <tt class="docutils literal"><span class="pre">&lt;head&gt;</span></tt>, it should be the first line, the following lines may override
 things it includes if needed.</p>
-<p><tt class="docutils literal"><span class="pre">Index.scala</span></tt></p>
+<p>Index.scala</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.annotation.GET
 
 @GET("/")
 class Index extends AppAction {
   def override execute {
-    val s = "World"  // Will be automatically escaped
+    val s = "World"
     renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;)
   }
 }</pre>
 </div>
-</div>
-<div class="section" id="unescape-xml">
-<h2>Unescape XML<a class="headerlink" href="#unescape-xml" title="Permalink to this headline">¶</a></h2>
-<p>Use <tt class="docutils literal"><span class="pre">scala.xml.Unparsed</span></tt>:</p>
-<div class="highlight-python"><pre>import scala.xml.Unparsed
+<p>You can pass the layout directly to <tt class="docutils literal"><span class="pre">renderView</span></tt>:</p>
+<div class="highlight-python"><pre>val specialLayout = () =&gt;
+  &lt;html&gt;
+    &lt;body&gt;
+      {renderedView}
+    &lt;/body&gt;
+  &lt;/html&gt;
 
-&lt;script&gt;
-  {Unparsed("if (1 &lt; 2) alert('Xitrum rocks');")}
-&lt;/script&gt;</pre>
-</div>
-<p>Or use <tt class="docutils literal"><span class="pre">&lt;xml:unparsed&gt;</span></tt>:</p>
-<div class="highlight-python"><pre>&lt;script&gt;
-  &lt;xml:unparsed&gt;
-    if (1 &lt; 2) alert('Xitrum rocks');
-  &lt;/xml:unparsed&gt;
-&lt;/script&gt;</pre>
+val s = "World"
+renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLayout _)</pre>
 </div>
 </div>
-<div class="section" id="group-xml-elements">
-<h2>Group XML elements<a class="headerlink" href="#group-xml-elements" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>if (loggedIn)
-  &lt;xml:group&gt;
-    &lt;b&gt;{username}&lt;/b&gt;
-    &lt;a href={urlFor[LogoutAction]}&gt;Logout&lt;/a&gt;
-  &lt;/xml:group&gt;
-else
-  &lt;xml:group&gt;
-    &lt;a href={urlFor[LoginAction]}&gt;Login&lt;/a&gt;
-    &lt;a href={urlFor[RegisterAction]}&gt;Register&lt;/a&gt;
-  &lt;/xml:group&gt;</pre>
+<div class="section" id="async-response">
+<h2>Async response<a class="headerlink" href="#async-response" title="Permalink to this headline">¶</a></h2>
+<p>There is no default response. You must call renderXXX explicitly to send response
+to the client. If you don&#8217;t call renderXXX, the HTTP connection is kept for you,
+and you can call renderXXX later.</p>
 </div>
-</div>
-<div class="section" id="render-xhtml">
-<h2>Render XHTML<a class="headerlink" href="#render-xhtml" title="Permalink to this headline">¶</a></h2>
-<p>Xitrum renders views and layouts as XHTML automatically.
-If you want to render it yourself (rarely), pay attention to the code below.</p>
-<div class="highlight-python"><pre>import scala.xml.Xhtml
-
-val br = &lt;br /&gt;
-br.toStirng            // =&gt; &lt;br&gt;&lt;/br&gt;, some browsers will render this as 2 &lt;br /&gt;s
-Xhtml.toXhtml(&lt;br /&gt;)  // =&gt; "&lt;br /&gt;"</pre>
-</div>
+<div class="section" id="chunked-response">
+<h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
 </div>
 </div>
 
@@ -184,22 +153,19 @@ Xhtml.toXhtml(&lt;br /&gt;)  // =&gt; "&lt;br /&gt;"</pre>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Action and View</a><ul>
+<li><a class="reference internal" href="#layout">Layout</a></li>
 <li><a class="reference internal" href="#async-response">Async response</a></li>
 <li><a class="reference internal" href="#chunked-response">Chunked response</a></li>
-<li><a class="reference internal" href="#layout">Layout</a></li>
-<li><a class="reference internal" href="#unescape-xml">Unescape XML</a></li>
-<li><a class="reference internal" href="#group-xml-elements">Group XML elements</a></li>
-<li><a class="reference internal" href="#render-xhtml">Render XHTML</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="sbt.html"
-                        title="previous chapter">Getting started</a></p>
+  <p class="topless"><a href="dev.html"
+                        title="previous chapter">Development flow with SBT, Eclipse, and JRebel</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="restful.html"
-                        title="next chapter">Writing RESTful APIs</a></p>
+  <p class="topless"><a href="xml.html"
+                        title="next chapter">XML tips</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/action_view.txt"
@@ -229,16 +195,16 @@ Xhtml.toXhtml(&lt;br /&gt;)  // =&gt; "&lt;br /&gt;"</pre>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="restful.html" title="Writing RESTful APIs"
+          <a href="xml.html" title="XML tips"
              >next</a> |</li>
         <li class="right" >
-          <a href="sbt.html" title="Getting started"
+          <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Ngoc.
+        &copy; Copyright 2011, Ngoc Dao.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

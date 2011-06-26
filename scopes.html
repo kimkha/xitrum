@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scopes &mdash; Xitrum v1.0 documentation</title>
+    <title>Scopes &mdash; Xitrum v1.1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,9 +22,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
     <link rel="next" title="Validation" href="validation.html" />
-    <link rel="prev" title="Writing POSTbacks" href="postback.html" /> 
+    <link rel="prev" title="Static files" href="static.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,9 +37,9 @@
           <a href="validation.html" title="Validation"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="postback.html" title="Writing POSTbacks"
+          <a href="static.html" title="Static files"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,6 +50,7 @@
             
   <div class="section" id="scopes">
 <h1>Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h1>
+<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s11.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s11.jpg" />
 <p>To pass things around, there are 2 scopes: request and session. Xitrum tries to
 be typesafe. RequestVar and SessionVar is a way to achieve that goal.</p>
 <div class="section" id="requestvar">
@@ -57,14 +58,14 @@ be typesafe. RequestVar and SessionVar is a way to achieve that goal.</p>
 <p>To pass things around when processing a request (e.g. from action to view or layout)
 in the typesafe way, you should use RequestVar.</p>
 <p>Example:</p>
-<p><tt class="docutils literal"><span class="pre">Var.scala</span></tt></p>
+<p>Var.scala</p>
 <div class="highlight-python"><pre>import xitrum.RequestVar
 
 object Var {
   object rTitle extends RequestVar[String]
 }</pre>
 </div>
-<p><tt class="docutils literal"><span class="pre">AppAction.scala</span></tt></p>
+<p>AppAction.scala</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.view.DocType
 
@@ -82,7 +83,7 @@ trait AppAction extends Action {
   )
 }</pre>
 </div>
-<p><tt class="docutils literal"><span class="pre">ShowAction.scala</span></tt></p>
+<p>ShowAction.scala</p>
 <div class="highlight-python"><pre>class ShowAction extends AppAction {
   override def execute {
     val (title, body) = ...  // Get from DB
@@ -119,7 +120,8 @@ else
 </div>
 <div class="section" id="object-vs-val">
 <h2>object vs. val<a class="headerlink" href="#object-vs-val" title="Permalink to this headline">¶</a></h2>
-<p>Please use <tt class="docutils literal"><span class="pre">object</span></tt> instead of <tt class="docutils literal"><span class="pre">val</span></tt>. <em>Do not do like this</em>:</p>
+<p>Please use <tt class="docutils literal"><span class="pre">object</span></tt> instead of <tt class="docutils literal"><span class="pre">val</span></tt>.</p>
+<p><strong>Do not do like this</strong>:</p>
 <div class="highlight-python"><pre>object Var {
   val rTitle    = new RequestVar[String]
   val rCategory = new RequestVar[String]
@@ -152,8 +154,8 @@ and <tt class="docutils literal"><span class="pre">sIsAdmin</span></tt>.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="postback.html"
-                        title="previous chapter">Writing POSTbacks</a></p>
+  <p class="topless"><a href="static.html"
+                        title="previous chapter">Static files</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="validation.html"
                         title="next chapter">Validation</a></p>
@@ -189,13 +191,13 @@ and <tt class="docutils literal"><span class="pre">sIsAdmin</span></tt>.</p>
           <a href="validation.html" title="Validation"
              >next</a> |</li>
         <li class="right" >
-          <a href="postback.html" title="Writing POSTbacks"
+          <a href="static.html" title="Static files"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Ngoc.
+        &copy; Copyright 2011, Ngoc Dao.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

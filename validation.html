@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Validation &mdash; Xitrum v1.0 documentation</title>
+    <title>Validation &mdash; Xitrum v1.1 documentation</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,9 +22,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.0 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
     <link rel="next" title="Upload" href="upload.html" />
-    <link rel="prev" title="RequestVar and SessionVar" href="var.html" /> 
+    <link rel="prev" title="Scopes" href="scopes.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,9 +37,9 @@
           <a href="upload.html" title="Upload"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="var.html" title="RequestVar and SessionVar"
+          <a href="scopes.html" title="Scopes"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -62,22 +62,41 @@ Validation is performed at both browser side and server side.</p>
                           FAILED                                    FAILED
                      &lt;------+                                  &lt;------+</pre>
 </div>
-<p>Xitrum provides a lot of default validators. You can also write your own custom
-validators very easily.</p>
 <div class="section" id="default-validators">
 <h2>Default validators<a class="headerlink" href="#default-validators" title="Permalink to this headline">¶</a></h2>
+<p>Xitrum provides a lot of default validators. You can use them right away.</p>
 <div class="highlight-python"><pre>// See this package for a complete list of avaiable default validators
+// https://github.com/ngocdaothanh/xitrum/tree/master/src/main/scala/xitrum/validation
 import xitrum.validation._
 
-&lt;form postback="submit"&gt;
-  {&lt;input type="text" name="username" /&gt;.validate(new Required, new MinLength(5), new MaxLength(10)}
-  {&lt;input type="password" name="password" /&gt;.validate(new Required)}
-  {&lt;input type="passord_confirm" name="password_confirm" /&gt;.validate(new PasswordConfirm("password"))}
+&lt;form postback="submit" action={urlForPostbackThis}&gt;
+  Username:
+  &lt;input type="text" name={validate("username", MinLength(5), MaxLength(10)} /&gt;&lt;br /&gt;
+
+  Password:
+  &lt;input type="password" name={validate("password", Required)} /&gt;&lt;br /&gt;
+
+  Password confirmation:
+  &lt;input type="passord" name={validate("password_confirm", EqualTo("password"))} /&gt;&lt;br /&gt;
+
+  Memo:
+  &lt;textarea name={validate("memo")}&gt;&lt;/textarea&gt;&lt;br /&gt;
+
+  &lt;input type="submit" value="Register" /&gt;
 &lt;/form&gt;</pre>
 </div>
+<p>Names of inputs will be encrypted to include the serialized validators. They will
+be automatically decrypted when the form is posted back to the server.</p>
+<p><strong>Note</strong></p>
+<blockquote>
+<div>Technically, for the server side to ensure that hackers cannot bypass validators,
+all input names must be encrypted. This means that even inputs that do not need
+validation must be marked with <tt class="docutils literal"><span class="pre">validate</span></tt>. See <tt class="docutils literal"><span class="pre">validate(&quot;memo&quot;)</span></tt> above.
+We will try to remove this is inconvenience in the next version of Xitrum.</div></blockquote>
 </div>
 <div class="section" id="write-custom-validators">
 <h2>Write custom validators<a class="headerlink" href="#write-custom-validators" title="Permalink to this headline">¶</a></h2>
+<p>You can also write your own custom validators very easily.</p>
 <div class="highlight-python"><pre>import xitrum.validation.Validator
 
 class MyValidator extends Validator {
@@ -113,8 +132,8 @@ class MyValidator extends Validator {
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="var.html"
-                        title="previous chapter">RequestVar and SessionVar</a></p>
+  <p class="topless"><a href="scopes.html"
+                        title="previous chapter">Scopes</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="upload.html"
                         title="next chapter">Upload</a></p>
@@ -150,13 +169,13 @@ class MyValidator extends Validator {
           <a href="upload.html" title="Upload"
              >next</a> |</li>
         <li class="right" >
-          <a href="var.html" title="RequestVar and SessionVar"
+          <a href="scopes.html" title="Scopes"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Ngoc.
+        &copy; Copyright 2011, Ngoc Dao.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
