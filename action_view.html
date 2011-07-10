@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
-    <link rel="next" title="XML tips" href="xml.html" />
+    <link rel="next" title="Writing RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="xml.html" title="XML tips"
+          <a href="restful.html" title="Writing RESTful APIs"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
@@ -75,7 +75,7 @@ class Index extends Action {
 <p>Of course you can refactor the view into a separate Scala file.</p>
 <p>There are methods for rendering things other than views:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: render a string without layout (see the following section)</li>
+<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: render a string without layout</li>
 <li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: render an array of bytes</li>
 <li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: send a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
@@ -132,16 +132,6 @@ val s = "World"
 renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLayout _)</pre>
 </div>
 </div>
-<div class="section" id="async-response">
-<h2>Async response<a class="headerlink" href="#async-response" title="Permalink to this headline">¶</a></h2>
-<p>There is no default response. You must call renderXXX explicitly to send response
-to the client. If you don&#8217;t call renderXXX, the HTTP connection is kept for you,
-and you can call renderXXX later.</p>
-</div>
-<div class="section" id="chunked-response">
-<h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
-</div>
 </div>
 
 
@@ -154,8 +144,6 @@ and you can call renderXXX later.</p>
   <ul>
 <li><a class="reference internal" href="#">Action and View</a><ul>
 <li><a class="reference internal" href="#layout">Layout</a></li>
-<li><a class="reference internal" href="#async-response">Async response</a></li>
-<li><a class="reference internal" href="#chunked-response">Chunked response</a></li>
 </ul>
 </li>
 </ul>
@@ -164,8 +152,8 @@ and you can call renderXXX later.</p>
   <p class="topless"><a href="dev.html"
                         title="previous chapter">Development flow with SBT, Eclipse, and JRebel</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="xml.html"
-                        title="next chapter">XML tips</a></p>
+  <p class="topless"><a href="restful.html"
+                        title="next chapter">Writing RESTful APIs</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/action_view.txt"
@@ -195,7 +183,7 @@ and you can call renderXXX later.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="xml.html" title="XML tips"
+          <a href="restful.html" title="Writing RESTful APIs"
              >next</a> |</li>
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"

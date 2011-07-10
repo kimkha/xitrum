@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
     <link rel="next" title="Scopes" href="scopes.html" />
-    <link rel="prev" title="Writing postbacks" href="postback.html" /> 
+    <link rel="prev" title="Async response" href="async.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +37,7 @@
           <a href="scopes.html" title="Scopes"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="postback.html" title="Writing postbacks"
+          <a href="async.html" title="Async response"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>
@@ -50,41 +50,43 @@
             
   <div class="section" id="static-files">
 <h1>Static files<a class="headerlink" href="#static-files" title="Permalink to this headline">¶</a></h1>
-<img alt="_images/be_ti_xitrum_baby_smurf.jpg" src="_images/be_ti_xitrum_baby_smurf.jpg" />
+<img alt="_images/be_ti_xitrum_baby_smurf1.jpg" src="_images/be_ti_xitrum_baby_smurf1.jpg" />
 <div class="section" id="serve-file-from-public-directory">
 <h2>Serve file from public directory<a class="headerlink" href="#serve-file-from-public-directory" title="Permalink to this headline">¶</a></h2>
 <p>Project directory layout:</p>
 <div class="highlight-python"><pre>config
-public
+static
   favicon.ico
   robots.txt
-  img
-    myimage.png
-  css
-    mystyle.css
+  public
+    img
+      myimage.png
+    css
+      mystyle.css
 src
 build.sbt</pre>
 </div>
-<p>Xitrum can serve files from the public directory. But URLs to them must have
-prefix <tt class="docutils literal"><span class="pre">/public/</span></tt>:</p>
+<p>Xitrum automatically serves static files inside <tt class="docutils literal"><span class="pre">static/public</span></tt> directory.
+URLs to them must have prefix <tt class="docutils literal"><span class="pre">/public/</span></tt>:</p>
 <div class="highlight-python"><pre>/public/img/myimage.png
 /public/css/mystyle.css</pre>
 </div>
-<p>This is the design decision of Xitrum for speed, to avoid checking file
+<p>This design decision is for speed. It avoids disk I/O by not checking for file
 existence on every request.</p>
 <p>To refer to them in your source code:</p>
 <div class="highlight-python"><pre>&lt;img src={urlForPublic("img/myimage.png")} /&gt;</pre>
 </div>
 <div class="section" id="publicfilesnotbehindpublicurl">
 <h3>publicFilesNotBehindPublicUrl<a class="headerlink" href="#publicfilesnotbehindpublicurl" title="Permalink to this headline">¶</a></h3>
-<p>favicon.ico and robots.txt are special files, their URLs:</p>
+<p>favicon.ico and robots.txt are special files, their URLs do not have <tt class="docutils literal"><span class="pre">/public</span></tt>
+prefix:</p>
 <div class="highlight-python"><pre>/favicon.ico
 /robots.txt</pre>
 </div>
 <p>When for example you have a file called crossdomain.xml and you want its
 URL to be <tt class="docutils literal"><span class="pre">http://mydomain.com/crossdomain.xml</span></tt> (no <tt class="docutils literal"><span class="pre">/public/</span></tt> prefix),
-put it right in the <tt class="docutils literal"><span class="pre">public</span></tt> directory, and in your boot class add this line:</p>
-<div class="highlight-python"><pre>xitrum.Config.publicFilesNotBehindPublicUrl ++= List("/crossdomain.xml")</pre>
+put it right in the <tt class="docutils literal"><span class="pre">static</span></tt> directory, and in your boot class add this line:</p>
+<div class="highlight-python"><pre>xitrum.Config.publicFilesNotBehindPublicUrl ++= List("crossdomain.xml")</pre>
 </div>
 </div>
 </div>
@@ -97,6 +99,9 @@ put it right in the <tt class="docutils literal"><span class="pre">public</span>
 </div>
 <p>To refer to them in your source code:</p>
 <div class="highlight-python"><pre>&lt;img src={urlForResource("my_lib/img/myimage.png")} /&gt;</pre>
+</div>
+<p>It will become:</p>
+<div class="highlight-python"><pre>&lt;img src="/resources/public/my_lib/img/myimage.png" /&gt;</pre>
 </div>
 </div>
 </div>
@@ -120,8 +125,8 @@ put it right in the <tt class="docutils literal"><span class="pre">public</span>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="postback.html"
-                        title="previous chapter">Writing postbacks</a></p>
+  <p class="topless"><a href="async.html"
+                        title="previous chapter">Async response</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="scopes.html"
                         title="next chapter">Scopes</a></p>
@@ -157,7 +162,7 @@ put it right in the <tt class="docutils literal"><span class="pre">public</span>
           <a href="scopes.html" title="Scopes"
              >next</a> |</li>
         <li class="right" >
-          <a href="postback.html" title="Writing postbacks"
+          <a href="async.html" title="Async response"
              >previous</a> |</li>
         <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
       </ul>

@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Async response &mdash; Xitrum v1.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
+    <link rel="next" title="Static files" href="static.html" />
+    <link rel="prev" title="JSON" href="json.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="static.html" title="Static files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="json.html" title="JSON"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="async-response">
+<h1>Async response<a class="headerlink" href="#async-response" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/lao_gamen_gargamel.jpg" src="_images/lao_gamen_gargamel.jpg" />
+<p>renderXXX:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">renderView</span></tt>: render HTML with or without layout</li>
+<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: render a string without layout</li>
+<li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: render an array of bytes</li>
+<li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: send a file directly from disk, very fast
+because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
+(send-file) is used</li>
+</ul>
+<p>There is no default response. You must call renderXXX explicitly to send response
+to the client. If you don&#8217;t call renderXXX, the HTTP connection is kept for you,
+and you can call renderXXX later.</p>
+<div class="section" id="chunked-response">
+<h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Chunked_transfer_encoding">Chunked response</a>
+has many use cases. For example, when you need to generate a very large CSV
+file that does may not fit memory.</p>
+<div class="highlight-python"><pre>response.setChunked(true)
+
+val generator = new MyCsvGenerator
+val header = generator.getHeader
+renderText(header, "text/csv")
+
+while (generator.hasNextLine) {
+  val line = generator.nextLine
+  renderText(line)
+}
+
+renderLastChunk</pre>
+</div>
+<ol class="arabic simple">
+<li>Call <tt class="docutils literal"><span class="pre">response.setChunked(true)</span></tt></li>
+<li>Call renderXXX as many times as you want</li>
+<li>Lastly, call <tt class="docutils literal"><span class="pre">renderLastChunk</span></tt></li>
+</ol>
+<p>Notes:</p>
+<ul class="simple">
+<li>Headers are only sent on the first renderXXX call.</li>
+<li>Chunks cannot be used with <a class="reference internal" href="cache.html"><em>page or action cache</em></a>.</li>
+</ul>
+</div>
+<div class="section" id="comet">
+<h2>Comet<a class="headerlink" href="#comet" title="Permalink to this headline">¶</a></h2>
+<p>Comet messages may be clustered. Please see the chaper about <a class="reference internal" href="cluster.html"><em>clustering</em></a>.</p>
+<p>Chunked response is <a class="reference external" href="http://www.shanison.com/2010/05/10/stop-the-browser-%E2%80%9Cthrobber-of-doom%E2%80%9D-while-loading-comet-forever-iframe/">not very good</a>
+for <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)/">Comet</a>.</p>
+<p>Xitrum uses Ajax long polling. <cite>WebSocket &lt;http://en.wikipedia.org/wiki/WebSocket&gt;</cite>
+will be supported in the future when all major browsers support it.</p>
+<p>Below is a chat example.</p>
+<p>ChatIndexAction.scala:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">execute</span></tt>: renders a page for the user to read and type in chat messages;
+in the background it uses Ajax to poll published messages.</li>
+<li><tt class="docutils literal"><span class="pre">postback</span></tt>: publishes chat messages.</li>
+</ul>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.GET
+import xitrum.comet.Comet
+import xitrum.validation.Required
+
+@GET("/chat")
+class ChatIndexAction {
+  override def execute {
+    renderView(
+      &lt;div id="messages"&gt;&lt;/div&gt;
+      {jsAjaxGet(urlFor[ChatPollMessagesAction]("lastTimestamp" -&gt; 0))}
+
+      &lt;input type="text" name={validate("message", Required)} postback="keypress" action={urlForPostbackThis} /&gt;
+    )
+  }
+
+  override def postback {
+    val message = param("message")
+    Comet.publish("chat", message)
+    renderText("")
+  }
+}</pre>
+</div>
+<p>ChatPollMessagesAction.scala: fills <tt class="docutils literal"><span class="pre">&lt;div</span> <span class="pre">id=&quot;messages&quot;&gt;&lt;/div&gt;</span></tt> with published
+chat messages.</p>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.GET
+import xitrum.comet.{Comet, CometMessage}
+
+@GET("/chat/:lastTimestamp")
+class ChatPollMessagesAction extends Action {
+  override def execute {
+    val lastTimestamp = tparam[Long]("lastTimestamp")
+    val messages      = Comet.getMessages("chat", lastTimestamp)
+
+    // When there is no message, the connection is kept and the response will
+    // be sent as soon as there a message arrives
+
+    val updateMessagesDiv = (messages: Iterable[CometMessage]) {
+      jsRender(
+        messages.map("#('messages').append('" + &lt;p&gt;&lt;b&gt;{message.timestamp}:&lt;/b&gt; {message.body}&lt;/p&gt; + "')").mkString(";") +
+        jsAjaxGet(urlForThis("lastTimestamp" -&gt; message.timestamp))
+      )
+    }
+
+    if (messages.isEmpty) {
+      val messagePublished = (message: CometMessage) =&gt; {
+        updateMessagesDiv(Array(message))
+
+        // Return true for Comet to automatically remove this listener.
+        //
+        // You return true most of the cases, because with HTTP the reponse can only
+        // be sent once. In this chat program, after the response is sent by
+        // updateMessagesDiv, the job of this listener is over.
+        true
+      }
+
+      Comet.addMessagePublishedListener("chat", messagePublished)
+
+      // Avoid memory leak when messagePublished is never removed, e.g. no message is published
+      addConnectionClosedListener({ Comet.removeMessageListener("chat", messagePublished) })
+    } else {
+      updateMessagesDiv(messages)
+    }
+  }
+}</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Async response</a><ul>
+<li><a class="reference internal" href="#chunked-response">Chunked response</a></li>
+<li><a class="reference internal" href="#comet">Comet</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="json.html"
+                        title="previous chapter">JSON</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="static.html"
+                        title="next chapter">Static files</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/async.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="static.html" title="Static files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="json.html" title="JSON"
+             >previous</a> |</li>
+        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Ngoc Dao.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

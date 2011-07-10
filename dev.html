@@ -59,8 +59,8 @@
 <p>Install Eclipse plugin by adding to file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt>
 the content as described at <a class="reference external" href="https://github.com/typesafehub/sbteclipse">https://github.com/typesafehub/sbteclipse</a>.</p>
 </div>
-<div class="section" id="create-a-new-project">
-<h2>Create a new project<a class="headerlink" href="#create-a-new-project" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-new-xitrum-project">
+<h2>Create a new Xitrum project<a class="headerlink" href="#create-a-new-xitrum-project" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><pre>$ cd &lt;Eclipse workspace directory&gt;
 $ mkdir my_project
 $ cd my_project
@@ -84,7 +84,7 @@ provides free license for Scala developers!</p>
 <li>Add <tt class="docutils literal"><span class="pre">-noverify</span> <span class="pre">-javaagent:/path/to/jrebel/jrebel.jar</span></tt> to the <tt class="docutils literal"><span class="pre">sbt</span></tt> command line</li>
 </ol>
 <p>Example:</p>
-<div class="highlight-python"><pre>java -noverify -javaagent:/Users/ngoc/opt/jrebel-4.0.2/jrebel.jar \
+<div class="highlight-python"><pre>java -noverify -javaagent:"$HOME/opt/jrebel-4.0.2/jrebel.jar" \
      -Xmx1024m -XX:MaxPermSize=128m -Dsbt.boot.directory="$HOME/.sbt/boot" \
      -jar `dirname $0`/sbt-launch-0.10.0.jar "$@"</pre>
 </div>
@@ -103,8 +103,14 @@ automatically reload the generated .class files.</p>
 <li>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">~compile</span></tt> in another console to compile in continuous/incremental mode</li>
 <li>In the editor, try editing a Scala file, and save</li>
 </ol>
-<p>The <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">~compile</span></tt> process will automatically recompile the file. And JRebel will
+<p>The <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">~compile</span></tt> process will automatically recompile the file, and JRebel will
 automatically reload the generated .class files.</p>
+<div class="section" id="routes-are-not-reloaded">
+<h3>Routes are not reloaded<a class="headerlink" href="#routes-are-not-reloaded" title="Permalink to this headline">¶</a></h3>
+<p>Routes like <tt class="docutils literal"><span class="pre">&#64;GET(&quot;/&quot;)</span></tt> are not reloaded when you change them. Routes are only
+scanned when the web server starts. It it because it takes several seconds to
+rescan all routes.</p>
+</div>
 </div>
 </div>
 
@@ -118,9 +124,12 @@ automatically reload the generated .class files.</p>
   <ul>
 <li><a class="reference internal" href="#">Development flow with SBT, Eclipse, and JRebel</a><ul>
 <li><a class="reference internal" href="#install-plugins-for-sbt">Install plugins for SBT</a></li>
-<li><a class="reference internal" href="#create-a-new-project">Create a new project</a></li>
+<li><a class="reference internal" href="#create-a-new-xitrum-project">Create a new Xitrum project</a></li>
 <li><a class="reference internal" href="#install-jrebel">Install JRebel</a></li>
-<li><a class="reference internal" href="#use-jrebel">Use JRebel</a></li>
+<li><a class="reference internal" href="#use-jrebel">Use JRebel</a><ul>
+<li><a class="reference internal" href="#routes-are-not-reloaded">Routes are not reloaded</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
