@@ -50,13 +50,15 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s1.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s1.jpg" />
+<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" />
 <p>Xitrum (&#8220;Smurf&#8221; in Vietnamese) is a lightweight Scala web framework and web
 server on top of <a class="reference external" href="http://www.jboss.org/netty">Netty</a>:</p>
 <ul class="simple">
 <li>It fills the gap between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
-and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra but less complex than Lift.
-You can easily define RESTful routes and postbacks.</li>
+and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
+use than Lift. You can easily create both RESTful APIs and postbacks. Xitrum
+is controller-first like Scalatra, not
+<a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.</li>
 <li>Typesafe, in the spirit of Scala.</li>
 <li>Asynchronous, in the spirit of Netty.</li>
 <li>Stateless, by default sessions are not stored on server.</li>
@@ -65,6 +67,13 @@ you don&#8217;t need separate Memcache servers.</li>
 <li>Scalable <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet</a>,
 you can scale Comet to multiple servers.</li>
 </ul>
+<p>What do you create web applications for? There are 2 main use cases:</p>
+<ul class="simple">
+<li>To serve machines: you need to create RESTful APIs for smartphones, web services
+for other web sites.</li>
+<li>To serve human users: you need to create interactive web pages.</li>
+</ul>
+<p>As a web framework, Xitrum aims to support you to solve these use cases easily.</p>
 <p>Xitrum is not a full-stack web framework like <a class="reference external" href="http://rubyonrails.org/">Rails</a>
 because it does not provide M (in MVC). However, it does provide <a class="reference internal" href="validation.html"><em>validation</em></a>
 feature at Action (Controller) and View. You can use any database access library
@@ -73,7 +82,7 @@ you want, while still can validate user input easily.</p>
 <div class="highlight-python"><pre>+-----------------+
 |    Your app     |
 +-----------------+
-|      Xitrum     |
+|      Xitrum     |  &lt;-- Hazelcast --&gt; Other instances
 | +-------------+ |
 | | Action/View | |
 | +-------------+ |
@@ -84,6 +93,12 @@ you want, while still can validate user input easily.</p>
 | +-------------+ |
 +-----------------+</pre>
 </div>
+<p>Xitrum is open source:</p>
+<ul class="simple">
+<li>Source code: <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">https://github.com/ngocdaothanh/xitrum</a></li>
+<li>Documentation: <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">http://ngocdaothanh.github.com/xitrum</a></li>
+<li>Google group: <a class="reference external" href="http://groups.google.com/group/xitrum-framework">http://groups.google.com/group/xitrum-framework</a></li>
+</ul>
 </div>
 
 
