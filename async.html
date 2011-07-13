@@ -99,79 +99,58 @@ renderLastChunk</pre>
 for <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)/">Comet</a>.</p>
 <p>Xitrum uses Ajax long polling. <cite>WebSocket &lt;http://en.wikipedia.org/wiki/WebSocket&gt;</cite>
 will be supported in the future when all major browsers support it.</p>
-<p>Below is a chat example.</p>
-<p>ChatIndexAction.scala:</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">execute</span></tt>: renders a page for the user to read and type in chat messages;
-in the background it uses Ajax to poll published messages.</li>
-<li><tt class="docutils literal"><span class="pre">postback</span></tt>: publishes chat messages.</li>
-</ul>
+<div class="section" id="chat-example">
+<h3>Chat example<a class="headerlink" href="#chat-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.GET
+import xitrum.comet.CometPublishAction
+import xitrum.validation.Required
+
+@GET("/chat")
+class ChatAction {
+  override def execute {
+    renderView(
+      &lt;div id="messages"&gt;&lt;/div&gt;
+      {jsCometGet("chat", "function(message) { #('messages').append(message.body) }"}
+
+      &lt;form postback="submit" action={urlForPostback[CometPublishAction]}&gt;
+        &lt;input type="hidden" name={validate("channel")} value="chat" /&gt;
+        &lt;input type="text" name={validate("body", Required)} /&gt;
+      &lt;/form&gt;
+    )
+  }
+}</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">jsCometGet</span></tt> will send long polling Ajax requests, get published messages,
+and call your defined function.</p>
+</div>
+<div class="section" id="publish-message">
+<h3>Publish message<a class="headerlink" href="#publish-message" title="Permalink to this headline">¶</a></h3>
+<p>In the example above, <tt class="docutils literal"><span class="pre">CometPublishAction</span></tt> will receive form post and publish
+the message for you. If you want to publish the message yourself, call <tt class="docutils literal"><span class="pre">Comet.publish</span></tt>:</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.annotation.GET
 import xitrum.comet.Comet
 import xitrum.validation.Required
 
-@GET("/chat")
-class ChatIndexAction {
+@GET("/admin")
+class AdminAction extends Action {
   override def execute {
     renderView(
-      &lt;div id="messages"&gt;&lt;/div&gt;
-      {jsAjaxGet(urlFor[ChatPollMessagesAction]("lastTimestamp" -&gt; 0))}
-
-      &lt;input type="text" name={validate("message", Required)} postback="keypress" action={urlForPostbackThis} /&gt;
+      &lt;form postback="submit" action={urlForPostbackThis}&gt;
+        Message from admin:
+        &lt;input type="text" name={validate("body", Required)} /&gt;
+      &lt;/form&gt;
     )
   }
 
   override def postback {
-    val message = param("message")
-    Comet.publish("chat", message)
+    val body = param("body")
+    Comet.publish("chat", "[From admin]: " + body)
     renderText("")
   }
 }</pre>
 </div>
-<p>ChatPollMessagesAction.scala: fills <tt class="docutils literal"><span class="pre">&lt;div</span> <span class="pre">id=&quot;messages&quot;&gt;&lt;/div&gt;</span></tt> with published
-chat messages.</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
-import xitrum.comet.{Comet, CometMessage}
-
-@GET("/chat/:lastTimestamp")
-class ChatPollMessagesAction extends Action {
-  override def execute {
-    val lastTimestamp = tparam[Long]("lastTimestamp")
-    val messages      = Comet.getMessages("chat", lastTimestamp)
-
-    // When there is no message, the connection is kept and the response will
-    // be sent as soon as there a message arrives
-
-    val updateMessagesDiv = (messages: Iterable[CometMessage]) {
-      jsRender(
-        messages.map("#('messages').append('" + &lt;p&gt;&lt;b&gt;{message.timestamp}:&lt;/b&gt; {message.body}&lt;/p&gt; + "')").mkString(";") +
-        jsAjaxGet(urlForThis("lastTimestamp" -&gt; message.timestamp))
-      )
-    }
-
-    if (messages.isEmpty) {
-      val messagePublished = (message: CometMessage) =&gt; {
-        updateMessagesDiv(Array(message))
-
-        // Return true for Comet to automatically remove this listener.
-        //
-        // You return true most of the cases, because with HTTP the reponse can only
-        // be sent once. In this chat program, after the response is sent by
-        // updateMessagesDiv, the job of this listener is over.
-        true
-      }
-
-      Comet.addMessagePublishedListener("chat", messagePublished)
-
-      // Avoid memory leak when messagePublished is never removed, e.g. no message is published
-      addConnectionClosedListener({ Comet.removeMessageListener("chat", messagePublished) })
-    } else {
-      updateMessagesDiv(messages)
-    }
-  }
-}</pre>
 </div>
 </div>
 </div>
@@ -186,7 +165,11 @@ class ChatPollMessagesAction extends Action {
   <ul>
 <li><a class="reference internal" href="#">Async response</a><ul>
 <li><a class="reference internal" href="#chunked-response">Chunked response</a></li>
-<li><a class="reference internal" href="#comet">Comet</a></li>
+<li><a class="reference internal" href="#comet">Comet</a><ul>
+<li><a class="reference internal" href="#chat-example">Chat example</a></li>
+<li><a class="reference internal" href="#publish-message">Publish message</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

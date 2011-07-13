@@ -50,12 +50,16 @@
             
   <div class="section" id="json">
 <h1>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h1>
-<p>TODO</p>
-<div class="section" id="writing">
-<h2>Writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="parsing">
-<h2>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h2>
+<p>Lift JSON is included in Xitrum as a dependecy:
+<a class="reference external" href="https://github.com/lift/framework/tree/master/core/json">https://github.com/lift/framework/tree/master/core/json</a></p>
+<p>It is the best JSON implementation of Scala. Please read about it to know how
+to parse, produce etc. JSON data.</p>
+<p>To respond JSON data:</p>
+<div class="highlight-python"><pre>import net.liftweb.json._
+import net.liftweb.json.JsonDSL._
+
+val scalaData = List(1, 2, 3)  // An example
+renderText(compact(render(scalaData), "text/json")</pre>
 </div>
 </div>
 
@@ -65,15 +69,6 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">JSON</a><ul>
-<li><a class="reference internal" href="#writing">Writing</a></li>
-<li><a class="reference internal" href="#parsing">Parsing</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
   <p class="topless"><a href="xml.html"
                         title="previous chapter">XML tips</a></p>
