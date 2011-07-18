@@ -1,16 +1,17 @@
 Async response
 ==============
 
-.. image:: img/lao_gamen_gargamel.jpg
+.. image:: img/xitrum/lao_gamen_gargamel.jpg
 
 renderXXX:
 
-* ``renderView``: render HTML with or without layout
-* ``renderText``: render a string without layout
-* ``renderBinary``: render an array of bytes
-* ``renderFile``: send a file directly from disk, very fast
+* ``renderView``: renders HTML with or without layout
+* ``renderText``: renders a string without layout
+* ``renderJson``: renderss JSON
+* ``renderBinary``: renders an array of bytes
+* ``renderFile``: sends a file directly from disk, very fast
   because `zero-copy <http://www.ibm.com/developerworks/library/j-zerocopy/>`_
-  (send-file) is used
+  (aka send-file) is used
 
 There is no default response. You must call renderXXX explicitly to send response
 to the client. If you don't call renderXXX, the HTTP connection is kept for you,
@@ -71,20 +72,31 @@ Chat example
   @GET("/chat")
   class ChatAction {
     override def execute {
-      renderView(
-        <div id="messages"></div>
-        {jsCometGet("chat", "function(message) { #('messages').append(message.body) }"}
+      jsCometGet("chat", """
+        function(channel, timestamp, body) {
+          var wasScrollAtBottom = xitrum.isScrollAtBottom('#chatOutput');
 
-        <form postback="submit" action={urlForPostback[CometPublishAction]}>
+          var escaped = $('<div/>').text(body.chatInput[0]).html();
+          $('#chatOutput').append('- ' + escaped + '<br />');
+
+          if (wasScrollAtBottom) xitrum.scrollToBottom('#chatOutput');
+        }
+      """)
+
+      renderView(
+        <div id="chatOutput"></div>
+
+        <form postback="submit" action={urlForPostback[CometPublishAction]} after="function() { $('#chatInput').attr('value', '') }">
           <input type="hidden" name={validate("channel")} value="chat" />
-          <input type="text" name={validate("body", Required)} />
+          <input type="text" id="chatInput" name={validate("chatInput", Required)} />
         </form>
       )
     }
   }
 
 ``jsCometGet`` will send long polling Ajax requests, get published messages,
-and call your defined function.
+and call your callback function. The 3rd argument ``body`` is a hash
+containing everything inside the form commited to ``CometPublishAction``.
 
 Publish message
 ~~~~~~~~~~~~~~~

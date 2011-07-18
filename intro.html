@@ -63,22 +63,10 @@ is controller-first like Scalatra, not
 <li>Asynchronous, in the spirit of Netty.</li>
 <li>Stateless, by default sessions are not stored on server.</li>
 <li>In-process and distribued cache using <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>,
-you don&#8217;t need separate Memcache servers.</li>
+you don&#8217;t need separate cache servers.</li>
 <li>Scalable <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet</a>,
 you can scale Comet to multiple servers.</li>
 </ul>
-<p>What do you create web applications for? There are 2 main use cases:</p>
-<ul class="simple">
-<li>To serve machines: you need to create RESTful APIs for smartphones, web services
-for other web sites.</li>
-<li>To serve human users: you need to create interactive web pages.</li>
-</ul>
-<p>As a web framework, Xitrum aims to support you to solve these use cases easily.</p>
-<p>Xitrum is not a full-stack web framework like <a class="reference external" href="http://rubyonrails.org/">Rails</a>
-because it does not provide M (in MVC). However, it does provide <a class="reference internal" href="validation.html"><em>validation</em></a>
-feature at Action (Controller) and View. You can use any database access library
-you want, while still can validate user input easily.</p>
-<p>Xitrum is inspired by <a class="reference external" href="http://nitrogenproject.com/">Nitrogen</a>.</p>
 <div class="highlight-python"><pre>+-----------------+
 |    Your app     |
 +-----------------+
@@ -93,7 +81,14 @@ you want, while still can validate user input easily.</p>
 | +-------------+ |
 +-----------------+</pre>
 </div>
-<p>Xitrum is open source:</p>
+<p>What do you create web applications for? There are 2 main use cases:</p>
+<ul class="simple">
+<li>To serve machines: you need to create RESTful APIs for smartphones, web services
+for other web sites.</li>
+<li>To serve human users: you need to create interactive web pages.</li>
+</ul>
+<p>As a web framework, Xitrum aims to support you to solve these use cases easily.</p>
+<p>Xitrum is inspired by <a class="reference external" href="http://nitrogenproject.com/">Nitrogen</a>:</p>
 <ul class="simple">
 <li>Source code: <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">https://github.com/ngocdaothanh/xitrum</a></li>
 <li>Documentation: <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">http://ngocdaothanh.github.com/xitrum</a></li>

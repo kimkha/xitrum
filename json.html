@@ -50,16 +50,12 @@
             
   <div class="section" id="json">
 <h1>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h1>
-<p>Lift JSON is included in Xitrum as a dependecy:
-<a class="reference external" href="https://github.com/lift/framework/tree/master/core/json">https://github.com/lift/framework/tree/master/core/json</a></p>
-<p>It is the best JSON implementation of Scala. Please read about it to know how
-to parse, produce etc. JSON data.</p>
-<p>To respond JSON data:</p>
-<div class="highlight-python"><pre>import net.liftweb.json._
-import net.liftweb.json.JsonDSL._
-
-val scalaData = List(1, 2, 3)  // An example
-renderText(compact(render(scalaData), "text/json")</pre>
+<p>Jerkson is included in Xitrum as a dependecy:
+<a class="reference external" href="https://github.com/codahale/jerkson">https://github.com/codahale/jerkson</a></p>
+<p>Please read about it to know how to parse and generate JSON.</p>
+<p>To respond JSON:</p>
+<div class="highlight-python"><pre>val scalaData = List(1, 2, 3)  // An example
+renderJson(scalaData)</pre>
 </div>
 </div>
 

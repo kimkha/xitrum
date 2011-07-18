@@ -75,9 +75,10 @@ class Index extends Action {
 <p>Of course you can refactor the view into a separate Scala file.</p>
 <p>There are methods for rendering things other than views:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: render a string without layout</li>
-<li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: render an array of bytes</li>
-<li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: send a file directly from disk, very fast
+<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: renders anything as a string without layout</li>
+<li><tt class="docutils literal"><span class="pre">renderJson</span></tt>: renders JSON</li>
+<li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: renders an array of bytes</li>
+<li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: sends a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
 (send-file) is used</li>
 </ul>

@@ -51,10 +51,49 @@
   <div class="section" id="scopes">
 <h1>Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s11.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s11.jpg" />
-<p>To pass things around, there are 2 scopes: request and session. Xitrum tries to
-be typesafe. RequestVar and SessionVar is a way to achieve that goal.</p>
+<div class="section" id="request">
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kinds-of-params">
+<h3>Kinds of params<a class="headerlink" href="#kinds-of-params" title="Permalink to this headline">¶</a></h3>
+<p>There are 2 kinds of request params: textual params and file upload params (binary).</p>
+<p>There are 3 kinds of textual params, of type <tt class="docutils literal"><span class="pre">scala.collection.mutable.Map[String,</span> <span class="pre">List[String]]</span></tt>:</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">uriParams</span></tt>: params after the ? mark in the URL, example: <a class="reference external" href="http://example.com/blah?x=1&amp;y=2">http://example.com/blah?x=1&amp;y=2</a></li>
+<li><tt class="docutils literal"><span class="pre">bodyParams</span></tt>: params in POST request body</li>
+<li><tt class="docutils literal"><span class="pre">pathParams</span></tt>: params embedded in the URL, example: <tt class="docutils literal"><span class="pre">&#64;GET(&quot;/articles/:id/:title&quot;)</span></tt></li>
+</ol>
+<p>These params are merged in the above order (from 1 to 3, the latter will
+override the former), as <tt class="docutils literal"><span class="pre">textParams</span></tt>.</p>
+<p><tt class="docutils literal"><span class="pre">fileUploadParams</span></tt> is of type <tt class="docutils literal"><span class="pre">scala.collection.mutable.Map[String,</span> <span class="pre">List[org.jboss.netty.handler.codec.http.FileUpload]]</span></tt>.</p>
+</div>
+<div class="section" id="accesing-params">
+<h3>Accesing params<a class="headerlink" href="#accesing-params" title="Permalink to this headline">¶</a></h3>
+<p>From an action, you can access the above params directly, or you can use
+accessor methods.</p>
+<p>To access <tt class="docutils literal"><span class="pre">textParams</span></tt>:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">param(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">String</span></tt>, throws exception if x does not exist</li>
+<li><tt class="docutils literal"><span class="pre">params(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">List[String]</span></tt>, throws exception if x does not exist</li>
+<li><tt class="docutils literal"><span class="pre">paramo(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[String]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">paramso(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[List[String]]</span></tt></li>
+</ul>
+<p>You can convert String to other types (Int, Long, Fload, Double) automatically:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">tparam[Int](&quot;x&quot;)</span></tt>: returns a <tt class="docutils literal"><span class="pre">Int</span></tt>, throws exception if x does not exist</li>
+<li><tt class="docutils literal"><span class="pre">tparams[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">List[Int]</span></tt>, throws exception if x does not exist</li>
+<li><tt class="docutils literal"><span class="pre">tparamo[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[Int]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">tparamso[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[List[Int]]</span></tt></li>
+</ul>
+<p>For file upload:</p>
+<ul class="simple">
+<li>uploadParam(&#8220;x&#8221;): returns <tt class="docutils literal"><span class="pre">FileUpload</span></tt>, throws exception if x does not exist</li>
+<li>uploadParams(&#8220;x&#8221;): returns <tt class="docutils literal"><span class="pre">List[FileUpload]</span></tt>, throws exception if x does not exist</li>
+<li>uploadParamo(&#8220;x&#8221;): returns <tt class="docutils literal"><span class="pre">Option[FileUpload]</span></tt></li>
+<li>uploadParamso(&#8220;x&#8221;): returns <tt class="docutils literal"><span class="pre">Option[List[FileUpload]]</span></tt></li>
+</ul>
+</div>
 <div class="section" id="requestvar">
-<h2>RequestVar<a class="headerlink" href="#requestvar" title="Permalink to this headline">¶</a></h2>
+<h3>RequestVar<a class="headerlink" href="#requestvar" title="Permalink to this headline">¶</a></h3>
 <p>To pass things around when processing a request (e.g. from action to view or layout)
 in the typesafe way, you should use RequestVar.</p>
 <p>Example:</p>
@@ -93,8 +132,15 @@ trait AppAction extends Action {
 }</pre>
 </div>
 </div>
+</div>
+<div class="section" id="cookie">
+<h2>Cookie<a class="headerlink" href="#cookie" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="session">
+<h2>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sessionvar">
-<h2>SessionVar<a class="headerlink" href="#sessionvar" title="Permalink to this headline">¶</a></h2>
+<h3>SessionVar<a class="headerlink" href="#sessionvar" title="Permalink to this headline">¶</a></h3>
 <p>For example, you want save username to session after the user has logged in:</p>
 <p>Declare the session var:</p>
 <div class="highlight-python"><pre>import xitrum.SessionVar
@@ -117,6 +163,7 @@ else
 <li>To delete the session var: <tt class="docutils literal"><span class="pre">Var.sUsername.delete</span></tt></li>
 <li>To reset the whole session: <tt class="docutils literal"><span class="pre">session.reset</span></tt></li>
 </ul>
+</div>
 </div>
 <div class="section" id="object-vs-val">
 <h2>object vs. val<a class="headerlink" href="#object-vs-val" title="Permalink to this headline">¶</a></h2>
@@ -146,8 +193,17 @@ and <tt class="docutils literal"><span class="pre">sIsAdmin</span></tt>.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Scopes</a><ul>
+<li><a class="reference internal" href="#request">Request</a><ul>
+<li><a class="reference internal" href="#kinds-of-params">Kinds of params</a></li>
+<li><a class="reference internal" href="#accesing-params">Accesing params</a></li>
 <li><a class="reference internal" href="#requestvar">RequestVar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cookie">Cookie</a></li>
+<li><a class="reference internal" href="#session">Session</a><ul>
 <li><a class="reference internal" href="#sessionvar">SessionVar</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#object-vs-val">object vs. val</a></li>
 </ul>
 </li>

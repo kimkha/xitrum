@@ -53,12 +53,13 @@
 <img alt="_images/lao_gamen_gargamel.jpg" src="_images/lao_gamen_gargamel.jpg" />
 <p>renderXXX:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">renderView</span></tt>: render HTML with or without layout</li>
-<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: render a string without layout</li>
-<li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: render an array of bytes</li>
-<li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: send a file directly from disk, very fast
+<li><tt class="docutils literal"><span class="pre">renderView</span></tt>: renders HTML with or without layout</li>
+<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: renders a string without layout</li>
+<li><tt class="docutils literal"><span class="pre">renderJson</span></tt>: renderss JSON</li>
+<li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: renders an array of bytes</li>
+<li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: sends a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
-(send-file) is used</li>
+(aka send-file) is used</li>
 </ul>
 <p>There is no default response. You must call renderXXX explicitly to send response
 to the client. If you don&#8217;t call renderXXX, the HTTP connection is kept for you,
@@ -109,20 +110,31 @@ import xitrum.validation.Required
 @GET("/chat")
 class ChatAction {
   override def execute {
-    renderView(
-      &lt;div id="messages"&gt;&lt;/div&gt;
-      {jsCometGet("chat", "function(message) { #('messages').append(message.body) }"}
+    jsCometGet("chat", """
+      function(channel, timestamp, body) {
+        var wasScrollAtBottom = xitrum.isScrollAtBottom('#chatOutput');
 
-      &lt;form postback="submit" action={urlForPostback[CometPublishAction]}&gt;
+        var escaped = $('&lt;div/&gt;').text(body.chatInput[0]).html();
+        $('#chatOutput').append('- ' + escaped + '&lt;br /&gt;');
+
+        if (wasScrollAtBottom) xitrum.scrollToBottom('#chatOutput');
+      }
+    """)
+
+    renderView(
+      &lt;div id="chatOutput"&gt;&lt;/div&gt;
+
+      &lt;form postback="submit" action={urlForPostback[CometPublishAction]} after="function() { $('#chatInput').attr('value', '') }"&gt;
         &lt;input type="hidden" name={validate("channel")} value="chat" /&gt;
-        &lt;input type="text" name={validate("body", Required)} /&gt;
+        &lt;input type="text" id="chatInput" name={validate("chatInput", Required)} /&gt;
       &lt;/form&gt;
     )
   }
 }</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">jsCometGet</span></tt> will send long polling Ajax requests, get published messages,
-and call your defined function.</p>
+and call your callback function. The 3rd argument <tt class="docutils literal"><span class="pre">body</span></tt> is a hash
+containing everything inside the form commited to <tt class="docutils literal"><span class="pre">CometPublishAction</span></tt>.</p>
 </div>
 <div class="section" id="publish-message">
 <h3>Publish message<a class="headerlink" href="#publish-message" title="Permalink to this headline">¶</a></h3>

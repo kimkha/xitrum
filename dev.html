@@ -84,9 +84,9 @@ provides free license for Scala developers!</p>
 <li>Add <tt class="docutils literal"><span class="pre">-noverify</span> <span class="pre">-javaagent:/path/to/jrebel/jrebel.jar</span></tt> to the <tt class="docutils literal"><span class="pre">sbt</span></tt> command line</li>
 </ol>
 <p>Example:</p>
-<div class="highlight-python"><pre>java -noverify -javaagent:"$HOME/opt/jrebel-4.0.2/jrebel.jar" \
+<div class="highlight-python"><pre>java -noverify -javaagent:"$HOME/opt/jrebel/jrebel.jar" \
      -Xmx1024m -XX:MaxPermSize=128m -Dsbt.boot.directory="$HOME/.sbt/boot" \
-     -jar `dirname $0`/sbt-launch-0.10.0.jar "$@"</pre>
+     -jar `dirname $0`/sbt-launch.jar "$@"</pre>
 </div>
 </div>
 <div class="section" id="use-jrebel">
