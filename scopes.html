@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Scopes &mdash; Xitrum v1.1 documentation</title>
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -79,17 +78,17 @@ accessor methods.</p>
 </ul>
 <p>You can convert String to other types (Int, Long, Fload, Double) automatically:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">tparam[Int](&quot;x&quot;)</span></tt>: returns a <tt class="docutils literal"><span class="pre">Int</span></tt>, throws exception if x does not exist</li>
+<li><tt class="docutils literal"><span class="pre">tparam[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Int</span></tt>, throws exception if x does not exist</li>
 <li><tt class="docutils literal"><span class="pre">tparams[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">List[Int]</span></tt>, throws exception if x does not exist</li>
 <li><tt class="docutils literal"><span class="pre">tparamo[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[Int]</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">tparamso[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[List[Int]]</span></tt></li>
 </ul>
 <p>For file upload:</p>
 <ul class="simple">
-<li>uploadParam(&#8220;x&#8221;): returns <tt class="docutils literal"><span class="pre">FileUpload</span></tt>, throws exception if x does not exist</li>
-<li>uploadParams(&#8220;x&#8221;): returns <tt class="docutils literal"><span class="pre">List[FileUpload]</span></tt>, throws exception if x does not exist</li>
-<li>uploadParamo(&#8220;x&#8221;): returns <tt class="docutils literal"><span class="pre">Option[FileUpload]</span></tt></li>
-<li>uploadParamso(&#8220;x&#8221;): returns <tt class="docutils literal"><span class="pre">Option[List[FileUpload]]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">uploadParam(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">FileUpload</span></tt>, throws exception if x does not exist</li>
+<li><tt class="docutils literal"><span class="pre">uploadParams(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">List[FileUpload]</span></tt>, throws exception if x does not exist</li>
+<li><tt class="docutils literal"><span class="pre">uploadParamo(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[FileUpload]</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">uploadParamso(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[List[FileUpload]]</span></tt></li>
 </ul>
 </div>
 <div class="section" id="requestvar">

@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Deploy to production server &mdash; Xitrum v1.1 documentation</title>
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -55,8 +54,8 @@
 <div class="highlight-python"><pre>Browser ------ Xitrum instance</pre>
 </div>
 <p>Or behind a proxy server like Apache or Nginx:</p>
-<blockquote>
-<div>Browser &#8212;&#8212; Proxy &#8212;&#8212; Xitrum instance</div></blockquote>
+<div class="highlight-python"><pre>Browser ------ Proxy ------ Xitrum instance</pre>
+</div>
 <div class="section" id="package-directory">
 <h2>Package directory<a class="headerlink" href="#package-directory" title="Permalink to this headline">¶</a></h2>
 <p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> to prepare <tt class="docutils literal"><span class="pre">target/xitrum_package</span></tt> directory,
@@ -90,7 +89,7 @@ You may want to modify runner.sh to tune JVM settings.</p>
 </div>
 <p>You may need to write the above command line to INSTALL file, for example, so
 that the user of your project know how to start the web server.</p>
-<p>To change the port of the web server, change <tt class="docutils literal"><span class="pre">http_port</span> <span class="pre">``</span> <span class="pre">in</span> <span class="pre">``config/xitrum.properties</span></tt>.</p>
+<p>To change the port of the web server, change <tt class="docutils literal"><span class="pre">http_port</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>.</p>
 </div>
 <div class="section" id="base-uri">
 <h2>Base URI<a class="headerlink" href="#base-uri" title="Permalink to this headline">¶</a></h2>
