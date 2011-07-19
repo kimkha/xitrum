@@ -50,56 +50,42 @@
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s13.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s13.jpg" />
-<p>This section describes how to create and run a simple Xitrum project.
-It assumes that you are using Linux and have installed Java.</p>
+<p>This chapter describes how to create and run a Xitrum project.
+<strong>It assumes that you are using Linux and you have installed Java.</strong></p>
 <div class="section" id="install-sbt">
 <h2>Install SBT<a class="headerlink" href="#install-sbt" title="Permalink to this headline">¶</a></h2>
-<p>Scala projects use <a class="reference external" href="https://github.com/harrah/xsbt">SBT</a> as the de facto build tool.
+<p>Most Scala projects use <a class="reference external" href="https://github.com/harrah/xsbt">SBT</a> as the de facto build tool.
 Xitrum needs SBT 0.10.1+.</p>
-<p>Follow <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">instructions</a> to install.</p>
+<p>Follow <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">instructions</a> to install.
+You can do like this:</p>
+<div class="highlight-python"><pre>$ mkdir -p ~/opt/sbt
+$ cd ~/opt/sbt
+$ wget http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-tools.sbt/sbt-launch/0.10.1/sbt-launch.jar
+$ echo 'java -Xmx512m -XX:MaxPermSize=256m -Dsbt.boot.directory="$HOME/.sbt/boot" -jar `dirname $0`/sbt-launch.jar "$@"' &gt; sbt
+$ chmod +x sbt
+$ export PATH=$PATH:~/opt/sbt</pre>
 </div>
-<div class="section" id="netty-4">
-<h2>Netty 4<a class="headerlink" href="#netty-4" title="Permalink to this headline">¶</a></h2>
-<p><strong>This part will be removed when Netty 4 is officially released.</strong></p>
-<p>File upload feature in Xitrum needs <a class="reference external" href="https://github.com/netty/netty">Netty</a> 4,
-which has not been released. You must download and build it yourself.</p>
-<p><a class="reference external" href="https://github.com/netty/netty/archives/master">Download</a> it.</p>
-<p>Add to its pom.xml:</p>
-<div class="highlight-python"><pre>&lt;repositories&gt;
-   &lt;repository&gt;
-     &lt;id&gt;repository.jboss.org&lt;/id&gt;
-     &lt;name&gt;JBoss Releases Repository&lt;/name&gt;
-     &lt;url&gt;http://repository.jboss.org/maven2&lt;/url&gt;
-   &lt;/repository&gt;
- &lt;/repositories&gt;
-
- &lt;pluginRepositories&gt;
-   &lt;pluginRepository&gt;
-     &lt;id&gt;repository.jboss.org&lt;/id&gt;
-     &lt;name&gt;JBoss Releases Repository&lt;/name&gt;
-     &lt;url&gt;http://repository.jboss.org/maven2&lt;/url&gt;
-   &lt;/pluginRepository&gt;
- &lt;/pluginRepositories&gt;</pre>
-</div>
-<p>Build with <a class="reference external" href="http://maven.apache.org/">Maven</a>:</p>
-<div class="highlight-python"><pre>$ wget http://bit.ly/jebzNn
-$ mvn install:install-file -DgroupId=org.jboss.logging -DartifactId=jboss-logging-spi \
-  -Dpackaging=jar -Dversion=2.1.2.GA -Dfile=jboss-logging-spi-2.1.2.GA.jar -DgeneratePom=true
-$ MAVEN_OPTS=-Xmx512m mvn -Dmaven.test.skip=true install</pre>
-</div>
-<p>Above is the quick and dirty way. For long way: <a class="reference external" href="https://issues.jboss.org/browse/NETTY-387">https://issues.jboss.org/browse/NETTY-387</a>.</p>
+<p>You should add the line <tt class="docutils literal"><span class="pre">export</span> <span class="pre">PATH=$PATH:~/opt/sbt</span></tt> to <tt class="docutils literal"><span class="pre">~/.profile</span></tt>.</p>
 </div>
 <div class="section" id="add-xitrum-plugin-to-sbt">
 <h2>Add Xitrum plugin to SBT<a class="headerlink" href="#add-xitrum-plugin-to-sbt" title="Permalink to this headline">¶</a></h2>
-<p>Create file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt>, then add to it:</p>
+<p>Create file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt>, then add to it (there must be a blank
+line between the 2 lines below):</p>
 <div class="highlight-python"><pre>resolvers += "Sonatype Snapshot Repository" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies += "tv.cntt" %% "xitrum-plugin" % "1.1-SNAPSHOT"</pre>
+</div>
+<p>You can do like this:</p>
+<div class="highlight-python"><pre>$ mkdir -p ~/.sbt/plugins
+$ echo 'resolvers += "Sonatype Snapshot Repository" at "https://oss.sonatype.org/content/repositories/snapshots"' &gt;&gt; ~/.sbt/plugins/build.sbt
+$ echo -e "\n" &gt;&gt; ~/.sbt/plugins/build.sbt
+$ echo 'libraryDependencies += "tv.cntt" %% "xitrum-plugin" % "1.1-SNAPSHOT"' &gt;&gt; ~/.sbt/plugins/build.sbt</pre>
 </div>
 <p>Now you have 2 commands: <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-new</span></tt> and <a class="reference internal" href="deploy.html"><em>sbt xitrum-package</em></a>.</p>
 </div>
 <div class="section" id="create-a-new-xitrum-project">
 <h2>Create a new Xitrum project<a class="headerlink" href="#create-a-new-xitrum-project" title="Permalink to this headline">¶</a></h2>
+<p>Use <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-new</span></tt> to create a new Xitrum project:</p>
 <div class="highlight-python"><pre>$ cd /tmp
 $ mkdir my_project
 $ cd my_project
@@ -108,7 +94,8 @@ $ sbt xitrum-new</pre>
 <p>A new project skeleton will be created:</p>
 <div class="highlight-python"><pre>my_project
   config
-    hazelcast.xml
+    hazelcast_cluster_member_or_super_client.xml
+    hazelcast_java_client.properties
     logback.xml
     xitrum.properties
   static
@@ -133,8 +120,6 @@ $ sbt xitrum-new</pre>
             IndexAction.scala
   build.sbt</pre>
 </div>
-<p>In build.sbt, you see that logback-classic is a dependency. It is because
-Xitrum uses SLF4J, so the project must provide an SLF4J implentation, e.g. logback-classic.</p>
 </div>
 <div class="section" id="run">
 <h2>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
@@ -164,7 +149,6 @@ for 3rd parties about the RESTful APIs in your web application.</p>
   <ul>
 <li><a class="reference internal" href="#">Tutorial</a><ul>
 <li><a class="reference internal" href="#install-sbt">Install SBT</a></li>
-<li><a class="reference internal" href="#netty-4">Netty 4</a></li>
 <li><a class="reference internal" href="#add-xitrum-plugin-to-sbt">Add Xitrum plugin to SBT</a></li>
 <li><a class="reference internal" href="#create-a-new-xitrum-project">Create a new Xitrum project</a></li>
 <li><a class="reference internal" href="#run">Run</a></li>

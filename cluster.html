@@ -57,7 +57,8 @@ Load balancer/proxy server ---- Xitrum instance 2
                               \ Xitrum instance 3</pre>
 </div>
 <p>Cache and Comet are clustered out of the box thanks to <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>.
-Please see <tt class="docutils literal"><span class="pre">config/hazelcast.xml</span></tt> and read <a class="reference external" href="http://www.hazelcast.com/documentation.jsp#Config">Hazelcast&#8217;s documentation</a>
+Please see <tt class="docutils literal"><span class="pre">hazelcast_mode</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>, <tt class="docutils literal"><span class="pre">config/hazelcast_cluster_member_or_super_client.xml</span></tt>,
+<tt class="docutils literal"><span class="pre">config/hazelcast_java_client.properties</span></tt>, and read <a class="reference external" href="http://www.hazelcast.com/documentation.jsp#Config">Hazelcast&#8217;s documentation</a>
 to know how to config.</p>
 <p>Session are stored in cookie by default. You don&#8217;t need to worry how to share
 sessions among Xitrum instances.</p>
