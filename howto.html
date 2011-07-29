@@ -50,12 +50,27 @@
   <div class="section" id="howto">
 <h1>HOWTO<a class="headerlink" href="#howto" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" />
+<p>This chapter contains various small tips. Each tip is too small to have its own
+chapter.</p>
 <div class="section" id="link-to-an-action">
 <h2>Link to an action<a class="headerlink" href="#link-to-an-action" title="Permalink to this headline">¶</a></h2>
 <p>Xitrum tries to be typesafe.</p>
 <p>Don&#8217;t write URL manually, use urlFor like this:</p>
 <div class="highlight-python"><pre>&lt;a href={urlFor[ArticleShowAction]("id" -&gt; myArticle.id)}&gt;{myArticle.title}&lt;/a&gt;</pre>
 </div>
+</div>
+<div class="section" id="log">
+<h2>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h2>
+<p>Xitrum uses <a class="reference external" href="http://www.slf4j.org/">SLF4J</a>. Your project must provide an
+implementation of SLF4J.</p>
+<p>When you create a new Xitrum project with <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-new</span></tt>, the created
+build.sbt file has this line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;ch.qos.logback&quot;</span>  <span class="o">%</span>  <span class="s">&quot;logback-classic&quot;</span> <span class="o">%</span> <span class="s">&quot;0.9.29&quot;</span>
+</pre></div>
+</div>
+<p>This means that <a class="reference external" href="http://logback.qos.ch/">Logback</a> (an implementation of SLF4J)
+is used by default. Logback config file is at <tt class="docutils literal"><span class="pre">config/logback.xml</span></tt>. You may
+replace Logback with another implementation if you like.</p>
 </div>
 <div class="section" id="load-config-files">
 <h2>Load config files<a class="headerlink" href="#load-config-files" title="Permalink to this headline">¶</a></h2>
@@ -79,6 +94,7 @@ runner.sh, so that you can load them easily when your application is running.</p
   <ul>
 <li><a class="reference internal" href="#">HOWTO</a><ul>
 <li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
+<li><a class="reference internal" href="#log">Log</a></li>
 <li><a class="reference internal" href="#load-config-files">Load config files</a></li>
 </ul>
 </li>

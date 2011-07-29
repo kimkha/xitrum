@@ -62,6 +62,23 @@ Please see <tt class="docutils literal"><span class="pre">hazelcast_mode</span><
 to know how to config.</p>
 <p>Session are stored in cookie by default. You don&#8217;t need to worry how to share
 sessions among Xitrum instances.</p>
+<div class="section" id="xitrum-config-hazelcastinstance">
+<h2>xitrum.Config.hazelcastInstance<a class="headerlink" href="#xitrum-config-hazelcastinstance" title="Permalink to this headline">¶</a></h2>
+<p>Xitrum includes Hazelcast for cache and Comet. Thus, you can also use Hazelcast
+in your Xitrum project yourself.</p>
+<p>Hazelcast has <a class="reference external" href="http://www.hazelcast.com/documentation.jsp#Clients">3 modes</a>:
+cluster member, super client, and Java client. Please see <tt class="docutils literal"><span class="pre">hazelcast_mode</span></tt>
+in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>.</p>
+<p>Xitrum handles these modes automatically. When you need to get a Hazelcast map,
+do not do like this:</p>
+<div class="highlight-python"><pre>import com.hazelcast.core.Hazelcast
+val myMap = Hazelcast.getMap("myMap")</pre>
+</div>
+<p>You should do like this:</p>
+<div class="highlight-python"><pre>import xitrum.Config.hazelcastInstance
+val myMap = Config.hazelcastInstance.getMap("myMap")</pre>
+</div>
+</div>
 </div>
 
 
@@ -70,6 +87,14 @@ sessions among Xitrum instances.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Clustering with Hazelcast</a><ul>
+<li><a class="reference internal" href="#xitrum-config-hazelcastinstance">xitrum.Config.hazelcastInstance</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="deploy.html"
                         title="previous chapter">Deploy to production server</a></p>

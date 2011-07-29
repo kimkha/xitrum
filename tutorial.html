@@ -61,7 +61,7 @@ You can do like this:</p>
 <div class="highlight-python"><pre>$ mkdir -p ~/opt/sbt
 $ cd ~/opt/sbt
 $ wget http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-tools.sbt/sbt-launch/0.10.1/sbt-launch.jar
-$ echo 'java -Xmx512m -XX:MaxPermSize=256m -Dsbt.boot.directory="$HOME/.sbt/boot" -jar `dirname $0`/sbt-launch.jar "$@"' &gt; sbt
+$ echo 'java -Xmx512m -XX:MaxPermSize=128m -Dsbt.boot.directory="$HOME/.sbt/boot" -jar `dirname $0`/sbt-launch.jar "$@"' &gt; sbt
 $ chmod +x sbt
 $ export PATH=$PATH:~/opt/sbt</pre>
 </div>
