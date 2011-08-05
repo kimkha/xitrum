@@ -77,19 +77,25 @@ class IndexAction extends Action ...</pre>
 <div class="section" id="cache-object">
 <h2>Cache object<a class="headerlink" href="#cache-object" title="Permalink to this headline">¶</a></h2>
 <p>You use methods in <tt class="docutils literal"><span class="pre">xitrum.Cache</span></tt>.</p>
-<p>Without an explicit TTL (time to live):
-* put(key, value)</p>
-<p>Without an explicit TTL:
-* putSecond(key, value, seconds)
-* putMinute(key, value, minutes)
-* putHour(key, value, hours)
-* putDay(key, value, days)</p>
-<p>Only if absent:
-* putIfAbsent(key, value)
-* putIfAbsentSecond(key, value, seconds)
-* putIfAbsentMinute(key, value, minutes)
-* putIfAbsentHour(key, value, hours)
-* putIfAbsentDay(key, value, days)</p>
+<p>Without an explicit TTL (time to live):</p>
+<ul class="simple">
+<li>put(key, value)</li>
+</ul>
+<p>Without an explicit TTL:</p>
+<ul class="simple">
+<li>putSecond(key, value, seconds)</li>
+<li>putMinute(key, value, minutes)</li>
+<li>putHour(key, value, hours)</li>
+<li>putDay(key, value, days)</li>
+</ul>
+<p>Only if absent:</p>
+<ul class="simple">
+<li>putIfAbsent(key, value)</li>
+<li>putIfAbsentSecond(key, value, seconds)</li>
+<li>putIfAbsentMinute(key, value, minutes)</li>
+<li>putIfAbsentHour(key, value, hours)</li>
+<li>putIfAbsentDay(key, value, days)</li>
+</ul>
 </div>
 <div class="section" id="remove-cache">
 <h2>Remove cache<a class="headerlink" href="#remove-cache" title="Permalink to this headline">¶</a></h2>
