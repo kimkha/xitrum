@@ -71,13 +71,13 @@ $ export PATH=$PATH:~/opt/sbt</pre>
 <h2>Add Xitrum plugin to SBT<a class="headerlink" href="#add-xitrum-plugin-to-sbt" title="Permalink to this headline">¶</a></h2>
 <p>Create file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt>, then add to it (there must be a blank
 line between the 2 lines below):</p>
-<div class="highlight-python"><pre>resolvers += "Sonatype Snapshot Repository" at "https://oss.sonatype.org/content/repositories/snapshots"
+<div class="highlight-python"><pre>resolvers += "Scala Tools Snapshot Repository" at "http://nexus.scala-tools.org/content/repositories/snapshots"
 
 libraryDependencies += "tv.cntt" %% "xitrum-plugin" % "1.1-SNAPSHOT"</pre>
 </div>
 <p>You can do like this:</p>
 <div class="highlight-python"><pre>$ mkdir -p ~/.sbt/plugins
-$ echo 'resolvers += "Sonatype Snapshot Repository" at "https://oss.sonatype.org/content/repositories/snapshots"' &gt;&gt; ~/.sbt/plugins/build.sbt
+$ echo 'resolvers += "Scala Tools Snapshot Repository" at "http://nexus.scala-tools.org/content/repositories/snapshots"' &gt;&gt; ~/.sbt/plugins/build.sbt
 $ echo -e "\n" &gt;&gt; ~/.sbt/plugins/build.sbt
 $ echo 'libraryDependencies += "tv.cntt" %% "xitrum-plugin" % "1.1-SNAPSHOT"' &gt;&gt; ~/.sbt/plugins/build.sbt</pre>
 </div>
