@@ -181,6 +181,20 @@ use class names to do look up. When using <tt class="docutils literal"><span cla
 will have the same class name (&#8220;xitrum.RequestVar&#8221;). The same for <tt class="docutils literal"><span class="pre">sUsername</span></tt>
 and <tt class="docutils literal"><span class="pre">sIsAdmin</span></tt>.</p>
 </div>
+<div class="section" id="session-store">
+<h2>Session store<a class="headerlink" href="#session-store" title="Permalink to this headline">¶</a></h2>
+<p>In config/xitrum.properties (<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/plugin/src/main/resources/xitrum_resources/config/xitrum.properties">example</a>),
+you can config the session store:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">session_store</span> <span class="o">=</span> <span class="n">xitrum</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">CookieSessionStore</span>
+</pre></div>
+</div>
+<p>If you want to store session on server side using Hazelcast:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">session_store</span> <span class="o">=</span> <span class="n">xitrum</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">HazelcastSessionStore</span>
+</pre></div>
+</div>
+<p>If you want to create your own session store, implement
+<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/scope/session/SessionStore.scala">SessionStore</a>.</p>
+</div>
 </div>
 
 
@@ -204,6 +218,7 @@ and <tt class="docutils literal"><span class="pre">sIsAdmin</span></tt>.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#object-vs-val">object vs. val</a></li>
+<li><a class="reference internal" href="#session-store">Session store</a></li>
 </ul>
 </li>
 </ul>
