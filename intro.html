@@ -50,8 +50,9 @@
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" />
-<p>Xitrum (&#8220;Smurf&#8221; in Vietnamese) is a lightweight Scala web framework and web
-server on top of <a class="reference external" href="http://www.jboss.org/netty">Netty</a>:</p>
+<p>Xitrum (&#8220;Smurf&#8221; in Vietnamese) is an async and clustered Scala web framework and
+web server on top of <a class="reference external" href="http://www.jboss.org/netty">Netty</a> and
+<a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>:</p>
 <ul class="simple">
 <li>It fills the gap between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
 and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
@@ -59,12 +60,14 @@ use than Lift. You can easily create both RESTful APIs and postbacks. Xitrum
 is controller-first like Scalatra, not
 <a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.</li>
 <li>Typesafe, in the spirit of Scala.</li>
-<li>Asynchronous, in the spirit of Netty.</li>
-<li>Stateless, by default sessions are not stored on server.</li>
-<li>In-process and distribued cache using <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>,
-you don&#8217;t need separate cache servers.</li>
-<li>Scalable <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet</a>,
-you can scale Comet to multiple servers.</li>
+<li>Async, in the spirit of Netty.</li>
+<li>Sessions can be stored in cookies or clustered Hazelcast.</li>
+</ul>
+<p>Hazelcast also gives:</p>
+<ul class="simple">
+<li>In-process and distribued cache, you don&#8217;t need separate cache servers.</li>
+<li>In-process and clustered <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet</a>,
+you don&#8217;t need a separate Comet server.</li>
 </ul>
 <div class="highlight-python"><pre>+-----------------+
 |    Your app     |
