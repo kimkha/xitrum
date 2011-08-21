@@ -76,19 +76,20 @@ request body.</p>
 routing table and print it out for you (so that you know what APIs your
 application has). You don&#8217;t need a seperate config file like routes.rb of Rails.</p>
 <div class="section" id="route-order-with-first-and-last">
-<h2>Route order with &#8220;first&#8221; and &#8220;last&#8221;<a class="headerlink" href="#route-order-with-first-and-last" title="Permalink to this headline">¶</a></h2>
+<h2>Route order with &#64;First and &#64;Last<a class="headerlink" href="#route-order-with-first-and-last" title="Permalink to this headline">¶</a></h2>
 <p>When you want to route like this:</p>
 <div class="highlight-python"><pre>/articles/:id --&gt; ArticleShow
 /articles/new --&gt; ArticleNew</pre>
 </div>
-<p>You must make sure the second route be checked first. <tt class="docutils literal"><span class="pre">first</span></tt> is for that purpose:</p>
+<p>You must make sure the second route be checked first. <tt class="docutils literal"><span class="pre">&#64;First</span></tt> is for that purpose:</p>
 <div class="highlight-python"><pre>@GET("/articles/:id")
 class ArticleShow...
 
-@GET(value="/articles/new", first=true)
+@First
+@GET("/articles/new")
 class ArticleNew...</pre>
 </div>
-<p><tt class="docutils literal"><span class="pre">last</span></tt> is similar.</p>
+<p><tt class="docutils literal"><span class="pre">&#64;Last</span></tt> is similar.</p>
 </div>
 <div class="section" id="anti-csrf">
 <h2>Anti-CSRF<a class="headerlink" href="#anti-csrf" title="Permalink to this headline">¶</a></h2>
@@ -158,7 +159,7 @@ class CreateTodoAPI extends API {
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">RESTful APIs</a><ul>
-<li><a class="reference internal" href="#route-order-with-first-and-last">Route order with &#8220;first&#8221; and &#8220;last&#8221;</a></li>
+<li><a class="reference internal" href="#route-order-with-first-and-last">Route order with &#64;First and &#64;Last</a></li>
 <li><a class="reference internal" href="#anti-csrf">Anti-CSRF</a></li>
 </ul>
 </li>

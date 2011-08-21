@@ -76,8 +76,9 @@ class ArticleShow {
 }</pre>
 </div>
 <p>ArticleNew.scala</p>
-<div class="highlight-python"><pre>// first=true: force this route to be matched before "/articles/:id"
-@GET(value="/articles/new", first=true)
+<div class="highlight-python"><pre>// @First: force this route to be matched before "/articles/:id"
+@First
+@GET("/articles/new")
 class ArticleNew extends Action {
   override def execute {
     renderView(
