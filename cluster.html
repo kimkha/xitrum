@@ -61,7 +61,9 @@ Please see <tt class="docutils literal"><span class="pre">hazelcast_mode</span><
 <tt class="docutils literal"><span class="pre">config/hazelcast_java_client.properties</span></tt>, and read <a class="reference external" href="http://www.hazelcast.com/documentation.jsp#Config">Hazelcast&#8217;s documentation</a>
 to know how to config.</p>
 <p>Session are stored in cookie by default. You don&#8217;t need to worry how to share
-sessions among Xitrum instances.</p>
+sessions among Xitrum instances. But if you use <a class="reference internal" href="scopes.html"><em>HazelcastSessionStore</em></a>,
+you may need to setup session replication by setting <tt class="docutils literal"><span class="pre">backup-count</span></tt> at the map
+<tt class="docutils literal"><span class="pre">xitrum/session</span></tt> in config/hazelcast_cluster_member_or_super_client.xml to more than 0.</p>
 <div class="section" id="xitrum-config-hazelcastinstance">
 <h2>xitrum.Config.hazelcastInstance<a class="headerlink" href="#xitrum-config-hazelcastinstance" title="Permalink to this headline">¶</a></h2>
 <p>Xitrum includes Hazelcast for cache and Comet. Thus, you can also use Hazelcast
