@@ -60,11 +60,36 @@
 <li>Anti-CSRF</li>
 <li><a class="reference internal" href="validation.html"><em>Validation</em></a></li>
 </ul>
+<div class="section" id="layout">
+<h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
+<p>AppAction.scala</p>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.view.DocType
+
+trait AppAction extends Action {
+  override def layout = DocType.xhtmlTransitional(
+    &lt;html&gt;
+      &lt;head&gt;
+        {antiCSRFMeta}
+        {xitrumCSS}
+        &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        {renderedView}
+        {jsAtBottom}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+}</pre>
+</div>
+</div>
 <div class="section" id="form">
 <h2>Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h2>
 <p>ArticleShow.scala</p>
-<div class="highlight-python"><pre>@GET("/articles/:id")
-class ArticleShow {
+<div class="highlight-python"><pre>import xitrum.annotation.GET
+
+@GET("/articles/:id")
+class ArticleShow extends AppAction {
   override def execute {
     val id = param("id")
     val article = Article.find(id)
@@ -76,10 +101,12 @@ class ArticleShow {
 }</pre>
 </div>
 <p>ArticleNew.scala</p>
-<div class="highlight-python"><pre>// @First: force this route to be matched before "/articles/:id"
+<div class="highlight-python"><pre>import xitrum.annotation.{First, GET}
+
+// @First: force this route to be matched before "/articles/:id"
 @First
 @GET("/articles/new")
-class ArticleNew extends Action {
+class ArticleNew extends AppAction {
   override def execute {
     renderView(
       &lt;form postback="submit" action={urlForPostbackThis}&gt;
@@ -160,6 +187,7 @@ extra params with the postback.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Postbacks</a><ul>
+<li><a class="reference internal" href="#layout">Layout</a></li>
 <li><a class="reference internal" href="#form">Form</a></li>
 <li><a class="reference internal" href="#non-form">Non-form</a></li>
 <li><a class="reference internal" href="#confirmation-dialog">Confirmation dialog</a></li>

@@ -54,7 +54,7 @@
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.annotation.{GET, GETs}
 
-@GETs("/", "/articles")
+@GETs(Array("/", "/articles"))
 class ArticleIndex extends Action {
   override def execute {
     //...
@@ -95,7 +95,7 @@ class ArticleNew...</pre>
 <h2>Anti-CSRF<a class="headerlink" href="#anti-csrf" title="Permalink to this headline">¶</a></h2>
 <p>For non-GET requests, Xitrum protects your web application from
 <a class="reference external" href="http://en.wikipedia.org/wiki/CSRF">Cross-site request forgery</a> by default.</p>
-<p>When you include <tt class="docutils literal"><span class="pre">xitrumHead</span></tt> in your layout:</p>
+<p>When you include <tt class="docutils literal"><span class="pre">antiCSRFMeta</span></tt> in your layout:</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.view.DocType
 
@@ -103,11 +103,13 @@ trait AppAction extends Action {
   override def layout = DocType.xhtmlTransitional(
     &lt;html&gt;
       &lt;head&gt;
-        {xitrumHead}
+        {antiCSRFMeta}
+        {xitrumCSS}
         &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
       &lt;/head&gt;
       &lt;body&gt;
         {renderedView}
+        {jsAtBottom}
       &lt;/body&gt;
     &lt;/html&gt;
   )
@@ -125,6 +127,9 @@ trait AppAction extends Action {
 </div>
 <p>The token will be automatically included in all non-GET Ajax requests sent by
 jQuery.</p>
+</div>
+<div class="section" id="skipcsrfcheck">
+<h2>SkipCSRFCheck<a class="headerlink" href="#skipcsrfcheck" title="Permalink to this headline">¶</a></h2>
 <p>When you create APIs for machines, e.g. smartphones, you may want to skip this
 check. To skip for an action (and its subclasses), make your action extend the
 trait xitrum.SkipCSRFCheck:</p>
@@ -161,6 +166,7 @@ class CreateTodoAPI extends API {
 <li><a class="reference internal" href="#">RESTful APIs</a><ul>
 <li><a class="reference internal" href="#route-order-with-first-and-last">Route order with &#64;First and &#64;Last</a></li>
 <li><a class="reference internal" href="#anti-csrf">Anti-CSRF</a></li>
+<li><a class="reference internal" href="#skipcsrfcheck">SkipCSRFCheck</a></li>
 </ul>
 </li>
 </ul>

@@ -68,7 +68,7 @@ class MyAction extends AppAction {
   }
 }</pre>
 </div>
-<p>In your layout, call <tt class="docutils literal"><span class="pre">jsForView</span></tt>:</p>
+<p>In your layout, call <tt class="docutils literal"><span class="pre">jsAtBottom</span></tt>:</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.view.DocType
 
@@ -76,12 +76,13 @@ trait AppAction extends Action {
   override def layout = DocType.xhtmlTransitional(
     &lt;html&gt;
       &lt;head&gt;
-        {xitrumHead}
+        {antiCSRFMeta}
+        {xitrumCSS}
       &lt;/head&gt;
       &lt;body&gt;
         &lt;div id="flash"&gt;{jsFlash}&lt;/div&gt;
         {renderedView}
-        {jsForView}
+        {jsAtBottom}
       &lt;/body&gt;
     &lt;/html&gt;
   )</pre>

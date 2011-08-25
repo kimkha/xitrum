@@ -95,19 +95,21 @@ trait AppAction extends Action {
   override def layout = DocType.xhtmlTransitional(
     &lt;html&gt;
       &lt;head&gt;
-        {xitrumHead}
+        {antiCSRFMeta}
+        {xitrumCSS}
         &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
       &lt;/head&gt;
       &lt;body&gt;
         {renderedView}
+        {jsAtBottom}
       &lt;/body&gt;
     &lt;/html&gt;
   )
 }</pre>
 </div>
-<p><tt class="docutils literal"><span class="pre">xitrumHead</span></tt> includes jQuery, jQuery Validate plugin, default CSS etc.
-In <tt class="docutils literal"><span class="pre">&lt;head&gt;</span></tt>, it should be the first line, the following lines may override
-things it includes if needed.</p>
+<p><tt class="docutils literal"><span class="pre">xitrumCSS</span></tt> includes the default CSS for Xitrum. You may remove it if you
+don&#8217;t like.</p>
+<p><tt class="docutils literal"><span class="pre">jsAtBottom</span></tt> includes jQuery, jQuery Validate plugin etc.</p>
 <p>Index.scala</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.annotation.GET
