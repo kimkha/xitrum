@@ -57,7 +57,7 @@
 </ul>
 <p>Xitrum supports Ajax form postback, with additional features:</p>
 <ul class="simple">
-<li>Anti-CSRF</li>
+<li><a class="reference external" href="http://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf">Anti-CSRF</a></li>
 <li><a class="reference internal" href="validation.html"><em>Validation</em></a></li>
 </ul>
 <div class="section" id="layout">
@@ -95,13 +95,14 @@ class ArticleShow extends AppAction {
     val article = Article.find(id)
     renderView(
       &lt;h1&gt;{article.title}&lt;/h1&gt;
-      {article.body}
+      &lt;div&gt;{article.body}&lt;/div&gt;
     )
   }
 }</pre>
 </div>
 <p>ArticleNew.scala</p>
 <div class="highlight-python"><pre>import xitrum.annotation.{First, GET}
+import xitrum.validation._
 
 // @First: force this route to be matched before "/articles/:id"
 @First
@@ -110,11 +111,11 @@ class ArticleNew extends AppAction {
   override def execute {
     renderView(
       &lt;form postback="submit" action={urlForPostbackThis}&gt;
-        Title:
-        &lt;input type="text" name="title" /&gt;&lt;br /&gt;
+        &lt;label&gt;Title&lt;/label&gt;
+        &lt;input type="text" name={validate("title", Required)} /&gt;&lt;br /&gt;
 
-        Body:
-        textarea name="body"&gt;&lt;/textarea&gt;&lt;br /&gt;
+        &lt;label&gt;Body&lt;/label&gt;
+        &lt;textarea name={validate("body", Required)}&gt;&lt;/textarea&gt;&lt;br /&gt;
 
         &lt;input type="submit" value="Save" /&gt;
       &lt;/form&gt;
