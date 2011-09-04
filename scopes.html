@@ -125,7 +125,22 @@ trait AppAction extends Action {
 </div>
 <div class="section" id="cookie">
 <h2>Cookie<a class="headerlink" href="#cookie" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
+<p>Inside an action, you can use <tt class="docutils literal"><span class="pre">cookies</span></tt>. It is a subclass of Java&#8217;s <a class="reference external" href="http://download.oracle.com/javase/6/docs/api/java/util/TreeSet.html">TreeSet</a>
+that contains <a class="reference external" href="https://github.com/netty/netty/blob/master/src/main/java/org/jboss/netty/handler/codec/http/Cookie.java">Cookie</a>.
+It is basically a normal TreeSet with an additional <tt class="docutils literal"><span class="pre">get</span></tt> method to lookup a cookie:</p>
+<div class="highlight-python"><pre>cookies.get("myCookie") match {
+  case None         =&gt; ...
+  case Some(string) =&gt; ...
+}</pre>
+</div>
+<p>To add a cookie, create an instance of <a class="reference external" href="https://github.com/netty/netty/blob/master/src/main/java/org/jboss/netty/handler/codec/http/DefaultCookie.java">DefaultCookie</a>
+and add it to <tt class="docutils literal"><span class="pre">cookies</span></tt>:</p>
+<div class="highlight-python"><pre>val cookie = new DefaultCookie("myCookie", "String value")
+cookies.add(cookie)</pre>
+</div>
+<p>Remember that there&#8217;s no way for the server to directly delete a cookie on browsers.
+Instead, to delete immediately set max age to 0. To delete when the browser closes windows,
+set max age to -1.</p>
 </div>
 <div class="section" id="session">
 <h2>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h2>
