@@ -141,6 +141,8 @@ cookies.add(cookie)</pre>
 <p>Remember that there&#8217;s no way for the server to directly delete a cookie on browsers.
 Instead, to delete immediately set max age to 0. To delete when the browser closes windows,
 set max age to -1.</p>
+<p>Note that <a class="reference external" href="http://mrcoles.com/blog/cookies-max-age-vs-expires/">Internet Explorer does not support &#8220;max-age&#8221;</a>,
+but Netty detects and outputs either &#8220;max-age&#8221; or &#8220;expires&#8221; properly. Don&#8217;t worry!</p>
 </div>
 <div class="section" id="session">
 <h2>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h2>
