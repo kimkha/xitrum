@@ -61,9 +61,9 @@
 <li><tt class="docutils literal"><span class="pre">bodyParams</span></tt>: params in POST request body</li>
 <li><tt class="docutils literal"><span class="pre">pathParams</span></tt>: params embedded in the URL, example: <tt class="docutils literal"><span class="pre">&#64;GET(&quot;/articles/:id/:title&quot;)</span></tt></li>
 </ol>
-<p>These params are merged in the above order (from 1 to 3, the latter will
-override the former), as <tt class="docutils literal"><span class="pre">textParams</span></tt>.</p>
-<p><tt class="docutils literal"><span class="pre">fileUploadParams</span></tt> is of type <tt class="docutils literal"><span class="pre">scala.collection.mutable.Map[String,</span> <span class="pre">List[org.jboss.netty.handler.codec.http.FileUpload]]</span></tt>.</p>
+<p>These params are merged in the above order as <tt class="docutils literal"><span class="pre">textParams</span></tt>
+(from 1 to 3, the latter will override the former).</p>
+<p><tt class="docutils literal"><span class="pre">fileUploadParams</span></tt> is of type scala.collection.mutable.Map[String, List[<a class="reference external" href="https://github.com/netty/netty/blob/master/src/main/java/org/jboss/netty/handler/codec/http/FileUpload.java">FileUpload</a>]].</p>
 </div>
 <div class="section" id="accesing-params">
 <h3>Accesing params<a class="headerlink" href="#accesing-params" title="Permalink to this headline">¶</a></h3>
@@ -76,20 +76,10 @@ accessor methods.</p>
 <li><tt class="docutils literal"><span class="pre">paramo(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[String]</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">paramso(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[List[String]]</span></tt></li>
 </ul>
-<p>You can convert String to other types (Int, Long, Fload, Double) automatically:</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">tparam[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Int</span></tt>, throws exception if x does not exist</li>
-<li><tt class="docutils literal"><span class="pre">tparams[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">List[Int]</span></tt>, throws exception if x does not exist</li>
-<li><tt class="docutils literal"><span class="pre">tparamo[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[Int]</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">tparamso[Int](&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[List[Int]]</span></tt></li>
-</ul>
-<p>For file upload:</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">uploadParam(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">FileUpload</span></tt>, throws exception if x does not exist</li>
-<li><tt class="docutils literal"><span class="pre">uploadParams(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">List[FileUpload]</span></tt>, throws exception if x does not exist</li>
-<li><tt class="docutils literal"><span class="pre">uploadParamo(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[FileUpload]</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">uploadParamso(&quot;x&quot;)</span></tt>: returns <tt class="docutils literal"><span class="pre">Option[List[FileUpload]]</span></tt></li>
-</ul>
+<p>You can convert text params to other types (Int, Long, Fload, Double) automatically
+by using <tt class="docutils literal"><span class="pre">param[Int](&quot;x&quot;)</span></tt>, <tt class="docutils literal"><span class="pre">params[Int](&quot;x&quot;)</span></tt> etc. To convert text params to more types,
+override <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/scope/request/ParamAccess.scala">convertText</a>.</p>
+<p>For file upload: <tt class="docutils literal"><span class="pre">param[FileUpload](&quot;x&quot;)</span></tt>, <tt class="docutils literal"><span class="pre">params[FileUpload](&quot;x&quot;)</span></tt> etc.</p>
 </div>
 <div class="section" id="requestvar">
 <h3>RequestVar<a class="headerlink" href="#requestvar" title="Permalink to this headline">¶</a></h3>
