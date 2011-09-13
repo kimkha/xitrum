@@ -75,6 +75,14 @@ request body.</p>
 <p>On web application startup, Xitrum will scan all those annotations, build the
 routing table and print it out for you (so that you know what APIs your
 application has). You don&#8217;t need a seperate config file like routes.rb of Rails.</p>
+<div class="section" id="route-cache">
+<h2>Route cache<a class="headerlink" href="#route-cache" title="Permalink to this headline">¶</a></h2>
+<p>For better startup speed, routes are cached to file <tt class="docutils literal"><span class="pre">routes.sclasner</span></tt>.
+While developing, routes in .class files in the <tt class="docutils literal"><span class="pre">target</span></tt> directory are not
+cached. If you change library dependencies that contain routes, you may need to
+delete <tt class="docutils literal"><span class="pre">routes.sclasner</span></tt>. This file should not be committed to your project
+source code repository.</p>
+</div>
 <div class="section" id="route-order-with-first-and-last">
 <h2>Route order with &#64;First and &#64;Last<a class="headerlink" href="#route-order-with-first-and-last" title="Permalink to this headline">¶</a></h2>
 <p>When you want to route like this:</p>
@@ -164,6 +172,7 @@ class CreateTodoAPI extends API {
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">RESTful APIs</a><ul>
+<li><a class="reference internal" href="#route-cache">Route cache</a></li>
 <li><a class="reference internal" href="#route-order-with-first-and-last">Route order with &#64;First and &#64;Last</a></li>
 <li><a class="reference internal" href="#anti-csrf">Anti-CSRF</a></li>
 <li><a class="reference internal" href="#skipcsrfcheck">SkipCSRFCheck</a></li>

@@ -65,23 +65,49 @@
 <div class="highlight-python"><pre>xgettext -ktrc:1c,2 -ktrnc:1c,2,3 -ktr -kmarktr -ktrn:1,2 -o po/keys.pot src/*.scala</pre>
 </div>
 </div>
-<div class="section" id="po-files">
-<h2>po files<a class="headerlink" href="#po-files" title="Permalink to this headline">¶</a></h2>
-<p>You can split messages into multiple files. Xitrum will automatically merge
-po files in config/i18n directory.</p>
-<div class="highlight-python"><pre>config
+<div class="section" id="where-to-save-po-files">
+<h2>Where to save po files<a class="headerlink" href="#where-to-save-po-files" title="Permalink to this headline">¶</a></h2>
+<p>In your SBT project:</p>
+<div class="highlight-python"><pre>src
+  main
+    resources
+      i18n
+        en.po
+        ja.po</pre>
+</div>
+<p>You can package po files in multiple JAR files. Xitrum will automatically merge
+them when running.</p>
+<div class="highlight-python"><pre>mylib.jar
   i18n
     en.po
     ja.po
-    mylib
-      en.po
-      ja.po</pre>
+
+another.jar
+  i18n
+    en.po
+    ja.po</pre>
 </div>
 </div>
 <div class="section" id="validation-messages">
 <h2>Validation messages<a class="headerlink" href="#validation-messages" title="Permalink to this headline">¶</a></h2>
 <p>jQuery Validation plugin provides <a class="reference external" href="https://github.com/jzaefferer/jquery-validation/tree/master/localization">i18n error messages</a>.
 Xitrum automatically include the message file corresponding to the current locale.</p>
+</div>
+<div class="section" id="plural-forms">
+<h2>Plural forms<a class="headerlink" href="#plural-forms" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms">http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms</a>
+<a class="reference external" href="http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms">http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms</a></p>
+<p>nplurals=1; plural=0
+nplurals=2; plural=n != 1
+nplurals=2; plural=n&gt;1
+nplurals=3; plural=n%10==1 &amp;&amp; n%100!=11 ? 0 : n != 0 ? 1 : 2
+nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2
+nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 &gt; 0 &amp;&amp; n%100 &lt; 20)) ? 1 : 2
+nplurals=3; plural=n%10==1 &amp;&amp; n%100!=11 ? 0 : n%10&gt;=2 &amp;&amp; (n%100&lt;10 || n%100&gt;=20) ? 1 : 2
+nplurals=3; plural=n%10==1 &amp;&amp; n%100!=11 ? 0 : n%10&gt;=2 &amp;&amp; n%10&lt;=4 &amp;&amp; (n%100&lt;10 || n%100&gt;=20) ? 1 : 2
+nplurals=3; plural=(n==1) ? 0 : (n&gt;=2 &amp;&amp; n&lt;=4) ? 1 : 2
+nplurals=3; plural=n==1 ? 0 : n%10&gt;=2 &amp;&amp; n%10&lt;=4 &amp;&amp; (n%100&lt;10 || n%100&gt;=20) ? 1 : 2
+nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</p>
 </div>
 </div>
 
@@ -96,8 +122,9 @@ Xitrum automatically include the message file corresponding to the current local
 <li><a class="reference internal" href="#">I18n</a><ul>
 <li><a class="reference internal" href="#writing-internationalized-messages-in-source-code">Writing internationalized messages in source code</a></li>
 <li><a class="reference internal" href="#extracting-messages-to-po-files">Extracting messages to po files</a></li>
-<li><a class="reference internal" href="#po-files">po files</a></li>
+<li><a class="reference internal" href="#where-to-save-po-files">Where to save po files</a></li>
 <li><a class="reference internal" href="#validation-messages">Validation messages</a></li>
+<li><a class="reference internal" href="#plural-forms">Plural forms</a></li>
 </ul>
 </li>
 </ul>
