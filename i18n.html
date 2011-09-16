@@ -50,31 +50,69 @@
   <div class="section" id="i18n">
 <h1>I18n<a class="headerlink" href="#i18n" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s16.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s16.jpg" />
-<p>TODO</p>
-<p>GNU Gettext is used.</p>
-<p>Mo rong them tu cai nay la tot nhat:
-<a class="reference external" href="http://code.google.com/p/gettext-commons/wiki/Tutorial">http://code.google.com/p/gettext-commons/wiki/Tutorial</a></p>
-<div class="section" id="writing-internationalized-messages-in-source-code">
-<h2>Writing internationalized messages in source code<a class="headerlink" href="#writing-internationalized-messages-in-source-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">)</span>
+<p>GNU Gettext is used. Unlike many other methods, Gettext supports plural forms.</p>
+<div class="section" id="write-internationalized-messages-in-source-code">
+<h2>Write internationalized messages in source code<a class="headerlink" href="#write-internationalized-messages-in-source-code" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">xitrum.Action</span></tt> extends <tt class="docutils literal"><span class="pre">xitrum.I18n</span></tt>, which has these methods:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span><span class="p">(</span><span class="s">&quot;Message&quot;</span><span class="p">)</span>
+<span class="n">tc</span><span class="p">(</span><span class="s">&quot;Context&quot;</span><span class="p">,</span> <span class="s">&quot;Message&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>In other places like models, you need to pass the action to them and call
+<tt class="docutils literal"><span class="pre">t</span></tt> and <tt class="docutils literal"><span class="pre">tc</span></tt> on it:</p>
+<div class="highlight-python"><pre>// In an action
+val errorMessageo = MyModel.validate(this, data)
+
+// In the model
+import xitrum.I18n
+object MyModel {
+  // Returns None on success or Some(error message) on failure
+  def validate(i18n: I18n, data: Data): Option[String] = {
+    if (...) return Some(i18n.t("An error message))
+    ...
+  }
+}</pre>
 </div>
-<div class="section" id="extracting-messages-to-po-files">
-<h2>Extracting messages to po files<a class="headerlink" href="#extracting-messages-to-po-files" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>xgettext -ktrc:1c,2 -ktrnc:1c,2,3 -ktr -kmarktr -ktrn:1,2 -o po/keys.pot src/*.scala</pre>
 </div>
+<div class="section" id="extract-messages-to-pot-files">
+<h2>Extract messages to pot files<a class="headerlink" href="#extract-messages-to-pot-files" title="Permalink to this headline">¶</a></h2>
+<p>Create an empty i18n.pot file in your project&#8217;s root directory, then recompile
+the whole project.</p>
+<div class="highlight-python"><pre>$ sbt clean
+$ touch i18n.pot
+$ sbt compile</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">clean</span></tt> is to delete all .class files, forcing SBT to recompile the whole
+project. Because after <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">clean</span></tt>, SBT will try to redownload all dependencies,
+you can do a little faster with the command <tt class="docutils literal"><span class="pre">find</span> <span class="pre">target</span> <span class="pre">-name</span> <span class="pre">*.class</span> <span class="pre">-delete</span></tt>,
+which deletes all .class files in the <tt class="docutils literal"><span class="pre">target</span></tt> directory.</p>
+<p>After the recompilation, i18n.pot will be filled with Gettext messages in the source code.
+To do this magic, <a class="reference external" href="http://www.scala-lang.org/node/140">Scala compiler plugin technique</a>
+has been used.</p>
+<p>One caveat of this method is that only Gettext messages in Scala source code
+files are extracted. If you have Java files, you may want to extract manually
+using <tt class="docutils literal"><span class="pre">xgettext</span></tt> command line:</p>
+<div class="highlight-python"><pre>$ xgettext -kt -ktc:1c,2 -ktn:1,2 -ktcn:1c,2,3 -o i18n_java.pot --from-code=UTF-8 $(find src/main/java -name "*.java")</pre>
+</div>
+<p>Then you manually merge i18n_java.pot to i18n.pot.</p>
 </div>
 <div class="section" id="where-to-save-po-files">
 <h2>Where to save po files<a class="headerlink" href="#where-to-save-po-files" title="Permalink to this headline">¶</a></h2>
-<p>In your SBT project:</p>
+<p>i18n.pot is the template file. You need to copy it to &lt;language&gt;.po files and
+translate.</p>
 <div class="highlight-python"><pre>src
   main
+    scala
+      ...
     resources
       i18n
         en.po
-        ja.po</pre>
+        ja.po
+        vi.po
+        ...</pre>
 </div>
+<p>Use a tool like <a class="reference external" href="http://projects.gnome.org/gedit/">gedit</a> to edit po files.
+You can use it to merge newly created pot file to existing po files.</p>
 <p>You can package po files in multiple JAR files. Xitrum will automatically merge
 them when running.</p>
 <div class="highlight-python"><pre>mylib.jar
@@ -91,13 +129,21 @@ another.jar
 <div class="section" id="validation-messages">
 <h2>Validation messages<a class="headerlink" href="#validation-messages" title="Permalink to this headline">¶</a></h2>
 <p>jQuery Validation plugin provides <a class="reference external" href="https://github.com/jzaefferer/jquery-validation/tree/master/localization">i18n error messages</a>.
-Xitrum automatically include the message file corresponding to the current locale.</p>
+Xitrum automatically include the message file corresponding to the current language.</p>
 </div>
 <div class="section" id="plural-forms">
 <h2>Plural forms<a class="headerlink" href="#plural-forms" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms">http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms</a>
-<a class="reference external" href="http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms">http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms</a></p>
-<p>nplurals=1; plural=0
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tn</span><span class="p">(</span><span class="s">&quot;Message&quot;</span><span class="p">,</span> <span class="s">&quot;Plural form&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">tc</span><span class="p">(</span><span class="s">&quot;Context&quot;</span><span class="p">,</span> <span class="s">&quot;Message&quot;</span><span class="p">,</span> <span class="s">&quot;Plural form&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Xitrum can only work correctly with Plural-Forms exactly listed at:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html#Plural-forms">What are plural forms</a></li>
+<li><a class="reference external" href="http://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html#Translating-plural-forms">Translating plural forms</a></li>
+</ul>
+<p>Your plural forms must be exactly one of the following:</p>
+<div class="highlight-python"><pre>nplurals=1; plural=0
 nplurals=2; plural=n != 1
 nplurals=2; plural=n&gt;1
 nplurals=3; plural=n%10==1 &amp;&amp; n%100!=11 ? 0 : n != 0 ? 1 : 2
@@ -107,7 +153,8 @@ nplurals=3; plural=n%10==1 &amp;&amp; n%100!=11 ? 0 : n%10&gt;=2 &amp;&amp; (n%1
 nplurals=3; plural=n%10==1 &amp;&amp; n%100!=11 ? 0 : n%10&gt;=2 &amp;&amp; n%10&lt;=4 &amp;&amp; (n%100&lt;10 || n%100&gt;=20) ? 1 : 2
 nplurals=3; plural=(n==1) ? 0 : (n&gt;=2 &amp;&amp; n&lt;=4) ? 1 : 2
 nplurals=3; plural=n==1 ? 0 : n%10&gt;=2 &amp;&amp; n%10&lt;=4 &amp;&amp; (n%100&lt;10 || n%100&gt;=20) ? 1 : 2
-nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</p>
+nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</pre>
+</div>
 </div>
 </div>
 
@@ -120,8 +167,8 @@ nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</p
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">I18n</a><ul>
-<li><a class="reference internal" href="#writing-internationalized-messages-in-source-code">Writing internationalized messages in source code</a></li>
-<li><a class="reference internal" href="#extracting-messages-to-po-files">Extracting messages to po files</a></li>
+<li><a class="reference internal" href="#write-internationalized-messages-in-source-code">Write internationalized messages in source code</a></li>
+<li><a class="reference internal" href="#extract-messages-to-pot-files">Extract messages to pot files</a></li>
 <li><a class="reference internal" href="#where-to-save-po-files">Where to save po files</a></li>
 <li><a class="reference internal" href="#validation-messages">Validation messages</a></li>
 <li><a class="reference internal" href="#plural-forms">Plural forms</a></li>

@@ -58,9 +58,9 @@
 </div>
 <div class="section" id="package-directory">
 <h2>Package directory<a class="headerlink" href="#package-directory" title="Permalink to this headline">¶</a></h2>
-<p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> to prepare <tt class="docutils literal"><span class="pre">target/xitrum_package</span></tt> directory,
-ready to deploy to production server:</p>
-<div class="highlight-python"><pre>target/xitrum_package
+<p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> to prepare <tt class="docutils literal"><span class="pre">target/xitrum</span></tt> directory, ready to
+deploy to production server:</p>
+<div class="highlight-python"><pre>target/xitrum
   bin
     runner.sh
   config
@@ -71,15 +71,15 @@ ready to deploy to production server:</p>
     [dependencies and packaged project file]</pre>
 </div>
 </div>
-<div class="section" id="copy-additional-files-to-target-xitrum-package">
-<h2>Copy additional files to target/xitrum_package<a class="headerlink" href="#copy-additional-files-to-target-xitrum-package" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="copy-additional-files-to-target-xitrum">
+<h2>Copy additional files to target/xitrum<a class="headerlink" href="#copy-additional-files-to-target-xitrum" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> command simply copies <tt class="docutils literal"><span class="pre">config</span></tt> and <tt class="docutils literal"><span class="pre">public</span></tt>
-directories to <tt class="docutils literal"><span class="pre">target/xitrum_package</span></tt>. If you want it to copy additional files
+directories to <tt class="docutils literal"><span class="pre">target/xitrum</span></tt>. If you want it to copy additional files
 and directories (README, INSTALL, doc etc.), config <tt class="docutils literal"><span class="pre">build.sbt</span></tt> like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">TODO</span>
 </pre></div>
 </div>
-<p>Now run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> and check <tt class="docutils literal"><span class="pre">target/xitrum_package</span></tt> directory.</p>
+<p>Now run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-package</span></tt> and check <tt class="docutils literal"><span class="pre">target/xitrum</span></tt> directory.</p>
 </div>
 <div class="section" id="starting-xitrum-in-production-mode">
 <h2>Starting Xitrum in production mode<a class="headerlink" href="#starting-xitrum-in-production-mode" title="Permalink to this headline">¶</a></h2>
@@ -109,7 +109,7 @@ in the file <tt class="docutils literal"><span class="pre">config/xitrum.propert
   <ul>
 <li><a class="reference internal" href="#">Deploy to production server</a><ul>
 <li><a class="reference internal" href="#package-directory">Package directory</a></li>
-<li><a class="reference internal" href="#copy-additional-files-to-target-xitrum-package">Copy additional files to target/xitrum_package</a></li>
+<li><a class="reference internal" href="#copy-additional-files-to-target-xitrum">Copy additional files to target/xitrum</a></li>
 <li><a class="reference internal" href="#starting-xitrum-in-production-mode">Starting Xitrum in production mode</a></li>
 <li><a class="reference internal" href="#base-uri">Base URI</a></li>
 </ul>

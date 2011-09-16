@@ -67,31 +67,11 @@ $ export PATH=$PATH:~/opt/sbt</pre>
 </div>
 <p>You should add the line <tt class="docutils literal"><span class="pre">export</span> <span class="pre">PATH=$PATH:~/opt/sbt</span></tt> to <tt class="docutils literal"><span class="pre">~/.profile</span></tt>.</p>
 </div>
-<div class="section" id="add-xitrum-plugin-to-sbt">
-<h2>Add Xitrum plugin to SBT<a class="headerlink" href="#add-xitrum-plugin-to-sbt" title="Permalink to this headline">¶</a></h2>
-<p>Create file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt>, then add to it (there must be a blank
-line between the 2 lines below):</p>
-<div class="highlight-python"><pre>resolvers += "Scala Tools Snapshot Repository" at "http://nexus.scala-tools.org/content/repositories/snapshots"
-
-libraryDependencies += "tv.cntt" %% "xitrum-plugin" % "1.1-SNAPSHOT"</pre>
-</div>
-<p>You can do like this:</p>
-<div class="highlight-python"><pre>$ mkdir -p ~/.sbt/plugins
-$ echo 'resolvers += "Scala Tools Snapshot Repository" at "http://nexus.scala-tools.org/content/repositories/snapshots"' &gt;&gt; ~/.sbt/plugins/build.sbt
-$ echo -e "\n" &gt;&gt; ~/.sbt/plugins/build.sbt
-$ echo 'libraryDependencies += "tv.cntt" %% "xitrum-plugin" % "1.1-SNAPSHOT"' &gt;&gt; ~/.sbt/plugins/build.sbt</pre>
-</div>
-<p>Now you have 2 commands: <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-new</span></tt> and <a class="reference internal" href="deploy.html"><em>sbt xitrum-package</em></a>.</p>
-</div>
 <div class="section" id="create-a-new-xitrum-project">
 <h2>Create a new Xitrum project<a class="headerlink" href="#create-a-new-xitrum-project" title="Permalink to this headline">¶</a></h2>
-<p>Use <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-new</span></tt> to create a new Xitrum project:</p>
-<div class="highlight-python"><pre>$ cd /tmp
-$ mkdir my_project
-$ cd my_project
-$ sbt xitrum-new</pre>
-</div>
-<p>A new project skeleton will be created:</p>
+<p>Install <a class="reference external" href="https://github.com/n8han/giter8">Giter8</a>.</p>
+<p>Run <tt class="docutils literal"><span class="pre">g8</span> <span class="pre">ngocdaothanh/xitrum</span></tt> to create a new Xitrum project.
+A new project skeleton will be created:</p>
 <div class="highlight-python"><pre>my_project
   config
     hazelcast_cluster_member_or_super_client.xml
@@ -123,8 +103,9 @@ $ sbt xitrum-new</pre>
 </div>
 <div class="section" id="run">
 <h2>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
-<p>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt>. This command will download dependencies, compile the project,
-and run the class <tt class="docutils literal"><span class="pre">my_project.Boot</span></tt>, which starts the web server.</p>
+<p>Change to the newly created project and run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt>. This command will
+download dependencies, compile the project and run the class
+<tt class="docutils literal"><span class="pre">my_project.Boot</span></tt>, which starts the web server.</p>
 <p>Open <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a> in your browser.</p>
 <p>In the console, you will see all the routes and request information:</p>
 <div class="highlight-python"><pre>[INFO] x.r.Routes$: Routes:
@@ -154,7 +135,6 @@ source code repository.</p>
   <ul>
 <li><a class="reference internal" href="#">Tutorial</a><ul>
 <li><a class="reference internal" href="#install-sbt">Install SBT</a></li>
-<li><a class="reference internal" href="#add-xitrum-plugin-to-sbt">Add Xitrum plugin to SBT</a></li>
 <li><a class="reference internal" href="#create-a-new-xitrum-project">Create a new Xitrum project</a></li>
 <li><a class="reference internal" href="#run">Run</a></li>
 </ul>
