@@ -50,7 +50,7 @@
   <div class="section" id="i18n">
 <h1>I18n<a class="headerlink" href="#i18n" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s16.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s16.jpg" />
-<p>GNU Gettext is used. Unlike many other methods, Gettext supports plural forms.</p>
+<p>GNU gettext is used. Unlike many other methods, gettext supports plural forms.</p>
 <div class="section" id="write-internationalized-messages-in-source-code">
 <h2>Write internationalized messages in source code<a class="headerlink" href="#write-internationalized-messages-in-source-code" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">xitrum.Action</span></tt> extends <tt class="docutils literal"><span class="pre">xitrum.I18n</span></tt>, which has these methods:</p>
@@ -87,10 +87,10 @@ $ sbt compile</pre>
 project. Because after <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">clean</span></tt>, SBT will try to redownload all dependencies,
 you can do a little faster with the command <tt class="docutils literal"><span class="pre">find</span> <span class="pre">target</span> <span class="pre">-name</span> <span class="pre">*.class</span> <span class="pre">-delete</span></tt>,
 which deletes all .class files in the <tt class="docutils literal"><span class="pre">target</span></tt> directory.</p>
-<p>After the recompilation, i18n.pot will be filled with Gettext messages in the source code.
-To do this magic, <a class="reference external" href="http://www.scala-lang.org/node/140">Scala compiler plugin technique</a>
+<p>After the recompilation, i18n.pot will be filled with gettext messages extracted
+from the source code. To do this magic, <a class="reference external" href="http://www.scala-lang.org/node/140">Scala compiler plugin technique</a>
 has been used.</p>
-<p>One caveat of this method is that only Gettext messages in Scala source code
+<p>One caveat of this method is that only gettext messages in Scala source code
 files are extracted. If you have Java files, you may want to extract manually
 using <tt class="docutils literal"><span class="pre">xgettext</span></tt> command line:</p>
 <div class="highlight-python"><pre>$ xgettext -kt -ktc:1c,2 -ktn:1,2 -ktcn:1c,2,3 -o i18n_java.pot --from-code=UTF-8 $(find src/main/java -name "*.java")</pre>
@@ -135,7 +135,7 @@ Xitrum automatically include the message file corresponding to the current langu
 <div class="section" id="plural-forms">
 <h2>Plural forms<a class="headerlink" href="#plural-forms" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">tn</span><span class="p">(</span><span class="s">&quot;Message&quot;</span><span class="p">,</span> <span class="s">&quot;Plural form&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="n">tc</span><span class="p">(</span><span class="s">&quot;Context&quot;</span><span class="p">,</span> <span class="s">&quot;Message&quot;</span><span class="p">,</span> <span class="s">&quot;Plural form&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">tcn</span><span class="p">(</span><span class="s">&quot;Context&quot;</span><span class="p">,</span> <span class="s">&quot;Message&quot;</span><span class="p">,</span> <span class="s">&quot;Plural form&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Xitrum can only work correctly with Plural-Forms exactly listed at:</p>
