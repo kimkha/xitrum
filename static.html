@@ -50,8 +50,8 @@
   <div class="section" id="static-files">
 <h1>Static files<a class="headerlink" href="#static-files" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/be_ti_xitrum_baby_smurf.jpg" src="_images/be_ti_xitrum_baby_smurf.jpg" />
-<div class="section" id="serve-file-from-public-directory">
-<h2>Serve file from public directory<a class="headerlink" href="#serve-file-from-public-directory" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="serve-static-files-on-disk">
+<h2>Serve static files on disk<a class="headerlink" href="#serve-static-files-on-disk" title="Permalink to this headline">¶</a></h2>
 <p>Project directory layout:</p>
 <div class="highlight-python"><pre>config
 static
@@ -72,11 +72,16 @@ URLs to them must have prefix <tt class="docutils literal"><span class="pre">/pu
 </div>
 <p>This design decision is for speed. It avoids disk I/O by not checking for file
 existence on every request.</p>
-<p>To refer to them in your source code:</p>
+<p>To refer to them:</p>
 <div class="highlight-python"><pre>&lt;img src={urlForPublic("img/myimage.png")} /&gt;</pre>
 </div>
-<div class="section" id="publicfilesnotbehindpublicurl">
-<h3>publicFilesNotBehindPublicUrl<a class="headerlink" href="#publicfilesnotbehindpublicurl" title="Permalink to this headline">¶</a></h3>
+<p>To send a static file on disk from your action, use <tt class="docutils literal"><span class="pre">renderFile</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">renderFile</span><span class="p">(</span><span class="s">&quot;/absolute/path&quot;</span><span class="p">)</span>
+<span class="n">renderFile</span><span class="p">(</span><span class="s">&quot;relative/path/to/the/current/working/directory&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="public-files-not-behind-public-url">
+<h3>public_files_not_behind_public_url<a class="headerlink" href="#public-files-not-behind-public-url" title="Permalink to this headline">¶</a></h3>
 <p>favicon.ico and robots.txt are special files, their URLs do not have <tt class="docutils literal"><span class="pre">/public</span></tt>
 prefix:</p>
 <div class="highlight-python"><pre>/favicon.ico
@@ -84,14 +89,16 @@ prefix:</p>
 </div>
 <p>When for example you have a file called crossdomain.xml and you want its
 URL to be <tt class="docutils literal"><span class="pre">http://mydomain.com/crossdomain.xml</span></tt> (no <tt class="docutils literal"><span class="pre">/public/</span></tt> prefix),
-put it right in the <tt class="docutils literal"><span class="pre">static</span></tt> directory, and in your boot class add this line:</p>
-<div class="highlight-python"><pre>xitrum.Config.publicFilesNotBehindPublicUrl ++= List("crossdomain.xml")</pre>
+modify <tt class="docutils literal"><span class="pre">public_files_not_behind_public_url</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>.</p>
+<p>To refer to them:</p>
+<div class="highlight-python"><pre>&lt;img src={urlForPublic("../favicon.ico")} /&gt;</pre>
 </div>
 </div>
 </div>
-<div class="section" id="serve-file-from-resource-in-jar-file-in-classpath">
-<h2>Serve file from resource in .jar file in classpath<a class="headerlink" href="#serve-file-from-resource-in-jar-file-in-classpath" title="Permalink to this headline">¶</a></h2>
-<p>If you are a library developer, and want to serve myimage.png from your library.</p>
+<div class="section" id="serve-resource-files-in-classpath">
+<h2>Serve resource files in classpath<a class="headerlink" href="#serve-resource-files-in-classpath" title="Permalink to this headline">¶</a></h2>
+<p>If you are a library developer and want to serve myimage.png from your library,
+which is a .jar file in classpath:</p>
 <p>Save the file in your .jar under <tt class="docutils literal"><span class="pre">public</span></tt> directory:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">public</span><span class="o">/</span><span class="n">my_lib</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="n">myimage</span><span class="o">.</span><span class="n">png</span>
 </pre></div>
@@ -102,6 +109,44 @@ put it right in the <tt class="docutils literal"><span class="pre">static</span>
 <p>It will become:</p>
 <div class="highlight-python"><pre>&lt;img src="/resources/public/my_lib/img/myimage.png" /&gt;</pre>
 </div>
+</div>
+<div class="section" id="client-side-cache-with-etag-and-max-age">
+<h2>Client side cache with ETag and max-age<a class="headerlink" href="#client-side-cache-with-etag-and-max-age" title="Permalink to this headline">¶</a></h2>
+<p>Xitrum automatically adds <a class="reference external" href="http://en.wikipedia.org/wiki/HTTP_ETag">Etag</a> for
+static files on disk and in classpath.</p>
+<p>ETags for small files are MD5 of file content. They are and cached for later use.
+Keys of cache entries are <tt class="docutils literal"><span class="pre">(file</span> <span class="pre">path,</span> <span class="pre">modified</span> <span class="pre">time)</span></tt>. Each web server in a
+cluster has its own local cache, because modified time on different servers may
+differ.</p>
+<p>For big files, modified time is used as ETag. This is not perfect because not
+all requests can use the ETag when you have a cluster. But it is still better
+than no ETag at all.</p>
+<p><tt class="docutils literal"><span class="pre">urlForPublic</span></tt> and <tt class="docutils literal"><span class="pre">urlForResource</span></tt> automatically add ETag to the URLs they
+generate. For example:</p>
+<div class="highlight-python"><pre>urlForResource("xitrum/jquery-1.6.4.js")
+=&gt; /resources/public/xitrum/jquery-1.6.4.js?xndGJVH0zA8q8ZJJe1Dz9Q</pre>
+</div>
+<p>Xitrum also sets <tt class="docutils literal"><span class="pre">max-age</span></tt> for static files. See <tt class="docutils literal"><span class="pre">static_file_max_age_in_minutes</span></tt>
+in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>.</p>
+<p>Don&#8217;t worry that browsers do not pickup a latest file when you change it.
+Because when a file on disk changes, its <tt class="docutils literal"><span class="pre">modified</span> <span class="pre">time</span></tt> changes, thus the URLs
+generated by <tt class="docutils literal"><span class="pre">urlForPublic</span></tt> and <tt class="docutils literal"><span class="pre">urlForResource</span></tt> also change. Its ETag cache
+is also invalidated because the cache key changes.</p>
+</div>
+<div class="section" id="gzip">
+<h2>GZIP<a class="headerlink" href="#gzip" title="Permalink to this headline">¶</a></h2>
+<p>Xitrum automatically gzips textual responses. It checks the <tt class="docutils literal"><span class="pre">Content-Type</span></tt>
+header to determine if a response is textual: <tt class="docutils literal"><span class="pre">text/html</span></tt>, <tt class="docutils literal"><span class="pre">xml/application</span></tt> etc.</p>
+<p>Xitrum always gzips static textual files, but for dynamic textual responses,
+it only gzips only if response sizes are big, not not smaller than
+<tt class="docutils literal"><span class="pre">big_textual_response_size_in_kb</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>.</p>
+</div>
+<div class="section" id="server-side-cache">
+<h2>Server side cache<a class="headerlink" href="#server-side-cache" title="Permalink to this headline">¶</a></h2>
+<p>To avoid loading files from disk, Xitrum caches small static files
+(not only textual) in memory with LRU (Least Recently Used) expiration.
+See <tt class="docutils literal"><span class="pre">small_static_file_size_in_kb</span></tt> and <tt class="docutils literal"><span class="pre">max_cached_small_static_files</span></tt>
+in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>.</p>
 </div>
 </div>
 
@@ -114,11 +159,14 @@ put it right in the <tt class="docutils literal"><span class="pre">static</span>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Static files</a><ul>
-<li><a class="reference internal" href="#serve-file-from-public-directory">Serve file from public directory</a><ul>
-<li><a class="reference internal" href="#publicfilesnotbehindpublicurl">publicFilesNotBehindPublicUrl</a></li>
+<li><a class="reference internal" href="#serve-static-files-on-disk">Serve static files on disk</a><ul>
+<li><a class="reference internal" href="#public-files-not-behind-public-url">public_files_not_behind_public_url</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#serve-file-from-resource-in-jar-file-in-classpath">Serve file from resource in .jar file in classpath</a></li>
+<li><a class="reference internal" href="#serve-resource-files-in-classpath">Serve resource files in classpath</a></li>
+<li><a class="reference internal" href="#client-side-cache-with-etag-and-max-age">Client side cache with ETag and max-age</a></li>
+<li><a class="reference internal" href="#gzip">GZIP</a></li>
+<li><a class="reference internal" href="#server-side-cache">Server side cache</a></li>
 </ul>
 </li>
 </ul>
