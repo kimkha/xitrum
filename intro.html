@@ -50,6 +50,13 @@
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" />
+<p>Quick start: install <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">SBT</a> and
+<a class="reference external" href="https://github.com/n8han/giter8">Giter8</a>, then</p>
+<div class="highlight-python"><pre>$ g8 ngocdaothanh/xitrum
+$ cd my_project
+$ sbt run</pre>
+</div>
+<p>See <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">full documentation</a> for details.</p>
 <p>Xitrum (&#8220;Smurf&#8221; in Vietnamese) is an async and clustered Scala web framework and
 web server on top of <a class="reference external" href="http://www.jboss.org/netty">Netty</a> and
 <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>:</p>
@@ -66,14 +73,16 @@ declare all routes in a single place.</li>
 <li>Sessions can be stored in cookies or clustered Hazelcast.</li>
 <li><a class="reference external" href="http://docs.jquery.com/Plugins/validation">jQuery Validation</a> is integrated
 for browser side and server side validation.</li>
-<li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>.</li>
-<li>Conditional GET.</li>
+<li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>,
+which means unlike most other solutions, both singular and plural
+forms are supported.</li>
+<li>Conditional GET using ETag.</li>
 </ul>
 <p>Hazelcast also gives:</p>
 <ul class="simple">
 <li>In-process and distribued cache, you don&#8217;t need separate cache servers.</li>
 <li>In-process and clustered <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet</a>,
-you don&#8217;t need a separate Comet server.</li>
+you can scale Comet to multiple web servers.</li>
 </ul>
 <div class="highlight-python"><pre>+-----------------+
 |    Your app     |
@@ -89,11 +98,8 @@ you don&#8217;t need a separate Comet server.</li>
 | +-------------+ |
 +-----------------+</pre>
 </div>
-<p>Xitrum is open source:</p>
-<ul class="simple">
-<li>Source code: <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">https://github.com/ngocdaothanh/xitrum</a></li>
-<li>Google group: <a class="reference external" href="http://groups.google.com/group/xitrum-framework">http://groups.google.com/group/xitrum-framework</a></li>
-</ul>
+<p>Xitrum is <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">open source</a>, please join
+its <a class="reference external" href="http://groups.google.com/group/xitrum-framework">Google group</a>.</p>
 </div>
 
 

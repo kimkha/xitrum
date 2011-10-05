@@ -52,54 +52,12 @@
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s13.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s13.jpg" />
 <p>This chapter describes how to create and run a Xitrum project.
 <strong>It assumes that you are using Linux and you have installed Java.</strong></p>
-<div class="section" id="install-sbt">
-<h2>Install SBT<a class="headerlink" href="#install-sbt" title="Permalink to this headline">¶</a></h2>
-<p>Most Scala projects use <a class="reference external" href="https://github.com/harrah/xsbt">SBT</a> as the de facto build tool.
-Xitrum needs SBT 0.10.1+.</p>
-<p>Follow <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">instructions</a> to install.
-You can do like this:</p>
-<div class="highlight-python"><pre>$ mkdir -p ~/opt/sbt
-$ cd ~/opt/sbt
-$ wget http://typesafe.artifactoryonline.com/typesafe/ivy-releases/org.scala-tools.sbt/sbt-launch/0.10.1/sbt-launch.jar
-$ echo 'java -Xmx512m -XX:MaxPermSize=128m -Dsbt.boot.directory="$HOME/.sbt/boot" -jar `dirname $0`/sbt-launch.jar "$@"' &gt; sbt
-$ chmod +x sbt
-$ export PATH=$PATH:~/opt/sbt</pre>
-</div>
-<p>You should add the line <tt class="docutils literal"><span class="pre">export</span> <span class="pre">PATH=$PATH:~/opt/sbt</span></tt> to <tt class="docutils literal"><span class="pre">~/.profile</span></tt>.</p>
-</div>
 <div class="section" id="create-a-new-xitrum-project">
 <h2>Create a new Xitrum project<a class="headerlink" href="#create-a-new-xitrum-project" title="Permalink to this headline">¶</a></h2>
-<p>Install <a class="reference external" href="https://github.com/n8han/giter8">Giter8</a>.</p>
+<p>Install <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">SBT 0.11.0+</a>  and
+<a class="reference external" href="https://github.com/n8han/giter8">Giter8</a>.</p>
 <p>Run <tt class="docutils literal"><span class="pre">g8</span> <span class="pre">ngocdaothanh/xitrum</span></tt> to create a new Xitrum project.
 A new project skeleton will be created:</p>
-<div class="highlight-python"><pre>my_project
-  config
-    hazelcast_cluster_member_or_super_client.xml
-    hazelcast_java_client.properties
-    logback.xml
-    xitrum.properties
-  static
-    public
-      css
-        960
-          reset.css
-          text.css
-          960.css
-        app.css
-    404.html
-    500.html
-    favicon.ico
-    robots.txt
-  src
-    main
-      scala
-        my_project
-          Boot.scala
-          action
-            AppAction.scala
-            IndexAction.scala
-  build.sbt</pre>
-</div>
 </div>
 <div class="section" id="run">
 <h2>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
@@ -134,7 +92,6 @@ source code repository.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Tutorial</a><ul>
-<li><a class="reference internal" href="#install-sbt">Install SBT</a></li>
 <li><a class="reference internal" href="#create-a-new-xitrum-project">Create a new Xitrum project</a></li>
 <li><a class="reference internal" href="#run">Run</a></li>
 </ul>
