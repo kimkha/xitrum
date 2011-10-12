@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Validation &mdash; Xitrum v1.1 documentation</title>
+    <title>Validation &mdash; Xitrum v1.5.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.1',
+        VERSION:     '1.5.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.5.1 documentation" href="index.html" />
     <link rel="next" title="Upload" href="upload.html" />
     <link rel="prev" title="Scopes" href="scopes.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="scopes.html" title="Scopes"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -70,16 +70,16 @@ import xitrum.validation._
 
 &lt;form postback="submit" action={urlForPostbackThis}&gt;
   Username:
-  &lt;input type="text" name={validate("username", MinLength(5), MaxLength(10)} /&gt;&lt;br /&gt;
+  {&lt;input type="text" name="username" /&gt; :: MinLength(5) :: MaxLength(10)}&lt;br /&gt;
 
   Password:
-  &lt;input type="password" name={validate("password", Required)} /&gt;&lt;br /&gt;
+  {&lt;input type="password" name="password" /&gt; :: Required}&lt;br /&gt;
 
   Password confirmation:
-  &lt;input type="passord" name={validate("password_confirm", EqualTo("password"))} /&gt;&lt;br /&gt;
+  {&lt;input type="password" name="password_confirm" /&gt; :: EqualTo("password")}&lt;br /&gt;
 
   Memo:
-  &lt;textarea name={validate("memo")}&gt;&lt;/textarea&gt;&lt;br /&gt;
+  {&lt;textarea name="memo"&gt;&lt;/textarea&gt; :: Validated}&lt;br /&gt;
 
   &lt;input type="submit" value="Register" /&gt;
 &lt;/form&gt;</pre>
@@ -88,26 +88,38 @@ import xitrum.validation._
 be automatically decrypted when the form is posted back to the server.</p>
 <p><strong>Note</strong></p>
 <blockquote>
-<div>Technically, for the server side to ensure that hackers cannot bypass validators,
+<div><p>Technically, for the server side to ensure that hackers cannot bypass validators,
 all input names must be encrypted. This means that even inputs that do not need
-validation must be marked with <tt class="docutils literal"><span class="pre">validate</span></tt>. See <tt class="docutils literal"><span class="pre">validate(&quot;memo&quot;)</span></tt> above.
-We will try to remove this is inconvenience in the next version of Xitrum.</div></blockquote>
+validation must be marked with <tt class="docutils literal"><span class="pre">Validated</span></tt>. See <tt class="docutils literal"><span class="pre">textarea</span> <span class="pre">name=&quot;memo&quot;</span></tt> above.
+We will try to remove this is inconvenience.</p>
+<p>The philosophy behind the <tt class="docutils literal"><span class="pre">::</span></tt> syntax is &#8220;decoration&#8221;. Given the HTML element
+<tt class="docutils literal"><span class="pre">&lt;input</span> <span class="pre">type=&quot;password&quot;</span> <span class="pre">name=&quot;password&quot;</span> <span class="pre">/&gt;</span></tt>, you want to decorate it with
+<tt class="docutils literal"><span class="pre">Required</span></tt>, thus <tt class="docutils literal"><span class="pre">Required</span></tt> should come after the element.</p>
+</div></blockquote>
 </div>
 <div class="section" id="write-custom-validators">
 <h2>Write custom validators<a class="headerlink" href="#write-custom-validators" title="Permalink to this headline">¶</a></h2>
-<p>You can also write your own custom validators very easily.</p>
-<div class="highlight-python"><pre>import xitrum.validation.Validator
+<p>You can also write your own custom validators very easily. See the source code
+of <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/tree/master/src/main/scala/xitrum/validation">existing validators</a>
+as a guide.</p>
+<div class="highlight-python"><pre>import scala.xml.Elem
+import xitrum.validation.Validator
 
 class MyValidator extends Validator {
   // Client side validation
   //
   // This method should output JS that uses jQuery Validation plugin to validate securedParamName
-  def render(action: Action, paramName: String, securedParamName: String) {
+  def render(action: Action, elem: Elem, paramName: String, securedParamName: String): Elem = {
     // Call jsAddToView(&lt;JS that uses jQuery Validation plugin&gt;)
     // to add JS to the end of the web page
+
+    // Change elem if you wish
+    elem
   }
 
   // Server side validation
+  // As a rule for secure applications, client side validation may be optional
+  // but server side validation is a "must"
   def validate(action: Action, paramName: String, securedParamName: String): Boolean = {
   }
 }</pre>
@@ -170,7 +182,7 @@ class MyValidator extends Validator {
         <li class="right" >
           <a href="scopes.html" title="Scopes"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

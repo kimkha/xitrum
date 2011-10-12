@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Postbacks &mdash; Xitrum v1.1 documentation</title>
+    <title>Postbacks &mdash; Xitrum v1.5.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.1',
+        VERSION:     '1.5.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.5.1 documentation" href="index.html" />
     <link rel="next" title="XML" href="xml.html" />
     <link rel="prev" title="RESTful APIs" href="restful.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="restful.html" title="RESTful APIs"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -109,10 +109,10 @@ class ArticleNew extends AppAction {
     renderView(
       &lt;form postback="submit" action={urlForPostbackThis}&gt;
         &lt;label&gt;Title&lt;/label&gt;
-        &lt;input type="text" name={validate("title", Required)} /&gt;&lt;br /&gt;
+        {&lt;input type="text" name="title" /&gt; :: Required}&lt;br /&gt;
 
         &lt;label&gt;Body&lt;/label&gt;
-        &lt;textarea name={validate("body", Required)}&gt;&lt;/textarea&gt;&lt;br /&gt;
+        {&lt;textarea name="body"&gt;&lt;/textarea&gt; :: Required}&lt;br /&gt;
 
         &lt;input type="submit" value="Save" /&gt;
       &lt;/form&gt;
@@ -163,7 +163,7 @@ extra params with the postback.</p>
 <p>You may also put extra params in a separate form:</p>
 <div class="highlight-python"><pre>&lt;form id="myform" postback="submit" action={urlForPostbackThis}&gt;
   Search:
-  &lt;input type="text" name={validate("keyword")} /&gt;
+  {&lt;input type="text" name="keyword" /&gt; :: Validated}
 
   &lt;a class="pagination"
      href="#"
@@ -234,7 +234,7 @@ extra params with the postback.</p>
         <li class="right" >
           <a href="restful.html" title="RESTful APIs"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

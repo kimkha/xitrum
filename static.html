@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Static files &mdash; Xitrum v1.1 documentation</title>
+    <title>Static files &mdash; Xitrum v1.5.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.1',
+        VERSION:     '1.5.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.1 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.5.1 documentation" href="index.html" />
     <link rel="next" title="Scopes" href="scopes.html" />
     <link rel="prev" title="Async response" href="async.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="async.html" title="Async response"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,46 +54,53 @@
 <h2>Serve static files on disk<a class="headerlink" href="#serve-static-files-on-disk" title="Permalink to this headline">¶</a></h2>
 <p>Project directory layout:</p>
 <div class="highlight-python"><pre>config
-static
+public
   favicon.ico
   robots.txt
-  public
-    img
-      myimage.png
-    css
-      mystyle.css
+  404.html
+  500.html
+  img
+    myimage.png
+  css
+    mystyle.css
+  js
+    myscript.js
 src
 build.sbt</pre>
 </div>
-<p>Xitrum automatically serves static files inside <tt class="docutils literal"><span class="pre">static/public</span></tt> directory.
-URLs to them must have prefix <tt class="docutils literal"><span class="pre">/public/</span></tt>:</p>
-<div class="highlight-python"><pre>/public/img/myimage.png
-/public/css/mystyle.css</pre>
+<p>Xitrum automatically serves static files inside <tt class="docutils literal"><span class="pre">public</span></tt> directory.
+URLs to them are in the form:</p>
+<div class="highlight-python"><pre>/img/myimage.png
+/css/mystyle.css</pre>
 </div>
-<p>This design decision is for speed. It avoids disk I/O by not checking for file
-existence on every request.</p>
 <p>To refer to them:</p>
 <div class="highlight-python"><pre>&lt;img src={urlForPublic("img/myimage.png")} /&gt;</pre>
 </div>
 <p>To send a static file on disk from your action, use <tt class="docutils literal"><span class="pre">renderFile</span></tt>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">renderFile</span><span class="p">(</span><span class="s">&quot;/absolute/path&quot;</span><span class="p">)</span>
-<span class="n">renderFile</span><span class="p">(</span><span class="s">&quot;relative/path/to/the/current/working/directory&quot;</span><span class="p">)</span>
+<span class="n">renderFile</span><span class="p">(</span><span class="s">&quot;path/relative/to/the/current/working/directory&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="public-files-not-behind-public-url">
-<h3>public_files_not_behind_public_url<a class="headerlink" href="#public-files-not-behind-public-url" title="Permalink to this headline">¶</a></h3>
-<p>favicon.ico and robots.txt are special files, their URLs do not have <tt class="docutils literal"><span class="pre">/public</span></tt>
-prefix:</p>
-<div class="highlight-python"><pre>/favicon.ico
-/robots.txt</pre>
 </div>
-<p>When for example you have a file called crossdomain.xml and you want its
-URL to be <tt class="docutils literal"><span class="pre">http://mydomain.com/crossdomain.xml</span></tt> (no <tt class="docutils literal"><span class="pre">/public/</span></tt> prefix),
-modify <tt class="docutils literal"><span class="pre">public_files_not_behind_public_url</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>.</p>
-<p>To refer to them:</p>
-<div class="highlight-python"><pre>&lt;img src={urlForPublic("../favicon.ico")} /&gt;</pre>
+<div class="section" id="and-500">
+<h2>404 and 500<a class="headerlink" href="#and-500" title="Permalink to this headline">¶</a></h2>
+<p>404.html and 500.html in <tt class="docutils literal"><span class="pre">public</span></tt> directory are used when there&#8217;s no matching
+route and there&#8217;s error processing request, respectively. If you want to use
+your own handler, configure before starting web server:</p>
+<div class="highlight-python"><pre>import xitrum.{Config, Server}
+
+object Boot {
+  def main(args: Array[String]) {
+    Config.action404 = classOf[MyAction]
+    Config.action500 = classOf[MyAction]
+
+    val s = new Server
+    s.start
+  }
+}</pre>
 </div>
-</div>
+<p>Response status is set to 404 or 500 before the actions are executed, so you
+don&#8217;t have to set yourself.</p>
 </div>
 <div class="section" id="serve-resource-files-in-classpath">
 <h2>Serve resource files in classpath<a class="headerlink" href="#serve-resource-files-in-classpath" title="Permalink to this headline">¶</a></h2>
@@ -108,6 +115,10 @@ which is a .jar file in classpath:</p>
 </div>
 <p>It will become:</p>
 <div class="highlight-python"><pre>&lt;img src="/resources/public/my_lib/img/myimage.png" /&gt;</pre>
+</div>
+<p>To send a static file inside an element (a .jar file or a directory) in classpath:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">renderResource</span><span class="p">(</span><span class="s">&quot;path/relative/to/the/element&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="client-side-cache-with-etag-and-max-age">
@@ -158,10 +169,8 @@ in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Static files</a><ul>
-<li><a class="reference internal" href="#serve-static-files-on-disk">Serve static files on disk</a><ul>
-<li><a class="reference internal" href="#public-files-not-behind-public-url">public_files_not_behind_public_url</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#serve-static-files-on-disk">Serve static files on disk</a></li>
+<li><a class="reference internal" href="#and-500">404 and 500</a></li>
 <li><a class="reference internal" href="#serve-resource-files-in-classpath">Serve resource files in classpath</a></li>
 <li><a class="reference internal" href="#client-side-cache-with-etag-and-max-age">Client side cache with ETag and max-age</a></li>
 <li><a class="reference internal" href="#gzip">GZIP</a></li>
@@ -210,7 +219,7 @@ in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span
         <li class="right" >
           <a href="async.html" title="Async response"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
