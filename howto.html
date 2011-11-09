@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>HOWTO &mdash; Xitrum v1.5.1 documentation</title>
+    <title>HOWTO &mdash; Xitrum v1.5.2 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.5.1',
+        VERSION:     '1.5.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.5.1 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.5.2 documentation" href="index.html" />
     <link rel="next" title="Netty handlers" href="handler.html" />
     <link rel="prev" title="Clustering with Hazelcast" href="cluster.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.5.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,6 +52,15 @@
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" />
 <p>This chapter contains various small tips. Each tip is too small to have its own
 chapter.</p>
+<div class="section" id="basic-authentication">
+<h2>Basic authentication<a class="headerlink" href="#basic-authentication" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>class MyAction extends Action {
+  beforeFilters("authenticate") = basicAuthenticate("Realm") { (username, password) =&gt;
+    username == "myusername" &amp;&amp; password == "mypassword"
+  }
+}</pre>
+</div>
+</div>
 <div class="section" id="link-to-an-action">
 <h2>Link to an action<a class="headerlink" href="#link-to-an-action" title="Permalink to this headline">¶</a></h2>
 <p>Xitrum tries to be typesafe.</p>
@@ -61,26 +70,33 @@ chapter.</p>
 </div>
 <div class="section" id="log">
 <h2>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h2>
-<p>Xitrum uses <a class="reference external" href="http://www.slf4j.org/">SLF4J</a>. Your project must provide an
-implementation of SLF4J.</p>
-<p>When you create a new Xitrum project with <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">xitrum-new</span></tt>, the created
-build.sbt file has this line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;ch.qos.logback&quot;</span>  <span class="o">%</span>  <span class="s">&quot;logback-classic&quot;</span> <span class="o">%</span> <span class="s">&quot;0.9.29&quot;</span>
+<p>Xitrum actions extend trait xitrum.Logger, which provides <tt class="docutils literal"><span class="pre">logger</span></tt>.
+In any action, you can do like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This means that <a class="reference external" href="http://logback.qos.ch/">Logback</a> (an implementation of SLF4J)
-is used by default. Logback config file is at <tt class="docutils literal"><span class="pre">config/logback.xml</span></tt>. You may
-replace Logback with another implementation if you like.</p>
+<p>Of course you can extend xitrum.Logger any time you want:</p>
+<div class="highlight-python"><pre>object MyModel extends xitrum.Logger {
+  ...
+}</pre>
+</div>
+<p>In build.sbt, notice this line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;ch.qos.logback&quot;</span> <span class="o">%</span> <span class="s">&quot;logback-classic&quot;</span> <span class="o">%</span> <span class="s">&quot;0.9.29&quot;</span>
+</pre></div>
+</div>
+<p>This means that <a class="reference external" href="http://logback.qos.ch/">Logback</a> is used by default.
+Logback config file is at <tt class="docutils literal"><span class="pre">config/logback.xml</span></tt>.
+You may replace Logback with any implementation of SLF4J.</p>
 </div>
 <div class="section" id="load-config-files">
 <h2>Load config files<a class="headerlink" href="#load-config-files" title="Permalink to this headline">¶</a></h2>
-<p>Save config files in &#8220;config&#8221; directory. This directory is put in classpath by
-runner.sh, so that you can load them easily when your application is running.</p>
-<p>To load in your application:</p>
-<ul class="simple">
-<li>xitrum.Config.load(&#8220;file.txt&#8221;): returns the content of the file as a String</li>
-<li>xitrum.Config.loadProperties(&#8220;file.properties&#8221;): returns a java.util.Properties</li>
-</ul>
+<p>Save your own config files in &#8220;config&#8221; directory. This directory is put into
+classpath in development mode by build.sbt and in production mode by bin/runner.sh.</p>
+<div class="highlight-python"><pre>import xitrum.util.Loader
+
+// Here you get an instance of java.util.Properties
+val properties = Loader.propertiesFromClasspath("myconfig.properties")</pre>
+</div>
 </div>
 </div>
 
@@ -93,6 +109,7 @@ runner.sh, so that you can load them easily when your application is running.</p
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">HOWTO</a><ul>
+<li><a class="reference internal" href="#basic-authentication">Basic authentication</a></li>
 <li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
 <li><a class="reference internal" href="#log">Log</a></li>
 <li><a class="reference internal" href="#load-config-files">Load config files</a></li>
@@ -140,7 +157,7 @@ runner.sh, so that you can load them easily when your application is running.</p
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.5.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
