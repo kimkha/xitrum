@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Development flow with SBT, Eclipse, and JRebel &mdash; Xitrum v1.5.2 documentation</title>
+    <title>Development flow with SBT, Eclipse, and JRebel &mdash; Xitrum v1.5.3 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.5.2',
+        VERSION:     '1.5.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.5.2 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.5.3 documentation" href="index.html" />
     <link rel="next" title="Action and View" href="action_view.html" />
     <link rel="prev" title="Tutorial" href="tutorial.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.5.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -103,6 +103,8 @@ automatically reload the generated .class files.</p>
 </ol>
 <p>The <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">~compile</span></tt> process will automatically recompile the file, and JRebel will
 automatically reload the generated .class files.</p>
+<p><tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">~compile</span></tt> works fine in bash and sh shell. In zsh shell, you need to use
+<tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">&quot;~compile&quot;</span></tt>, or it will complain &#8220;no such user or named directory: compile&#8221;.</p>
 <div class="section" id="routes-are-not-reloaded">
 <h3>Routes are not reloaded<a class="headerlink" href="#routes-are-not-reloaded" title="Permalink to this headline">¶</a></h3>
 <p>Routes like <tt class="docutils literal"><span class="pre">&#64;GET(&quot;/&quot;)</span></tt> are not reloaded when you change them. Routes are only
@@ -172,7 +174,7 @@ rescan all routes.</p>
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.5.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.5.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
