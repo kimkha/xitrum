@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>HOWTO &mdash; Xitrum v1.5.3 documentation</title>
+    <title>HOWTO &mdash; Xitrum v1.6 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.5.3',
+        VERSION:     '1.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.5.3 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.6 documentation" href="index.html" />
     <link rel="next" title="Netty handlers" href="handler.html" />
     <link rel="prev" title="Clustering with Hazelcast" href="cluster.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.5.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,9 +52,22 @@
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s10.jpg" />
 <p>This chapter contains various small tips. Each tip is too small to have its own
 chapter.</p>
+<div class="section" id="determine-is-the-request-is-ajax-request">
+<h2>Determine is the request is Ajax request<a class="headerlink" href="#determine-is-the-request-is-ajax-request" title="Permalink to this headline">¶</a></h2>
+<p>Use <tt class="docutils literal"><span class="pre">isAjax</span></tt>.</p>
+<div class="highlight-python"><pre>// In an action
+val msg = "A message"
+if (isAjax)
+  jsRender("alert(" + jsEscape(msg) + ")")
+else
+  renderText(msg)</pre>
+</div>
+</div>
 <div class="section" id="basic-authentication">
 <h2>Basic authentication<a class="headerlink" href="#basic-authentication" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>class MyAction extends Action {
+<div class="highlight-python"><pre>import xitrum.Action
+
+class MyAction extends Action {
   beforeFilters("authenticate") = basicAuthenticate("Realm") { (username, password) =&gt;
     username == "myusername" &amp;&amp; password == "mypassword"
   }
@@ -92,10 +105,29 @@ You may replace Logback with any implementation of SLF4J.</p>
 <h2>Load config files<a class="headerlink" href="#load-config-files" title="Permalink to this headline">¶</a></h2>
 <p>Save your own config files in &#8220;config&#8221; directory. This directory is put into
 classpath in development mode by build.sbt and in production mode by bin/runner.sh.</p>
-<div class="highlight-python"><pre>import xitrum.util.Loader
-
-// Here you get an instance of java.util.Properties
-val properties = Loader.propertiesFromClasspath("myconfig.properties")</pre>
+<p>myconfig.json</p>
+<div class="highlight-python"><pre>{
+  // You can write comment in JSON file like this
+  "username": "God",
+  // Keys must be quoted with double quotes
+  "password": "Does God needs a password?",
+  "children": ["Adam", "Eva"]
+}</pre>
+</div>
+<p>Load it:</p>
+<div class="highlight-python"><pre>case class MyConfig(username: String, password: String, children: List[String])
+val myConfig = xitrum.util.Loader.jsonFromClasspath[MyConfig]("myconfig.json")</pre>
+</div>
+<p>You can also use properties files, but you should use JSON whenever possible
+because it&#8217;s much better. Properties files are not typesafe, do not support UTF-8
+and nested structures etc.</p>
+<p>myconfig.properties</p>
+<div class="highlight-python"><pre>username = God
+password = Does God needs a password?
+children = Adam, Eva</pre>
+</div>
+<div class="highlight-python"><pre>// Here you get an instance of java.util.Properties
+val properties = xitrum.util.Loader.propertiesFromClasspath("myconfig.properties")</pre>
 </div>
 </div>
 </div>
@@ -109,6 +141,7 @@ val properties = Loader.propertiesFromClasspath("myconfig.properties")</pre>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">HOWTO</a><ul>
+<li><a class="reference internal" href="#determine-is-the-request-is-ajax-request">Determine is the request is Ajax request</a></li>
 <li><a class="reference internal" href="#basic-authentication">Basic authentication</a></li>
 <li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
 <li><a class="reference internal" href="#log">Log</a></li>
@@ -157,7 +190,7 @@ val properties = Loader.propertiesFromClasspath("myconfig.properties")</pre>
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.5.3 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
