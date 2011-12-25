@@ -94,12 +94,27 @@ renderLastChunk</pre>
 </div>
 <div class="section" id="websocket">
 <h2>WebSocket<a class="headerlink" href="#websocket" title="Permalink to this headline">¶</a></h2>
-<p>execute
-* Accept: webSocketHandshake
-* Deny: ?</p>
-<p>onWebSocketFrame
-onWebSocketClose</p>
-<p>renderWebSocket(text)</p>
+<p>Example:</p>
+<div class="highlight-python"><pre>package quickstart.action
+
+import xitrum.Action
+import xitrum.annotation.WEBSOCKET
+
+@WEBSOCKET("/hello_websocket")  // Entry point
+class HelloWebSocket extends Action {
+  override def execute {
+    webSocketHandshake  // Call this if you want to accept the WebSocket connection
+  }
+
+  override def onWebSocketFrame(text: String) {
+    renderWebSocket(text.toUpperCase)  // Send back data to the WebSocket client
+  }
+
+  override def onWebSocketClose {
+    println("The WebSocket connection has been closed")
+  }
+}</pre>
+</div>
 </div>
 <div class="section" id="comet">
 <h2>Comet<a class="headerlink" href="#comet" title="Permalink to this headline">¶</a></h2>
