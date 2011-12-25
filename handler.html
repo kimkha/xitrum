@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Netty handlers &mdash; Xitrum v1.6 documentation</title>
+    <title>Netty handlers &mdash; Xitrum v1.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.6',
+        VERSION:     '1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
     <link rel="prev" title="HOWTO" href="howto.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
         <li class="right" >
           <a href="howto.html" title="HOWTO"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -63,18 +63,60 @@ thing called handlers.</p>
 <p>In Netty, there are 2 types of handlers:
 * upstream: the request direction client -&gt; server
 * downstream: the response direction server -&gt; client</p>
-<div class="highlight-python"><pre>                                                                                                                         /favicon.ico
-                                                                                                                         /robots.txt                                                                                       fileParams
-                                                      Request                                                            /public/...           /resources/public/...                 Env            uriParams              bodyParams                                pathParams
-[upstream]  HttpRequestDecoder -&gt; HttpChunkAggregator -------------------------------------------------&gt; | XSendfile| -&gt; PublicFileServer -+-&gt; PublicResourceServer -+-&gt; Request2Env ---&gt; UriParser ---------&gt;  BodyParser ----------&gt; MethodOverrider -&gt; Dispatcher ----------&gt; [Action responds Env] ----------------------------------+
-                                                                                                         | (both up |                      |                         |                                                                                                                                                                   |
-                                                                                                Response | and down |                      |                         |                                                                                                                      Response                                 Env |
-[downstream]                                          HttpResponseEncoder &lt;----------------------------- | handler) | &lt;--------------------+-------------------------+------------------------------------------------------------------------------------------------------------------------------ Env2Response &lt;- ResponseCacher &lt;----+</pre>
+<p>Please see the doc of <a class="reference external" href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a>
+for more information.</p>
+<div class="highlight-python"><pre>                                     I/O Request
+                                   via Channel or
+                               ChannelHandlerContext
+                                         |
++----------------------------------------+---------------+
+|                  ChannelPipeline       |               |
+|                                       \|/              |
+|  +----------------------+  +-----------+------------+  |
+|  | Upstream Handler  N  |  | Downstream Handler  1  |  |
+|  +----------+-----------+  +-----------+------------+  |
+|            /|\                         |               |
+|             |                         \|/              |
+|  +----------+-----------+  +-----------+------------+  |
+|  | Upstream Handler N-1 |  | Downstream Handler  2  |  |
+|  +----------+-----------+  +-----------+------------+  |
+|            /|\                         .               |
+|             .                          .               |
+|     [ sendUpstream() ]        [ sendDownstream() ]     |
+|     [ + INBOUND data ]        [ + OUTBOUND data  ]     |
+|             .                          .               |
+|             .                         \|/              |
+|  +----------+-----------+  +-----------+------------+  |
+|  | Upstream Handler  2  |  | Downstream Handler M-1 |  |
+|  +----------+-----------+  +-----------+------------+  |
+|            /|\                         |               |
+|             |                         \|/              |
+|  +----------+-----------+  +-----------+------------+  |
+|  | Upstream Handler  1  |  | Downstream Handler  M  |  |
+|  +----------+-----------+  +-----------+------------+  |
+|            /|\                         |               |
++-------------+--------------------------+---------------+
+              |                         \|/
++-------------+--------------------------+---------------+
+|             |                          |               |
+|     [ Socket.read() ]          [ Socket.write() ]      |
+|                                                        |
+|  Netty Internal I/O Threads (Transport Implementation) |
++--------------------------------------------------------+</pre>
 </div>
 </div>
 <div class="section" id="xitrum-handlers">
 <h2>Xitrum handlers<a class="headerlink" href="#xitrum-handlers" title="Permalink to this headline">¶</a></h2>
-<p>See class xitrum.handler.ChannelPipelineFactory</p>
+<p>See <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/handler/ChannelPipelineFactory.scala">xitrum.handler.ChannelPipelineFactory</a>.</p>
+</div>
+<div class="section" id="channel-attachement">
+<h2>Channel attachement<a class="headerlink" href="#channel-attachement" title="Permalink to this headline">¶</a></h2>
+<p>HttpRequest is attached to the channel using Channel#setAttachment.
+Use Channel#getAttachment to get it back.</p>
+</div>
+<div class="section" id="channel-close-event">
+<h2>Channel close event<a class="headerlink" href="#channel-close-event" title="Permalink to this headline">¶</a></h2>
+<p>To act when the connection is closed, listen to the channel&#8217;s close event: TODO</p>
 </div>
 <div class="section" id="custom-handler">
 <h2>Custom handler<a class="headerlink" href="#custom-handler" title="Permalink to this headline">¶</a></h2>
@@ -93,6 +135,8 @@ thing called handlers.</p>
 <li><a class="reference internal" href="#">Netty handlers</a><ul>
 <li><a class="reference internal" href="#netty-handler-architecture">Netty handler architecture</a></li>
 <li><a class="reference internal" href="#xitrum-handlers">Xitrum handlers</a></li>
+<li><a class="reference internal" href="#channel-attachement">Channel attachement</a></li>
+<li><a class="reference internal" href="#channel-close-event">Channel close event</a></li>
 <li><a class="reference internal" href="#custom-handler">Custom handler</a></li>
 </ul>
 </li>
@@ -132,7 +176,7 @@ thing called handlers.</p>
         <li class="right" >
           <a href="howto.html" title="HOWTO"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

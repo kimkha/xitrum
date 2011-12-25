@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Postbacks &mdash; Xitrum v1.6 documentation</title>
+    <title>Postbacks &mdash; Xitrum v1.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.6',
+        VERSION:     '1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
     <link rel="next" title="XML" href="xml.html" />
     <link rel="prev" title="RESTful APIs" href="restful.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="restful.html" title="RESTful APIs"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -107,7 +107,7 @@ import xitrum.validation._
 class ArticleNew extends AppAction {
   override def execute {
     renderView(
-      &lt;form postback="submit" action={urlForPostbackThis}&gt;
+      &lt;form data-postback="submit" action={urlForPostbackThis}&gt;
         &lt;label&gt;Title&lt;/label&gt;
         {&lt;input type="text" name="title" /&gt; :: Required}&lt;br /&gt;
 
@@ -137,16 +137,16 @@ to the current Xitrum action.</p>
 <h2>Non-form<a class="headerlink" href="#non-form" title="Permalink to this headline">¶</a></h2>
 <p>Postback can be set on any element, not only form.</p>
 <p>An example with link:</p>
-<div class="highlight-python"><pre>&lt;a href="#" postback="click" action={urlForPostback[LogoutAction]}&gt;Logout&lt;/a&gt;</pre>
+<div class="highlight-python"><pre>&lt;a href="#" data-postback="click" action={urlForPostback[LogoutAction]}&gt;Logout&lt;/a&gt;</pre>
 </div>
 <p>Clicking the link above will trigger the postback to LogoutAction.</p>
 </div>
 <div class="section" id="confirmation-dialog">
 <h2>Confirmation dialog<a class="headerlink" href="#confirmation-dialog" title="Permalink to this headline">¶</a></h2>
 <p>If you want to display a confirmation dialog:</p>
-<div class="highlight-python"><pre>&lt;a href="#" postback="click"
+<div class="highlight-python"><pre>&lt;a href="#" data-postback="click"
             action={urlForPostback[LogoutAction]}
-            confirm="Do you want to logout?"&gt;Logout&lt;/a&gt;</pre>
+            data-confirm="Do you want to logout?"&gt;Logout&lt;/a&gt;</pre>
 </div>
 <p>If the user clicks &#8220;Cancel&#8221;, the postback will not be sent.</p>
 </div>
@@ -156,19 +156,19 @@ to the current Xitrum action.</p>
 extra params with the postback.</p>
 <p>For other elements, you do like this:</p>
 <div class="highlight-python"><pre>&lt;a href="#"
-   postback="click"
+   data-postback="click"
    action={urlForPostbackThis("itemId" -&gt; item.id)}
-   confirm={"Do you want to delete %s?".format(item.name)}&gt;Delete&lt;/a&gt;</pre>
+   data-confirm={"Do you want to delete %s?".format(item.name)}&gt;Delete&lt;/a&gt;</pre>
 </div>
 <p>You may also put extra params in a separate form:</p>
-<div class="highlight-python"><pre>&lt;form id="myform" postback="submit" action={urlForPostbackThis}&gt;
+<div class="highlight-python"><pre>&lt;form id="myform" data-postback="submit" action={urlForPostbackThis}&gt;
   Search:
   {&lt;input type="text" name="keyword" /&gt; :: Validated}
 
   &lt;a class="pagination"
      href="#"
-     postback="click"
-     extra="#myform"
+     data-postback="click"
+     data-extra="#myform"
      action={urlForPostbackThis("page" -&gt; page)}&gt;{page}&lt;/a&gt;
 &lt;/form&gt;</pre>
 </div>
@@ -234,7 +234,7 @@ extra params with the postback.</p>
         <li class="right" >
           <a href="restful.html" title="RESTful APIs"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>HOWTO &mdash; Xitrum v1.6 documentation</title>
+    <title>HOWTO &mdash; Xitrum v1.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.6',
+        VERSION:     '1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
     <link rel="next" title="Netty handlers" href="handler.html" />
     <link rel="prev" title="Clustering with Hazelcast" href="cluster.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -130,6 +130,35 @@ children = Adam, Eva</pre>
 val properties = xitrum.util.Loader.propertiesFromClasspath("myconfig.properties")</pre>
 </div>
 </div>
+<div class="section" id="encrypt-data">
+<h2>Encrypt data<a class="headerlink" href="#encrypt-data" title="Permalink to this headline">¶</a></h2>
+<p>To encrypt data that you don&#8217;t need to decrypt later (one way encryption),
+you can use MD5 or something like that.</p>
+<p>If you want to decrypt later, you can use the utility Xitrum provides:</p>
+<div class="highlight-python"><pre>import xitrum.util.Secure
+val encrypted: Array[Byte]         = Secure.encrypt("my data".getBytes)
+val decrypted: Option[Array[Byte]] = Secure.decrypt(encrypted)</pre>
+</div>
+<p>You can use <tt class="docutils literal"><span class="pre">xitrum.util.Base64</span></tt> to encode and decode the binary data to
+normal string (to embed to HTML for response etc.).</p>
+<p>If you can combine the above operations in one step:</p>
+<div class="highlight-python"><pre>import xitrum.util.SecureBase64
+val encrypted: String         = SecureBase64.encrypt("my object")
+val decrypted: Option[String] = SecureBase64.decrypt(encrypted).asInstanceOf[Option[String]]</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">SecureBase64</span></tt> uses <tt class="docutils literal"><span class="pre">xitrum.util.SeriDeseri</span></tt> to serialize and deserialize.
+As a result, your data must be serializable.</p>
+<p>You can specify a key for encryption and decryption, like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Secure</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s">&quot;my data&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">,</span> <span class="s">&quot;my key&quot;</span><span class="p">)</span>
+<span class="n">Secure</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypted</span><span class="p">,</span> <span class="s">&quot;my key&quot;</span><span class="p">)</span>
+
+<span class="n">SecureBase64</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s">&quot;my object&quot;</span><span class="p">,</span> <span class="s">&quot;my key&quot;</span><span class="p">)</span>
+<span class="n">SecureBase64</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypted</span><span class="p">,</span> <span class="s">&quot;my key&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If no key is specified, <tt class="docutils literal"><span class="pre">secureKey</span></tt> in xitrum.json file in config directory
+is used.</p>
+</div>
 </div>
 
 
@@ -146,6 +175,7 @@ val properties = xitrum.util.Loader.propertiesFromClasspath("myconfig.properties
 <li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
 <li><a class="reference internal" href="#log">Log</a></li>
 <li><a class="reference internal" href="#load-config-files">Load config files</a></li>
+<li><a class="reference internal" href="#encrypt-data">Encrypt data</a></li>
 </ul>
 </li>
 </ul>
@@ -190,7 +220,7 @@ val properties = xitrum.util.Loader.propertiesFromClasspath("myconfig.properties
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

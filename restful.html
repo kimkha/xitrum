@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RESTful APIs &mdash; Xitrum v1.6 documentation</title>
+    <title>RESTful APIs &mdash; Xitrum v1.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.6',
+        VERSION:     '1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
     <link rel="next" title="Postbacks" href="postback.html" />
     <link rel="prev" title="Action and View" href="action_view.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="action_view.html" title="Action and View"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -73,8 +73,17 @@ class ArticleShow extends Action {
 simulate PUT and DELETE, send a POST with _method=put or _method=delete in the
 request body.</p>
 <p>On web application startup, Xitrum will scan all those annotations, build the
-routing table and print it out for you (so that you know what APIs your
-application has). You don&#8217;t need a seperate config file like routes.rb of Rails.</p>
+routing table and print it out for you so that you know what APIs your
+application has, like this:</p>
+<div class="highlight-python"><pre>[INFO] Routes:
+GET / quickstart.action.IndexAction</pre>
+</div>
+<p>You don&#8217;t need a seperate central config file like routes.rb of Rails.
+Annotation is used for URL routes, in the spirit of JAX-RS and Rails Engines.
+You don&#8217;t have to declare all routes in a single place. Think of annotations
+as distributed routes.You can plug an app into another app. If you have a
+blog engine, you can package it as a JAR file. Then you can plug that JAR file
+into another app.</p>
 <div class="section" id="route-cache">
 <h2>Route cache<a class="headerlink" href="#route-cache" title="Permalink to this headline">¶</a></h2>
 <p>For better startup speed, routes are cached to file <tt class="docutils literal"><span class="pre">routes.sclasner</span></tt>.
@@ -220,7 +229,7 @@ class CreateTodoAPI extends API {
         <li class="right" >
           <a href="action_view.html" title="Action and View"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

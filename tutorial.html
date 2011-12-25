@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial &mdash; Xitrum v1.6 documentation</title>
+    <title>Tutorial &mdash; Xitrum v1.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.6',
+        VERSION:     '1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
     <link rel="next" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" />
     <link rel="prev" title="Introduction" href="intro.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="intro.html" title="Introduction"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,20 +54,20 @@
 <strong>It assumes that you are using Linux and you have installed Java.</strong></p>
 <div class="section" id="create-a-new-xitrum-project">
 <h2>Create a new Xitrum project<a class="headerlink" href="#create-a-new-xitrum-project" title="Permalink to this headline">¶</a></h2>
-<p>Install <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">SBT 0.11.0</a>  and
-<a class="reference external" href="https://github.com/n8han/giter8">Giter8</a>.</p>
-<p>Run <tt class="docutils literal"><span class="pre">g8</span> <span class="pre">ngocdaothanh/xitrum</span></tt> to create a new Xitrum project.
-A new project skeleton will be created.</p>
+<p>Install <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">SBT 0.11.2</a>, then clone
+the xitrum-quickstart project.</p>
+<div class="highlight-python"><pre>$ git clone https://github.com/ngocdaothanh/xitrum-quickstart.git</pre>
+</div>
 </div>
 <div class="section" id="run">
 <h2>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
 <p>Change to the newly created project directory and run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt>. This command
 will download all dependencies, compile the project, and run the class
-<tt class="docutils literal"><span class="pre">my_project.Boot</span></tt>, which starts the web server.</p>
-<p>Open <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a> in your browser.</p>
+<tt class="docutils literal"><span class="pre">quickstart.Boot</span></tt>, which starts the web server.</p>
+<p>Open <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a> or <a class="reference external" href="https://localhost:4430/">https://localhost:4430/</a> in your browser.</p>
 <p>In the console, you will see all the routes and request information:</p>
 <div class="highlight-python"><pre>[INFO] Routes:
-GET / my_project.action.IndexAction
+GET / quickstart.action.IndexAction
 
 [INFO] HTTP server started on port 8364
 [INFO] HTTPS server started on port 4364
@@ -140,7 +140,7 @@ source code repository.</p>
         <li class="right" >
           <a href="intro.html" title="Introduction"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

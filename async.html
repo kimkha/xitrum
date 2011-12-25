@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum v1.6 documentation</title>
+    <title>Async response &mdash; Xitrum v1.7 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.6',
+        VERSION:     '1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -92,6 +92,15 @@ renderLastChunk</pre>
 <li>Chunks cannot be used with <a class="reference internal" href="cache.html"><em>page or action cache</em></a>.</li>
 </ul>
 </div>
+<div class="section" id="websocket">
+<h2>WebSocket<a class="headerlink" href="#websocket" title="Permalink to this headline">¶</a></h2>
+<p>execute
+* Accept: webSocketHandshake
+* Deny: ?</p>
+<p>onWebSocketFrame
+onWebSocketClose</p>
+<p>renderWebSocket(text)</p>
+</div>
 <div class="section" id="comet">
 <h2>Comet<a class="headerlink" href="#comet" title="Permalink to this headline">¶</a></h2>
 <p>Comet messages may be clustered. Please see the chaper about <a class="reference internal" href="cluster.html"><em>clustering</em></a>.</p>
@@ -123,7 +132,7 @@ class ChatAction {
     renderView(
       &lt;div id="chatOutput"&gt;&lt;/div&gt;
 
-      &lt;form postback="submit" action={urlForPostback[CometPublishAction]} after="function() { $('#chatInput').attr('value', '') }"&gt;
+      &lt;form data-postback="submit" action={urlForPostback[CometPublishAction]} data-after="function() { $('#chatInput').attr('value', '') }"&gt;
         {&lt;input type="hidden" name="channel" value="chat" /&gt; :: Validated}
         {&lt;input type="text" id="chatInput" name="chatInput" /&gt; :: Required}
       &lt;/form&gt;
@@ -148,7 +157,7 @@ import xitrum.validation.Required
 class AdminAction extends Action {
   override def execute {
     renderView(
-      &lt;form postback="submit" action={urlForPostbackThis}&gt;
+      &lt;form data-postback="submit" action={urlForPostbackThis}&gt;
         Message from admin:
         &lt;input type="text" name={validate("body", Required)} /&gt;
       &lt;/form&gt;
@@ -176,6 +185,7 @@ class AdminAction extends Action {
   <ul>
 <li><a class="reference internal" href="#">Async response</a><ul>
 <li><a class="reference internal" href="#chunked-response">Chunked response</a></li>
+<li><a class="reference internal" href="#websocket">WebSocket</a></li>
 <li><a class="reference internal" href="#comet">Comet</a><ul>
 <li><a class="reference internal" href="#chat-example">Chat example</a></li>
 <li><a class="reference internal" href="#publish-message">Publish message</a></li>
@@ -225,7 +235,7 @@ class AdminAction extends Action {
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
