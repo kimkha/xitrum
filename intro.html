@@ -51,10 +51,10 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" />
 <p>Xitrum (means &#8220;Smurf&#8221; in Vietnamese) is an async and clustered Scala web framework
-and web server on top of <a class="reference external" href="http://www.jboss.org/netty">Netty</a>
+and HTTP(S) server on top of <a class="reference external" href="http://www.jboss.org/netty">Netty</a>
 and <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>:</p>
 <ul class="simple">
-<li>It fills the gap between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
+<li>It tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
 and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
 use than Lift. You can easily create both RESTful APIs and postbacks. Xitrum
 is controller-first like Scalatra, not
@@ -64,47 +64,61 @@ You don&#8217;t have to declare all routes in a single place. Think of annotatio
 as distributed routes.You can plug an app into another app. If you have a
 blog engine, you can package it as a JAR file. Then you can plug that JAR file
 into another app.</li>
-<li>Typesafe, in the spirit of Scala.</li>
-<li>Async, in the spirit of Netty.</li>
-<li>Sessions can be stored in cookies or clustered Hazelcast.</li>
+<li>Typesafe, in the spirit of Scala. All the APIs try to be as typesafe as possible.</li>
+<li>Async, in the spirit of Netty. Your request proccessing action does not have
+to respond immediately.</li>
+<li>Sessions can be stored in cookies (more scalable) or clustered Hazelcast (more secure).</li>
 <li><a class="reference external" href="http://docs.jquery.com/Plugins/validation">jQuery Validation</a> is integrated
 for browser side and server side validation.</li>
-<li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>,
-which means unlike most other solutions, both singular and plural
-forms are supported.</li>
-<li>Conditional GET using ETag.</li>
+<li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>.
+Translation text extraction is done automatically.
+You can use powerful tools like <a class="reference external" href="http://www.poedit.net/screenshots.php">Poedit</a>
+for translating and merging translations.
+gettext is unlike most other solutions, both singular and plural forms are supported.</li>
+<li>Extensive caching for faster responding.
+At the web server layer, small files are cached in memory, big files are sent
+using NIO&#8217;s zero copy. <a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
+like conditional GET are applied.
+At the web framework layer you have can declare page, action, and object cache
+in the Rails style.</li>
 </ul>
 <p>Hazelcast also gives:</p>
 <ul class="simple">
 <li>In-process and distribued cache, you don&#8217;t need separate cache servers.</li>
-<li>In-process and clustered <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet</a>,
+<li>In-process and distribued <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet (with WebSocket)</a>,
 you can scale Comet to multiple web servers.</li>
 </ul>
-<div class="highlight-python"><pre>+-----------------+
-|    Your app     |
-+-----------------+
-|      Xitrum     |  &lt;-- Hazelcast --&gt; Other instances
-| +-------------+ |
-| | Action/View | |
-| +-------------+ |
-+-----------------+
-|      Netty      |
-| +-------------+ |
-| | HTTP Server | |
-| +-------------+ |
-+-----------------+</pre>
+<div class="highlight-python"><pre>+------------------+
+|     Your app     |
++------------------+
+|      Xitrum      |  &lt;-- Hazelcast --&gt; Other instances
+| +--------------+ |
+| | Action/View  | |
+| +--------------+ |
++------------------+
+|       Netty      |
+| +--------------+ |
+| |HTTP(S) Server| |
+| +--------------+ |
++------------------+</pre>
 </div>
 <p>Xitrum is <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">open source</a>, please join
 its <a class="reference external" href="http://groups.google.com/group/xitrum-framework">Google group</a>.</p>
 <div class="section" id="quick-start">
 <h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<p>Install <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">SBT 0.11.2</a>, then:</p>
 <div class="highlight-python"><pre>$ git clone https://github.com/ngocdaothanh/xitrum-quickstart.git
 $ cd xitrum-quickstart
-$ sbt run</pre>
+$ sbt/sbt run</pre>
 </div>
 <p>Now you have a sample project running at <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>
 and <a class="reference external" href="https://localhost:4430/">https://localhost:4430/</a></p>
+</div>
+<div class="section" id="samples">
+<h2>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/ngocdaothanh/xitrum-quickstart">Quickstart</a></li>
+<li><a class="reference external" href="https://github.com/ngocdaothanh/comy">Comy</a></li>
+</ul>
 </div>
 </div>
 
@@ -118,6 +132,7 @@ and <a class="reference external" href="https://localhost:4430/">https://localho
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
 <li><a class="reference internal" href="#quick-start">Quick start</a></li>
+<li><a class="reference internal" href="#samples">Samples</a></li>
 </ul>
 </li>
 </ul>

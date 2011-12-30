@@ -54,14 +54,17 @@
 <strong>It assumes that you are using Linux and you have installed Java.</strong></p>
 <div class="section" id="create-a-new-xitrum-project">
 <h2>Create a new Xitrum project<a class="headerlink" href="#create-a-new-xitrum-project" title="Permalink to this headline">¶</a></h2>
-<p>Install <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">SBT 0.11.2</a>, then clone
-the xitrum-quickstart project.</p>
+<p>Clone the xitrum-quickstart project:</p>
 <div class="highlight-python"><pre>$ git clone https://github.com/ngocdaothanh/xitrum-quickstart.git</pre>
 </div>
+<p>The de facto stardard way of building Scala projects is using
+<a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">SBT</a>. The quickstart project
+has already included SBT 0.11.2 in <tt class="docutils literal"><span class="pre">sbt</span></tt> directory. If you want to install
+SBT yourself, see its <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">setup guide</a>.</p>
 </div>
 <div class="section" id="run">
 <h2>Run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
-<p>Change to the newly created project directory and run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt>. This command
+<p>Change to the newly created project directory and run <tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">run</span></tt>. This command
 will download all dependencies, compile the project, and run the class
 <tt class="docutils literal"><span class="pre">quickstart.Boot</span></tt>, which starts the web server.</p>
 <p>Open <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a> or <a class="reference external" href="https://localhost:4430/">https://localhost:4430/</a> in your browser.</p>
@@ -72,7 +75,7 @@ GET / quickstart.action.IndexAction
 [INFO] HTTP server started on port 8364
 [INFO] HTTPS server started on port 4364
 [INFO] Xitrum started in development mode
-[DEBUG] GET my_project.action.IndexAction, 1 [ms]</pre>
+[DEBUG] GET quickstart.action.IndexAction, 1 [ms]</pre>
 </div>
 <p>On startup, all routes will be collected and output to log. It is very
 convenient for you to have a list of routes if you want to write documentation

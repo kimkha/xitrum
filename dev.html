@@ -52,21 +52,27 @@
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s12.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s12.jpg" />
 <p>This chapter assumes that you have installed Eclipse and
 <a class="reference external" href="http://www.scala-ide.org/">Scala plugin for Eclipse</a>.</p>
-<div class="section" id="install-plugins-for-sbt">
-<h2>Install plugins for SBT<a class="headerlink" href="#install-plugins-for-sbt" title="Permalink to this headline">¶</a></h2>
-<p>Install Xitrum plugin as in the <a class="reference internal" href="tutorial.html"><em>tutorial</em></a>.</p>
-<p>Install Eclipse plugin by adding to file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt>
-the content as described at <a class="reference external" href="https://github.com/typesafehub/sbteclipse">https://github.com/typesafehub/sbteclipse</a>.</p>
-</div>
 <div class="section" id="create-a-new-xitrum-project">
 <h2>Create a new Xitrum project<a class="headerlink" href="#create-a-new-xitrum-project" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ cd &lt;Eclipse workspace directory&gt;
-$ mkdir my_project
+<p>Copy the quickstart project as described in the <a class="reference internal" href="tutorial.html"><em>tutorial</em></a>
+as your new project. If you&#8217;re using git, you should remove its hidden <tt class="docutils literal"><span class="pre">.git</span></tt>
+directory and recreate it yourself, but you should keep the <tt class="docutils literal"><span class="pre">.gitignore</span></tt> file.</p>
+<div class="highlight-python"><pre>$ git clone –depth 1 https://github.com/ngocdaothanh/xitrum-quickstart.git my_project
 $ cd my_project
-$ sbt xitrum-new
-$ sbt eclipse</pre>
+$ rm -rf .git
+$ git init
+$ git add -f .gitignore</pre>
 </div>
-<p>Now open Eclipse, and import the created project.</p>
+</div>
+<div class="section" id="install-eclipse-plugin-for-sbt">
+<h2>Install Eclipse plugin for SBT<a class="headerlink" href="#install-eclipse-plugin-for-sbt" title="Permalink to this headline">¶</a></h2>
+<p>Install Eclipse plugin for SBT by adding to file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt>
+the content as described at <a class="reference external" href="https://github.com/typesafehub/sbteclipse">https://github.com/typesafehub/sbteclipse</a>.</p>
+<p>To create the <tt class="docutils literal"><span class="pre">.project</span></tt> file for Eclipse from <tt class="docutils literal"><span class="pre">build.sbt</span></tt>, from the
+project directory, run:</p>
+<div class="highlight-python"><pre>$ sbt eclipse</pre>
+</div>
+<p>Now open Eclipse, and import the project.</p>
 </div>
 <div class="section" id="install-jrebel">
 <h2>Install JRebel<a class="headerlink" href="#install-jrebel" title="Permalink to this headline">¶</a></h2>
@@ -91,7 +97,7 @@ provides free license for Scala developers!</p>
 <h2>Use JRebel<a class="headerlink" href="#use-jrebel" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Run <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">run</span></tt></li>
-<li>In Eclipse, try editing a Scala file, and save</li>
+<li>In Eclipse, try editing a Scala file, then save it</li>
 </ol>
 <p>The Scala plugin for Eclipse will automatically recompile the file. And JRebel will
 automatically reload the generated .class files.</p>
@@ -123,8 +129,8 @@ rescan all routes.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Development flow with SBT, Eclipse, and JRebel</a><ul>
-<li><a class="reference internal" href="#install-plugins-for-sbt">Install plugins for SBT</a></li>
 <li><a class="reference internal" href="#create-a-new-xitrum-project">Create a new Xitrum project</a></li>
+<li><a class="reference internal" href="#install-eclipse-plugin-for-sbt">Install Eclipse plugin for SBT</a></li>
 <li><a class="reference internal" href="#install-jrebel">Install JRebel</a></li>
 <li><a class="reference internal" href="#use-jrebel">Use JRebel</a><ul>
 <li><a class="reference internal" href="#routes-are-not-reloaded">Routes are not reloaded</a></li>

@@ -64,14 +64,15 @@ Load balancer/proxy server ---- Xitrum/memory cache instance 2
 <h2>Create cache page or action<a class="headerlink" href="#create-cache-page-or-action" title="Permalink to this headline">¶</a></h2>
 <p>It&#8217;s very simple, you use <tt class="docutils literal"><span class="pre">CacheActionSecond/Minute/Hour/Day</span></tt> or
 <tt class="docutils literal"><span class="pre">CachePageSecond/Minute/Hour/Day</span></tt>. The difference between action cache and
-page cache is that for page cache, before filter is not touched if the cache
+page cache is that for page cache, before filters are not run if the cache
 exists.</p>
 <div class="highlight-python"><pre>import xitrum.Action
 import xitrum.annotations._
 
-@CachePageMinute(1)  // Or @CacheActionMinute(1) if want to run the action's before filter
+@CachePageMinute(1)
+// Or @CacheActionMinute(1) if you want to run the action's before filter
 @GET("/")
-class IndexAction extends Action ...</pre>
+class IndexAction extends Action...</pre>
 </div>
 </div>
 <div class="section" id="cache-object">
