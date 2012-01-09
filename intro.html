@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; Xitrum v1.7 documentation</title>
+    <title>Introduction &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="Tutorial" href="tutorial.html" />
     <link rel="prev" title="Xitrum’s documentation" href="index.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="index.html" title="Xitrum’s documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,15 +59,21 @@ and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powe
 use than Lift. You can easily create both RESTful APIs and postbacks. Xitrum
 is controller-first like Scalatra, not
 <a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.</li>
-<li>Annotations are used for URL routes, in the spirit of JAX-RS and Rails Engines.
-You don&#8217;t have to declare all routes in a single place. Think of annotations
-as distributed routes.You can plug an app into another app. If you have a
-blog engine, you can package it as a JAR file. Then you can plug that JAR file
-into another app.</li>
+<li>Routes are automatically collected in the spirit of JAX-RS (but without annotations!)
+and Rails Engines. You don&#8217;t have to declare all routes in a single place.
+Think of this feature as distributed routes. You can plug an app into another app.
+If you have a blog engine, you can package it as a JAR file, then you can put
+that JAR file into another app and that app automatically has blog feature!
+Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe way.</li>
 <li>Typesafe, in the spirit of Scala. All the APIs try to be as typesafe as possible.</li>
 <li>Async, in the spirit of Netty. Your request proccessing action does not have
-to respond immediately.</li>
-<li>Sessions can be stored in cookies (more scalable) or clustered Hazelcast (more secure).</li>
+to respond immediately. Chunked response (streaming), WebSocket, and Comet
+(using WebSocket or long-polling) are supported.</li>
+<li>Views can be written in a separate <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
+template file or Scala inline XML. Both are typesafe.</li>
+<li>Sessions can be stored in cookies (more scalable) or clustered Hazelcast (more secure).
+Hazelcast is recommended when using continuations-based Actions, since serialized
+continuations are usually too big to store in cookies.</li>
 <li><a class="reference external" href="http://docs.jquery.com/Plugins/validation">jQuery Validation</a> is integrated
 for browser side and server side validation.</li>
 <li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>.
@@ -112,6 +118,20 @@ $ sbt/sbt run</pre>
 </div>
 <p>Now you have a sample project running at <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>
 and <a class="reference external" href="https://localhost:4430/">https://localhost:4430/</a></p>
+<p>After playing with the quickstart project, please read
+<a class="reference external" href="http://ngocdaothanh.github.com/xitrum">full documentation</a> for details.</p>
+<p>From <a class="reference external" href="https://groups.google.com/group/xitrum-framework/msg/d6de4865a8576d39">a reader</a>:</p>
+<blockquote>
+<div><p>Wow, this is a really impressive body of work, arguably the most
+complete Scala framework outside of Lift (but much easier to use).</p>
+<p>Xitrum is truly a full stack web framework, all the bases are covered,
+including wtf-am-I-on-the-moon extras like ETags, static file cache
+identifiers &amp; auto-gzip compression. Tack on built-in JSON converter,
+before/around/after interceptors, request/session/cookie/flash scopes,
+integrated validation (server &amp; client-side, nice), built-in cache
+layer (Hazelcast), i18n a la GNU gettext, Netty (with Nginx, hello
+blazing fast), etc. and you have, wow.</p>
+</div></blockquote>
 </div>
 <div class="section" id="samples">
 <h2>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h2>
@@ -177,7 +197,7 @@ and <a class="reference external" href="https://localhost:4430/">https://localho
         <li class="right" >
           <a href="index.html" title="Xitrum’s documentation"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

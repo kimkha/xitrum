@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>HOWTO &mdash; Xitrum v1.7 documentation</title>
+    <title>HOWTO &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="Netty handlers" href="handler.html" />
     <link rel="prev" title="Clustering with Hazelcast" href="cluster.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -60,16 +60,18 @@ val msg = "A message"
 if (isAjax)
   jsRender("alert(" + jsEscape(msg) + ")")
 else
-  renderText(msg)</pre>
+  respondText(msg)</pre>
 </div>
 </div>
 <div class="section" id="basic-authentication">
 <h2>Basic authentication<a class="headerlink" href="#basic-authentication" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>import xitrum.Action
+<div class="highlight-python"><pre>import xitrum.Controller
 
-class MyAction extends Action {
-  beforeFilters("authenticate") = basicAuthenticate("Realm") { (username, password) =&gt;
-    username == "myusername" &amp;&amp; password == "mypassword"
+class MyController extends Controller {
+  beforeFilter {
+    basicAuthenticate("Realm") { (username, password) =&gt;
+      username == "myusername" &amp;&amp; password == "mypassword"
+    }
   }
 }</pre>
 </div>
@@ -78,7 +80,7 @@ class MyAction extends Action {
 <h2>Link to an action<a class="headerlink" href="#link-to-an-action" title="Permalink to this headline">¶</a></h2>
 <p>Xitrum tries to be typesafe.</p>
 <p>Don&#8217;t write URL manually, use urlFor like this:</p>
-<div class="highlight-python"><pre>&lt;a href={urlFor[ArticleShowAction]("id" -&gt; myArticle.id)}&gt;{myArticle.title}&lt;/a&gt;</pre>
+<div class="highlight-python"><pre>&lt;a href={Articles.show.url("id" -&gt; myArticle.id)}&gt;{myArticle.title}&lt;/a&gt;</pre>
 </div>
 </div>
 <div class="section" id="log">
@@ -220,7 +222,7 @@ is used.</p>
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

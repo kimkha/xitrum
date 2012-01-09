@@ -14,7 +14,7 @@ Xitrum's documentation
    intro
    tutorial
    dev
-   action_view
+   controller_action_view
    restful
    postback
    xml
@@ -24,7 +24,7 @@ Xitrum's documentation
    scopes
    validation
    upload
-   filters
+   filter
    cache
    i18n
    deploy

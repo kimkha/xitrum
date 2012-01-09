@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Postbacks &mdash; Xitrum v1.7 documentation</title>
+    <title>Postbacks &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="XML" href="xml.html" />
     <link rel="prev" title="RESTful APIs" href="restful.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="restful.html" title="RESTful APIs"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,16 +55,15 @@
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Postback">http://en.wikipedia.org/wiki/Postback</a></li>
 <li><a class="reference external" href="http://nitrogenproject.com/doc/tutorial.html">http://nitrogenproject.com/doc/tutorial.html</a></li>
 </ul>
-<p>Xitrum&#8217;s Ajax form postback is inspired by <a class="reference external" href="http://nitrogenproject.com/">Nitrogen</a>,
-with similar <a class="reference internal" href="validation.html"><em>validation</em></a> feature.</p>
+<p>Xitrum&#8217;s Ajax form postback is inspired by <a class="reference external" href="http://nitrogenproject.com/">Nitrogen</a>.</p>
 <div class="section" id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
-<p>AppAction.scala</p>
-<div class="highlight-python"><pre>import xitrum.Action
+<p>AppController.scala</p>
+<div class="highlight-python"><pre>import xitrum.Controller
 import xitrum.view.DocType
 
-trait AppAction extends Action {
-  override def layout = DocType.xhtmlTransitional(
+trait AppController extends Controller {
+  override def layout = DocType.html5(
     &lt;html&gt;
       &lt;head&gt;
         {antiCSRFMeta}
@@ -82,70 +81,62 @@ trait AppAction extends Action {
 </div>
 <div class="section" id="form">
 <h2>Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h2>
-<p>ArticleShow.scala</p>
-<div class="highlight-python"><pre>import xitrum.annotation.GET
+<p>Articles.scala</p>
+<div class="highlight-python"><pre>import xitrum.validator._
 
-@GET("/articles/:id")
-class ArticleShow extends AppAction {
-  override def execute {
+class Articles extends AppController {
+  pathPrefix = "articles"
+
+  val show = GET(":id") {
     val id = param("id")
     val article = Article.find(id)
-    renderView(
+    respondInlineView(
       &lt;h1&gt;{article.title}&lt;/h1&gt;
       &lt;div&gt;{article.body}&lt;/div&gt;
     )
   }
-}</pre>
-</div>
-<p>ArticleNew.scala</p>
-<div class="highlight-python"><pre>import xitrum.annotation.{First, GET}
-import xitrum.validation._
 
-// @First: force this route to be matched before "/articles/:id"
-@First
-@GET("/articles/new")
-class ArticleNew extends AppAction {
-  override def execute {
-    renderView(
-      &lt;form data-postback="submit" action={urlForPostbackThis}&gt;
+  val niw = first.GET("niw") {  // first: force this route to be matched before "show"
+    respondInlineView(
+      &lt;form data-postback="submit" action={create.url}&gt;
         &lt;label&gt;Title&lt;/label&gt;
-        {&lt;input type="text" name="title" /&gt; :: Required}&lt;br /&gt;
+        &lt;input type="text" name="title" class="required" /&gt;&lt;br /&gt;
 
         &lt;label&gt;Body&lt;/label&gt;
-        {&lt;textarea name="body"&gt;&lt;/textarea&gt; :: Required}&lt;br /&gt;
+        &lt;textarea name="body" class="required"&gt;&lt;/textarea&gt;&lt;br /&gt;
 
         &lt;input type="submit" value="Save" /&gt;
       &lt;/form&gt;
     )
   }
 
-  override def postback {
+  val create = POST {
     val title   = param("title")
     val body    = param("body")
     val article = Article.save(title, body)
 
     flash("Article has been saved.")
-    jsRedirectTo[ArticleShow]("id" -&gt; article.id)
+    jsRedirectTo(show, "id" -&gt; article.id)
   }
 }</pre>
 </div>
 <p>When <tt class="docutils literal"><span class="pre">submit</span></tt> JavaScript event of the form is triggered, the form will be posted back
-to the current Xitrum action.</p>
+to <tt class="docutils literal"><span class="pre">create</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">action</span></tt> attribute of <tt class="docutils literal"><span class="pre">&lt;form&gt;</span></tt> is encrypted. The encrypted URL acts as the anti-CSRF token.</p>
 </div>
 <div class="section" id="non-form">
 <h2>Non-form<a class="headerlink" href="#non-form" title="Permalink to this headline">¶</a></h2>
 <p>Postback can be set on any element, not only form.</p>
 <p>An example with link:</p>
-<div class="highlight-python"><pre>&lt;a href="#" data-postback="click" action={urlForPostback[LogoutAction]}&gt;Logout&lt;/a&gt;</pre>
+<div class="highlight-python"><pre>&lt;a href="#" data-postback="click" action={AuthenticateController.logout.postbackurl}&gt;Logout&lt;/a&gt;</pre>
 </div>
-<p>Clicking the link above will trigger the postback to LogoutAction.</p>
+<p>Clicking the link above will trigger the postback to logout action of AuthenticateController.</p>
 </div>
 <div class="section" id="confirmation-dialog">
 <h2>Confirmation dialog<a class="headerlink" href="#confirmation-dialog" title="Permalink to this headline">¶</a></h2>
 <p>If you want to display a confirmation dialog:</p>
 <div class="highlight-python"><pre>&lt;a href="#" data-postback="click"
-            action={urlForPostback[LogoutAction]}
+            action={AuthenticateController.logout.postbackurl}
             data-confirm="Do you want to logout?"&gt;Logout&lt;/a&gt;</pre>
 </div>
 <p>If the user clicks &#8220;Cancel&#8221;, the postback will not be sent.</p>
@@ -157,19 +148,20 @@ extra params with the postback.</p>
 <p>For other elements, you do like this:</p>
 <div class="highlight-python"><pre>&lt;a href="#"
    data-postback="click"
-   action={urlForPostbackThis("itemId" -&gt; item.id)}
+   action={Articles.destroy.url("id" -&gt; item.id)}
+   data-extra="_method=delete"
    data-confirm={"Do you want to delete %s?".format(item.name)}&gt;Delete&lt;/a&gt;</pre>
 </div>
 <p>You may also put extra params in a separate form:</p>
-<div class="highlight-python"><pre>&lt;form id="myform" data-postback="submit" action={urlForPostbackThis}&gt;
+<div class="highlight-python"><pre>&lt;form id="myform" data-postback="submit" action={Site.search.url}&gt;
   Search:
-  {&lt;input type="text" name="keyword" /&gt; :: Validated}
+  &lt;input type="text" name="keyword" /&gt;
 
   &lt;a class="pagination"
      href="#"
      data-postback="click"
      data-extra="#myform"
-     action={urlForPostbackThis("page" -&gt; page)}&gt;{page}&lt;/a&gt;
+     action={Site.search.url("page" -&gt; page)}&gt;{page}&lt;/a&gt;
 &lt;/form&gt;</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">#myform</span></tt> is the jQuery selector to select the form that contains extra params.</p>
@@ -234,7 +226,7 @@ extra params with the postback.</p>
         <li class="right" >
           <a href="restful.html" title="RESTful APIs"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

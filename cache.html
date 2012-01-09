@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cache &mdash; Xitrum v1.7 documentation</title>
+    <title>Cache &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,9 +21,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="I18n" href="i18n.html" />
-    <link rel="prev" title="Filters" href="filters.html" /> 
+    <link rel="prev" title="Filters" href="filter.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,9 +36,9 @@
           <a href="i18n.html" title="I18n"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="filters.html" title="Filters"
+          <a href="filter.html" title="Filters"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -60,19 +60,19 @@ Load balancer/proxy server ---- Xitrum/memory cache instance 2
                               \ Xitrum/memory cache instance 3</pre>
 </div>
 <p>Cache works with async response.</p>
-<div class="section" id="create-cache-page-or-action">
-<h2>Create cache page or action<a class="headerlink" href="#create-cache-page-or-action" title="Permalink to this headline">¶</a></h2>
-<p>It&#8217;s very simple, you use <tt class="docutils literal"><span class="pre">CacheActionSecond/Minute/Hour/Day</span></tt> or
-<tt class="docutils literal"><span class="pre">CachePageSecond/Minute/Hour/Day</span></tt>. The difference between action cache and
-page cache is that for page cache, before filters are not run if the cache
-exists.</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotations._
+<div class="section" id="cache-page-or-action">
+<h2>Cache page or action<a class="headerlink" href="#cache-page-or-action" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>import xitrum.Controller
 
-@CachePageMinute(1)
-// Or @CacheActionMinute(1) if you want to run the action's before filter
-@GET("/")
-class IndexAction extends Action...</pre>
+class MyController extends Controller {
+  val index = cachePageMinute(1).GET {
+    ...
+  }
+
+  val show = cacheActionMinute(1).GET(":id") {
+    ...
+  }
+}</pre>
 </div>
 </div>
 <div class="section" id="cache-object">
@@ -200,7 +200,7 @@ request        the cache already exists?
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Cache</a><ul>
-<li><a class="reference internal" href="#create-cache-page-or-action">Create cache page or action</a></li>
+<li><a class="reference internal" href="#cache-page-or-action">Cache page or action</a></li>
 <li><a class="reference internal" href="#cache-object">Cache object</a></li>
 <li><a class="reference internal" href="#remove-cache">Remove cache</a></li>
 <li><a class="reference internal" href="#config">Config</a></li>
@@ -210,7 +210,7 @@ request        the cache already exists?
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="filters.html"
+  <p class="topless"><a href="filter.html"
                         title="previous chapter">Filters</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="i18n.html"
@@ -247,9 +247,9 @@ request        the cache already exists?
           <a href="i18n.html" title="I18n"
              >next</a> |</li>
         <li class="right" >
-          <a href="filters.html" title="Filters"
+          <a href="filter.html" title="Filters"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Filters &mdash; Xitrum v1.7 documentation</title>
+    <title>Filters &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="Cache" href="cache.html" />
     <link rel="prev" title="Upload" href="upload.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="upload.html" title="Upload"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -51,82 +51,65 @@
 <h1>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="before-filters">
 <h2>Before filters<a class="headerlink" href="#before-filters" title="Permalink to this headline">¶</a></h2>
-<p>Before filters are run before <tt class="docutils literal"><span class="pre">execute</span></tt> or <tt class="docutils literal"><span class="pre">postback</span></tt> method is run.
+<p>Before filters are run before an action is run.
 They are funtions that take no argument and returns true or false.
-If a before filter returns false, all filters after it and <tt class="docutils literal"><span class="pre">execute</span></tt> will
+If a before filter returns false, all filters after it and the action will
 not be run.</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
+<div class="highlight-python"><pre>import xitrum.Controller
 
-@GET("/")
-class MyAction extends Action {
-  val myFilter = { () =&gt;
-    println("Run at " + System.currentTimeMillis)
-    true
-  }
-
-  // Add this filter
-  beforeFilter(myFilter)
-
-  // Filter can be anonymous
-  // This filter is run after the above
-  beforeFilter { () =&gt;
-    println("I run therefore I am")
+class MyController extends Action {
+  beforeFilter {
+    logger.info("I run therefore I am")
     true
   }
 
   // This method is run after the above filters
-  override def execute {
-    renderText("Hi")
+  val index =   @GET("before_filter") {
+    respondInlineText("Before filters should have been run, please check the log")
   }
 }</pre>
 </div>
 <p>Before filters can be skipped using <tt class="docutils literal"><span class="pre">skipBeforeFilter</span></tt>.</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
+<div class="highlight-python"><pre>import xitrum.Controller
 
-class AppAction extends Action {
-  val authenticate = basicAuthenticate("Realm") { (username, password) =&gt;
-    username == "foo" &amp;&amp; password == "bar"
+class AppController extends Controller {
+  val authenticate = beforeFilter {
+    basicAuthenticate("Realm") { (username, password) =&gt;
+      username == "foo" &amp;&amp; password == "bar"
+    }
   }
-
-  beforeFilter(authenticate)
 }
 
-// This action is protected by authentication
-@GET("/secretplace")
-class AnAction extends AppAction {
-  override def execute {
-    renderText("secretplace")
+// This controller is protected by authentication
+class AController extends AppController {
+  val index = GET("secretplace") {
+    respondText("secretplace")
   }
 }
 
 // This is not
-@GET("/nothingspecial")
-class AnotherAction extends AppAction {
+class AnotherController extends AppController {
   skipBeforeFilter(authenticate)
 
-  override def execute {
-    renderText("nothingspecial")
+  val index = GET("nothingspecial") {
+    respondText("nothingspecial")
   }
 }</pre>
 </div>
 </div>
 <div class="section" id="after-filters">
 <h2>After filters<a class="headerlink" href="#after-filters" title="Permalink to this headline">¶</a></h2>
-<p>After filters are run after <tt class="docutils literal"><span class="pre">execute</span></tt> or <tt class="docutils literal"><span class="pre">postback</span></tt> method is run.
+<p>After filters are run after an action is run.
 They are functions that take no argument. Their return value will be ignored.</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
+<div class="highlight-python"><pre>import xitrum.Controller
 
-@GET("/")
-class MyAction extends Action {
-  override def execute {
-    renderText("Hello")
+class MyController extends Controller {
+  val index = GET("after_filter") {
+    respondText("After filter should have been run, please check the log")
   }
 
-  afterFilter { () =&gt;
-    println(" World")
+  afterFilter {
+    logger.info("Run at " + System.currentTimeMillis())
   }
 }</pre>
 </div>
@@ -134,20 +117,18 @@ class MyAction extends Action {
 </div>
 <div class="section" id="around-filters">
 <h2>Around filters<a class="headerlink" href="#around-filters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
+<div class="highlight-python"><pre>import xitrum.Controller
 
-@GET("/")
-class MyAction extends Action {
-  aroundFilter { executeOrPostback =&gt;
-    val begin = System.currentTimeMillis
-    executeOrPostback
-    val end   = System.currentTimeMillis
-    println("The action takes " + (end - begin) + " [ms]")
+class MyController extends Controller {
+  aroundFilter { action =&gt;
+    val begin = System.currentTimeMillis()
+    action()
+    val end   = System.currentTimeMillis()
+    logger.info("The action took " + (end - begin) + " [ms]")
   }
 
-  override def execute {
-    renderText("Hi")
+  val index = GET("around_filter") {
+    respondText("Around filter should have been run, please check the log")
   }
 }</pre>
 </div>
@@ -161,18 +142,18 @@ Around filters can be skipped using <tt class="docutils literal"><span class="pr
 <li>If one of the before filters returns false, the rest (including around and
 after filters) will not be run</li>
 <li>After filters are always run if at least an around filter is run</li>
-<li>If an around filter decide not to call <tt class="docutils literal"><span class="pre">executeOrPostback</span></tt>, the inner nested
+<li>If an around filter decide not to call <tt class="docutils literal"><span class="pre">action</span></tt>, the inner nested
 around filters will not be run</li>
 </ul>
-<div class="highlight-python"><pre>before1 -true-&gt; before2 -true-&gt; +-----------------------+ --&gt; after1 --&gt; after2
-                                | around1 (1 of 2)      |
-                                | +-------------------+ |
-                                | | around2 (1 of 2)  | |
-                                | | executeOrPostback | |
-                                | | around2 (2 of 2)  | |
-                                | +-------------------+ |
-                                | around2 (2 of 2)      |
-                                +-----------------------+</pre>
+<div class="highlight-python"><pre>before1 -true-&gt; before2 -true-&gt; +----------------------+ --&gt; after1 --&gt; after2
+                                | around1 (1 of 2)     |
+                                | +------------------+ |
+                                | | around2 (1 of 2) | |
+                                | | action           | |
+                                | | around2 (2 of 2) | |
+                                | +------------------+ |
+                                | around2 (2 of 2)     |
+                                +----------------------+</pre>
 </div>
 </div>
 </div>
@@ -202,7 +183,7 @@ around filters will not be run</li>
                         title="next chapter">Cache</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/filters.txt"
+    <li><a href="_sources/filter.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -234,7 +215,7 @@ around filters will not be run</li>
         <li class="right" >
           <a href="upload.html" title="Upload"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

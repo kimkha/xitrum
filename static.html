@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Static files &mdash; Xitrum v1.7 documentation</title>
+    <title>Static files &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="Scopes" href="scopes.html" />
     <link rel="prev" title="Async response" href="async.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="async.html" title="Async response"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -76,9 +76,9 @@ URLs to them are in the form:</p>
 <p>To refer to them:</p>
 <div class="highlight-python"><pre>&lt;img src={urlForPublic("img/myimage.png")} /&gt;</pre>
 </div>
-<p>To send a static file on disk from your action, use <tt class="docutils literal"><span class="pre">renderFile</span></tt>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">renderFile</span><span class="p">(</span><span class="s">&quot;/absolute/path&quot;</span><span class="p">)</span>
-<span class="n">renderFile</span><span class="p">(</span><span class="s">&quot;path/relative/to/the/current/working/directory&quot;</span><span class="p">)</span>
+<p>To send a static file on disk from your action, use <tt class="docutils literal"><span class="pre">respondFile</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">respondFile</span><span class="p">(</span><span class="s">&quot;/absolute/path&quot;</span><span class="p">)</span>
+<span class="n">respondFile</span><span class="p">(</span><span class="s">&quot;path/relative/to/the/current/working/directory&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -87,15 +87,16 @@ URLs to them are in the form:</p>
 <p>404.html and 500.html in <tt class="docutils literal"><span class="pre">public</span></tt> directory are used when there&#8217;s no matching
 route and there&#8217;s error processing request, respectively. If you want to use
 your own handler, configure before starting web server:</p>
-<div class="highlight-python"><pre>import xitrum.{Config, Server}
+<div class="highlight-python"><pre>import xitrum.Config
+import xitrum.routing.Routes
+import xitrum.handler.Server
 
 object Boot {
   def main(args: Array[String]) {
-    Config.action404 = classOf[MyAction]
-    Config.action500 = classOf[MyAction]
-
-    val s = new Server
-    s.start
+    Routes.route404 = MyController.route404
+    Routes.route500 = MyController.route500
+    Routes.fromCacheFileOrRecollect()
+    Server.start()
   }
 }</pre>
 </div>
@@ -117,7 +118,7 @@ which is a .jar file in classpath:</p>
 <div class="highlight-python"><pre>&lt;img src="/resources/public/my_lib/img/myimage.png" /&gt;</pre>
 </div>
 <p>To send a static file inside an element (a .jar file or a directory) in classpath:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">renderResource</span><span class="p">(</span><span class="s">&quot;path/relative/to/the/element&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">respondResource</span><span class="p">(</span><span class="s">&quot;path/relative/to/the/element&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -125,12 +126,12 @@ which is a .jar file in classpath:</p>
 <h2>Client side cache with ETag and max-age<a class="headerlink" href="#client-side-cache-with-etag-and-max-age" title="Permalink to this headline">¶</a></h2>
 <p>Xitrum automatically adds <a class="reference external" href="http://en.wikipedia.org/wiki/HTTP_ETag">Etag</a> for
 static files on disk and in classpath.</p>
-<p>ETags for small files are MD5 of file content. They are and cached for later use.
-Keys of cache entries are <tt class="docutils literal"><span class="pre">(file</span> <span class="pre">path,</span> <span class="pre">modified</span> <span class="pre">time)</span></tt>. Each web server in a
-cluster has its own local cache, because modified time on different servers may
-differ.</p>
-<p>For big files, modified time is used as ETag. This is not perfect because not
-all requests can use the ETag when you have a cluster. But it is still better
+<p>ETags for small files are MD5 of file content. They are cached for later use.
+Keys of cache entries are <tt class="docutils literal"><span class="pre">(file</span> <span class="pre">path,</span> <span class="pre">modified</span> <span class="pre">time)</span></tt>. Because modified time
+on different servers may differ, each web server in a cluster has its own local
+ETag cache, not based on Hazelcast.</p>
+<p>For big files, only modified time is used as ETag. This is not perfect because not
+identical file on different servers may have different ETag, but it is still better
 than no ETag at all.</p>
 <p><tt class="docutils literal"><span class="pre">urlForPublic</span></tt> and <tt class="docutils literal"><span class="pre">urlForResource</span></tt> automatically add ETag to the URLs they
 generate. For example:</p>
@@ -142,7 +143,7 @@ generate. For example:</p>
 Don&#8217;t worry that browsers do not pickup a latest file when you change it.
 Because when a file on disk changes, its <tt class="docutils literal"><span class="pre">modified</span> <span class="pre">time</span></tt> changes, thus the URLs
 generated by <tt class="docutils literal"><span class="pre">urlForPublic</span></tt> and <tt class="docutils literal"><span class="pre">urlForResource</span></tt> also change. Its ETag cache
-is also invalidated because the cache key changes.</p>
+is also updated because the cache key changes.</p>
 </div>
 <div class="section" id="gzip">
 <h2>GZIP<a class="headerlink" href="#gzip" title="Permalink to this headline">¶</a></h2>
@@ -219,7 +220,7 @@ in <tt class="docutils literal"><span class="pre">config/xitrum.properties</span
         <li class="right" >
           <a href="async.html" title="Async response"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Action and View &mdash; Xitrum v1.7 documentation</title>
+    <title>Controller, action, and view &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,8 +47,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="action-and-view">
-<h1>Action and View<a class="headerlink" href="#action-and-view" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="controller-action-and-view">
+<h1>Controller, action, and view<a class="headerlink" href="#controller-action-and-view" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s7.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s7.jpg" />
 <p>What do you create web applications for? There are 2 main use cases:</p>
 <ul class="simple">
@@ -60,15 +60,13 @@ for other web sites.</li>
 In Xitrum, there are 2 kinds of actions: <a class="reference internal" href="restful.html"><em>RESTful actions</em></a> and
 <a class="reference internal" href="postback.html"><em>postback actions</em></a>.</p>
 <p>Normally, you write view directly in its action.</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
+<div class="highlight-python"><pre>import xitrum.Controller
 
-@GET("/")
-class Index extends Action {
-  def override execute {
+class MyController extends Controller {
+  val index = GET {
     val s = "World"  // Will be automatically escaped
 
-    renderView(
+    respondInlineView(
       &lt;html&gt;
         &lt;body&gt;
           &lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;
@@ -79,27 +77,27 @@ class Index extends Action {
 }</pre>
 </div>
 <p>Of course you can refactor the view into a separate Scala file.</p>
-<p>There are methods for rendering things other than views:</p>
+<p>There are methods for responding things other than views:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: renders anything as a string without layout</li>
-<li><tt class="docutils literal"><span class="pre">renderJson</span></tt>: renders JSON</li>
-<li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: renders an array of bytes</li>
-<li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: sends a file directly from disk, very fast
+<li><tt class="docutils literal"><span class="pre">respondText</span></tt>: responds anything as a string without layout</li>
+<li><tt class="docutils literal"><span class="pre">respondJson</span></tt>: responds JSON</li>
+<li><tt class="docutils literal"><span class="pre">respondBinary</span></tt>: responds an array of bytes</li>
+<li><tt class="docutils literal"><span class="pre">respondFile</span></tt>: sends a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
 (send-file) is used</li>
 </ul>
 <div class="section" id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
-<p>With <tt class="docutils literal"><span class="pre">renderView</span></tt>, layout is rendered. By default the layout is what passed to
-<tt class="docutils literal"><span class="pre">renderView</span></tt>. You can customize the layout by overriding the <tt class="docutils literal"><span class="pre">layout</span></tt> method.</p>
+<p>With <tt class="docutils literal"><span class="pre">respondInlineView</span></tt>, layout is rendered. By default the layout is what passed to
+<tt class="docutils literal"><span class="pre">respondInlineView</span></tt>. You can customize the layout by overriding the <tt class="docutils literal"><span class="pre">layout</span></tt> method.</p>
 <p>Typically, you create a parent class which has a common layout for many views,
 like this:</p>
-<p>AppAction.scala</p>
-<div class="highlight-python"><pre>import xitrum.Action
+<p>AppController.scala</p>
+<div class="highlight-python"><pre>import xitrum.Controller
 import xitrum.view.DocType
 
-trait AppAction extends Action {
-  override def layout = DocType.xhtmlTransitional(
+trait AppController extends Controller {
+  override def layout = DocType.html5(
     &lt;html&gt;
       &lt;head&gt;
         {antiCSRFMeta}
@@ -107,7 +105,7 @@ trait AppAction extends Action {
         &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
       &lt;/head&gt;
       &lt;body&gt;
-        {renderedView}
+        {respondedView}
         {jsAtBottom}
       &lt;/body&gt;
     &lt;/html&gt;
@@ -117,28 +115,83 @@ trait AppAction extends Action {
 <p><tt class="docutils literal"><span class="pre">xitrumCSS</span></tt> includes the default CSS for Xitrum. You may remove it if you
 don&#8217;t like.</p>
 <p><tt class="docutils literal"><span class="pre">jsAtBottom</span></tt> includes jQuery, jQuery Validate plugin etc.</p>
-<p>Index.scala</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
+<p>MyController.scala</p>
+<div class="highlight-python"><pre>import xitrum.Controller
 
-@GET("/")
-class Index extends AppAction {
-  def override execute {
+class MyController extends AppController {
+  val index = GET {
     val s = "World"
-    renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;)
+    respondInlineView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;)
   }
 }</pre>
 </div>
-<p>You can pass the layout directly to <tt class="docutils literal"><span class="pre">renderView</span></tt>:</p>
+<p>You can pass the layout directly to <tt class="docutils literal"><span class="pre">respondInlineView</span></tt>:</p>
 <div class="highlight-python"><pre>val specialLayout = () =&gt;
   &lt;html&gt;
     &lt;body&gt;
-      {renderedView}
+      {respondedView}
     &lt;/body&gt;
   &lt;/html&gt;
 
 val s = "World"
-renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLayout _)</pre>
+respondInlineView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLayout _)</pre>
+</div>
+</div>
+<div class="section" id="scalate">
+<h2>Scalate<a class="headerlink" href="#scalate" title="Permalink to this headline">¶</a></h2>
+<p>For small views you can use Scala XML for convenience, but for big views you
+should use <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>.</p>
+<p>scr/main/scala/quickstart/controller/AppController.scala:</p>
+<div class="highlight-python"><pre>package quickstart.controller
+
+import xitrum.Controller
+
+trait AppController extends Controller {
+  override def layout = renderScalate(classOf[AppAction])
+}</pre>
+</div>
+<p>scr/main/scala/quickstart/action/MyController.scala:</p>
+<div class="highlight-python"><pre>package quickstart.controller
+
+class MyController extends AppController {
+  val index = GET {
+    respondView()
+  }
+
+  def hello(what: String) = "Hello %s".format(what)
+}</pre>
+</div>
+<p>scr/main/scalate/quickstart/controller/AppController.jade:</p>
+<div class="highlight-python"><pre>!!! 5
+html
+  head
+    = antiCSRFMeta
+    = xitrumCSS
+    title Welcome to Xitrum
+
+  body
+    != respondedView
+    = jsAtBottom</pre>
+</div>
+<p>scr/main/scalate/quickstart/controller/MyController/index.jade:</p>
+<div class="highlight-python"><pre>- import quickstart.controller.MyController
+
+a(href={currentRoute.url}) Path to current action
+p= currentController.asInstanceOf[MyController].hello("World")</pre>
+</div>
+<p>In views you can use all methods of the class <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/Controller.scala">xitrum.Controller</a>.
+If you want to have exactly instance of the current controller, cast <tt class="docutils literal"><span class="pre">currentController</span></tt> to
+the controller you wish.</p>
+<p>The default Scalate template type is <a class="reference external" href="http://scalate.fusesource.org/documentation/jade.html">Jade</a>.
+You can also use <a class="reference external" href="http://scalate.fusesource.org/documentation/mustache.html">Mustache</a>,
+<a class="reference external" href="http://scalate.fusesource.org/documentation/scaml-reference.html">Scaml</a>, or
+<a class="reference external" href="http://scalate.fusesource.org/documentation/ssp-reference.html">Ssp</a>.
+To config the default template type, see <cite>scalate</cite> in xitrum.json.</p>
+<p>You can override the default template type by passing &#8220;jade&#8221;, &#8220;mustache&#8221;, &#8220;scamal&#8221;,
+or &#8220;ssp&#8221; as the last parameter to <cite>renderScalate</cite> or <cite>respondView</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">renderScalate</span><span class="p">(</span><span class="n">classOf</span><span class="p">[</span><span class="n">AppAction</span><span class="p">],</span> <span class="s">&quot;mustache&quot;</span><span class="p">)</span>
+<span class="n">respondView</span><span class="p">(</span><span class="s">&quot;scaml&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -151,8 +204,9 @@ renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLayout _)<
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Action and View</a><ul>
+<li><a class="reference internal" href="#">Controller, action, and view</a><ul>
 <li><a class="reference internal" href="#layout">Layout</a></li>
+<li><a class="reference internal" href="#scalate">Scalate</a></li>
 </ul>
 </li>
 </ul>
@@ -165,7 +219,7 @@ renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLayout _)<
                         title="next chapter">RESTful APIs</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/action_view.txt"
+    <li><a href="_sources/controller_action_view.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -197,7 +251,7 @@ renderView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLayout _)<
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

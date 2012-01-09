@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum v1.7 documentation</title>
+    <title>Async response &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,19 +50,20 @@
   <div class="section" id="async-response">
 <h1>Async response<a class="headerlink" href="#async-response" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/lao_gamen_gargamel.jpg" src="_images/lao_gamen_gargamel.jpg" />
-<p>renderXXX:</p>
+<p>respondXXX:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">renderView</span></tt>: renders HTML with or without layout</li>
-<li><tt class="docutils literal"><span class="pre">renderText</span></tt>: renders a string without layout</li>
-<li><tt class="docutils literal"><span class="pre">renderJson</span></tt>: renderss JSON</li>
-<li><tt class="docutils literal"><span class="pre">renderBinary</span></tt>: renders an array of bytes</li>
-<li><tt class="docutils literal"><span class="pre">renderFile</span></tt>: sends a file directly from disk, very fast
+<li><tt class="docutils literal"><span class="pre">respondInlineView</span></tt>: responds HTML with or without layout</li>
+<li><tt class="docutils literal"><span class="pre">respondView</span></tt>: responds HTML with or without layout</li>
+<li><tt class="docutils literal"><span class="pre">respondText</span></tt>: responds a string without layout</li>
+<li><tt class="docutils literal"><span class="pre">respondJson</span></tt>: respondss JSON</li>
+<li><tt class="docutils literal"><span class="pre">respondBinary</span></tt>: responds an array of bytes</li>
+<li><tt class="docutils literal"><span class="pre">respondFile</span></tt>: sends a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
 (aka send-file) is used</li>
 </ul>
-<p>There is no default response. You must call renderXXX explicitly to send response
-to the client. If you don&#8217;t call renderXXX, the HTTP connection is kept for you,
-and you can call renderXXX later.</p>
+<p>There is no default response. You must call respondXXX explicitly to send response
+to the client. If you don&#8217;t call respondXXX, the HTTP connection is kept for you,
+and you can call respondXXX later.</p>
 <div class="section" id="chunked-response">
 <h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Chunked_transfer_encoding">Chunked response</a>
@@ -72,42 +73,40 @@ file that does may not fit memory.</p>
 
 val generator = new MyCsvGenerator
 val header = generator.getHeader
-renderText(header, "text/csv")
+respondText(header, "text/csv")
 
 while (generator.hasNextLine) {
   val line = generator.nextLine
-  renderText(line)
+  respondText(line)
 }
 
-renderLastChunk</pre>
+respondLastChunk()</pre>
 </div>
 <ol class="arabic simple">
 <li>Call <tt class="docutils literal"><span class="pre">response.setChunked(true)</span></tt></li>
-<li>Call renderXXX as many times as you want</li>
-<li>Lastly, call <tt class="docutils literal"><span class="pre">renderLastChunk</span></tt></li>
+<li>Call respondXXX as many times as you want</li>
+<li>Lastly, call <tt class="docutils literal"><span class="pre">respondLastChunk</span></tt></li>
 </ol>
 <p>Notes:</p>
 <ul class="simple">
-<li>Headers are only sent on the first renderXXX call.</li>
+<li>Headers are only sent on the first respondXXX call.</li>
 <li>Chunks cannot be used with <a class="reference internal" href="cache.html"><em>page or action cache</em></a>.</li>
 </ul>
 </div>
 <div class="section" id="websocket">
 <h2>WebSocket<a class="headerlink" href="#websocket" title="Permalink to this headline">¶</a></h2>
 <p>Example:</p>
-<div class="highlight-python"><pre>package quickstart.action
+<div class="highlight-python"><pre>package quickstart.controller
 
-import xitrum.Action
-import xitrum.annotation.WEBSOCKET
+import xitrum.Controller
 
-@WEBSOCKET("/hello_websocket")  // Entry point
-class HelloWebSocket extends Action {
-  override def execute {
-    webSocketHandshake  // Call this if you want to accept the WebSocket connection
+class HelloWebSocket extends Controller {
+  val index = WEBSOCKET("hello_websocket") {  // Entry point
+    webSocketHandshake()  // Call this if you want to accept the WebSocket connection
   }
 
   override def onWebSocketFrame(text: String) {
-    renderWebSocket(text.toUpperCase)  // Send back data to the WebSocket client
+    respondWebSocket(text.toUpperCase)  // Send back data to the WebSocket client
   }
 
   override def onWebSocketClose {
@@ -125,31 +124,26 @@ Xitrum uses Ajax long polling. <a class="reference external" href="http://en.wik
 will be supported in the future when all major browsers support it.</p>
 <div class="section" id="chat-example">
 <h3>Chat example<a class="headerlink" href="#chat-example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
-import xitrum.comet.CometPublishAction
-import xitrum.validation.Required
+<div class="highlight-python"><pre>import xitrum.Controller
+import xitrum.comet.CometPublishController
+import xitrum.validator.{Required, Validated}
 
-@GET("/chat")
-class ChatAction {
-  override def execute {
+class ChatController {
+  val index = GET("chat") {
     jsCometGet("chat", """
       function(channel, timestamp, body) {
         var wasScrollAtBottom = xitrum.isScrollAtBottom('#chatOutput');
-
-        var escaped = $('&lt;div/&gt;').text(body.chatInput[0]).html();
-        $('#chatOutput').append('- ' + escaped + '&lt;br /&gt;');
-
+        $('#chatOutput').append('- ' + xitrum.escape(body.chatInput[0]) + '&lt;br /&gt;');
         if (wasScrollAtBottom) xitrum.scrollToBottom('#chatOutput');
       }
     """)
 
-    renderView(
+    respondInlineView(
       &lt;div id="chatOutput"&gt;&lt;/div&gt;
 
-      &lt;form data-postback="submit" action={urlForPostback[CometPublishAction]} data-after="function() { $('#chatInput').attr('value', '') }"&gt;
-        {&lt;input type="hidden" name="channel" value="chat" /&gt; :: Validated}
-        {&lt;input type="text" id="chatInput" name="chatInput" /&gt; :: Required}
+      &lt;form data-postback="submit" action={CometController.publish.url} data-after="$('#chatInput').value('')"&gt;
+        &lt;input type="hidden" name="channel" value="chat" class="required" /&gt;
+        &lt;input type="text" id="chatInput" name="chatInput" class="required" /&gt;
       &lt;/form&gt;
     )
   }
@@ -157,32 +151,29 @@ class ChatAction {
 </div>
 <p><tt class="docutils literal"><span class="pre">jsCometGet</span></tt> will send long polling Ajax requests, get published messages,
 and call your callback function. The 3rd argument <tt class="docutils literal"><span class="pre">body</span></tt> is a hash
-containing everything inside the form commited to <tt class="docutils literal"><span class="pre">CometPublishAction</span></tt>.</p>
+containing everything inside the form commited to <tt class="docutils literal"><span class="pre">CometPublishController</span></tt>.</p>
 </div>
 <div class="section" id="publish-message">
 <h3>Publish message<a class="headerlink" href="#publish-message" title="Permalink to this headline">¶</a></h3>
-<p>In the example above, <tt class="docutils literal"><span class="pre">CometPublishAction</span></tt> will receive form post and publish
+<p>In the example above, <tt class="docutils literal"><span class="pre">CometPublishController</span></tt> will receive form post and publish
 the message for you. If you want to publish the message yourself, call <tt class="docutils literal"><span class="pre">Comet.publish</span></tt>:</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.GET
+<div class="highlight-python"><pre>import xitrum.Controller
 import xitrum.comet.Comet
-import xitrum.validation.Required
 
-@GET("/admin")
-class AdminAction extends Action {
-  override def execute {
-    renderView(
-      &lt;form data-postback="submit" action={urlForPostbackThis}&gt;
-        Message from admin:
-        &lt;input type="text" name={validate("body", Required)} /&gt;
+class AdminController extends Controller {
+  val index = GET("admin") {
+    respondInlineView(
+      &lt;form data-postback="submit" action={publish.url}&gt;
+        &lt;label&gt;Message from admin:&lt;/label&gt;
+        &lt;input type="text" name="body" class="required" /&gt;
       &lt;/form&gt;
     )
   }
 
-  override def postback {
+  val publish = POST("admin/chat") {
     val body = param("body")
     Comet.publish("chat", "[From admin]: " + body)
-    renderText("")
+    respondText("")
   }
 }</pre>
 </div>
@@ -250,7 +241,7 @@ class AdminAction extends Action {
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

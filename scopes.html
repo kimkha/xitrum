@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scopes &mdash; Xitrum v1.7 documentation</title>
+    <title>Scopes &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="Validation" href="validation.html" />
     <link rel="prev" title="Static files" href="static.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="static.html" title="Static files"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -92,12 +92,12 @@ object RVar {
   object title extends RequestVar[String]
 }</pre>
 </div>
-<p>AppAction.scala</p>
-<div class="highlight-python"><pre>import xitrum.Action
+<p>AppController.scala</p>
+<div class="highlight-python"><pre>import xitrum.Controller
 import xitrum.view.DocType
 
-trait AppAction extends Action {
-  override def layout = DocType.xhtmlTransitional(
+trait AppController extends Controller {
+  override def layout = DocType.html5(
     &lt;html&gt;
       &lt;head&gt;
         {antiCSRFMeta}
@@ -112,12 +112,12 @@ trait AppAction extends Action {
   )
 }</pre>
 </div>
-<p>ShowAction.scala</p>
-<div class="highlight-python"><pre>class ShowAction extends AppAction {
-  override def execute {
+<p>Articles.scala</p>
+<div class="highlight-python"><pre>class Articles extends AppController {
+  val show = GET(":id") {
     val (title, body) = ...  // Get from DB
     RVar.title.set(title)
-    renderView(body)
+    respondInlineView(body)
   }
 }</pre>
 </div>
@@ -294,7 +294,7 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
         <li class="right" >
           <a href="static.html" title="Static files"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

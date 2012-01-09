@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>JavaScript and JSON &mdash; Xitrum v1.7 documentation</title>
+    <title>JavaScript and JSON &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="Async response" href="async.html" />
     <link rel="prev" title="XML" href="xml.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="xml.html" title="XML"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,25 +55,23 @@
 <div class="section" id="add-javascript-fragments-to-view">
 <h3>Add JavaScript fragments to view<a class="headerlink" href="#add-javascript-fragments-to-view" title="Permalink to this headline">¶</a></h3>
 <p>In your action, call <tt class="docutils literal"><span class="pre">jsAddToView</span></tt> (multiple times if you need):</p>
-<div class="highlight-python"><pre>import xitrum.Action
-
-class MyAction extends AppAction {
-  override def execute {
+<div class="highlight-python"><pre>class MyController extends AppController {
+  val index = GET {
     ...
     jsAddToView("alert('Hello')")
     ...
     jsAddToView("alert('Hello again')")
     ...
-    renderView(&lt;p&gt;My view&lt;/p&gt;)
+    respondView(&lt;p&gt;My view&lt;/p&gt;)
   }
 }</pre>
 </div>
 <p>In your layout, call <tt class="docutils literal"><span class="pre">jsAtBottom</span></tt>:</p>
-<div class="highlight-python"><pre>import xitrum.Action
+<div class="highlight-python"><pre>import xitrum.Controller
 import xitrum.view.DocType
 
-trait AppAction extends Action {
-  override def layout = DocType.xhtmlTransitional(
+trait AppController extends Controller {
+  override def layout = DocType.html5(
     &lt;html&gt;
       &lt;head&gt;
         {antiCSRFMeta}
@@ -90,14 +88,12 @@ trait AppAction extends Action {
 </div>
 <div class="section" id="respond-javascript-directly-without-view">
 <h3>Respond JavaScript directly without view<a class="headerlink" href="#respond-javascript-directly-without-view" title="Permalink to this headline">¶</a></h3>
-<p>To render JavaScript:</p>
-<div class="highlight-python"><pre>jsRender("$('#error').html(%s)".format(jsEscape(&lt;p class="error"&gt;Could not login.&lt;/p&gt;)))
-or shorter:
-jsRenderFormat("$('#error').html(%s)", jsEscape(&lt;p class="error"&gt;Could not login.&lt;/p&gt;))</pre>
+<p>To respond JavaScript:</p>
+<div class="highlight-python"><pre>jsRespond("$('#error').html(%s)".format(jsEscape(&lt;p class="error"&gt;Could not login.&lt;/p&gt;)))</pre>
 </div>
 <p>To redirect:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">jsRedirectTo</span><span class="p">(</span><span class="s">&quot;http://cntt.tv/&quot;</span><span class="p">)</span>
-<span class="n">jsRedirectTo</span><span class="p">[</span><span class="n">LoginAction</span><span class="p">]</span>
+<span class="n">jsRedirectTo</span><span class="p">(</span><span class="n">AuthenticateController</span><span class="o">.</span><span class="n">login</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -108,7 +104,7 @@ jsRenderFormat("$('#error').html(%s)", jsEscape(&lt;p class="error"&gt;Could not
 Please read about it to know how to parse and generate JSON.</p>
 <p>To respond JSON:</p>
 <div class="highlight-python"><pre>val scalaData = List(1, 2, 3)  // An example
-renderJson(scalaData)</pre>
+respondJson(scalaData)</pre>
 </div>
 </div>
 </div>
@@ -172,7 +168,7 @@ renderJson(scalaData)</pre>
         <li class="right" >
           <a href="xml.html" title="XML"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

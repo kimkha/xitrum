@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RESTful APIs &mdash; Xitrum v1.7 documentation</title>
+    <title>RESTful APIs &mdash; Xitrum v1.8 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.7',
+        VERSION:     '1.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,9 +21,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
     <link rel="next" title="Postbacks" href="postback.html" />
-    <link rel="prev" title="Action and View" href="action_view.html" /> 
+    <link rel="prev" title="Controller, action, and view" href="controller_action_view.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,9 +36,9 @@
           <a href="postback.html" title="Postbacks"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="action_view.html" title="Action and View"
+          <a href="controller_action_view.html" title="Controller, action, and view"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -51,21 +51,13 @@
 <h1>RESTful APIs<a class="headerlink" href="#restful-apis" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s4.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s4.jpg" />
 <p>You can write RESTful APIs for iPhone, Android applications etc. very easily.</p>
-<div class="highlight-python"><pre>import xitrum.Action
-import xitrum.annotation.{GET, GETs}
+<div class="highlight-python"><pre>import xitrum.Controller
 
-@GETs(Array("/", "/articles"))
-class ArticleIndex extends Action {
-  override def execute {
-    //...
-  }
-}
+class Articles extends Controller {
+  pathPrefix = "articles"
 
-@GET("/articles/:id")
-class ArticleShow extends Action {
-  override def execute {
-    //...
-  }
+  val index = GET {...}
+  val show  = GET(":id) {...}
 }</pre>
 </div>
 <p>The same for POST, PUT, and DELETE.</p>
@@ -76,14 +68,15 @@ request body.</p>
 routing table and print it out for you so that you know what APIs your
 application has, like this:</p>
 <div class="highlight-python"><pre>[INFO] Routes:
-GET / quickstart.action.IndexAction</pre>
+GET /articles     quickstart.controller.Articles#index
+GET /articles/:id quickstart.controller.Articles#show</pre>
 </div>
-<p>You don&#8217;t need a seperate central config file like routes.rb of Rails.
-Annotation is used for URL routes, in the spirit of JAX-RS and Rails Engines.
-You don&#8217;t have to declare all routes in a single place. Think of annotations
-as distributed routes.You can plug an app into another app. If you have a
-blog engine, you can package it as a JAR file. Then you can plug that JAR file
-into another app.</p>
+<p>Routes are automatically collected in the spirit of JAX-RS (but without annotations!)
+and Rails Engines. You don&#8217;t have to declare all routes in a single place.
+Think of this feature as distributed routes. You can plug an app into another app.
+If you have a blog engine, you can package it as a JAR file, then you can put
+that JAR file into another app and that app automatically has blog feature!
+Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe way.</p>
 <div class="section" id="route-cache">
 <h2>Route cache<a class="headerlink" href="#route-cache" title="Permalink to this headline">¶</a></h2>
 <p>For better startup speed, routes are cached to file <tt class="docutils literal"><span class="pre">routes.sclasner</span></tt>.
@@ -93,31 +86,31 @@ delete <tt class="docutils literal"><span class="pre">routes.sclasner</span></tt
 source code repository.</p>
 </div>
 <div class="section" id="route-order-with-first-and-last">
-<h2>Route order with &#64;First and &#64;Last<a class="headerlink" href="#route-order-with-first-and-last" title="Permalink to this headline">¶</a></h2>
+<h2>Route order with first and last<a class="headerlink" href="#route-order-with-first-and-last" title="Permalink to this headline">¶</a></h2>
 <p>When you want to route like this:</p>
-<div class="highlight-python"><pre>/articles/:id --&gt; ArticleShow
-/articles/new --&gt; ArticleNew</pre>
+<div class="highlight-python"><pre>/articles/:id --&gt; Articles#show
+/articles/new --&gt; Articles#niw</pre>
 </div>
-<p>You must make sure the second route be checked first. <tt class="docutils literal"><span class="pre">&#64;First</span></tt> is for that purpose:</p>
-<div class="highlight-python"><pre>@GET("/articles/:id")
-class ArticleShow...
+<p>You must make sure the second route be checked first. <tt class="docutils literal"><span class="pre">first</span></tt> is for this purpose:</p>
+<div class="highlight-python"><pre>class Articles extends Controller {
+  pathPrefix = "articles"
 
-@First
-@GET("/articles/new")
-class ArticleNew...</pre>
+  val show = GET(":id") {...}
+  val niw  = first.GET("new") {...}
+}</pre>
 </div>
-<p><tt class="docutils literal"><span class="pre">&#64;Last</span></tt> is similar.</p>
+<p><tt class="docutils literal"><span class="pre">last</span></tt> is similar.</p>
 </div>
 <div class="section" id="anti-csrf">
 <h2>Anti-CSRF<a class="headerlink" href="#anti-csrf" title="Permalink to this headline">¶</a></h2>
 <p>For non-GET requests, Xitrum protects your web application from
 <a class="reference external" href="http://en.wikipedia.org/wiki/CSRF">Cross-site request forgery</a> by default.</p>
 <p>When you include <tt class="docutils literal"><span class="pre">antiCSRFMeta</span></tt> in your layout:</p>
-<div class="highlight-python"><pre>import xitrum.Action
+<div class="highlight-python"><pre>import xitrum.Controller
 import xitrum.view.DocType
 
-trait AppAction extends Action {
-  override def layout = DocType.xhtmlTransitional(
+trait AppController extends Controller {
+  override def layout = DocType.html5(
     &lt;html&gt;
       &lt;head&gt;
         {antiCSRFMeta}
@@ -133,10 +126,11 @@ trait AppAction extends Action {
 }</pre>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">&lt;head&gt;</span></tt> part will include something like this:</p>
-<div class="highlight-python"><pre>&lt;html&gt;
+<div class="highlight-python"><pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
   &lt;head&gt;
     ...
-    &lt;meta name="antiCSRFToken" content="5402330e-9916-40d8-a3f4-16b271d583be" /&gt;
+    &lt;meta name="csrf-token" content="5402330e-9916-40d8-a3f4-16b271d583be" /&gt;
     ...
   &lt;/head&gt;
   ...
@@ -150,23 +144,18 @@ jQuery.</p>
 <p>When you create APIs for machines, e.g. smartphones, you may want to skip this
 check. To skip for an action (and its subclasses), make your action extend the
 trait xitrum.SkipCSRFCheck:</p>
-<div class="highlight-python"><pre>import xitrum.{Action, SkipCSRFCheck}
-import xitrum.annotation.POST
+<div class="highlight-python"><pre>import xitrum.{Controller, SkipCSRFCheck}
 
-trait API extends Action with SkipCSRFCheck
+trait API extends Controller with SkipCSRFCheck
 
-@POST("/api/positions")
 class LogPositionAPI extends API {
-  override def execute {
-    //...
-  }
+  pathPrefix = "api/positions"
+  val log = POST {...}
 }
 
-@POST("/api/todos")
 class CreateTodoAPI extends API {
-  override def execute {
-    //...
-  }
+  pathPrefix = "api/todos"
+  val create = POST {...}
 }</pre>
 </div>
 </div>
@@ -182,7 +171,7 @@ class CreateTodoAPI extends API {
   <ul>
 <li><a class="reference internal" href="#">RESTful APIs</a><ul>
 <li><a class="reference internal" href="#route-cache">Route cache</a></li>
-<li><a class="reference internal" href="#route-order-with-first-and-last">Route order with &#64;First and &#64;Last</a></li>
+<li><a class="reference internal" href="#route-order-with-first-and-last">Route order with first and last</a></li>
 <li><a class="reference internal" href="#anti-csrf">Anti-CSRF</a></li>
 <li><a class="reference internal" href="#skipcsrfcheck">SkipCSRFCheck</a></li>
 </ul>
@@ -190,8 +179,8 @@ class CreateTodoAPI extends API {
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="action_view.html"
-                        title="previous chapter">Action and View</a></p>
+  <p class="topless"><a href="controller_action_view.html"
+                        title="previous chapter">Controller, action, and view</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="postback.html"
                         title="next chapter">Postbacks</a></p>
@@ -227,9 +216,9 @@ class CreateTodoAPI extends API {
           <a href="postback.html" title="Postbacks"
              >next</a> |</li>
         <li class="right" >
-          <a href="action_view.html" title="Action and View"
+          <a href="controller_action_view.html" title="Controller, action, and view"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
