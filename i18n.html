@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>I18n &mdash; Xitrum v1.8 documentation</title>
+    <title>I18n &mdash; Xitrum v1.8.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8',
+        VERSION:     '1.8.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8.1 documentation" href="index.html" />
     <link rel="next" title="Deploy to production server" href="deploy.html" />
     <link rel="prev" title="Cache" href="cache.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="cache.html" title="Cache"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,19 +58,16 @@
 <span class="n">tc</span><span class="p">(</span><span class="s">&quot;Context&quot;</span><span class="p">,</span> <span class="s">&quot;Message&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In other places like models, you need to pass the action to them and call
-<tt class="docutils literal"><span class="pre">t</span></tt> and <tt class="docutils literal"><span class="pre">tc</span></tt> on it:</p>
+<p>In a controller or action, just call them.
+In other places like models, you need to pass the current controller to them and
+call <tt class="docutils literal"><span class="pre">t</span></tt> and <tt class="docutils literal"><span class="pre">tc</span></tt> on it:</p>
 <div class="highlight-python"><pre>// In an action
-val errorMessageo = MyModel.validate(this, data)
+respondText(MyModel.hello(this))
 
 // In the model
 import xitrum.I18n
 object MyModel {
-  // Returns None on success or Some(error message) on failure
-  def validate(i18n: I18n, data: Data): Option[String] = {
-    if (...) return Some(i18n.t("An error message))
-    ...
-  }
+  def hello(i18n) = i18n.t("Hello World")
 }</pre>
 </div>
 </div>
@@ -104,7 +101,7 @@ translate.</p>
 <div class="highlight-python"><pre>src
   main
     scala
-      ...
+    view
     resources
       i18n
         en.po
@@ -131,6 +128,8 @@ another.jar
 <h2>Validation messages<a class="headerlink" href="#validation-messages" title="Permalink to this headline">¶</a></h2>
 <p>jQuery Validation plugin provides <a class="reference external" href="https://github.com/jzaefferer/jquery-validation/tree/master/localization">i18n error messages</a>.
 Xitrum automatically include the message file corresponding to the current language.</p>
+<p>For server side default validators in <tt class="docutils literal"><span class="pre">xitrum.validator</span></tt> package, Xitrum also
+provide translation for them.</p>
 </div>
 <div class="section" id="plural-forms">
 <h2>Plural forms<a class="headerlink" href="#plural-forms" title="Permalink to this headline">¶</a></h2>
@@ -217,7 +216,7 @@ nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</p
         <li class="right" >
           <a href="cache.html" title="Cache"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

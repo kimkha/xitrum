@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum v1.8 documentation</title>
+    <title>Async response &mdash; Xitrum v1.8.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8',
+        VERSION:     '1.8.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8.1 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -129,7 +129,7 @@ import xitrum.comet.CometPublishController
 import xitrum.validator.{Required, Validated}
 
 class ChatController {
-  val index = GET("chat") {
+  def index = GET("chat") {
     jsCometGet("chat", """
       function(channel, timestamp, body) {
         var wasScrollAtBottom = xitrum.isScrollAtBottom('#chatOutput');
@@ -161,7 +161,7 @@ the message for you. If you want to publish the message yourself, call <tt class
 import xitrum.comet.Comet
 
 class AdminController extends Controller {
-  val index = GET("admin") {
+  def index = GET("admin") {
     respondInlineView(
       &lt;form data-postback="submit" action={publish.url}&gt;
         &lt;label&gt;Message from admin:&lt;/label&gt;
@@ -170,7 +170,7 @@ class AdminController extends Controller {
     )
   }
 
-  val publish = POST("admin/chat") {
+  def publish = POST("admin/chat") {
     val body = param("body")
     Comet.publish("chat", "[From admin]: " + body)
     respondText("")
@@ -241,7 +241,7 @@ class AdminController extends Controller {
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

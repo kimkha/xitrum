@@ -20,7 +20,7 @@ Normally, you write view directly in its action.
   import xitrum.Controller
 
   class MyController extends Controller {
-    val index = GET {
+    def index = GET {
       val s = "World"  // Will be automatically escaped
 
       respondInlineView(
@@ -88,7 +88,7 @@ MyController.scala
   import xitrum.Controller
 
   class MyController extends AppController {
-    val index = GET {
+    def index = GET {
       val s = "World"
       respondInlineView(<p>Hello <em>{s}</em>!</p>)
     }
@@ -133,7 +133,7 @@ scr/main/scala/quickstart/action/MyController.scala:
   package quickstart.controller
 
   class MyController extends AppController {
-    val index = GET {
+    def index = GET {
       respondView()
     }
 
@@ -161,7 +161,7 @@ scr/main/scalate/quickstart/controller/MyController/index.jade:
 
   - import quickstart.controller.MyController
 
-  a(href={currentRoute.url}) Path to current action
+  a(href={currentAction.url}) Path to current action
   p= currentController.asInstanceOf[MyController].hello("World")
 
 In views you can use all methods of the class `xitrum.Controller <https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/Controller.scala>`_.

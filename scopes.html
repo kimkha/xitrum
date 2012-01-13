@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scopes &mdash; Xitrum v1.8 documentation</title>
+    <title>Scopes &mdash; Xitrum v1.8.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8',
+        VERSION:     '1.8.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8.1 documentation" href="index.html" />
     <link rel="next" title="Validation" href="validation.html" />
     <link rel="prev" title="Static files" href="static.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="static.html" title="Static files"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,7 +59,7 @@
 <ol class="arabic simple">
 <li><tt class="docutils literal"><span class="pre">uriParams</span></tt>: params after the ? mark in the URL, example: <a class="reference external" href="http://example.com/blah?x=1&amp;y=2">http://example.com/blah?x=1&amp;y=2</a></li>
 <li><tt class="docutils literal"><span class="pre">bodyParams</span></tt>: params in POST request body</li>
-<li><tt class="docutils literal"><span class="pre">pathParams</span></tt>: params embedded in the URL, example: <tt class="docutils literal"><span class="pre">&#64;GET(&quot;/articles/:id/:title&quot;)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">pathParams</span></tt>: params embedded in the URL, example: <tt class="docutils literal"><span class="pre">GET(&quot;articles/:id/:title&quot;)</span></tt></li>
 </ol>
 <p>These params are merged in the above order as <tt class="docutils literal"><span class="pre">textParams</span></tt>
 (from 1 to 3, the latter will override the former).</p>
@@ -114,7 +114,7 @@ trait AppController extends Controller {
 </div>
 <p>Articles.scala</p>
 <div class="highlight-python"><pre>class Articles extends AppController {
-  val show = GET(":id") {
+  def show = GET(":id") {
     val (title, body) = ...  // Get from DB
     RVar.title.set(title)
     respondInlineView(body)
@@ -154,10 +154,10 @@ serializable.</p>
 <p><a class="reference external" href="http://guides.rubyonrails.org/security.html#session-fixation">One line of code will protect you from session fixation</a>.</p>
 <p>Read the link above to know about session fixation. To prevent session fixation
 attack, in the action that lets users login, call <tt class="docutils literal"><span class="pre">resetSession</span></tt>.</p>
-<div class="highlight-python"><pre>class LoginAction extends Action {
-  override def execute {
+<div class="highlight-python"><pre>class LoginController extends Controller {
+  def login = GET("login") {
     ...
-    resetSession  // Reset first before doing anything else with the session
+    resetSession()  // Reset first before doing anything else with the session
     session("username") = username
   }
 }</pre>
@@ -294,7 +294,7 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
         <li class="right" >
           <a href="static.html" title="Static files"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

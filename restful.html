@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RESTful APIs &mdash; Xitrum v1.8 documentation</title>
+    <title>RESTful APIs &mdash; Xitrum v1.8.1 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8',
+        VERSION:     '1.8.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8.1 documentation" href="index.html" />
     <link rel="next" title="Postbacks" href="postback.html" />
     <link rel="prev" title="Controller, action, and view" href="controller_action_view.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="controller_action_view.html" title="Controller, action, and view"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -56,8 +56,8 @@
 class Articles extends Controller {
   pathPrefix = "articles"
 
-  val index = GET {...}
-  val show  = GET(":id) {...}
+  def index = GET {...}
+  def show  = GET(":id) {...}
 }</pre>
 </div>
 <p>The same for POST, PUT, and DELETE.</p>
@@ -95,8 +95,8 @@ source code repository.</p>
 <div class="highlight-python"><pre>class Articles extends Controller {
   pathPrefix = "articles"
 
-  val show = GET(":id") {...}
-  val niw  = first.GET("new") {...}
+  def show = GET(":id") {...}
+  def niw  = first.GET("new") {...}
 }</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">last</span></tt> is similar.</p>
@@ -150,12 +150,12 @@ trait API extends Controller with SkipCSRFCheck
 
 class LogPositionAPI extends API {
   pathPrefix = "api/positions"
-  val log = POST {...}
+  def log = POST {...}
 }
 
 class CreateTodoAPI extends API {
   pathPrefix = "api/todos"
-  val create = POST {...}
+  def create = POST {...}
 }</pre>
 </div>
 </div>
@@ -218,7 +218,7 @@ class CreateTodoAPI extends API {
         <li class="right" >
           <a href="controller_action_view.html" title="Controller, action, and view"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
