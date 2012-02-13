@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; Xitrum v1.8.1 documentation</title>
+    <title>Introduction &mdash; Xitrum v1.8.4 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.1',
+        VERSION:     '1.8.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8.1 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8.4 documentation" href="index.html" />
     <link rel="next" title="Tutorial" href="tutorial.html" />
     <link rel="prev" title="Xitrum’s documentation" href="index.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="index.html" title="Xitrum’s documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,15 +50,31 @@
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" />
-<p>Xitrum (means &#8220;Smurf&#8221; in Vietnamese) is an async and clustered Scala web framework
+<p><a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
+is an async and clustered Scala web framework
 and HTTP(S) server on top of <a class="reference external" href="http://www.jboss.org/netty">Netty</a>
-and <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>:</p>
+and <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>.
+From <a class="reference external" href="https://groups.google.com/group/xitrum-framework/msg/d6de4865a8576d39">a user</a>:</p>
+<blockquote>
+<div><p>Wow, this is a really impressive body of work, arguably the most
+complete Scala framework outside of Lift (but much easier to use).</p>
+<p><a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a> is truly a full stack web framework, all the bases are covered,
+including wtf-am-I-on-the-moon extras like ETags, static file cache
+identifiers &amp; auto-gzip compression. Tack on built-in JSON converter,
+before/around/after interceptors, request/session/cookie/flash scopes,
+integrated validation (server &amp; client-side, nice), built-in cache
+layer (<a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>), i18n a la GNU gettext, Netty (with Nginx, hello
+blazing fast), etc. and you have, wow.</p>
+</div></blockquote>
+<p>Features:</p>
 <ul class="simple">
-<li>It tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
+<li>Fast built-in HTTP and HTTPS web server based on <a class="reference external" href="http://www.jboss.org/netty">Netty</a>.</li>
+<li>The framework tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
 and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
-use than Lift. You can easily create both RESTful APIs and postbacks. Xitrum
+use than Lift. You can easily create both RESTful APIs and postbacks. <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
 is controller-first like Scalatra, not
-<a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.</li>
+<a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.
+Most people are familliar with controller-first style.</li>
 <li>Routes are automatically collected in the spirit of JAX-RS (but without annotations!)
 and Rails Engines. You don&#8217;t have to declare all routes in a single place.
 Think of this feature as distributed routes. You can plug an app into another app.
@@ -71,13 +87,14 @@ to respond immediately. Chunked response (streaming), WebSocket, and Comet
 (using WebSocket or long-polling) are supported.</li>
 <li>Views can be written in a separate <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
 template file or Scala inline XML. Both are typesafe.</li>
-<li>Sessions can be stored in cookies (more scalable) or clustered Hazelcast (more secure).
-Hazelcast is recommended when using continuations-based Actions, since serialized
+<li>Sessions can be stored in cookies (more scalable) or clustered <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> (more secure).
+<a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> is recommended when using continuations-based Actions, since serialized
 continuations are usually too big to store in cookies.</li>
 <li><a class="reference external" href="http://docs.jquery.com/Plugins/validation">jQuery Validation</a> is integrated
 for browser side and server side validation.</li>
 <li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>.
 Translation text extraction is done automatically.
+You don&#8217;t have to manually mess with properties files.
 You can use powerful tools like <a class="reference external" href="http://www.poedit.net/screenshots.php">Poedit</a>
 for translating and merging translations.
 gettext is unlike most other solutions, both singular and plural forms are supported.</li>
@@ -88,7 +105,7 @@ like conditional GET are applied.
 At the web framework layer you have can declare page, action, and object cache
 in the Rails style.</li>
 </ul>
-<p>Hazelcast also gives:</p>
+<p><a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> also gives:</p>
 <ul class="simple">
 <li>In-process and distribued cache, you don&#8217;t need separate cache servers.</li>
 <li>In-process and distribued <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet (with WebSocket)</a>,
@@ -108,35 +125,25 @@ you can scale Comet to multiple web servers.</li>
 | +--------------+ |
 +------------------+</pre>
 </div>
-<p>Xitrum is <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">open source</a>, please join
+<p><a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a> is <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">open source</a>, please join
 its <a class="reference external" href="http://groups.google.com/group/xitrum-framework">Google group</a>.</p>
-<div class="section" id="quick-start">
-<h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>$ git clone https://github.com/ngocdaothanh/xitrum-quickstart.git
-$ cd xitrum-quickstart
+<div class="section" id="create-new-empty-xitrum-project">
+<h2>Create new empty Xitrum project<a class="headerlink" href="#create-new-empty-xitrum-project" title="Permalink to this headline">¶</a></h2>
+<p>To create a new empty project, in Rails you have <tt class="docutils literal"><span class="pre">rails</span> <span class="pre">new</span></tt>, in Cake you have
+<tt class="docutils literal"><span class="pre">cake</span> <span class="pre">new</span></tt>. In <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a> you download
+a <a class="reference external" href="http://cloud.github.com/downloads/ngocdaothanh/xitrum-new/xitrum-new.zip">xitrum-new.zip</a>:</p>
+<div class="highlight-python"><pre>$ wget http://cloud.github.com/downloads/ngocdaothanh/xitrum-new/xitrum-new.zip
+$ unzip xitrum-new.zip
+$ cd xitrum-new
 $ sbt/sbt run</pre>
 </div>
-<p>Now you have a sample project running at <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>
+<p>Now you have a new empty project running at <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>
 and <a class="reference external" href="https://localhost:4430/">https://localhost:4430/</a></p>
-<p>After playing with the quickstart project, please read
-<a class="reference external" href="http://ngocdaothanh.github.com/xitrum">full documentation</a> for details.</p>
-<p>From <a class="reference external" href="https://groups.google.com/group/xitrum-framework/msg/d6de4865a8576d39">a reader</a>:</p>
-<blockquote>
-<div><p>Wow, this is a really impressive body of work, arguably the most
-complete Scala framework outside of Lift (but much easier to use).</p>
-<p>Xitrum is truly a full stack web framework, all the bases are covered,
-including wtf-am-I-on-the-moon extras like ETags, static file cache
-identifiers &amp; auto-gzip compression. Tack on built-in JSON converter,
-before/around/after interceptors, request/session/cookie/flash scopes,
-integrated validation (server &amp; client-side, nice), built-in cache
-layer (Hazelcast), i18n a la GNU gettext, Netty (with Nginx, hello
-blazing fast), etc. and you have, wow.</p>
-</div></blockquote>
 </div>
 <div class="section" id="samples">
 <h2>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/ngocdaothanh/xitrum-quickstart">Quickstart</a></li>
+<li><a class="reference external" href="https://github.com/ngocdaothanh/xitrum-demos">Xitrum Demos</a></li>
 <li><a class="reference external" href="https://github.com/ngocdaothanh/comy">Comy</a></li>
 </ul>
 </div>
@@ -151,7 +158,7 @@ blazing fast), etc. and you have, wow.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
-<li><a class="reference internal" href="#quick-start">Quick start</a></li>
+<li><a class="reference internal" href="#create-new-empty-xitrum-project">Create new empty Xitrum project</a></li>
 <li><a class="reference internal" href="#samples">Samples</a></li>
 </ul>
 </li>
@@ -197,7 +204,7 @@ blazing fast), etc. and you have, wow.</p>
         <li class="right" >
           <a href="index.html" title="Xitrum’s documentation"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
