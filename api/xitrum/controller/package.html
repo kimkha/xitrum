@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>xitrum.controller</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
+      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../lib/package_big.png" />
+        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a></p>
+        <h1>controller</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="kind">package</span>
+      <span class="symbol"> 
+        <span class="name">controller</span>
+        
+        
+      </span>
+      </h4>
+      
+          <div class="fullcommenttop" id="comment"></div>
+        
+
+      <div id="template">
+
+        <div id="mbrsel">
+          <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+          
+          
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="xitrum.controller.Action" data-isabs="false">
+      <a id="Action:Action"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="Action.html"><span class="name">Action</span></a>
+        
+        <span class="params">(<span name="route">route: Route</span>, <span name="method">method: Method</span>, <span name="body">body: () ⇒ Unit</span>, <span name="cacheSeconds">cacheSeconds: Int</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt"></p>
+    </li><li visbl="pub" name="xitrum.controller.ActionFactory" data-isabs="true">
+      <a id="ActionFactory:ActionFactory"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="ActionFactory.html"><span class="name">ActionFactory</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">val action1 = GET(&quot;pattern&quot;) {
+}</p>
+    </li><li visbl="pub" name="xitrum.controller.AfterFilter" data-isabs="false">
+      <a id="AfterFilter:AfterFilter"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="AfterFilter.html"><span class="name">AfterFilter</span></a>
+        
+        <span class="params">(<span name="body">body: () ⇒ Any</span>, <span name="only">only: ArrayBuffer[Route]</span>, <span name="except">except: ArrayBuffer[Route]</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.controller.AroundFilter" data-isabs="false">
+      <a id="AroundFilter:AroundFilter"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="AroundFilter.html"><span class="name">AroundFilter</span></a>
+        
+        <span class="params">(<span name="body">body: (() ⇒ Any) ⇒ Any</span>, <span name="only">only: ArrayBuffer[Route]</span>, <span name="except">except: ArrayBuffer[Route]</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.controller.BasicAuthentication" data-isabs="true">
+      <a id="BasicAuthentication:BasicAuthentication"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="BasicAuthentication.html"><span class="name">BasicAuthentication</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.controller.BeforeFilter" data-isabs="false">
+      <a id="BeforeFilter:BeforeFilter"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="BeforeFilter.html"><span class="name">BeforeFilter</span></a>
+        
+        <span class="params">(<span name="body">body: () ⇒ Boolean</span>, <span name="only">only: ArrayBuffer[Route]</span>, <span name="except">except: ArrayBuffer[Route]</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.controller.Filter" data-isabs="true">
+      <a id="Filter:Filter"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Filter.html"><span class="name">Filter</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.controller.Net" data-isabs="true">
+      <a id="Net:Net"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Net.html"><span class="name">Net</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.controller.Redirect" data-isabs="true">
+      <a id="Redirect:Redirect"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="Redirect.html"><span class="name">Redirect</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.controller.UrlFor" data-isabs="true">
+      <a id="UrlFor:UrlFor"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="UrlFor.html"><span class="name">UrlFor</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.controller.WebSocket" data-isabs="true">
+      <a id="WebSocket:WebSocket"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="WebSocket.html"><span class="name">WebSocket</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+        
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="xitrum.controller.PathPrefix" data-isabs="false">
+      <a id="PathPrefix:PathPrefix"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="PathPrefix$.html"><span class="name">PathPrefix</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+
+      </div>
+      
+      <div id="tooltip"></div>
+      
+    </body>
+      </html>

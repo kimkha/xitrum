@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>xitrum.routing</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
+      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../lib/package_big.png" />
+        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a></p>
+        <h1>routing</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="kind">package</span>
+      <span class="symbol"> 
+        <span class="name">routing</span>
+        
+        
+      </span>
+      </h4>
+      
+          <div class="fullcommenttop" id="comment"></div>
+        
+
+      <div id="template">
+
+        <div id="mbrsel">
+          <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+          
+          
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+
+        
+
+        <div class="types members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="xitrum.routing.package#CompiledPattern" data-isabs="false">
+      <a id="CompiledPattern:CompiledPattern"></a>
+      <h4 class="signature">
+      <span class="kind">type</span>
+      <span class="symbol"> 
+        <span class="name">CompiledPattern</span>
+        
+        <span class="result"> = <span name="scala.collection.Seq" class="extype">Seq</span>[(String, <span name="scala.Boolean" class="extype">Boolean</span>)]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.routing.package" class="extype" href="package$.html">package</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.routing.JSRoutesController" data-isabs="false">
+      <a id="JSRoutesController:JSRoutesController"></a>
+      <h4 class="signature">
+      <span class="kind">class</span>
+      <span class="symbol"> 
+        <a href="JSRoutesController.html"><span class="name">JSRoutesController</span></a>
+        
+        <span class="result"> extends RequestEnv with Controller</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.Route" data-isabs="false">
+      <a id="Route:Route"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="Route.html"><span class="name">Route</span></a>
+        
+        <span class="params">(<span name="httpMethod">httpMethod: HttpMethod</span>, <span name="order">order: RouteOrder</span>, <span name="compiledPattern">compiledPattern: CompiledPattern</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.RouteCollector" data-isabs="false">
+      <a id="RouteCollector:RouteCollector"></a>
+      <h4 class="signature">
+      <span class="kind">class</span>
+      <span class="symbol"> 
+        <a href="RouteCollector.html"><span class="name">RouteCollector</span></a>
+        
+        <span class="result"> extends Logger</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Scan all classes to collect routes from controllers.</p>
+    </li></ol>
+            </div>
+        
+        
+
+        <div class="values members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="xitrum.routing.ControllerReflection" data-isabs="false">
+      <a id="ControllerReflection:ControllerReflection"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="ControllerReflection$.html"><span class="name">ControllerReflection</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.HttpMethodWebSocket" data-isabs="false">
+      <a id="HttpMethodWebSocket:HttpMethodWebSocket"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="HttpMethodWebSocket$.html"><span class="name">HttpMethodWebSocket</span></a>
+        
+        <span class="result"> extends HttpMethod</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.JSRoutesController" data-isabs="false">
+      <a id="JSRoutesController:JSRoutesController"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="JSRoutesController$.html"><span class="name">JSRoutesController</span></a>
+        
+        <span class="result"> extends JSRoutesController</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.RouteOrder" data-isabs="false">
+      <a id="RouteOrder:RouteOrder"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="RouteOrder$.html"><span class="name">RouteOrder</span></a>
+        
+        <span class="result"> extends Enumeration</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.Routes" data-isabs="false">
+      <a id="Routes:Routes"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="Routes$.html"><span class="name">Routes</span></a>
+        
+        <span class="result"> extends Logger</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+
+      </div>
+      
+      <div id="tooltip"></div>
+      
+    </body>
+      </html>
