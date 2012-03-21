@@ -28,7 +28,7 @@
       </span>
       </h4>
       
-          <div class="fullcommenttop" id="comment"><div class="toggleContainer block">
+          <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Needs to be Serializable to be stored in Hazelcast</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span name="scala.Serializable" class="extype">Serializable</span>, <span name="java.io.Serializable" class="extype">Serializable</span>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div></div>
@@ -63,7 +63,7 @@
       <span class="symbol"> 
         <span class="name">CometMessage</span>
         
-        <span class="params">(<span name="channel">channel: String</span>, <span name="timestamp">timestamp: <span name="scala.Long" class="extype">Long</span></span>, <span name="body">body: Params</span>)</span>
+        <span class="params">(<span name="topic">topic: String</span>, <span name="timestamp">timestamp: <span name="scala.Long" class="extype">Long</span></span>, <span name="body">body: Params</span>)</span>
       </span>
       </h4>
       
@@ -150,17 +150,6 @@
         <span class="name">body</span>
         
         <span class="result">: Params</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.comet.CometMessage#channel" data-isabs="false">
-      <a id="channel:String"></a>
-      <h4 class="signature">
-      <span class="kind">val</span>
-      <span class="symbol"> 
-        <span class="name">channel</span>
-        
-        <span class="result">: String</span>
       </span>
       </h4>
       
@@ -302,7 +291,7 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="scala.AnyRef#toString" data-isabs="false">
+    </li><li visbl="pub" name="xitrum.comet.CometMessage#toString" data-isabs="false">
       <a id="toString():String"></a>
       <h4 class="signature">
       <span class="kind">def</span>
@@ -312,7 +301,18 @@
         <span class="params">()</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.comet.CometMessage" class="extype" href="">CometMessage</a> → AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.comet.CometMessage#topic" data-isabs="false">
+      <a id="topic:String"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">topic</span>
+        
+        <span class="result">: String</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
       <a id="wait():Unit"></a>
       <h4 class="signature">

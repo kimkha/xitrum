@@ -276,7 +276,10 @@ the current process!
         <span class="result">: <span name="com.hazelcast.core.HazelcastInstance" class="extype">HazelcastInstance</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Use lazy to avoid starting Hazelcast if it is not used
+(starting Hazelcast takes several seconds, sometimes we want to work in
+sbt console mode and don't like this overhead)
+</p>
     </li><li visbl="pub" name="scala.Any#isInstanceOf" data-isabs="false">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <h4 class="signature">

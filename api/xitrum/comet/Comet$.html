@@ -65,10 +65,10 @@
       <span class="symbol"> 
         <span class="name">MessageListener</span>
         
-        <span class="result"> = (<a name="xitrum.comet.CometMessage" class="extype" href="CometMessage.html">CometMessage</a>) ⇒ <span name="scala.Boolean" class="extype">Boolean</span></span>
+        <span class="result"> = (Seq[<a name="xitrum.comet.CometMessage" class="extype" href="CometMessage.html">CometMessage</a>]) ⇒ <span name="scala.Boolean" class="extype">Boolean</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">The listener returns true if it wants itself to be removed.</p>
+      <p class="shortcomment cmt">The listener returns true if it wants itself to be unsubscribe.</p>
     </li></ol>
             </div>
         
@@ -131,17 +131,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.comet.Comet#addMessageListener" data-isabs="false">
-      <a id="addMessageListener(String,MessageListener):Unit"></a>
-      <h4 class="signature">
-      <span class="kind">def</span>
-      <span class="symbol"> 
-        <span class="name">addMessageListener</span>
-        
-        <span class="params">(<span name="channel">channel: String</span>, <span name="listener">listener: MessageListener</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -215,13 +204,13 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li visbl="pub" name="xitrum.comet.Comet#getMessages" data-isabs="false">
-      <a id="getMessages(String,Long):Iterable[CometMessage]"></a>
+      <a id="getMessages(String,Long):Seq[CometMessage]"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">getMessages</span>
         
-        <span class="params">(<span name="channel">channel: String</span>, <span name="lastTimestamp">lastTimestamp: <span name="scala.Long" class="extype">Long</span></span>)</span><span class="result">: Iterable[<a name="xitrum.comet.CometMessage" class="extype" href="CometMessage.html">CometMessage</a>]</span>
+        <span class="params">(<span name="topic">topic: String</span>, <span name="lastTimestamp">lastTimestamp: <span name="scala.Long" class="extype">Long</span></span>)</span><span class="result">: Seq[<a name="xitrum.comet.CometMessage" class="extype" href="CometMessage.html">CometMessage</a>]</span>
       </span>
       </h4>
       
@@ -287,18 +276,30 @@
       <span class="symbol"> 
         <span class="name">publish</span>
         
-        <span class="params">(<span name="channel">channel: String</span>, <span name="message">message: Params</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="params">(<span name="topic">topic: String</span>, <span name="message">message: Params</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.comet.Comet#removeMessageListener" data-isabs="false">
-      <a id="removeMessageListener(String,MessageListener):Unit"></a>
+    </li><li visbl="pub" name="xitrum.comet.Comet#subscribe" data-isabs="false">
+      <a id="subscribe(String,MessageListener,Long):Boolean"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
-        <span class="name">removeMessageListener</span>
+        <span class="name">subscribe</span>
         
-        <span class="params">(<span name="channel">channel: String</span>, <span name="listener">listener: MessageListener</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="params">(<span name="topic">topic: String</span>, <span name="listener">listener: MessageListener</span>, <span name="lastTimestamp">lastTimestamp: <span name="scala.Long" class="extype">Long</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Subscribe and get existing messages at the same time.</p><div class="fullcomment"><div class="comment cmt"><p>Subscribe and get existing messages at the same time.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if the listener has been subscribed
+</p></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.comet.Comet#subscribe" data-isabs="false">
+      <a id="subscribe(String,MessageListener):Unit"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">subscribe</span>
+        
+        <span class="params">(<span name="topic">topic: String</span>, <span name="listener">listener: MessageListener</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       
@@ -324,6 +325,17 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.comet.Comet#unsubscribe" data-isabs="false">
+      <a id="unsubscribe(String,MessageListener):Unit"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">unsubscribe</span>
+        
+        <span class="params">(<span name="topic">topic: String</span>, <span name="listener">listener: MessageListener</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
       <a id="wait():Unit"></a>
       <h4 class="signature">

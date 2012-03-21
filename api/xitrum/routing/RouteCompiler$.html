@@ -2,35 +2,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.handler.down.XSendResource</title>
+          <title>xitrum.routing.RouteCompiler</title>
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
-      <script type="text/javascript" src="../../../lib/jquery.js"></script>
-      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
+      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
     
         </head>
         <body class="value">
       <div id="definition">
-        <a title="Go to companion" href="XSendResource.html"><img src="../../../lib/object_to_class_big.png" /></a>
-        <p id="owner"><a name="xitrum" class="extype" href="../../package.html">xitrum</a>.<a name="xitrum.handler" class="extype" href="../package.html">handler</a>.<a name="xitrum.handler.down" class="extype" href="package.html">down</a></p>
-        <h1><a title="Go to companion" href="XSendResource.html">XSendResource</a></h1>
+        <img src="../../lib/object_big.png" />
+        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a>.<a name="xitrum.routing" class="extype" href="package.html">routing</a></p>
+        <h1>RouteCompiler</h1>
       </div>
 
       <h4 class="signature" id="signature">
       <span class="kind">object</span>
       <span class="symbol"> 
-        <span class="name">XSendResource</span>
+        <span class="name">RouteCompiler</span>
         
-        <span class="result"> extends <a name="xitrum.Logger" class="extype" href="../../Logger.html">Logger</a></span>
+        <span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
           <div class="fullcommenttop" id="comment"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a name="xitrum.Logger" class="extype" href="../../Logger.html">Logger</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
+          <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div></div>
         
 
@@ -46,7 +46,7 @@
                 <span class="filtertype">Inherited</span>
                 <ol><li class="hideall out"><span>Hide All</span></li>
                 <li class="showall in"><span>Show all</span></li></ol>
-                <ol id="linearization"><li name="xitrum.handler.down.XSendResource" class="in"><span>XSendResource</span></li><li name="xitrum.Logger" class="in"><span>Logger</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+                <ol id="linearization"><li name="xitrum.routing.RouteCompiler" class="in"><span>RouteCompiler</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
               </div>
           <div id="visbl">
               <span class="filtertype">Visibility</span>
@@ -117,28 +117,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.down.XSendResource#CHUNK_SIZE" data-isabs="false">
-      <a id="CHUNK_SIZE:Int"></a>
-      <h4 class="signature">
-      <span class="kind">val</span>
-      <span class="symbol"> 
-        <span class="name">CHUNK_SIZE</span>
-        
-        <span class="result">: <span name="scala.Int" class="extype">Int</span></span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.handler.down.XSendResource#X_SENDRESOURCE_HEADER" data-isabs="false">
-      <a id="X_SENDRESOURCE_HEADER:String"></a>
-      <h4 class="signature">
-      <span class="kind">val</span>
-      <span class="symbol"> 
-        <span class="name">X_SENDRESOURCE_HEADER</span>
-        
-        <span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -160,10 +138,35 @@
         <span class="params">()</span><span class="result">: AnyRef</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="xitrum.routing.RouteCompiler#compile" data-isabs="false">
+      <a id="compile(String):Seq[RouteToken]"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">compile</span>
+        
+        <span class="params">(<span name="pattern">pattern: String</span>)</span><span class="result">: Seq[<a name="xitrum.routing.RouteToken" class="extype" href="RouteToken.html">RouteToken</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Given the pattern &quot;/articles/:id&lt;[0-9]+&gt;&quot;, compiles to
+Seq(RouteToken(&quot;articles&quot;, true, None), RouteToken(&quot;id&quot;, false, Some(&quot;[0-9]+&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Given the pattern &quot;/articles/:id&lt;[0-9]+&gt;&quot;, compiles to
+Seq(RouteToken(&quot;articles&quot;, true, None), RouteToken(&quot;id&quot;, false, Some(&quot;[0-9]+&quot;.r)))
+</p></div></div>
+    </li><li visbl="pub" name="xitrum.routing.RouteCompiler#decompile" data-isabs="false">
+      <a id="decompile(Seq[RouteToken]):String"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">decompile</span>
+        
+        <span class="params">(<span name="routeTokens">routeTokens: Seq[<a name="xitrum.routing.RouteToken" class="extype" href="RouteToken.html">RouteToken</a>]</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -196,7 +199,7 @@
         <span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -222,17 +225,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.down.XSendResource#isHeaderSet" data-isabs="false">
-      <a id="isHeaderSet(HttpResponse):Boolean"></a>
-      <h4 class="signature">
-      <span class="kind">def</span>
-      <span class="symbol"> 
-        <span class="name">isHeaderSet</span>
-        
-        <span class="params">(<span name="response">response: <span name="io.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.Any#isInstanceOf" data-isabs="false">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <h4 class="signature">
@@ -244,17 +236,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.Logger#logger" data-isabs="false">
-      <a id="logger:Logger"></a>
-      <h4 class="signature">
-      <span class="kind">lazy val</span>
-      <span class="symbol"> 
-        <span class="name">logger</span>
-        
-        <span class="result">: <span name="org.slf4j.Logger" class="extype">Logger</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Logger name is inferred from the class name.</p><div class="fullcomment"><div class="comment cmt"><p>Logger name is inferred from the class name.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.Logger" class="extype" href="../../Logger.html">Logger</a></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -288,28 +269,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.down.XSendResource#sendResource" data-isabs="false">
-      <a id="sendResource(ChannelHandlerContext,ChannelEvent,HttpRequest,HttpResponse,String):Unit"></a>
-      <h4 class="signature">
-      <span class="kind">def</span>
-      <span class="symbol"> 
-        <span class="name">sendResource</span>
-        
-        <span class="params">(<span name="ctx">ctx: <span name="io.netty.channel.ChannelHandlerContext" class="extype">ChannelHandlerContext</span></span>, <span name="e">e: <span name="io.netty.channel.ChannelEvent" class="extype">ChannelEvent</span></span>, <span name="request">request: <span name="io.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>, <span name="response">response: <span name="io.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>, <span name="path">path: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>false if not found</p></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.down.XSendResource#setHeader" data-isabs="false">
-      <a id="setHeader(HttpResponse,String):Unit"></a>
-      <h4 class="signature">
-      <span class="kind">def</span>
-      <span class="symbol"> 
-        <span class="name">setHeader</span>
-        
-        <span class="params">(<span name="response">response: <span name="io.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>, <span name="path">path: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">
@@ -379,9 +338,7 @@
 
         
 
-        <div name="xitrum.Logger" class="parent">
-              <h3>Inherited from <a name="xitrum.Logger" class="extype" href="../../Logger.html">Logger</a></h3>
-            </div><div name="scala.AnyRef" class="parent">
+        <div name="scala.AnyRef" class="parent">
               <h3>Inherited from AnyRef</h3>
             </div><div name="scala.Any" class="parent">
               <h3>Inherited from <span name="scala.Any" class="extype">Any</span></h3>

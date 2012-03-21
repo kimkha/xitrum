@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller, action, and view &mdash; Xitrum v1.8.4 documentation</title>
+    <title>Controller, action, and view &mdash; Xitrum v1.8.6 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.4',
+        VERSION:     '1.8.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8.6 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -102,19 +102,23 @@ trait AppController extends Controller {
       &lt;head&gt;
         {antiCSRFMeta}
         {xitrumCSS}
+        {jsDefaults}
         &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
       &lt;/head&gt;
       &lt;body&gt;
         {respondedView}
-        {jsAtBottom}
+        {jsForView}
       &lt;/body&gt;
     &lt;/html&gt;
   )
 }</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">xitrumCSS</span></tt> includes the default CSS for Xitrum. You may remove it if you
-don&#8217;t like.</p>
-<p><tt class="docutils literal"><span class="pre">jsAtBottom</span></tt> includes jQuery, jQuery Validate plugin etc.</p>
+don&#8217;t like.
+<tt class="docutils literal"><span class="pre">jsDefaults</span></tt> includes jQuery, jQuery Validate plugin etc.
+should be put at layout&#8217;s &lt;head&gt;.
+<tt class="docutils literal"><span class="pre">jsForView</span></tt> contains JS fragments added by <tt class="docutils literal"><span class="pre">jsAddToView</span></tt>,
+should be put at layout&#8217;s bottom.</p>
 <p>MyController.scala</p>
 <div class="highlight-python"><pre>import xitrum.Controller
 
@@ -167,11 +171,12 @@ html
   head
     = antiCSRFMeta
     = xitrumCSS
+    = jsDefaults
     title Welcome to Xitrum
 
   body
     != respondedView
-    = jsAtBottom</pre>
+    = jsForView</pre>
 </div>
 <p>scr/main/scalate/quickstart/controller/MyController/index.jade:</p>
 <div class="highlight-python"><pre>- import quickstart.controller.MyController
@@ -251,7 +256,7 @@ or &#8220;ssp&#8221; as the last parameter to <cite>renderScalate</cite> or <cit
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

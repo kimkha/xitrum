@@ -52,25 +52,25 @@ Notes:
 WebSocket
 ---------
 
-Example:
-
 ::
-
-  package quickstart.controller
 
   import xitrum.Controller
 
   class HelloWebSocket extends Controller {
     val index = WEBSOCKET("hello_websocket") {  // Entry point
-      webSocketHandshake()  // Call this if you want to accept the WebSocket connection
-    }
+      acceptWebSocket(new WebSocketHandler() {
+        def onOpen() {
+          log.debug("onOpen")
+        }
 
-    override def onWebSocketFrame(text: String) {
-      respondWebSocket(text.toUpperCase)  // Send back data to the WebSocket client
-    }
+        def onMessage(text: String) {
+          respondWebSocket(text.toUpperCase)  // Send back data to the WebSocket client
+        }
 
-    override def onWebSocketClose {
-      println("The WebSocket connection has been closed")
+        def onClose() {
+          log.debug("onClose")
+        }
+      })
     }
   }
 
@@ -90,16 +90,15 @@ Chat example
 ::
 
   import xitrum.Controller
-  import xitrum.comet.CometPublishController
+  import xitrum.comet.CometController
   import xitrum.validator.{Required, Validated}
 
   class ChatController {
     def index = GET("chat") {
       jsCometGet("chat", """
-        function(channel, timestamp, body) {
-          var wasScrollAtBottom = xitrum.isScrollAtBottom('#chatOutput');
-          $('#chatOutput').append('- ' + xitrum.escape(body.chatInput[0]) + '<br />');
-          if (wasScrollAtBottom) xitrum.scrollToBottom('#chatOutput');
+        function(topic, timestamp, body) {
+          var text = '- ' + xitrum.escapeHtml(body.chatInput[0]) + '<br />';
+          xitrum.appendAndScroll('#chatOutput', text);
         }
       """)
 
@@ -107,7 +106,7 @@ Chat example
         <div id="chatOutput"></div>
 
         <form data-postback="submit" action={CometController.publish.url} data-after="$('#chatInput').value('')">
-          <input type="hidden" name="channel" value="chat" class="required" />
+          <input type="hidden" name="topic" value="chat" class="required" />
           <input type="text" id="chatInput" name="chatInput" class="required" />
         </form>
       )
@@ -116,12 +115,12 @@ Chat example
 
 ``jsCometGet`` will send long polling Ajax requests, get published messages,
 and call your callback function. The 3rd argument ``body`` is a hash
-containing everything inside the form commited to ``CometPublishController``.
+containing everything inside the form commited to ``CometController``.
 
 Publish message
 ~~~~~~~~~~~~~~~
 
-In the example above, ``CometPublishController`` will receive form post and publish
+In the example above, ``CometController`` will receive form post and publish
 the message for you. If you want to publish the message yourself, call ``Comet.publish``:
 
 ::

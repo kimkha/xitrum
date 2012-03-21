@@ -83,6 +83,17 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="xitrum.controller.WebSocket.WebSocketHandler" data-isabs="true">
+      <a id="WebSocketHandler:WebSocketHandler"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="controller/WebSocket$WebSocketHandler.html"><span class="name">WebSocketHandler</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
     </li></ol>
             </div>
         
@@ -288,14 +299,28 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.Net" class="extype" href="controller/Net.html">Net</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.controller.WebSocket#acceptWebSocket" data-isabs="false">
+      <a id="acceptWebSocket(WebSocketHandler):Unit"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">acceptWebSocket</span>
+        
+        <span class="params">(<span name="handler">handler: <a name="xitrum.controller.WebSocket.WebSocketHandler" class="extype" href="controller/WebSocket$WebSocketHandler.html">WebSocketHandler</a></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">In the websocket entry point action, call this method if you want to accept
+the connection.</p><div class="fullcomment"><div class="comment cmt"><p>In the websocket entry point action, call this method if you want to accept
+the connection.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.WebSocket" class="extype" href="controller/WebSocket.html">WebSocket</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.Controller#addConnectionClosedListener" data-isabs="false">
-      <a id="addConnectionClosedListener(() ⇒ Unit):Unit"></a>
+      <a id="addConnectionClosedListener(⇒ Unit):Unit"></a>
       <h4 class="signature">
       <span class="kind">def</span>
       <span class="symbol"> 
         <span class="name">addConnectionClosedListener</span>
         
-        <span class="params">(<span name="listener">listener: () ⇒ <span name="scala.Unit" class="extype">Unit</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="params">(<span name="listener">listener: ⇒ <span name="scala.Unit" class="extype">Unit</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       
@@ -879,17 +904,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="view/JS.html">JS</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.JS#jsAtBottom" data-isabs="false">
-      <a id="jsAtBottom:Group"></a>
-      <h4 class="signature">
-      <span class="kind">def</span>
-      <span class="symbol"> 
-        <span class="name">jsAtBottom</span>
-        
-        <span class="result">: <span name="scala.xml.Group" class="extype">Group</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="view/JS.html">JS</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.JS#jsCometGet" data-isabs="false">
       <a id="jsCometGet(String,String):Unit"></a>
       <h4 class="signature">
@@ -897,7 +911,18 @@
       <span class="symbol"> 
         <span class="name">jsCometGet</span>
         
-        <span class="params">(<span name="channel">channel: String</span>, <span name="callback">callback: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="params">(<span name="topic">topic: String</span>, <span name="callback">callback: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="view/JS.html">JS</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.JS#jsDefaults" data-isabs="false">
+      <a id="jsDefaults:Group"></a>
+      <h4 class="signature">
+      <span class="kind">lazy val</span>
+      <span class="symbol"> 
+        <span class="name">jsDefaults</span>
+        
+        <span class="result">: <span name="scala.xml.Group" class="extype">Group</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="view/JS.html">JS</a></dd></dl></div>
@@ -912,6 +937,17 @@
       </span>
       </h4>
       <p class="shortcomment cmt">See escape_javascript of Rails</p><div class="fullcomment"><div class="comment cmt"><p>See escape_javascript of Rails</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="view/JS.html">JS</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.JS#jsForView" data-isabs="false">
+      <a id="jsForView:Serializable"></a>
+      <h4 class="signature">
+      <span class="kind">lazy val</span>
+      <span class="symbol"> 
+        <span class="name">jsForView</span>
+        
+        <span class="result">: <span name="java.io.Serializable" class="extype">Serializable</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="view/JS.html">JS</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.JS#jsRedirectTo" data-isabs="false">
       <a id="jsRedirectTo(Action,(String, Any)*):Unit"></a>
       <h4 class="signature">
@@ -1094,28 +1130,6 @@ render it to the flash area right away.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.WebSocket#onWebSocketClose" data-isabs="false">
-      <a id="onWebSocketClose():Unit"></a>
-      <h4 class="signature">
-      <span class="kind">def</span>
-      <span class="symbol"> 
-        <span class="name">onWebSocketClose</span>
-        
-        <span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.WebSocket" class="extype" href="controller/WebSocket.html">WebSocket</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.WebSocket#onWebSocketFrame" data-isabs="false">
-      <a id="onWebSocketFrame(String):Unit"></a>
-      <h4 class="signature">
-      <span class="kind">def</span>
-      <span class="symbol"> 
-        <span class="name">onWebSocketFrame</span>
-        
-        <span class="params">(<span name="text">text: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.WebSocket" class="extype" href="controller/WebSocket.html">WebSocket</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.scope.request.ParamAccess#param" data-isabs="false">
       <a id="param[T](String,Params)(DefaultsTo[T, String],Manifest[T]):T"></a>
       <h4 class="signature">
@@ -1880,17 +1894,6 @@ textParams.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.Net" class="extype" href="controller/Net.html">Net</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.WebSocket#webSocketHandshake" data-isabs="false">
-      <a id="webSocketHandshake():Unit"></a>
-      <h4 class="signature">
-      <span class="kind">def</span>
-      <span class="symbol"> 
-        <span class="name">webSocketHandshake</span>
-        
-        <span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.WebSocket" class="extype" href="controller/WebSocket.html">WebSocket</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.controller.Net#webSocketScheme" data-isabs="false">
       <a id="webSocketScheme:String"></a>
       <h4 class="signature">

@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum v1.8.4 documentation</title>
+    <title>Async response &mdash; Xitrum v1.8.6 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.4',
+        VERSION:     '1.8.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8.6 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -95,22 +95,23 @@ respondLastChunk()</pre>
 </div>
 <div class="section" id="websocket">
 <h2>WebSocket<a class="headerlink" href="#websocket" title="Permalink to this headline">¶</a></h2>
-<p>Example:</p>
-<div class="highlight-python"><pre>package quickstart.controller
-
-import xitrum.Controller
+<div class="highlight-python"><pre>import xitrum.Controller
 
 class HelloWebSocket extends Controller {
   val index = WEBSOCKET("hello_websocket") {  // Entry point
-    webSocketHandshake()  // Call this if you want to accept the WebSocket connection
-  }
+    acceptWebSocket(new WebSocketHandler() {
+      def onOpen() {
+        log.debug("onOpen")
+      }
 
-  override def onWebSocketFrame(text: String) {
-    respondWebSocket(text.toUpperCase)  // Send back data to the WebSocket client
-  }
+      def onMessage(text: String) {
+        respondWebSocket(text.toUpperCase)  // Send back data to the WebSocket client
+      }
 
-  override def onWebSocketClose {
-    println("The WebSocket connection has been closed")
+      def onClose() {
+        log.debug("onClose")
+      }
+    })
   }
 }</pre>
 </div>
@@ -125,16 +126,15 @@ will be supported in the future when all major browsers support it.</p>
 <div class="section" id="chat-example">
 <h3>Chat example<a class="headerlink" href="#chat-example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><pre>import xitrum.Controller
-import xitrum.comet.CometPublishController
+import xitrum.comet.CometController
 import xitrum.validator.{Required, Validated}
 
 class ChatController {
   def index = GET("chat") {
     jsCometGet("chat", """
-      function(channel, timestamp, body) {
-        var wasScrollAtBottom = xitrum.isScrollAtBottom('#chatOutput');
-        $('#chatOutput').append('- ' + xitrum.escape(body.chatInput[0]) + '&lt;br /&gt;');
-        if (wasScrollAtBottom) xitrum.scrollToBottom('#chatOutput');
+      function(topic, timestamp, body) {
+        var text = '- ' + xitrum.escapeHtml(body.chatInput[0]) + '&lt;br /&gt;';
+        xitrum.appendAndScroll('#chatOutput', text);
       }
     """)
 
@@ -142,7 +142,7 @@ class ChatController {
       &lt;div id="chatOutput"&gt;&lt;/div&gt;
 
       &lt;form data-postback="submit" action={CometController.publish.url} data-after="$('#chatInput').value('')"&gt;
-        &lt;input type="hidden" name="channel" value="chat" class="required" /&gt;
+        &lt;input type="hidden" name="topic" value="chat" class="required" /&gt;
         &lt;input type="text" id="chatInput" name="chatInput" class="required" /&gt;
       &lt;/form&gt;
     )
@@ -151,11 +151,11 @@ class ChatController {
 </div>
 <p><tt class="docutils literal"><span class="pre">jsCometGet</span></tt> will send long polling Ajax requests, get published messages,
 and call your callback function. The 3rd argument <tt class="docutils literal"><span class="pre">body</span></tt> is a hash
-containing everything inside the form commited to <tt class="docutils literal"><span class="pre">CometPublishController</span></tt>.</p>
+containing everything inside the form commited to <tt class="docutils literal"><span class="pre">CometController</span></tt>.</p>
 </div>
 <div class="section" id="publish-message">
 <h3>Publish message<a class="headerlink" href="#publish-message" title="Permalink to this headline">¶</a></h3>
-<p>In the example above, <tt class="docutils literal"><span class="pre">CometPublishController</span></tt> will receive form post and publish
+<p>In the example above, <tt class="docutils literal"><span class="pre">CometController</span></tt> will receive form post and publish
 the message for you. If you want to publish the message yourself, call <tt class="docutils literal"><span class="pre">Comet.publish</span></tt>:</p>
 <div class="highlight-python"><pre>import xitrum.Controller
 import xitrum.comet.Comet
@@ -241,7 +241,7 @@ class AdminController extends Controller {
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

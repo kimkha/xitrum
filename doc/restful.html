@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RESTful APIs &mdash; Xitrum v1.8.4 documentation</title>
+    <title>RESTful APIs &mdash; Xitrum v1.8.6 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.4',
+        VERSION:     '1.8.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.8.6 documentation" href="index.html" />
     <link rel="next" title="Postbacks" href="postback.html" />
     <link rel="prev" title="Controller, action, and view" href="controller_action_view.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="controller_action_view.html" title="Controller, action, and view"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -101,6 +101,12 @@ source code repository.</p>
 </div>
 <p><tt class="docutils literal"><span class="pre">last</span></tt> is similar.</p>
 </div>
+<div class="section" id="regex-in-route">
+<h2>Regex in route<a class="headerlink" href="#regex-in-route" title="Permalink to this headline">¶</a></h2>
+<p>Regex can be used in routes to specify requirements:</p>
+<div class="highlight-python"><pre>def show = GET("/articles/:id&lt;[0-9]+&gt;") { ... }</pre>
+</div>
+</div>
 <div class="section" id="anti-csrf">
 <h2>Anti-CSRF<a class="headerlink" href="#anti-csrf" title="Permalink to this headline">¶</a></h2>
 <p>For non-GET requests, Xitrum protects your web application from
@@ -115,11 +121,12 @@ trait AppController extends Controller {
       &lt;head&gt;
         {antiCSRFMeta}
         {xitrumCSS}
+        {jsDefaults}
         &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
       &lt;/head&gt;
       &lt;body&gt;
         {renderedView}
-        {jsAtBottom}
+        {jsForView}
       &lt;/body&gt;
     &lt;/html&gt;
   )
@@ -142,8 +149,7 @@ jQuery.</p>
 <div class="section" id="skipcsrfcheck">
 <h2>SkipCSRFCheck<a class="headerlink" href="#skipcsrfcheck" title="Permalink to this headline">¶</a></h2>
 <p>When you create APIs for machines, e.g. smartphones, you may want to skip this
-check. To skip for an action (and its subclasses), make your action extend the
-trait xitrum.SkipCSRFCheck:</p>
+automatic CSRF check. Add the trait xitrum.SkipCSRFCheck to you controller:</p>
 <div class="highlight-python"><pre>import xitrum.{Controller, SkipCSRFCheck}
 
 trait API extends Controller with SkipCSRFCheck
@@ -159,6 +165,14 @@ class CreateTodoAPI extends API {
 }</pre>
 </div>
 </div>
+<div class="section" id="read-entire-request-body">
+<h2>Read entire request body<a class="headerlink" href="#read-entire-request-body" title="Permalink to this headline">¶</a></h2>
+<p>To get the entire request body, use <a class="reference external" href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/http/HttpRequest.html">request.getContent</a>.
+It returns <a class="reference external" href="http://netty.io/docs/stable/api/org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a>,
+which has <tt class="docutils literal"><span class="pre">toString(Charset)</span></tt> method.</p>
+<div class="highlight-python"><pre>val body = request.getContent.toString(io.netty.util.CharsetUtil.UTF_8)</pre>
+</div>
+</div>
 </div>
 
 
@@ -172,8 +186,10 @@ class CreateTodoAPI extends API {
 <li><a class="reference internal" href="#">RESTful APIs</a><ul>
 <li><a class="reference internal" href="#route-cache">Route cache</a></li>
 <li><a class="reference internal" href="#route-order-with-first-and-last">Route order with first and last</a></li>
+<li><a class="reference internal" href="#regex-in-route">Regex in route</a></li>
 <li><a class="reference internal" href="#anti-csrf">Anti-CSRF</a></li>
 <li><a class="reference internal" href="#skipcsrfcheck">SkipCSRFCheck</a></li>
+<li><a class="reference internal" href="#read-entire-request-body">Read entire request body</a></li>
 </ul>
 </li>
 </ul>
@@ -218,7 +234,7 @@ class CreateTodoAPI extends API {
         <li class="right" >
           <a href="controller_action_view.html" title="Controller, action, and view"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.8.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

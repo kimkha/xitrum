@@ -47,18 +47,7 @@
 
         <div class="types members" id="types">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.routing.package#CompiledPattern" data-isabs="false">
-      <a id="CompiledPattern:CompiledPattern"></a>
-      <h4 class="signature">
-      <span class="kind">type</span>
-      <span class="symbol"> 
-        <span class="name">CompiledPattern</span>
-        
-        <span class="result"> = <span name="scala.collection.Seq" class="extype">Seq</span>[(String, <span name="scala.Boolean" class="extype">Boolean</span>)]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.routing.package" class="extype" href="package$.html">package</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.routing.JSRoutesController" data-isabs="false">
+              <ol><li visbl="pub" name="xitrum.routing.JSRoutesController" data-isabs="false">
       <a id="JSRoutesController:JSRoutesController"></a>
       <h4 class="signature">
       <span class="kind">class</span>
@@ -76,7 +65,7 @@
       <span class="symbol"> 
         <a href="Route.html"><span class="name">Route</span></a>
         
-        <span class="params">(<span name="httpMethod">httpMethod: HttpMethod</span>, <span name="order">order: RouteOrder</span>, <span name="compiledPattern">compiledPattern: CompiledPattern</span>)</span><span class="result"> extends Product with Serializable</span>
+        <span class="params">(<span name="httpMethod">httpMethod: HttpMethod</span>, <span name="order">order: RouteOrder</span>, <span name="compiledPattern">compiledPattern: Seq[RouteToken]</span>)</span><span class="result"> extends Product with Serializable</span>
       </span>
       </h4>
       
@@ -91,6 +80,19 @@
       </span>
       </h4>
       <p class="comment cmt">Scan all classes to collect routes from controllers.</p>
+    </li><li visbl="pub" name="xitrum.routing.RouteToken" data-isabs="false">
+      <a id="RouteToken:RouteToken"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="RouteToken.html"><span class="name">RouteToken</span></a>
+        
+        <span class="params">(<span name="value">value: String</span>, <span name="isPlaceHolder">isPlaceHolder: Boolean</span>, <span name="regex">regex: Option[Regex]</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">&quot;/articles/:id&lt;[0-9]+&gt;&quot; gives 2 tokens:
+RouteToken(&quot;articles&quot;, true, None) and
+RouteToken(&quot;id&quot;, false, Some(&quot;[0-9]+&quot;.</p>
     </li></ol>
             </div>
         
@@ -128,6 +130,17 @@
         <a href="JSRoutesController$.html"><span class="name">JSRoutesController</span></a>
         
         <span class="result"> extends JSRoutesController</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.RouteCompiler" data-isabs="false">
+      <a id="RouteCompiler:RouteCompiler"></a>
+      <h4 class="signature">
+      <span class="kind">object</span>
+      <span class="symbol"> 
+        <a href="RouteCompiler$.html"><span class="name">RouteCompiler</span></a>
+        
+        <span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
