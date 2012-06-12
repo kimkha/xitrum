@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>I18n &mdash; Xitrum v1.8.7 documentation</title>
+    <title>I18n &mdash; Xitrum v1.9 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.7',
+        VERSION:     '1.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.9 documentation" href="index.html" />
     <link rel="next" title="Deploy to production server" href="deploy.html" />
     <link rel="prev" title="Cache" href="cache.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="cache.html" title="Cache"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.9 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -67,8 +67,13 @@ respondText(MyModel.hello(this))
 // In the model
 import xitrum.I18n
 object MyModel {
-  def hello(i18n) = i18n.t("Hello World")
+  def hello(i18n: I18n) = i18n.t("Hello World")
 }</pre>
+</div>
+<p>For formatted messages:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tf</span><span class="p">(</span><span class="s">&quot;Message </span><span class="si">%d</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+<span class="n">tcf</span><span class="p">(</span><span class="s">&quot;Context&quot;</span><span class="p">,</span> <span class="s">&quot;Message </span><span class="si">%d</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="extract-messages-to-pot-files">
@@ -86,7 +91,7 @@ you can do a little faster with the command <tt class="docutils literal"><span c
 which deletes all .class files in the <tt class="docutils literal"><span class="pre">target</span></tt> directory.</p>
 <p>After the recompilation, i18n.pot will be filled with gettext messages extracted
 from the source code. To do this magic, <a class="reference external" href="http://www.scala-lang.org/node/140">Scala compiler plugin technique</a>
-has been used.</p>
+is used.</p>
 <p>One caveat of this method is that only gettext messages in Scala source code
 files are extracted. If you have Java files, you may want to extract manually
 using <tt class="docutils literal"><span class="pre">xgettext</span></tt> command line:</p>
@@ -216,7 +221,7 @@ nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</p
         <li class="right" >
           <a href="cache.html" title="Cache"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.9 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

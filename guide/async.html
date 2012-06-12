@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum v1.8.7 documentation</title>
+    <title>Async response &mdash; Xitrum v1.9 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.7',
+        VERSION:     '1.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.9 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.9 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -95,6 +95,14 @@ respondLastChunk()</pre>
 </div>
 <div class="section" id="websocket">
 <h2>WebSocket<a class="headerlink" href="#websocket" title="Permalink to this headline">¶</a></h2>
+<p>For a websocket request, there are 2 phases:</p>
+<ol class="arabic simple">
+<li>The WebSocket request comes in as a normal HTTP request,
+you have everything like session data, cookie etc.</li>
+<li>If you decide to upgrade the connection to the WebSocket connection,
+call <tt class="docutils literal"><span class="pre">acceptWebSocket</span></tt>. Otherwise you treat the request as normal
+HTTP request, e.g. you can send normal HTTP response to the client.</li>
+</ol>
 <div class="highlight-python"><pre>import xitrum.Controller
 
 class HelloWebSocket extends Controller {
@@ -247,7 +255,7 @@ class AdminController extends Controller {
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.9 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

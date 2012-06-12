@@ -12,7 +12,7 @@
       <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
     
         </head>
-        <body class="value">
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
       <div id="definition">
         <img src="../../../lib/package_big.png" />
         <p id="owner"><a name="xitrum" class="extype" href="../../package.html">xitrum</a>.<a name="xitrum.scope" class="extype" href="../package.html">scope</a></p>
@@ -20,29 +20,30 @@
       </div>
 
       <h4 class="signature" id="signature">
-      <span class="kind">package</span>
-      <span class="symbol"> 
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
         <span class="name">session</span>
-        
-        
       </span>
       </h4>
       
-          <div class="fullcommenttop" id="comment"></div>
+      <div class="fullcommenttop" id="comment"></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
         
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
 
       <div id="template">
-
-        <div id="mbrsel">
-          <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
-          
-          
-          <div id="visbl">
-              <span class="filtertype">Visibility</span>
-              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
-            </div>
-        </div>
-
+        <div id="allMembers">
         
 
         <div class="types members" id="types">
@@ -50,61 +51,66 @@
               <ol><li visbl="pub" name="xitrum.scope.session.CSRF" data-isabs="true">
       <a id="CSRF:CSRF"></a>
       <h4 class="signature">
-      <span class="kind">trait</span>
-      <span class="symbol"> 
-        <a href="CSRF.html"><span class="name">CSRF</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CSRF.html"><span class="name">CSRF</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.scope.session.CookieSessionStore" data-isabs="false">
       <a id="CookieSessionStore:CookieSessionStore"></a>
       <h4 class="signature">
-      <span class="kind">class</span>
-      <span class="symbol"> 
-        <a href="CookieSessionStore.html"><span class="name">CookieSessionStore</span></a>
-        
-        <span class="result"> extends SessionStore</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CookieSessionStore.html"><span class="name">CookieSessionStore</span></a><span class="result"> extends SessionStore</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.scope.session.HazelcastSessionStore" data-isabs="false">
       <a id="HazelcastSessionStore:HazelcastSessionStore"></a>
       <h4 class="signature">
-      <span class="kind">class</span>
-      <span class="symbol"> 
-        <a href="HazelcastSessionStore.html"><span class="name">HazelcastSessionStore</span></a>
-        
-        <span class="result"> extends SessionStore</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="HazelcastSessionStore.html"><span class="name">HazelcastSessionStore</span></a><span class="result"> extends SessionStore</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.scope.session.package#Session" data-isabs="false">
       <a id="Session:Session"></a>
       <h4 class="signature">
-      <span class="kind">type</span>
-      <span class="symbol"> 
-        <span class="name">Session</span>
-        
-        <span class="result"> = <span name="scala.collection.mutable.Map" class="extype">Map</span>[String, <span name="scala.Any" class="extype">Any</span>]</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Session</span><span class="result"> = <span name="scala.collection.mutable.Map" class="extype">Map</span>[String, <span name="scala.Any" class="extype">Any</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.session.package" class="extype" href="package$.html">package</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.scope.session.SessionStore" data-isabs="true">
       <a id="SessionStore:SessionStore"></a>
       <h4 class="signature">
-      <span class="kind">trait</span>
-      <span class="symbol"> 
-        <a href="SessionStore.html"><span class="name">SessionStore</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SessionStore.html"><span class="name">SessionStore</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li></ol>
             </div>
-        
+
         
 
         <div class="values members" id="values">
@@ -112,22 +118,24 @@
               <ol><li visbl="pub" name="xitrum.scope.session.CSRF" data-isabs="false">
       <a id="CSRF:CSRF"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="CSRF$.html"><span class="name">CSRF</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CSRF$.html"><span class="name">CSRF</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       <p class="comment cmt">SecureBase64 is for preventing a user to mess with his own data to cheat the server.</p>
     </li><li visbl="pub" name="xitrum.scope.session.HazelcastSessionStore" data-isabs="false">
       <a id="HazelcastSessionStore:HazelcastSessionStore"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="HazelcastSessionStore$.html"><span class="name">HazelcastSessionStore</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="HazelcastSessionStore$.html"><span class="name">HazelcastSessionStore</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
@@ -135,12 +143,18 @@
             </div>
 
         
+        </div>
 
+        <div id="inheritedMembers">
         
+        </div>
 
       </div>
-      
+
       <div id="tooltip"></div>
-      
+
+      <div id="footer">  </div>
+
+
     </body>
       </html>

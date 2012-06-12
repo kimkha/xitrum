@@ -12,7 +12,7 @@
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
     
         </head>
-        <body class="value">
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
       <div id="definition">
         <img src="../../lib/package_big.png" />
         <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a></p>
@@ -20,29 +20,30 @@
       </div>
 
       <h4 class="signature" id="signature">
-      <span class="kind">package</span>
-      <span class="symbol"> 
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
         <span class="name">util</span>
-        
-        
       </span>
       </h4>
       
-          <div class="fullcommenttop" id="comment"></div>
+      <div class="fullcommenttop" id="comment"></div>
+    
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
         
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
 
       <div id="template">
-
-        <div id="mbrsel">
-          <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
-          
-          
-          <div id="visbl">
-              <span class="filtertype">Visibility</span>
-              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
-            </div>
-        </div>
-
+        <div id="allMembers">
         
 
         <div class="types members" id="types">
@@ -50,17 +51,18 @@
               <ol><li visbl="pub" name="xitrum.util.LocalLRUCache" data-isabs="false">
       <a id="LocalLRUCache:LocalLRUCache[K, V]"></a>
       <h4 class="signature">
-      <span class="kind">class</span>
-      <span class="symbol"> 
-        <a href="LocalLRUCache.html"><span class="name">LocalLRUCache</span></a>
-        <span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span>
-        <span class="result"> extends LinkedHashMap[K, V]</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LocalLRUCache.html"><span class="name">LocalLRUCache</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends LinkedHashMap[K, V]</span>
       </span>
       </h4>
       <p class="comment cmt">Non-threadsafe, non-distributed LRU cache.</p>
     </li></ol>
             </div>
-        
+
         
 
         <div class="values members" id="values">
@@ -68,99 +70,108 @@
               <ol><li visbl="pub" name="xitrum.util.Base64" data-isabs="false">
       <a id="Base64:Base64"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="Base64$.html"><span class="name">Base64</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Base64$.html"><span class="name">Base64</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.util.ChannelBufferToBytes" data-isabs="false">
       <a id="ChannelBufferToBytes:ChannelBufferToBytes"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="ChannelBufferToBytes$.html"><span class="name">ChannelBufferToBytes</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ChannelBufferToBytes$.html"><span class="name">ChannelBufferToBytes</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.util.Gzip" data-isabs="false">
       <a id="Gzip:Gzip"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="Gzip$.html"><span class="name">Gzip</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Gzip$.html"><span class="name">Gzip</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.util.Loader" data-isabs="false">
       <a id="Loader:Loader"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="Loader$.html"><span class="name">Loader</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Loader$.html"><span class="name">Loader</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.util.Mime" data-isabs="false">
       <a id="Mime:Mime"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="Mime$.html"><span class="name">Mime</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Mime$.html"><span class="name">Mime</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.util.PathSanitizer" data-isabs="false">
       <a id="PathSanitizer:PathSanitizer"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="PathSanitizer$.html"><span class="name">PathSanitizer</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PathSanitizer$.html"><span class="name">PathSanitizer</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.util.Secure" data-isabs="false">
       <a id="Secure:Secure"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="Secure$.html"><span class="name">Secure</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Secure$.html"><span class="name">Secure</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       <p class="comment cmt">See https://github.</p>
     </li><li visbl="pub" name="xitrum.util.SecureBase64" data-isabs="false">
       <a id="SecureBase64:SecureBase64"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="SecureBase64$.html"><span class="name">SecureBase64</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SecureBase64$.html"><span class="name">SecureBase64</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.util.SeriDeseri" data-isabs="false">
       <a id="SeriDeseri:SeriDeseri"></a>
       <h4 class="signature">
-      <span class="kind">object</span>
-      <span class="symbol"> 
-        <a href="SeriDeseri$.html"><span class="name">SeriDeseri</span></a>
-        
-        <span class="result"> extends AnyRef</span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SeriDeseri$.html"><span class="name">SeriDeseri</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
@@ -168,12 +179,18 @@
             </div>
 
         
+        </div>
 
+        <div id="inheritedMembers">
         
+        </div>
 
       </div>
-      
+
       <div id="tooltip"></div>
-      
+
+      <div id="footer">  </div>
+
+
     </body>
       </html>

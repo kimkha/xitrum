@@ -2,21 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.etag.NotModified</title>
+          <title>xitrum.handler.up.NoPipelining</title>
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
-      <script type="text/javascript" src="../../lib/jquery.js"></script>
-      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../lib/template.js"></script>
-      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
+      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
     
         </head>
         <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
       <div id="definition">
-        <img src="../../lib/object_big.png" />
-        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a>.<a name="xitrum.etag" class="extype" href="package.html">etag</a></p>
-        <h1>NotModified</h1>
+        <a title="Go to companion" href="NoPipelining.html"><img src="../../../lib/object_to_class_big.png" /></a>
+        <p id="owner"><a name="xitrum" class="extype" href="../../package.html">xitrum</a>.<a name="xitrum.handler" class="extype" href="../package.html">handler</a>.<a name="xitrum.handler.up" class="extype" href="package.html">up</a></p>
+        <h1><a title="Go to companion" href="NoPipelining.html">NoPipelining</a></h1>
       </div>
 
       <h4 class="signature" id="signature">
@@ -25,7 +25,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">NotModified</span><span class="result"> extends AnyRef</span>
+        <span class="name">NoPipelining</span><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
@@ -45,7 +45,7 @@
               <span class="filtertype">Inherited</span>
               <ol><li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li></ol>
-              <ol id="linearization"><li name="xitrum.etag.NotModified" class="in"><span>NotModified</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+              <ol id="linearization"><li name="xitrum.handler.up.NoPipelining" class="in"><span>NoPipelining</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
             </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -146,7 +146,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: AnyRef</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -185,22 +185,10 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.etag.NotModified#formatRfc2822" data-isabs="false">
-      <a id="formatRfc2822(Long):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">formatRfc2822</span><span class="params">(<span name="timestamp">timestamp: <span name="scala.Long" class="extype">Long</span></span>)</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.AnyRef#getClass" data-isabs="false">
       <a id="getClass():java.lang.Class[_]"></a>
       <h4 class="signature">
@@ -273,36 +261,54 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.etag.NotModified#removeClientCache" data-isabs="false">
-      <a id="removeClientCache(HttpResponse):Unit"></a>
+    </li><li visbl="pub" name="xitrum.handler.up.NoPipelining#pauseReading" data-isabs="false">
+      <a id="pauseReading(Channel):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">removeClientCache</span><span class="params">(<span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">pauseReading</span><span class="params">(<span name="channel">channel: <span name="org.jboss.netty.channel.Channel" class="extype">Channel</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.etag.NotModified#setClientCacheAggressively" data-isabs="false">
-      <a id="setClientCacheAggressively(HttpResponse):Unit"></a>
+    </li><li visbl="pub" name="xitrum.handler.up.NoPipelining#resumeReadingForKeepAliveRequestOrCloseOnComplete" data-isabs="false">
+      <a id="resumeReadingForKeepAliveRequestOrCloseOnComplete(HttpRequest,Channel,ChannelFuture):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setClientCacheAggressively</span><span class="params">(<span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">resumeReadingForKeepAliveRequestOrCloseOnComplete</span><span class="params">(<span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>, <span name="channel">channel: <span name="org.jboss.netty.channel.Channel" class="extype">Channel</span></span>, <span name="channelFuture">channelFuture: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Tells the browser to cache static files for a long time.</p><div class="fullcomment"><div class="comment cmt"><p>Tells the browser to cache static files for a long time.
-This works well even when this is a cluster of web servers behind a load balancer
-because the URL created by urlForResource is in the form: resource?etag</p><p>Don't worry that browsers do not pick up new files after you modified them,
-see the doc about static files.</p><p>Google recommends 1 year:
-http://code.google.com/speed/page-speed/docs/caching.html</p><p>Both Max-age and Expires header are set because IEs use Expires, not max-age:
-http://mrcoles.com/blog/cookies-max-age-vs-expires/
-</p></div></div>
+      
+    </li><li visbl="pub" name="xitrum.handler.up.NoPipelining#setResponseHeaderAndResumeReadingForKeepAliveRequestOrCloseOnComplete" data-isabs="false">
+      <a id="setResponseHeaderAndResumeReadingForKeepAliveRequestOrCloseOnComplete(HttpRequest,HttpResponse,Channel,ChannelFuture):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setResponseHeaderAndResumeReadingForKeepAliveRequestOrCloseOnComplete</span><span class="params">(<span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>, <span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>, <span name="channel">channel: <span name="org.jboss.netty.channel.Channel" class="extype">Channel</span></span>, <span name="channelFuture">channelFuture: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.handler.up.NoPipelining#setResponseHeaderForKeepAliveRequest" data-isabs="false">
+      <a id="setResponseHeaderForKeepAliveRequest(HttpRequest,HttpResponse):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setResponseHeaderForKeepAliveRequest</span><span class="params">(<span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>, <span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">

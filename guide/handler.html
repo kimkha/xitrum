@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Netty handlers &mdash; Xitrum v1.8.7 documentation</title>
+    <title>Netty handlers &mdash; Xitrum v1.9 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.7',
+        VERSION:     '1.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.9 documentation" href="index.html" />
     <link rel="prev" title="HOWTO" href="howto.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
         <li class="right" >
           <a href="howto.html" title="HOWTO"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.9 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,7 +50,7 @@
 <a class="reference external" href="http://en.wikipedia.org/wiki/Web_Server_Gateway_Interface">WSGI</a>, and
 <a class="reference external" href="http://en.wikipedia.org/wiki/PSGI">PSGI</a> have middleware architecture.
 You can create middleware and customize the order of middlewares.
-Xitrum is based on <a class="reference external" href="http://www.jboss.org/netty">Netty</a>. Netty has the same
+Xitrum is based on <a class="reference external" href="http://netty.io/">Netty</a>. Netty has the same
 thing called handlers.</p>
 <p>This chaper describes:</p>
 <ul class="simple">
@@ -63,7 +63,7 @@ thing called handlers.</p>
 <p>In Netty, there are 2 types of handlers:
 * upstream: the request direction client -&gt; server
 * downstream: the response direction server -&gt; client</p>
-<p>Please see the doc of <a class="reference external" href="http://docs.jboss.org/netty/3.2/api/org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a>
+<p>Please see the doc of <a class="reference external" href="http://netty.io/docs/stable/api/org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a>
 for more information.</p>
 <div class="highlight-python"><pre>                                     I/O Request
                                    via Channel or
@@ -176,7 +176,7 @@ Use Channel#getAttachment to get it back.</p>
         <li class="right" >
           <a href="howto.html" title="HOWTO"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.9 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

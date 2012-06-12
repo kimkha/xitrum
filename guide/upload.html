@@ -6,13 +6,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Upload &mdash; Xitrum v1.8.7 documentation</title>
+    <title>Upload &mdash; Xitrum v1.9 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.7',
+        VERSION:     '1.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum v1.8.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum v1.9 documentation" href="index.html" />
     <link rel="next" title="Filters" href="filter.html" />
     <link rel="prev" title="Validation" href="validation.html" /> 
   </head>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="validation.html" title="Validation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.9 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,8 +50,24 @@
   <div class="section" id="upload">
 <h1>Upload<a class="headerlink" href="#upload" title="Permalink to this headline">¶</a></h1>
 <img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s6b.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s6b.jpg" />
+<p>See also <a class="reference internal" href="scopes.html"><em>Scopes chapter</em></a>.</p>
 <div class="section" id="normal-upload">
 <h2>Normal upload<a class="headerlink" href="#normal-upload" title="Permalink to this headline">¶</a></h2>
+<p>In your upload form, remember to set <tt class="docutils literal"><span class="pre">enctype</span></tt> to <tt class="docutils literal"><span class="pre">multipart/form-data</span></tt>.</p>
+<p>my_upload.scalate:</p>
+<div class="highlight-python"><pre>form(method="post" action={MyController.myAction.url} enctype="multipart/form-data")
+  != antiCSRFInput
+
+  label Please select a file:
+  input(type="file" name="my_file")
+
+  button(type="submit") Upload</pre>
+</div>
+<p>myAction:</p>
+<div class="highlight-python"><pre>val myFile = param[FileUpload]("my_file")</pre>
+</div>
+<p>myFile is an instance of <a class="reference external" href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/http/multipart/FileUpload.html">FileUpload</a>.
+Use its methods to get file name, move file to a directory etc.</p>
 </div>
 <div class="section" id="ajax-upload">
 <h2>Ajax upload<a class="headerlink" href="#ajax-upload" title="Permalink to this headline">¶</a></h2>
@@ -114,7 +130,7 @@
         <li class="right" >
           <a href="validation.html" title="Validation"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum v1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum v1.9 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
