@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scopes &mdash; Xitrum 1.8.7 documentation</title>
+    <title>Scopes &mdash; Xitrum 1.9.1 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.8.7',
+        VERSION:     '1.9.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.8.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.1 documentation" href="index.html" />
     <link rel="next" title="Validation" href="validation.html" />
     <link rel="prev" title="Static files" href="static.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="static.html" title="Static files"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -66,7 +66,7 @@
 </ol>
 <p>These params are merged in the above order as <tt class="docutils literal"><span class="pre">textParams</span></tt>
 (from 1 to 3, the latter will override the former).</p>
-<p><tt class="docutils literal"><span class="pre">fileUploadParams</span></tt> is of type scala.collection.mutable.Map[String, List[<a class="reference external" href="https://github.com/netty/netty/blob/master/src/main/java/org/jboss/netty/handler/codec/http/FileUpload.java">FileUpload</a>]].</p>
+<p><tt class="docutils literal"><span class="pre">fileUploadParams</span></tt> is of type scala.collection.mutable.Map[String, List[<a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/multipart/FileUpload.html">FileUpload</a>]].</p>
 </div>
 <div class="section" id="accesing-params">
 <h3>Accesing params<a class="headerlink" href="#accesing-params" title="Permalink to this headline">¶</a></h3>
@@ -131,14 +131,14 @@ trait AppController extends Controller {
 <div class="section" id="cookie">
 <h2>Cookie<a class="headerlink" href="#cookie" title="Permalink to this headline">¶</a></h2>
 <p>Inside an action, you can use <tt class="docutils literal"><span class="pre">cookies</span></tt>. It is a subclass of Java&#8217;s <a class="reference external" href="http://download.oracle.com/javase/6/docs/api/java/util/TreeSet.html">TreeSet</a>
-that contains <a class="reference external" href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/http/Cookie.html">Cookie</a>.
+that contains <a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/Cookie.html">Cookie</a>.
 It is basically a normal TreeSet with an additional <tt class="docutils literal"><span class="pre">get</span></tt> method to lookup a cookie:</p>
 <div class="highlight-python"><pre>cookies.get("myCookie") match {
   case None         =&gt; ...
   case Some(string) =&gt; ...
 }</pre>
 </div>
-<p>To add a cookie, create an instance of <a class="reference external" href="http://netty.io/docs/stable/api/org/jboss/netty/handler/codec/http/DefaultCookie.html">DefaultCookie</a>
+<p>To add a cookie, create an instance of <a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/DefaultCookie.html">DefaultCookie</a>
 and add it to <tt class="docutils literal"><span class="pre">cookies</span></tt>:</p>
 <div class="highlight-python"><pre>val cookie = new DefaultCookie("myCookie", "String value")
 cookies.add(cookie)</pre>
@@ -299,7 +299,7 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
         <li class="right" >
           <a href="static.html" title="Static files"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.8.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
