@@ -78,10 +78,10 @@ object MyModel {
 <h2>Extract messages to pot files<a class="headerlink" href="#extract-messages-to-pot-files" title="Permalink to this headline">¶</a></h2>
 <p>Create an empty i18n.pot file in your project&#8217;s root directory, then recompile
 the whole project.</p>
-<div class="highlight-python"><pre>$ sbt/sbt clean
-$ rm i18n.pot
-$ touch i18n.pot
-$ sbt/sbt compile</pre>
+<div class="highlight-python"><pre>sbt/sbt clean
+rm i18n.pot
+touch i18n.pot
+sbt/sbt compile</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">clean</span></tt> is to delete all .class files, forcing SBT to recompile the whole
 project. Because after <tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">clean</span></tt>, SBT will try to redownload all dependencies,
@@ -93,7 +93,7 @@ is used.</p>
 <p>One caveat of this method is that only gettext messages in Scala source code
 files are extracted. If you have Java files, you may want to extract manually
 using <tt class="docutils literal"><span class="pre">xgettext</span></tt> command line:</p>
-<div class="highlight-python"><pre>$ xgettext -kt -ktc:1c,2 -ktn:1,2 -ktcn:1c,2,3 -o i18n_java.pot --from-code=UTF-8 $(find src/main/java -name "*.java")</pre>
+<div class="highlight-python"><pre>xgettext -kt -ktc:1c,2 -ktn:1,2 -ktcn:1c,2,3 -o i18n_java.pot --from-code=UTF-8 $(find src/main/java -name "*.java")</pre>
 </div>
 <p>Then you manually merge i18n_java.pot to i18n.pot.</p>
 </div>

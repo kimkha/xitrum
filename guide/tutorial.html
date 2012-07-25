@@ -59,8 +59,10 @@
 <h2>Create a new empty Xitrum project<a class="headerlink" href="#create-a-new-empty-xitrum-project" title="Permalink to this headline">¶</a></h2>
 <p>To create a new empty project, download
 <a class="reference external" href="http://cloud.github.com/downloads/ngocdaothanh/xitrum-new/xitrum-new.zip">xitrum-new.zip</a>:</p>
-<div class="highlight-python"><pre>$ wget http://cloud.github.com/downloads/ngocdaothanh/xitrum-new/xitrum-new.zip
-$ unzip xitrum-new.zip</pre>
+<div class="highlight-python"><pre>wget http://cloud.github.com/downloads/ngocdaothanh/xitrum-new/xitrum-new.zip</pre>
+</div>
+<p>Or:</p>
+<div class="highlight-python"><pre>curl -O http://cloud.github.com/downloads/ngocdaothanh/xitrum-new/xitrum-new.zip</pre>
 </div>
 </div>
 <div class="section" id="run">
@@ -70,8 +72,9 @@ $ unzip xitrum-new.zip</pre>
 has already included SBT 0.11.3-2 in <tt class="docutils literal"><span class="pre">sbt</span></tt> directory. If you want to install
 SBT yourself, see its <a class="reference external" href="https://github.com/harrah/xsbt/wiki/Setup">setup guide</a>.</p>
 <p>Change to the newly created project directory and run <tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">run</span></tt>:</p>
-<div class="highlight-python"><pre>$ cd xitrum-new
-$ sbt/sbt run</pre>
+<div class="highlight-python"><pre>unzip xitrum-new.zip
+cd xitrum-new
+sbt/sbt run</pre>
 </div>
 <p>This command will download all dependencies, compile the project, and run the
 class <tt class="docutils literal"><span class="pre">quickstart.Boot</span></tt>, which starts the web server. In the console, you will
