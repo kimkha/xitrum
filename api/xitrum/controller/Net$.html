@@ -12,29 +12,26 @@
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="type">
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
       <div id="definition">
-        <a title="Go to companion" href="Net$.html"><img src="../../lib/trait_to_object_big.png" /></a>
+        <a title="Go to companion" href="Net.html"><img src="../../lib/object_to_trait_big.png" /></a>
         <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a>.<a name="xitrum.controller" class="extype" href="package.html">controller</a></p>
-        <h1><a title="Go to companion" href="Net$.html">Net</a></h1>
+        <h1><a title="Go to companion" href="Net.html">Net</a></h1>
       </div>
 
       <h4 class="signature" id="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">object</span>
       </span>
       <span class="symbol">
         <span class="name">Net</span><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"><dl class="attributes block"> <dt>Self Type</dt><dd><a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a></dd></dl><div class="toggleContainer block">
+      <div class="fullcommenttop" id="comment"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a name="xitrum.comet.CometController" class="extype" href="../comet/CometController.html">CometController</a>, <a name="xitrum.comet.CometController" class="extype" href="../comet/CometController$.html">CometController</a>, <a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a>, <a name="xitrum.routing.JSRoutesController" class="extype" href="../routing/JSRoutesController.html">JSRoutesController</a>, <a name="xitrum.routing.JSRoutesController" class="extype" href="../routing/JSRoutesController$.html">JSRoutesController</a></div>
         </div></div>
     
 
@@ -126,30 +123,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.Net#absoluteUrlPrefix" data-isabs="false">
-      <a id="absoluteUrlPrefix:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">absoluteUrlPrefix</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.controller.Net#absoluteUrlPrefixWithoutScheme" data-isabs="false">
-      <a id="absoluteUrlPrefixWithoutScheme:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">absoluteUrlPrefixWithoutScheme</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -162,6 +135,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.controller.Net#clientIp" data-isabs="false">
+      <a id="clientIp(SocketAddress):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clientIp</span><span class="params">(<span name="remoteAddress">remoteAddress: <span name="java.net.SocketAddress" class="extype">SocketAddress</span></span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      
     </li><li visbl="prt" name="scala.AnyRef#clone" data-isabs="false">
       <a id="clone():AnyRef"></a>
       <h4 class="signature">
@@ -252,18 +237,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.Net#isSsl" data-isabs="false">
-      <a id="isSsl:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">isSsl</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -300,51 +273,27 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.controller.Net#proxyNotAllowed" data-isabs="false">
+      <a id="proxyNotAllowed(String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">proxyNotAllowed</span><span class="params">(<span name="clientIp">clientIp: String</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.controller.Net#remoteIp" data-isabs="false">
-      <a id="remoteIp:String"></a>
+      <a id="remoteIp(SocketAddress,HttpRequest):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">remoteIp</span><span class="result">: String</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>IP of the HTTP client, X-Forwarded-For is supported</p></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.Net#scheme" data-isabs="false">
-      <a id="scheme:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">scheme</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.controller.Net#serverName" data-isabs="false">
-      <a id="serverName:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">serverName</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.controller.Net#serverPort" data-isabs="false">
-      <a id="serverPort:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">serverPort</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+        <span class="name">remoteIp</span><span class="params">(<span name="remoteAddress">remoteAddress: <span name="java.net.SocketAddress" class="extype">SocketAddress</span></span>, <span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>)</span><span class="result">: String</span>
       </span>
       </h4>
       
@@ -417,30 +366,6 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.Net#webSocketAbsoluteUrlPrefix" data-isabs="false">
-      <a id="webSocketAbsoluteUrlPrefix:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">webSocketAbsoluteUrlPrefix</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.controller.Net#webSocketScheme" data-isabs="false">
-      <a id="webSocketScheme:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">webSocketScheme</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      
     </li></ol>
             </div>
 

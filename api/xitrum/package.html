@@ -56,7 +56,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Config.html"><span class="name">Config</span></a><span class="params">(<span name="http">http: Option[HttpConfig]</span>, <span name="https">https: Option[HttpsConfig]</span>, <span name="reverseProxy">reverseProxy: Option[ReverseProxyConfig]</span>, <span name="scalate">scalate: String</span>, <span name="hazelcastMode">hazelcastMode: String</span>, <span name="session">session: SessionConfig</span>, <span name="request">request: RequestConfig</span>, <span name="response">response: ResponseConfig</span>)</span><span class="result"> extends Product with Serializable</span>
+        <a href="Config.html"><span class="name">Config</span></a><span class="params">(<span name="globalBasicAuthentication">globalBasicAuthentication: Option[GlobalBasicAuthenticationConfig]</span>, <span name="http">http: Option[HttpConfig]</span>, <span name="https">https: Option[HttpsConfig]</span>, <span name="reverseProxy">reverseProxy: Option[ReverseProxyConfig]</span>, <span name="scalate">scalate: String</span>, <span name="hazelcastMode">hazelcastMode: String</span>, <span name="session">session: SessionConfig</span>, <span name="request">request: RequestConfig</span>, <span name="response">response: ResponseConfig</span>)</span><span class="result"> extends Product with Serializable</span>
       </span>
       </h4>
       
@@ -81,6 +81,18 @@
       </span>
       <span class="symbol">
         <a href="ErrorController.html"><span class="name">ErrorController</span></a><span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.GlobalBasicAuthenticationConfig" data-isabs="false">
+      <a id="GlobalBasicAuthenticationConfig:GlobalBasicAuthenticationConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="GlobalBasicAuthenticationConfig.html"><span class="name">GlobalBasicAuthenticationConfig</span></a><span class="params">(<span name="realm">realm: String</span>, <span name="username">username: String</span>, <span name="password">password: String</span>)</span><span class="result"> extends Product with Serializable</span>
       </span>
       </h4>
       
