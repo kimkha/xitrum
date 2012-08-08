@@ -52,7 +52,20 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<img alt="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" src="http://www.bdoubliees.com/journalspirou/sfigures6/schtroumpfs/s3.jpg" />
+<div class="highlight-python"><pre>+------------------+
+|     Your app     |
++------------------+
+|      Xitrum      |  &lt;-- Hazelcast --&gt; Other instances
+| +--------------+ |
+| | Action/View  | |
+| +--------------+ |
++------------------+
+|       Netty      |
+| +--------------+ |
+| |HTTP(S) Server| |
+| +--------------+ |
++------------------+</pre>
+</div>
 <p><a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
 is an async and clustered Scala web framework
 and HTTP(S) server on top of <a class="reference external" href="http://netty.io/">Netty</a>
@@ -72,6 +85,12 @@ blazing fast), etc. and you have, wow.</p>
 <p>Features:</p>
 <ul class="simple">
 <li>Fast built-in HTTP and HTTPS web server based on <a class="reference external" href="http://netty.io/">Netty</a>.</li>
+<li>Extensive caching for faster responding.
+At the web server layer, small files are cached in memory, big files are sent
+using NIO&#8217;s zero copy. <a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
+like conditional GET are applied.
+At the web framework layer you have can declare page, action, and object cache
+in the Rails style.</li>
 <li>The framework tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
 and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
 use than Lift. You can easily create both RESTful APIs and postbacks. <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
@@ -101,12 +120,6 @@ You don&#8217;t have to manually mess with properties files.
 You can use powerful tools like <a class="reference external" href="http://www.poedit.net/screenshots.php">Poedit</a>
 for translating and merging translations.
 gettext is unlike most other solutions, both singular and plural forms are supported.</li>
-<li>Extensive caching for faster responding.
-At the web server layer, small files are cached in memory, big files are sent
-using NIO&#8217;s zero copy. <a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
-like conditional GET are applied.
-At the web framework layer you have can declare page, action, and object cache
-in the Rails style.</li>
 </ul>
 <p><a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> also gives:</p>
 <ul class="simple">
@@ -114,20 +127,6 @@ in the Rails style.</li>
 <li>In-process and distribued <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet (with WebSocket)</a>,
 you can scale Comet to multiple web servers.</li>
 </ul>
-<div class="highlight-python"><pre>+------------------+
-|     Your app     |
-+------------------+
-|      Xitrum      |  &lt;-- Hazelcast --&gt; Other instances
-| +--------------+ |
-| | Action/View  | |
-| +--------------+ |
-+------------------+
-|       Netty      |
-| +--------------+ |
-| |HTTP(S) Server| |
-| +--------------+ |
-+------------------+</pre>
-</div>
 <p><a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a> is <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">open source</a>, please join
 its <a class="reference external" href="http://groups.google.com/group/xitrum-framework">Google group</a>.</p>
 <div class="section" id="create-new-empty-xitrum-project">
