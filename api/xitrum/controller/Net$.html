@@ -146,7 +146,10 @@
         <span class="name">clientIp</span><span class="params">(<span name="remoteAddress">remoteAddress: <span name="java.net.SocketAddress" class="extype">SocketAddress</span></span>)</span><span class="result">: String</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">TODO: inetSocketAddress can be Inet4Address or Inet6Address
+See java.</p><div class="fullcomment"><div class="comment cmt"><p>TODO: inetSocketAddress can be Inet4Address or Inet6Address
+See java.net.preferIPv6Addresses</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>IP of the direct HTTP client (may be the proxy)
+</p></dd></dl></div>
     </li><li visbl="prt" name="scala.AnyRef#clone" data-isabs="false">
       <a id="clone():AnyRef"></a>
       <h4 class="signature">
@@ -284,7 +287,7 @@
         <span class="name">proxyNotAllowed</span><span class="params">(<span name="clientIp">clientIp: String</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">See reverseProxy in config/xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>See reverseProxy in config/xitrum.json</p></div></div>
     </li><li visbl="pub" name="xitrum.controller.Net#remoteIp" data-isabs="false">
       <a id="remoteIp(SocketAddress,HttpRequest):String"></a>
       <h4 class="signature">
@@ -296,7 +299,7 @@
         <span class="name">remoteIp</span><span class="params">(<span name="remoteAddress">remoteAddress: <span name="java.net.SocketAddress" class="extype">SocketAddress</span></span>, <span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>)</span><span class="result">: String</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>IP of the HTTP client, X-Forwarded-For is supported</p></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">

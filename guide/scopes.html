@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scopes &mdash; Xitrum 1.9.2 documentation</title>
+    <title>Scopes &mdash; Xitrum 1.9.3 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.2',
+        VERSION:     '1.9.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,9 +24,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.2 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.3 documentation" href="index.html" />
     <link rel="next" title="Validation" href="validation.html" />
-    <link rel="prev" title="Static files" href="static.html" /> 
+    <link rel="prev" title="Serve flash socket policy file" href="flash.html" /> 
   </head>
   <body>
     <div class="related">
@@ -39,9 +39,9 @@
           <a href="validation.html" title="Validation"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="static.html" title="Static files"
+          <a href="flash.html" title="Serve flash socket policy file"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -144,7 +144,10 @@ cookies.add(cookie)</pre>
 </div>
 <p>Remember that there&#8217;s no way for the server to directly delete a cookie on browsers.
 Instead, to delete immediately set max age to 0. To delete when the browser closes windows,
-set max age to -1.</p>
+set max age to Integer.MIN_VALUE.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cookie</span><span class="o">.</span><span class="n">setMaxAge</span><span class="p">(</span><span class="n">Integer</span><span class="o">.</span><span class="n">MIN_VALUE</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Note that <a class="reference external" href="http://mrcoles.com/blog/cookies-max-age-vs-expires/">Internet Explorer does not support &#8220;max-age&#8221;</a>,
 but Netty detects and outputs either &#8220;max-age&#8221; or &#8220;expires&#8221; properly. Don&#8217;t worry!</p>
 </div>
@@ -259,8 +262,8 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="static.html"
-                        title="previous chapter">Static files</a></p>
+  <p class="topless"><a href="flash.html"
+                        title="previous chapter">Serve flash socket policy file</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="validation.html"
                         title="next chapter">Validation</a></p>
@@ -296,9 +299,9 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
           <a href="validation.html" title="Validation"
              >next</a> |</li>
         <li class="right" >
-          <a href="static.html" title="Static files"
+          <a href="flash.html" title="Serve flash socket policy file"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

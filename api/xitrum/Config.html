@@ -25,7 +25,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Config</span><span class="params">(<span name="globalBasicAuthentication">globalBasicAuthentication: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.GlobalBasicAuthenticationConfig" class="extype" href="GlobalBasicAuthenticationConfig.html">GlobalBasicAuthenticationConfig</a>]</span>, <span name="http">http: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.HttpConfig" class="extype" href="HttpConfig.html">HttpConfig</a>]</span>, <span name="https">https: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.HttpsConfig" class="extype" href="HttpsConfig.html">HttpsConfig</a>]</span>, <span name="reverseProxy">reverseProxy: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.ReverseProxyConfig" class="extype" href="ReverseProxyConfig.html">ReverseProxyConfig</a>]</span>, <span name="scalate">scalate: String</span>, <span name="hazelcastMode">hazelcastMode: String</span>, <span name="session">session: <a name="xitrum.SessionConfig" class="extype" href="SessionConfig.html">SessionConfig</a></span>, <span name="request">request: <a name="xitrum.RequestConfig" class="extype" href="RequestConfig.html">RequestConfig</a></span>, <span name="response">response: <a name="xitrum.ResponseConfig" class="extype" href="ResponseConfig.html">ResponseConfig</a></span>)</span><span class="result"> extends <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="name">Config</span><span class="params">(<span name="basicAuth">basicAuth: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.BasicAuthConfig" class="extype" href="BasicAuthConfig.html">BasicAuthConfig</a>]</span>, <span name="port">port: <a name="xitrum.PortConfig" class="extype" href="PortConfig.html">PortConfig</a></span>, <span name="keystore">keystore: <a name="xitrum.KeyStoreConfig" class="extype" href="KeyStoreConfig.html">KeyStoreConfig</a></span>, <span name="reverseProxy">reverseProxy: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.ReverseProxyConfig" class="extype" href="ReverseProxyConfig.html">ReverseProxyConfig</a>]</span>, <span name="scalate">scalate: String</span>, <span name="hazelcastMode">hazelcastMode: String</span>, <span name="session">session: <a name="xitrum.SessionConfig" class="extype" href="SessionConfig.html">SessionConfig</a></span>, <span name="request">request: <a name="xitrum.RequestConfig" class="extype" href="RequestConfig.html">RequestConfig</a></span>, <span name="response">response: <a name="xitrum.ResponseConfig" class="extype" href="ResponseConfig.html">ResponseConfig</a></span>)</span><span class="result"> extends <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
@@ -65,7 +65,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Config</span><span class="params">(<span name="globalBasicAuthentication">globalBasicAuthentication: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.GlobalBasicAuthenticationConfig" class="extype" href="GlobalBasicAuthenticationConfig.html">GlobalBasicAuthenticationConfig</a>]</span>, <span name="http">http: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.HttpConfig" class="extype" href="HttpConfig.html">HttpConfig</a>]</span>, <span name="https">https: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.HttpsConfig" class="extype" href="HttpsConfig.html">HttpsConfig</a>]</span>, <span name="reverseProxy">reverseProxy: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.ReverseProxyConfig" class="extype" href="ReverseProxyConfig.html">ReverseProxyConfig</a>]</span>, <span name="scalate">scalate: String</span>, <span name="hazelcastMode">hazelcastMode: String</span>, <span name="session">session: <a name="xitrum.SessionConfig" class="extype" href="SessionConfig.html">SessionConfig</a></span>, <span name="request">request: <a name="xitrum.RequestConfig" class="extype" href="RequestConfig.html">RequestConfig</a></span>, <span name="response">response: <a name="xitrum.ResponseConfig" class="extype" href="ResponseConfig.html">ResponseConfig</a></span>)</span>
+        <span class="name">Config</span><span class="params">(<span name="basicAuth">basicAuth: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.BasicAuthConfig" class="extype" href="BasicAuthConfig.html">BasicAuthConfig</a>]</span>, <span name="port">port: <a name="xitrum.PortConfig" class="extype" href="PortConfig.html">PortConfig</a></span>, <span name="keystore">keystore: <a name="xitrum.KeyStoreConfig" class="extype" href="KeyStoreConfig.html">KeyStoreConfig</a></span>, <span name="reverseProxy">reverseProxy: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.ReverseProxyConfig" class="extype" href="ReverseProxyConfig.html">ReverseProxyConfig</a>]</span>, <span name="scalate">scalate: String</span>, <span name="hazelcastMode">hazelcastMode: String</span>, <span name="session">session: <a name="xitrum.SessionConfig" class="extype" href="SessionConfig.html">SessionConfig</a></span>, <span name="request">request: <a name="xitrum.RequestConfig" class="extype" href="RequestConfig.html">RequestConfig</a></span>, <span name="response">response: <a name="xitrum.ResponseConfig" class="extype" href="ResponseConfig.html">ResponseConfig</a></span>)</span>
       </span>
       </h4>
       
@@ -150,6 +150,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.Config#basicAuth" data-isabs="false">
+      <a id="basicAuth:Option[BasicAuthConfig]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">basicAuth</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.BasicAuthConfig" class="extype" href="BasicAuthConfig.html">BasicAuthConfig</a>]</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.Config#canEqual" data-isabs="false">
       <a id="canEqual(Any):Boolean"></a>
       <h4 class="signature">
@@ -228,18 +240,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.Config#globalBasicAuthentication" data-isabs="false">
-      <a id="globalBasicAuthentication:Option[GlobalBasicAuthenticationConfig]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">globalBasicAuthentication</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.GlobalBasicAuthenticationConfig" class="extype" href="GlobalBasicAuthenticationConfig.html">GlobalBasicAuthenticationConfig</a>]</span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="xitrum.Config#hashCode" data-isabs="false">
       <a id="hashCode():Int"></a>
       <h4 class="signature">
@@ -264,30 +264,6 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.Config#http" data-isabs="false">
-      <a id="http:Option[HttpConfig]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">http</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.HttpConfig" class="extype" href="HttpConfig.html">HttpConfig</a>]</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.Config#https" data-isabs="false">
-      <a id="https:Option[HttpsConfig]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">https</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<a name="xitrum.HttpsConfig" class="extype" href="HttpsConfig.html">HttpsConfig</a>]</span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.Any#isInstanceOf" data-isabs="false">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <h4 class="signature">
@@ -300,6 +276,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.Config#keystore" data-isabs="false">
+      <a id="keystore:KeyStoreConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">keystore</span><span class="result">: <a name="xitrum.KeyStoreConfig" class="extype" href="KeyStoreConfig.html">KeyStoreConfig</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -336,6 +324,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.Config#port" data-isabs="false">
+      <a id="port:PortConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">port</span><span class="result">: <a name="xitrum.PortConfig" class="extype" href="PortConfig.html">PortConfig</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.Config#productArity" data-isabs="false">
       <a id="productArity:Int"></a>
       <h4 class="signature">

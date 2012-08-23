@@ -48,7 +48,19 @@
 
         <div class="types members" id="types">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.Config" data-isabs="false">
+              <ol><li visbl="pub" name="xitrum.BasicAuthConfig" data-isabs="false">
+      <a id="BasicAuthConfig:BasicAuthConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="BasicAuthConfig.html"><span class="name">BasicAuthConfig</span></a><span class="params">(<span name="realm">realm: String</span>, <span name="username">username: String</span>, <span name="password">password: String</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.Config" data-isabs="false">
       <a id="Config:Config"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,7 +68,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Config.html"><span class="name">Config</span></a><span class="params">(<span name="globalBasicAuthentication">globalBasicAuthentication: Option[GlobalBasicAuthenticationConfig]</span>, <span name="http">http: Option[HttpConfig]</span>, <span name="https">https: Option[HttpsConfig]</span>, <span name="reverseProxy">reverseProxy: Option[ReverseProxyConfig]</span>, <span name="scalate">scalate: String</span>, <span name="hazelcastMode">hazelcastMode: String</span>, <span name="session">session: SessionConfig</span>, <span name="request">request: RequestConfig</span>, <span name="response">response: ResponseConfig</span>)</span><span class="result"> extends Product with Serializable</span>
+        <a href="Config.html"><span class="name">Config</span></a><span class="params">(<span name="basicAuth">basicAuth: Option[BasicAuthConfig]</span>, <span name="port">port: PortConfig</span>, <span name="keystore">keystore: KeyStoreConfig</span>, <span name="reverseProxy">reverseProxy: Option[ReverseProxyConfig]</span>, <span name="scalate">scalate: String</span>, <span name="hazelcastMode">hazelcastMode: String</span>, <span name="session">session: SessionConfig</span>, <span name="request">request: RequestConfig</span>, <span name="response">response: ResponseConfig</span>)</span><span class="result"> extends Product with Serializable</span>
       </span>
       </h4>
       
@@ -68,7 +80,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Controller.html"><span class="name">Controller</span></a><span class="result"> extends RequestEnv with ExtEnv with ActionFactory with Logger with Net with Filter with BasicAuthentication with WebSocket with Redirect with UrlFor with Responder with I18n</span>
+        <a href="Controller.html"><span class="name">Controller</span></a><span class="result"> extends RequestEnv with ExtEnv with ActionFactory with Logger with Net with Filter with BasicAuth with WebSocket with Redirect with UrlFor with Responder with I18n</span>
       </span>
       </h4>
       
@@ -84,18 +96,6 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.GlobalBasicAuthenticationConfig" data-isabs="false">
-      <a id="GlobalBasicAuthenticationConfig:GlobalBasicAuthenticationConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="GlobalBasicAuthenticationConfig.html"><span class="name">GlobalBasicAuthenticationConfig</span></a><span class="params">(<span name="realm">realm: String</span>, <span name="username">username: String</span>, <span name="password">password: String</span>)</span><span class="result"> extends Product with Serializable</span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="xitrum.HazelcastJavaClientConfig" data-isabs="false">
       <a id="HazelcastJavaClientConfig:HazelcastJavaClientConfig"></a>
       <h4 class="signature">
@@ -105,30 +105,6 @@
       </span>
       <span class="symbol">
         <a href="HazelcastJavaClientConfig.html"><span class="name">HazelcastJavaClientConfig</span></a><span class="params">(<span name="groupName">groupName: String</span>, <span name="groupPassword">groupPassword: String</span>, <span name="addresses">addresses: List[String]</span>)</span><span class="result"> extends Product with Serializable</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.HttpConfig" data-isabs="false">
-      <a id="HttpConfig:HttpConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="HttpConfig.html"><span class="name">HttpConfig</span></a><span class="params">(<span name="port">port: Int</span>)</span><span class="result"> extends Product with Serializable</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.HttpsConfig" data-isabs="false">
-      <a id="HttpsConfig:HttpsConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="HttpsConfig.html"><span class="name">HttpsConfig</span></a><span class="params">(<span name="port">port: Int</span>, <span name="keystore">keystore: KeyStoreConfig</span>)</span><span class="result"> extends Product with Serializable</span>
       </span>
       </h4>
       
@@ -169,6 +145,18 @@
       </h4>
       <p class="comment cmt">Although the class name can be determined by sniffing around on the stack:
 (Thread.</p>
+    </li><li visbl="pub" name="xitrum.PortConfig" data-isabs="false">
+      <a id="PortConfig:PortConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PortConfig.html"><span class="name">PortConfig</span></a><span class="params">(<span name="http">http: Option[Int]</span>, <span name="https">https: Option[Int]</span>, <span name="flashSocketPolicy">flashSocketPolicy: Option[Int]</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.RequestConfig" data-isabs="false">
       <a id="RequestConfig:RequestConfig"></a>
       <h4 class="signature">

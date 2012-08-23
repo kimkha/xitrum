@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; Xitrum 1.9.2 documentation</title>
+    <title>Introduction &mdash; Xitrum 1.9.3 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.2',
+        VERSION:     '1.9.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.2 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.3 documentation" href="index.html" />
     <link rel="next" title="Tutorial" href="tutorial.html" />
     <link rel="prev" title="Xitrum’s documentation" href="index.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="index.html" title="Xitrum’s documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,19 +52,16 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python"><pre>+------------------+
-|     Your app     |
-+------------------+
-|      Xitrum      |  &lt;-- Hazelcast --&gt; Other instances
-| +--------------+ |
-| | Action/View  | |
-| +--------------+ |
-+------------------+
-|       Netty      |
-| +--------------+ |
-| |HTTP(S) Server| |
-| +--------------+ |
-+------------------+</pre>
+<div class="highlight-python"><pre>+--------------------+
+|      Your app      |
++--------------------+
+|       Xitrum       |
+| +----------------+ |
+| | Web framework  | |  &lt;-- Hazelcast --&gt; Other instances
+| |----------------| |
+| | HTTP(S) Server | |
+| +----------------+ |
++--------------------+</pre>
 </div>
 <p><a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
 is an async and clustered Scala web framework
@@ -87,10 +84,12 @@ blazing fast), etc. and you have, wow.</p>
 <li>Fast built-in HTTP and HTTPS web server based on <a class="reference external" href="http://netty.io/">Netty</a>.</li>
 <li>Extensive caching for faster responding.
 At the web server layer, small files are cached in memory, big files are sent
-using NIO&#8217;s zero copy. <a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
-like conditional GET are applied.
+using NIO&#8217;s zero copy. Xitrum&#8217;s static file serving speed is
+<a class="reference external" href="https://gist.github.com/3293596">similar to that of Nginx</a>.
 At the web framework layer you have can declare page, action, and object cache
-in the Rails style.</li>
+in the Rails style.
+<a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
+like conditional GET are applied.</li>
 <li>The framework tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
 and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
 use than Lift. You can easily create both RESTful APIs and postbacks. <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
@@ -205,7 +204,7 @@ and <a class="reference external" href="https://localhost:4430/">https://localho
         <li class="right" >
           <a href="index.html" title="Xitrum’s documentation"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
