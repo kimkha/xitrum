@@ -1,22 +1,174 @@
 <html>
   <head>
     <title>Xitrum</title>
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
   </head>
   <body>
-    <h1>Xitrum</h1>
-    <ul>
-      <li><a href="http://ec2-50-18-141-176.us-west-1.compute.amazonaws.com/">Demos</a> (sometimes the server is down)</li>
-      <li><a href="guide/index.html">Guide</a></li>
-      <li><a href="api/index.html">API Scaladoc</a></li>
-      <li><a href="https://groups.google.com/group/xitrum-framework">Google Group</a></li>
-    </ul>
+    <div class="container">
+      <div id="top_links" class="span-15 prepend-9 last">
+          <ul>
+            <li class="span-3"><a href="http://ec2-50-18-141-176.us-west-1.compute.amazonaws.com/">Demos</a></li>
+            <li class="span-3"><a href="guide/index.html">Guide</a></li>
+            <li class="span-3"><a href="api/index.html">API docs</a></li>
+            <li class="span-3"><a href="https://groups.google.com/group/xitrum-framework">Group</a></li>
+            <!-- <li class="span-3 last"><a href="#">Download</a></li> -->
+          </ul>
+      </div> <!-- End of div#top_links -->
+      
+      <div class="clearfix"></div>
 
-    <p>Source code</p>
-    <ul>
-      <li><a href="https://github.com/ngocdaothanh/xitrum">Xitrum</a></li>
-      <li><a href="https://github.com/ngocdaothanh/xitrum-demos">Demos</a></li>
-      <li><a href="https://github.com/ngocdaothanh/xitrum-new">Empty project template</a></li>
-      <li><a href="https://github.com/ngocdaothanh/xitrum-doc">Guide</a></li>
-    </ul>
+      <div id="header">
+        <div class="span-8">
+          <img src="parts/whale.png" alt="xitrum"/>
+        </div>
+        <div id="balloon" class="span-16 last">
+          <div class="span-11 prepend-3 append-1 last">
+            <h2><a class="reference" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
+is an async and clustered Scala web framework
+and HTTP(S) server<br/><span class="small">on top of <a class="reference external" href="http://netty.io/">Netty</a>
+and <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a></span></h2>
+          </div>
+          <div class="quote push-2 span-13 last">
+            <p>Wow, this is a really impressive body of work, arguably the most complete Scala framework outside of Lift (but much easier to use).
+
+            Xitrum is truly a full stack web framework, all the bases are covered, including wtf-am-I-on-the-moon extras like ETags, static file cache identifiers & auto-gzip compression. Tack on built-in JSON converter, before/around/after interceptors, request/session/cookie/flash scopes, integrated validation (server & client-side, nice), built-in cache layer (Hazelcast), i18n a la GNU gettext, Netty (with Nginx, hello blazing fast), etc. and you have, wow.</p>
+            <div class="alt large right append-1">from <a class="reference external" href="https://groups.google.com/group/xitrum-framework/msg/d6de4865a8576d39">a user</a></div>
+
+          </div> <!-- End of div.quote -->
+          <div class="clearfix"></div>
+        </div> <!-- End of div#balloon -->
+
+        <div class="span-14">
+          <h1 class="push-6 small-top">Scalability made easy!</h1>
+          <div class="clearfix"></div>
+          <div id="myCarousel" class="carousel slide">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+              <div class="active item"><img src="parts/code.png"/></div>
+              <div class="item"><img src="parts/result.png"/></div>
+            </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          </div>
+        </div>
+
+        <div class="span-10 last">
+          <img class="pull-1" src="parts/whale_pool.png" alt="Scalability"/>
+        </div>
+    
+        <div class="clearfix"></div>
+      </div> <!-- End of div#header -->
+
+      <div class="content prepend-1 append-1 span-22">
+        <h2 class="title">Features</h2>
+
+<ul class="simple">
+<li>Fast built-in HTTP and HTTPS web server based on <a class="reference external" href="http://netty.io/">Netty</a>.</li>
+<li>Extensive caching for faster responding.
+At the web server layer, small files are cached in memory, big files are sent
+using NIO&#8217;s zero copy. <a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
+like conditional GET are applied.
+At the web framework layer you have can declare page, action, and object cache
+in the Rails style.</li>
+<li>The framework tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
+and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
+use than Lift. You can easily create both RESTful APIs and postbacks. <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
+is controller-first like Scalatra, not
+<a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.
+Most people are familliar with controller-first style.</li>
+<li>Routes are automatically collected in the spirit of JAX-RS (but without annotations!)
+and Rails Engines. You don&#8217;t have to declare all routes in a single place.
+Think of this feature as distributed routes. You can plug an app into another app.
+If you have a blog engine, you can package it as a JAR file, then you can put
+that JAR file into another app and that app automatically has blog feature!
+Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe way.</li>
+<li>Typesafe, in the spirit of Scala. All the APIs try to be as typesafe as possible.</li>
+<li>Async, in the spirit of Netty. Your request proccessing action does not have
+to respond immediately. Chunked response (streaming), WebSocket, and Comet
+(using WebSocket or long-polling) are supported.</li>
+<li>Views can be written in a separate <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
+template file or Scala inline XML. Both are typesafe.</li>
+<li>Sessions can be stored in cookies (more scalable) or clustered <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> (more secure).
+<a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> is recommended when using continuations-based Actions, since serialized
+continuations are usually too big to store in cookies.</li>
+<li><a class="reference external" href="http://docs.jquery.com/Plugins/validation">jQuery Validation</a> is integrated
+for browser side and server side validation.</li>
+<li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>.
+Translation text extraction is done automatically.
+You don&#8217;t have to manually mess with properties files.
+You can use powerful tools like <a class="reference external" href="http://www.poedit.net/screenshots.php">Poedit</a>
+for translating and merging translations.
+gettext is unlike most other solutions, both singular and plural forms are supported.</li>
+</ul>
+<p><a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> also gives:</p>
+<ul class="simple">
+<li>In-process and distribued cache, you don&#8217;t need separate cache servers.</li>
+<li>In-process and distribued <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet (with WebSocket)</a>,
+you can scale Comet to multiple web servers.</li>
+</ul>
+<p><a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a> is <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">open source</a>, please join
+its <a class="reference external" href="http://groups.google.com/group/xitrum-framework">Google group</a>.</p>
+<div class="section" id="create-new-empty-xitrum-project">
+<h2 class="title">Create new empty Xitrum project<a class="headerlink" href="#create-new-empty-xitrum-project" title="Permalink to this headline"></a></h2>
+<p>To create a new empty project, download
+<a class="reference external" href="http://cloud.github.com/downloads/ngocdaothanh/xitrum-new/xitrum-new.zip">xitrum-new.zip</a>:</p>
+<div class="highlight-python"><pre>wget http://cloud.github.com/downloads/ngocdaothanh/xitrum-new/xitrum-new.zip
+unzip xitrum-new.zip
+cd xitrum-new
+sbt/sbt run</pre>
+</div>
+<p>Now you have a new empty project running at <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>
+and <a class="reference external" href="https://localhost:4430/">https://localhost:4430/</a></p>
+</div>
+<div class="section" id="samples">
+<h2 class="title">News<a class="headerlink" href="#changelog" title="Permalink to this headline"></a></h2>
+<p><a href=https://github.com/ngocdaothanh/xitrum/blob/master/CHANGELOG>https://github.com/ngocdaothanh/xitrum/blob/master/CHANGELOG</a></p>
+<p>
+<em>Aug 24 2012</em><br/>
+<a href="http://groups.google.com/group/xitrum-framework/browse_thread/thread/b7bee7274b6c7661">Xitrum 1.9.4</a> has been released to fix a serious bug with static file
+serving if you use respondFile in your controllers.
+You should upgrade to Xitrum 1.9.4 as soon as possible. 
+</p>
+</div>
+
+
+
+
+
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="dark-panel">
+        <div class="span-7 prepend-1">
+          <h2 class="title">Xitrum on Github</h2>
+          <p>Find more about <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">Xitrum source code</a></p>
+        </div>
+        <div class="span-7 prepend-1">
+          <h2 class="title">Project template</h2>
+          <p><a class="reference external" href="https://github.com/ngocdaothanh/xitrum-new">Create a new project with ease</a></p>
+        </div>
+        <div class="span-7 prepend-1 last">
+          <h2 class="title">Demo Projects</h2>
+          <p><a class="reference external" href="https://github.com/ngocdaothanh/xitrum-demos">Xitrum Demos</a></br>
+            <a class="reference external" href="https://github.com/ngocdaothanh/comy">Comy</a></p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      
+    </div> <!-- End of div.container -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/jquery-1.8.0.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
