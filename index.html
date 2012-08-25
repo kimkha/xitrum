@@ -74,10 +74,7 @@ and <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>
 <li>Fast built-in HTTP and HTTPS web server based on <a class="reference external" href="http://netty.io/">Netty</a>.</li>
 <li>Extensive caching for faster responding.
 At the web server layer, small files are cached in memory, big files are sent
-using NIO&#8217;s zero copy. <a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
-like conditional GET are applied.
-At the web framework layer you have can declare page, action, and object cache
-in the Rails style.</li>
+using NIO&#8217;s zero copy. Xitrum's static file serving speed is <a class="reference external" href="https://gist.github.com/3293596">similar to that of Nginx</a>. At the web framework layer you have can declare page, action, and object cache in the Rails style. <a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a> like conditional GET are applied.</li>
 <li>The framework tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
 and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
 use than Lift. You can easily create both RESTful APIs and postbacks. <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
