@@ -52,52 +52,22 @@
             
   <div class="section" id="async-response">
 <h1>Async response<a class="headerlink" href="#async-response" title="Permalink to this headline">¶</a></h1>
-<p>respondXXX:</p>
+<p>List of responding methods:</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">respondInlineView</span></tt>: responds HTML with or without layout</li>
 <li><tt class="docutils literal"><span class="pre">respondView</span></tt>: responds HTML with or without layout</li>
 <li><tt class="docutils literal"><span class="pre">respondText</span></tt>: responds a string without layout</li>
-<li><tt class="docutils literal"><span class="pre">respondJson</span></tt>: respondss JSON</li>
+<li><tt class="docutils literal"><span class="pre">respondJson</span></tt>: responds JSON</li>
 <li><tt class="docutils literal"><span class="pre">respondBinary</span></tt>: responds an array of bytes</li>
 <li><tt class="docutils literal"><span class="pre">respondFile</span></tt>: sends a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
 (aka send-file) is used</li>
+<li><tt class="docutils literal"><span class="pre">respondWebSocket</span></tt>: responds a text WebSocket frame</li>
 </ul>
 <p>There is no default response. You must call respondXXX explicitly to send response
 to the client. If you don&#8217;t call respondXXX, the HTTP connection is kept for you,
-and you can call respondXXX later.</p>
-<div class="section" id="chunked-response">
-<h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Chunked_transfer_encoding">Chunked response</a>
-has many use cases. For example, when you need to generate a very large CSV
-file that does may not fit memory.</p>
-<div class="highlight-python"><pre>// "Cache-Control" header will be automatically set to "no-cache"
-// Notice that "Pragma: no-cache" is linked to requests, not responses:
-// http://palizine.plynt.com/issues/2008Jul/cache-control-attributes/
-response.setChunked(true)
-
-val generator = new MyCsvGenerator
-val header = generator.getHeader
-respondText(header, "text/csv")
-
-while (generator.hasNextLine) {
-  val line = generator.nextLine
-  respondText(line)
-}
-
-respondLastChunk()</pre>
-</div>
-<ol class="arabic simple">
-<li>Call <tt class="docutils literal"><span class="pre">response.setChunked(true)</span></tt></li>
-<li>Call respondXXX as many times as you want</li>
-<li>Lastly, call <tt class="docutils literal"><span class="pre">respondLastChunk</span></tt></li>
-</ol>
-<p>Notes:</p>
-<ul class="simple">
-<li>Headers are only sent on the first respondXXX call.</li>
-<li>Chunks cannot be used with <a class="reference internal" href="cache.html"><em>page or action cache</em></a>.</li>
-</ul>
-</div>
+and you can call respondXXX later. To check if the connection is still open, call
+<tt class="docutils literal"><span class="pre">channel.isOpen</span></tt>.</p>
 <div class="section" id="websocket">
 <h2>WebSocket<a class="headerlink" href="#websocket" title="Permalink to this headline">¶</a></h2>
 <p>For a websocket request, there are 2 phases:</p>
@@ -135,13 +105,8 @@ class HelloWebSocket extends Controller {
 val url = HelloWebSocket.index.webSocketAbsoluteUrl</pre>
 </div>
 </div>
-<div class="section" id="comet">
-<h2>Comet<a class="headerlink" href="#comet" title="Permalink to this headline">¶</a></h2>
-<p>Comet messages may be clustered. Please see the chaper about <a class="reference internal" href="cluster.html"><em>clustering</em></a>.</p>
-<p>Chunked response is <a class="reference external" href="http://www.shanison.com/2010/05/10/stop-the-browser-%E2%80%9Cthrobber-of-doom%E2%80%9D-while-loading-comet-forever-iframe/">not very good</a>
-for <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)/">Comet</a>.
-Xitrum uses Ajax long polling. <a class="reference external" href="http://en.wikipedia.org/wiki/WebSocket">WebSocket</a>
-will be supported in the future when all major browsers support it.</p>
+<div class="section" id="ajax-long-polling">
+<h2>Ajax long polling<a class="headerlink" href="#ajax-long-polling" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="chat-example">
 <h3>Chat example<a class="headerlink" href="#chat-example" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><pre>import xitrum.Controller
@@ -198,6 +163,68 @@ class AdminController extends Controller {
 </div>
 </div>
 </div>
+<div class="section" id="chunked-response">
+<h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Call <tt class="docutils literal"><span class="pre">response.setChunked(true)</span></tt></li>
+<li>Call respondXXX as many times as you want</li>
+<li>Lastly, call <tt class="docutils literal"><span class="pre">respondLastChunk</span></tt></li>
+</ol>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Chunked_transfer_encoding">Chunked response</a>
+has many use cases. For example, when you need to generate a very large CSV
+file that does may not fit memory.</p>
+<div class="highlight-python"><pre>// "Cache-Control" header will be automatically set to "no-cache"
+// Notice that "Pragma: no-cache" is linked to requests, not responses:
+// http://palizine.plynt.com/issues/2008Jul/cache-control-attributes/
+response.setChunked(true)
+
+val generator = new MyCsvGenerator
+val header = generator.getHeader
+respondText(header, "text/csv")
+
+while (generator.hasNextLine) {
+  val line = generator.nextLine
+  respondText(line)
+}
+
+respondLastChunk()</pre>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li>Headers are only sent on the first respondXXX call.</li>
+<li><a class="reference internal" href="cache.html"><em>Page and action cache</em></a> cannot be used with chunked response.</li>
+</ul>
+<div class="section" id="forever-iframe">
+<h3>Forever iframe<a class="headerlink" href="#forever-iframe" title="Permalink to this headline">¶</a></h3>
+<p>Chunked response <a class="reference external" href="http://www.shanison.com/2010/05/10/stop-the-browser-%E2%80%9Cthrobber-of-doom%E2%80%9D-while-loading-comet-forever-iframe/">can be used</a>
+for <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)/">Comet</a>.</p>
+<p>The page that embeds the iframe:</p>
+<div class="highlight-python"><pre>...
+&lt;script&gt;
+  var functionForForeverIframeSnippetsToCall = function() {...}
+&lt;/script&gt;
+...
+&lt;iframe width="1" height="1" src="path/to/forever/iframe"&gt;&lt;/iframe&gt;
+...</pre>
+</div>
+<p>The action that responds &lt;script&gt; snippets forever:</p>
+<div class="highlight-python"><pre>response.setChunked(true)
+
+// Need something like "123" for Firefox to work
+respondText("&lt;html&gt;&lt;body&gt;123", "text/html")
+
+// Most browser does not execute &lt;script&gt; snippets right away,
+// we need to send about 2KB dummy data to bypass this problem
+for (i &lt;- 1 to 100) respondText("&lt;script&gt;&lt;/script&gt;\n")
+
+// Later, whenever you want to pass data to the browser, just send a snippet
+if (channel.isOpen)
+  respondText("&lt;script&gt;parent.functionForForeverIframeSnippetsToCall()&lt;/script&gt;\n")
+else
+  // The connection has been closed, unsubscribe from events etc.</pre>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -209,11 +236,14 @@ class AdminController extends Controller {
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Async response</a><ul>
-<li><a class="reference internal" href="#chunked-response">Chunked response</a></li>
 <li><a class="reference internal" href="#websocket">WebSocket</a></li>
-<li><a class="reference internal" href="#comet">Comet</a><ul>
+<li><a class="reference internal" href="#ajax-long-polling">Ajax long polling</a><ul>
 <li><a class="reference internal" href="#chat-example">Chat example</a></li>
 <li><a class="reference internal" href="#publish-message">Publish message</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#chunked-response">Chunked response</a><ul>
+<li><a class="reference internal" href="#forever-iframe">Forever iframe</a></li>
 </ul>
 </li>
 </ul>
