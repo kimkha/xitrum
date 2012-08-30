@@ -104,8 +104,8 @@ that JAR file into another app and that app automatically has blog feature!
 Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe way.</li>
 <li>Typesafe, in the spirit of Scala. All the APIs try to be as typesafe as possible.</li>
 <li>Async, in the spirit of Netty. Your request proccessing action does not have
-to respond immediately. Chunked response (streaming), WebSocket, and Comet
-(using WebSocket or long-polling) are supported.</li>
+to respond immediately. Long polling, chunked response (streaming), and WebSocket
+are supported.</li>
 <li>Views can be written in a separate <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
 template file or Scala inline XML. Both are typesafe.</li>
 <li>Sessions can be stored in cookies (more scalable) or clustered <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> (more secure).

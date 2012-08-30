@@ -213,7 +213,7 @@ for <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(prog
 // Need something like "123" for Firefox to work
 respondText("&lt;html&gt;&lt;body&gt;123", "text/html")
 
-// Most browser does not execute &lt;script&gt; snippets right away,
+// Most clients (even curl!) do not execute &lt;script&gt; snippets right away,
 // we need to send about 2KB dummy data to bypass this problem
 for (i &lt;- 1 to 100) respondText("&lt;script&gt;&lt;/script&gt;\n")
 
