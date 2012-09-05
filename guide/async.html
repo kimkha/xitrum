@@ -64,10 +64,16 @@ because <a class="reference external" href="http://www.ibm.com/developerworks/li
 (aka send-file) is used</li>
 <li><tt class="docutils literal"><span class="pre">respondWebSocket</span></tt>: responds a text WebSocket frame</li>
 </ul>
-<p>There is no default response. You must call respondXXX explicitly to send response
-to the client. If you don&#8217;t call respondXXX, the HTTP connection is kept for you,
-and you can call respondXXX later. To check if the connection is still open, call
-<tt class="docutils literal"><span class="pre">channel.isOpen</span></tt>.</p>
+<p>Xitrum does not automatically send any default response.
+You must explicitly call respondXXX to send response.
+If you don&#8217;t call respondXXX, Xitrum will keep the HTTP connection for you,
+and you can call respondXXX later.</p>
+<p>To check if the connection is still open, call <tt class="docutils literal"><span class="pre">channel.isOpen</span></tt>.
+You can also use <tt class="docutils literal"><span class="pre">addConnectionClosedListener</span></tt>:</p>
+<div class="highlight-python"><pre>addConnectionClosedListener {
+  // The connection has been closed, unsubscribe from events etc.
+}</pre>
+</div>
 <div class="section" id="websocket">
 <h2>WebSocket<a class="headerlink" href="#websocket" title="Permalink to this headline">¶</a></h2>
 <p>For a websocket request, there are 2 phases:</p>
@@ -215,13 +221,14 @@ respondText("&lt;html&gt;&lt;body&gt;123", "text/html")
 
 // Most clients (even curl!) do not execute &lt;script&gt; snippets right away,
 // we need to send about 2KB dummy data to bypass this problem
-for (i &lt;- 1 to 100) respondText("&lt;script&gt;&lt;/script&gt;\n")
-
-// Later, whenever you want to pass data to the browser, just send a snippet
-if (channel.isOpen)
+for (i &lt;- 1 to 100) respondText("&lt;script&gt;&lt;/script&gt;\n")</pre>
+</div>
+<p>Later, whenever you want to pass data to the browser, just send a snippet:</p>
+<div class="highlight-python"><pre>if (channel.isOpen)
   respondText("&lt;script&gt;parent.functionForForeverIframeSnippetsToCall()&lt;/script&gt;\n")
 else
-  // The connection has been closed, unsubscribe from events etc.</pre>
+  // The connection has been closed, unsubscribe from events etc.
+  // You can also use ``addConnectionClosedListener``.</pre>
 </div>
 </div>
 </div>
