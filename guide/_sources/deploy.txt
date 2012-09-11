@@ -70,8 +70,8 @@ To increase this limit, modify /etc/security/limits.conf:
 
 ::
 
-  *  soft  nofile  102400
-  *  hard  nofile  102400
+  *  soft  nofile  1024000
+  *  hard  nofile  1024000
 
 You need to logout and login again for the above config to take effect.
 To confirm, run ``ulimit -n``.
@@ -85,7 +85,7 @@ modify /etc/sysctl.conf:
 
 ::
 
-  # General gigabit tuning:
+  # General gigabit tuning
   net.core.rmem_max = 16777216
   net.core.wmem_max = 16777216
   net.ipv4.tcp_rmem = 4096 87380 16777216
@@ -129,7 +129,8 @@ connections in a heavily loaded web server environment. For such environments,
 it is recommended to increase this value to 1024 or higher.
 Large listen queues also do a better job of avoiding Denial of Service (DoS) attacks.
 
-The backlog size of Xitrum is set to 1024, but you also need to tune the kernel as above.
+The backlog size of Xitrum is set to 1024 (memcached also uses this value),
+but you also need to tune the kernel as above.
 
 To check the backlog config:
 

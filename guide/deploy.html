@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Deploy to production server &mdash; Xitrum 1.9.4 documentation</title>
+    <title>Deploy to production server &mdash; Xitrum 1.9.6 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.4',
+        VERSION:     '1.9.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.6 documentation" href="index.html" />
     <link rel="next" title="Clustering with Hazelcast" href="cluster.html" />
     <link rel="prev" title="I18n" href="i18n.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="i18n.html" title="I18n"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -100,8 +100,8 @@ is a very good tool. To install it on CentOS, see
 <p>Each connection is seen by Linux as an open file.
 The default maximum number of open file is 1024.
 To increase this limit, modify /etc/security/limits.conf:</p>
-<div class="highlight-python"><pre>*  soft  nofile  102400
-*  hard  nofile  102400</pre>
+<div class="highlight-python"><pre>*  soft  nofile  1024000
+*  hard  nofile  1024000</pre>
 </div>
 <p>You need to logout and login again for the above config to take effect.
 To confirm, run <tt class="docutils literal"><span class="pre">ulimit</span> <span class="pre">-n</span></tt>.</p>
@@ -111,7 +111,7 @@ To confirm, run <tt class="docutils literal"><span class="pre">ulimit</span> <sp
 <p>As instructed in the article
 <a class="reference external" href="http://www.metabrew.com/article/a-million-user-comet-application-with-mochiweb-part-1">A Million-user Comet Application with Mochiweb</a>,
 modify /etc/sysctl.conf:</p>
-<div class="highlight-python"><pre># General gigabit tuning:
+<div class="highlight-python"><pre># General gigabit tuning
 net.core.rmem_max = 16777216
 net.core.wmem_max = 16777216
 net.ipv4.tcp_rmem = 4096 87380 16777216
@@ -151,7 +151,8 @@ the default value of 128 is typically too low for robust handling of new
 connections in a heavily loaded web server environment. For such environments,
 it is recommended to increase this value to 1024 or higher.
 Large listen queues also do a better job of avoiding Denial of Service (DoS) attacks.</p>
-<p>The backlog size of Xitrum is set to 1024, but you also need to tune the kernel as above.</p>
+<p>The backlog size of Xitrum is set to 1024 (memcached also uses this value),
+but you also need to tune the kernel as above.</p>
 <p>To check the backlog config:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">somaxconn</span>
 </pre></div>
@@ -228,7 +229,7 @@ Large listen queues also do a better job of avoiding Denial of Service (DoS) att
         <li class="right" >
           <a href="i18n.html" title="I18n"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

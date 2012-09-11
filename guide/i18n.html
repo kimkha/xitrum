@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>I18n &mdash; Xitrum 1.9.4 documentation</title>
+    <title>I18n &mdash; Xitrum 1.9.6 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.4',
+        VERSION:     '1.9.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.6 documentation" href="index.html" />
     <link rel="next" title="Deploy to production server" href="deploy.html" />
     <link rel="prev" title="Cache" href="cache.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="cache.html" title="Cache"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -107,7 +107,6 @@ translate.</p>
     view
     resources
       i18n
-        en.po
         ja.po
         vi.po
         ...</pre>
@@ -118,13 +117,41 @@ You can use it to merge newly created pot file to existing po files.</p>
 them when running.</p>
 <div class="highlight-python"><pre>mylib.jar
   i18n
-    en.po
     ja.po
+    vi.po
+        ...
 
 another.jar
   i18n
-    en.po
-    ja.po</pre>
+    ja.po
+    vi.po
+        ...</pre>
+</div>
+</div>
+<div class="section" id="set-language">
+<h2>Set language<a class="headerlink" href="#set-language" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To get languages set in the <tt class="docutils literal"><span class="pre">Accept-Language</span></tt> request header by the browser,
+call <tt class="docutils literal"><span class="pre">browserLanguages</span></tt>. The result is sorted by priority set by the brower,
+from high to low.</li>
+<li>The default current language is &#8220;en&#8221;. To set the current language, call
+<tt class="docutils literal"><span class="pre">setLanguage(&quot;ja,</span> <span class="pre">vi</span> <span class="pre">etc.&quot;)</span></tt>.</li>
+<li>To autoset the most suitable language in resources, call
+<tt class="docutils literal"><span class="pre">autosetLanguage(resourceLanguages)</span></tt>, where
+<tt class="docutils literal"><span class="pre">resourceLanguages</span></tt> is a list of available languages in
+<tt class="docutils literal"><span class="pre">resources/i18n</span></tt> directory and JAR files.
+If there&#8217;s no suitable language, the language is still the default &#8220;en&#8221;.</li>
+<li>To get the current language set above, call <tt class="docutils literal"><span class="pre">getLanguage</span></tt>.</li>
+</ul>
+<p>In your controller, typically in a before filter, to set language:</p>
+<div class="highlight-python"><pre>beforeFilter {
+  val lango: Option[String] = yourMethodToGetUserPreferenceLanguageInSession()
+  lango match {
+    case None       =&gt; autosetLanguage("ja", "vi")
+    case Some(lang) =&gt; setLanguage(lang)
+  }
+  true
+}</pre>
 </div>
 </div>
 <div class="section" id="validation-messages">
@@ -173,6 +200,7 @@ nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</p
 <li><a class="reference internal" href="#write-internationalized-messages-in-source-code">Write internationalized messages in source code</a></li>
 <li><a class="reference internal" href="#extract-messages-to-pot-files">Extract messages to pot files</a></li>
 <li><a class="reference internal" href="#where-to-save-po-files">Where to save po files</a></li>
+<li><a class="reference internal" href="#set-language">Set language</a></li>
 <li><a class="reference internal" href="#validation-messages">Validation messages</a></li>
 <li><a class="reference internal" href="#plural-forms">Plural forms</a></li>
 </ul>
@@ -219,7 +247,7 @@ nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</p
         <li class="right" >
           <a href="cache.html" title="Cache"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
