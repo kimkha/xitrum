@@ -468,6 +468,18 @@ the connection.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.ExtEnv" class="extype" href="scope/request/ExtEnv.html">ExtEnv</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.I18n#autosetLanguage" data-isabs="false">
+      <a id="autosetLanguage(String*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">autosetLanguage</span><span class="params">(<span name="resourceLanguages">resourceLanguages: String*</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">If there's no suitable language, language is still the default &quot;en&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>If there's no suitable language, language is still the default &quot;en&quot;.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.I18n" class="extype" href="I18n.html">I18n</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.controller.BasicAuth#basicAuth" data-isabs="false">
       <a id="basicAuth(String)((String, String) ⇒ Boolean):Boolean"></a>
       <h4 class="signature">
@@ -516,6 +528,18 @@ the connection.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.RequestEnv" class="extype" href="scope/request/RequestEnv.html">RequestEnv</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.I18n#browserLanguages" data-isabs="false">
+      <a id="browserLanguages:Array[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">browserLanguages</span><span class="result">: <span name="scala.Array" class="extype">Array</span>[String]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>List of languages sorted by priority from high to low</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.I18n" class="extype" href="I18n.html">I18n</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.controller.ActionFactory#cacheActionDay" data-isabs="false">
       <a id="cacheActionDay(Int):Action"></a>
       <h4 class="signature">
@@ -723,18 +747,6 @@ the connection.
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.I18n#detectBrowserLanguages" data-isabs="false">
-      <a id="detectBrowserLanguages:Array[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">detectBrowserLanguages</span><span class="result">: <span name="scala.Array" class="extype">Array</span>[String]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>List of languages, high priority first</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.I18n" class="extype" href="I18n.html">I18n</a></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -858,7 +870,7 @@ the connection.
         <span class="name">getLanguage</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.I18n" class="extype" href="I18n.html">I18n</a></dd></dl></div>
+      <p class="shortcomment cmt">Default language is &quot;en&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Default language is &quot;en&quot;.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.I18n" class="extype" href="I18n.html">I18n</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.scope.request.RequestEnv#handlerEnv" data-isabs="false">
       <a id="handlerEnv:HandlerEnv"></a>
       <h4 class="signature">
@@ -1498,26 +1510,26 @@ The current controller instance will be imported in the template as &quot;helper
       </h4>
       <p class="shortcomment cmt">If Content-Type header is not set, it is set to &quot;application/octet-stream&quot;</p><div class="fullcomment"><div class="comment cmt"><p>If Content-Type header is not set, it is set to &quot;application/octet-stream&quot;</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondDefault404Page" data-isabs="false">
-      <a id="respondDefault404Page:Unit"></a>
+      <a id="respondDefault404Page():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondDefault404Page</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">respondDefault404Page</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondDefault500Page" data-isabs="false">
-      <a id="respondDefault500Page:Unit"></a>
+      <a id="respondDefault500Page():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondDefault500Page</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">respondDefault500Page</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="view/Responder.html">Responder</a></dd></dl></div>
@@ -2099,6 +2111,18 @@ textParams.
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="xitrum.controller.Net#webSocketAbsoluteRequestUrl" data-isabs="false">
+      <a id="webSocketAbsoluteRequestUrl:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">webSocketAbsoluteRequestUrl</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.Net" class="extype" href="controller/Net.html">Net</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.controller.Net#webSocketAbsoluteUrlPrefix" data-isabs="false">
       <a id="webSocketAbsoluteUrlPrefix:String"></a>
       <h4 class="signature">

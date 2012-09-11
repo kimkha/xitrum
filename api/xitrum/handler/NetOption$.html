@@ -2,39 +2,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.I18n</title>
+          <title>xitrum.handler.NetOption</title>
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../lib/template.css" />
-      <script type="text/javascript" src="../lib/jquery.js"></script>
-      <script type="text/javascript" src="../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../lib/template.js"></script>
-      <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
+      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
+      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="type">
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
       <div id="definition">
-        <img src="../lib/trait_big.png" />
-        <p id="owner"><a name="xitrum" class="extype" href="package.html">xitrum</a></p>
-        <h1>I18n</h1>
+        <img src="../../lib/object_big.png" />
+        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a>.<a name="xitrum.handler" class="extype" href="package.html">handler</a></p>
+        <h1>NetOption</h1>
       </div>
 
       <h4 class="signature" id="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">I18n</span><span class="result"> extends AnyRef</span>
+        <span class="name">NetOption</span><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"><dl class="attributes block"> <dt>Self Type</dt><dd><a name="xitrum.Controller" class="extype" href="Controller.html">Controller</a></dd></dl><div class="toggleContainer block">
+      <div class="fullcommenttop" id="comment"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a name="xitrum.comet.CometController" class="extype" href="comet/CometController.html">CometController</a>, <a name="xitrum.comet.CometController" class="extype" href="comet/CometController$.html">CometController</a>, <a name="xitrum.Controller" class="extype" href="Controller.html">Controller</a>, <a name="xitrum.routing.JSRoutesController" class="extype" href="routing/JSRoutesController.html">JSRoutesController</a>, <a name="xitrum.routing.JSRoutesController" class="extype" href="routing/JSRoutesController$.html">JSRoutesController</a></div>
         </div></div>
     
 
@@ -48,7 +45,7 @@
               <span class="filtertype">Inherited</span>
               <ol><li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li></ol>
-              <ol id="linearization"><li name="xitrum.I18n" class="in"><span>I18n</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+              <ol id="linearization"><li name="xitrum.handler.NetOption" class="in"><span>NetOption</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
             </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -138,30 +135,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.I18n#autosetLanguage" data-isabs="false">
-      <a id="autosetLanguage(String*):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">autosetLanguage</span><span class="params">(<span name="resourceLanguages">resourceLanguages: String*</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">If there's no suitable language, language is still the default &quot;en&quot;.</p>
-    </li><li visbl="pub" name="xitrum.I18n#browserLanguages" data-isabs="false">
-      <a id="browserLanguages:Array[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">browserLanguages</span><span class="result">: <span name="scala.Array" class="extype">Array</span>[String]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>List of languages sorted by priority from high to low</p></dd></dl></div>
     </li><li visbl="prt" name="scala.AnyRef#clone" data-isabs="false">
       <a id="clone():AnyRef"></a>
       <h4 class="signature">
@@ -173,7 +146,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: AnyRef</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -212,7 +185,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a name="java.lang" class="extype" href="../../java/lang/package.html">lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -228,18 +201,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.I18n#getLanguage" data-isabs="false">
-      <a id="getLanguage:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getLanguage</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Default language is &quot;en&quot;.</p>
     </li><li visbl="pub" name="scala.AnyRef#hashCode" data-isabs="false">
       <a id="hashCode():Int"></a>
       <h4 class="signature">
@@ -300,15 +261,15 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.I18n#setLanguage" data-isabs="false">
-      <a id="setLanguage(String):Unit"></a>
+    </li><li visbl="pub" name="xitrum.handler.NetOption#set" data-isabs="false">
+      <a id="set(ServerBootstrap):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setLanguage</span><span class="params">(<span name="language">language: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">set</span><span class="params">(<span name="bootstrap">bootstrap: <span name="org.jboss.netty.bootstrap.ServerBootstrap" class="extype">ServerBootstrap</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       
@@ -324,102 +285,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.I18n#t" data-isabs="false">
-      <a id="t(String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">t</span><span class="params">(<span name="singular">singular: String</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.I18n#tc" data-isabs="false">
-      <a id="tc(String,String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tc</span><span class="params">(<span name="ctx">ctx: String</span>, <span name="singular">singular: String</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.I18n#tcf" data-isabs="false">
-      <a id="tcf(String,String,Any*):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tcf</span><span class="params">(<span name="ctx">ctx: String</span>, <span name="singular">singular: String</span>, <span name="args">args: <span name="scala.Any" class="extype">Any</span>*</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.I18n#tcn" data-isabs="false">
-      <a id="tcn(String,String,String,Long):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tcn</span><span class="params">(<span name="ctx">ctx: String</span>, <span name="singular">singular: String</span>, <span name="plural">plural: String</span>, <span name="n">n: <span name="scala.Long" class="extype">Long</span></span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.I18n#tcnf" data-isabs="false">
-      <a id="tcnf(String,String,String,Long,Any*):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tcnf</span><span class="params">(<span name="ctx">ctx: String</span>, <span name="singular">singular: String</span>, <span name="plural">plural: String</span>, <span name="n">n: <span name="scala.Long" class="extype">Long</span></span>, <span name="args">args: <span name="scala.Any" class="extype">Any</span>*</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.I18n#tf" data-isabs="false">
-      <a id="tf(String,Any*):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tf</span><span class="params">(<span name="singular">singular: String</span>, <span name="args">args: <span name="scala.Any" class="extype">Any</span>*</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.I18n#tn" data-isabs="false">
-      <a id="tn(String,String,Long):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tn</span><span class="params">(<span name="singular">singular: String</span>, <span name="plural">plural: String</span>, <span name="n">n: <span name="scala.Long" class="extype">Long</span></span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.I18n#tnf" data-isabs="false">
-      <a id="tnf(String,String,Long,Any*):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tnf</span><span class="params">(<span name="singular">singular: String</span>, <span name="plural">plural: String</span>, <span name="n">n: <span name="scala.Long" class="extype">Long</span></span>, <span name="args">args: <span name="scala.Any" class="extype">Any</span>*</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.AnyRef#toString" data-isabs="false">
       <a id="toString():String"></a>
       <h4 class="signature">
