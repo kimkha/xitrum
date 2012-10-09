@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cache &mdash; Xitrum 1.9.6 documentation</title>
+    <title>Server-side cache &mdash; Xitrum 1.9.7 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.6',
+        VERSION:     '1.9.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
     <link rel="next" title="I18n" href="i18n.html" />
     <link rel="prev" title="Filters" href="filter.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="filter.html" title="Filters"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,8 +50,22 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="cache">
-<h1>Cache<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="server-side-cache">
+<h1>Server-side cache<a class="headerlink" href="#server-side-cache" title="Permalink to this headline">¶</a></h1>
+<p>Xitrum provides extensive client-side and server-side caching for faster responding.
+At the web server layer, small files are cached in memory, big files are sent
+using NIO&#8217;s zero copy. Xitrum&#8217;s static file serving speed is
+<a class="reference external" href="https://gist.github.com/3293596">similar to that of Nginx</a>.
+At the web framework layer you have can declare page, action, and object cache
+in the Rails style.
+<a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
+like conditional GET are applied for client-side caching.</p>
+<p>For dynamic content, if the content does not change after created (as if it is
+a static file), you may set headers for clients to cache aggressively.
+In that case, call <tt class="docutils literal"><span class="pre">setClientCacheAggressively()</span></tt> in your controller.</p>
+<p>Sometimes you may want to prevent client-side caching.
+In that case, call <tt class="docutils literal"><span class="pre">setNoClientCache()</span></tt> in your controller.</p>
+<p>Cache in the following section refers to server-side cache.</p>
 <p><a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>
 is integrated for page, action, and object cache. Of course you can
 use it for other things (distributed processing etc.) in your application.</p>
@@ -201,7 +215,7 @@ request        the cache already exists?
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Cache</a><ul>
+<li><a class="reference internal" href="#">Server-side cache</a><ul>
 <li><a class="reference internal" href="#cache-page-or-action">Cache page or action</a></li>
 <li><a class="reference internal" href="#cache-object">Cache object</a></li>
 <li><a class="reference internal" href="#remove-cache">Remove cache</a></li>
@@ -251,7 +265,7 @@ request        the cache already exists?
         <li class="right" >
           <a href="filter.html" title="Filters"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

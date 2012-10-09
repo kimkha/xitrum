@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Development flow with SBT, Eclipse, and JRebel &mdash; Xitrum 1.9.6 documentation</title>
+    <title>Development flow with SBT, Eclipse, and JRebel &mdash; Xitrum 1.9.7 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.6',
+        VERSION:     '1.9.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
     <link rel="next" title="Controller, action, and view" href="controller_action_view.html" />
     <link rel="prev" title="Tutorial" href="tutorial.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -80,15 +80,14 @@ git add -f .gitignore</pre>
 <div class="highlight-python"><pre>curl -L -o xitrum-new.zip https://github.com/ngocdaothanh/xitrum-new/zipball/master</pre>
 </div>
 </div>
-<div class="section" id="install-eclipse-plugin-for-sbt">
-<h2>Install Eclipse plugin for SBT<a class="headerlink" href="#install-eclipse-plugin-for-sbt" title="Permalink to this headline">¶</a></h2>
-<p>Install Eclipse plugin for SBT by adding to file <tt class="docutils literal"><span class="pre">~/.sbt/plugins/build.sbt</span></tt>
-the content as described at <a class="reference external" href="https://github.com/typesafehub/sbteclipse">https://github.com/typesafehub/sbteclipse</a>.</p>
-<p>To create the <tt class="docutils literal"><span class="pre">.project</span></tt> file for Eclipse from <tt class="docutils literal"><span class="pre">build.sbt</span></tt>, from the
-project directory, run:</p>
+<div class="section" id="import-the-project-to-eclipse">
+<h2>Import the project to Eclipse<a class="headerlink" href="#import-the-project-to-eclipse" title="Permalink to this headline">¶</a></h2>
+<p>Many people <a class="reference external" href="http://scala-ide.org/">use Eclipse to write Scala code</a>.</p>
+<p>From the project directory, run:</p>
 <div class="highlight-python"><pre>sbt/sbt eclipse</pre>
 </div>
-<p>Now open Eclipse, and import the project.</p>
+<p><tt class="docutils literal"><span class="pre">.project</span></tt> file for Eclipse will be created from definitions in <tt class="docutils literal"><span class="pre">build.sbt</span></tt>.
+Now open Eclipse, and import the project.</p>
 </div>
 <div class="section" id="install-jrebel">
 <h2>Install JRebel<a class="headerlink" href="#install-jrebel" title="Permalink to this headline">¶</a></h2>
@@ -141,7 +140,7 @@ automatically reload the generated .class files.</p>
   <ul>
 <li><a class="reference internal" href="#">Development flow with SBT, Eclipse, and JRebel</a><ul>
 <li><a class="reference internal" href="#create-a-new-xitrum-project">Create a new Xitrum project</a></li>
-<li><a class="reference internal" href="#install-eclipse-plugin-for-sbt">Install Eclipse plugin for SBT</a></li>
+<li><a class="reference internal" href="#import-the-project-to-eclipse">Import the project to Eclipse</a></li>
 <li><a class="reference internal" href="#install-jrebel">Install JRebel</a></li>
 <li><a class="reference internal" href="#use-jrebel">Use JRebel</a></li>
 </ul>
@@ -188,7 +187,7 @@ automatically reload the generated .class files.</p>
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

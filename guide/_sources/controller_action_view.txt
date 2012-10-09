@@ -35,12 +35,18 @@ Of course you can refactor the view into a separate Scala file.
 
 There are methods for responding things other than views:
 
-* ``respondText``: responds anything as a string without layout
-* ``respondJson``: responds JSON
+* ``respondText("hello")``: responds a string without layout
+* ``respondHtml("<html>...</html>")``: same as above, with content type set to "text/html"
+* ``respondJson(List(1, 2, 3))``: converts Scala object to JSON object then responds
+* ``respondJs("myFunction([1, 2, 3])")``
+* ``respondJsonP(List(1, 2, 3), "myFunction")``: combination of the above two
+* ``respondJsonText("[1, 2, 3]")``
+* ``respondJsonPText("[1, 2, 3]", "myFunction")``
 * ``respondBinary``: responds an array of bytes
 * ``respondFile``: sends a file directly from disk, very fast
   because `zero-copy <http://www.ibm.com/developerworks/library/j-zerocopy/>`_
-  (send-file) is used
+  (aka send-file) is used
+* ``respondWebSocket``: responds a WebSocket text frame
 
 Layout
 ------
@@ -68,7 +74,7 @@ AppController.scala
           <title>Welcome to Xitrum</title>
         </head>
         <body>
-          {respondedView}
+          {renderedView}
           {jsForView}
         </body>
       </html>

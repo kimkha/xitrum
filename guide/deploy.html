@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Deploy to production server &mdash; Xitrum 1.9.6 documentation</title>
+    <title>Deploy to production server &mdash; Xitrum 1.9.7 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.6',
+        VERSION:     '1.9.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
     <link rel="next" title="Clustering with Hazelcast" href="cluster.html" />
     <link rel="prev" title="I18n" href="i18n.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="i18n.html" title="I18n"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,9 +55,12 @@
 <p>You may run Xitrum directly:</p>
 <div class="highlight-python"><pre>Browser ------ Xitrum instance</pre>
 </div>
-<p>Or behind a proxy server like Apache or Nginx:</p>
-<div class="highlight-python"><pre>Browser ------ Proxy ------ Xitrum instance</pre>
+<p>Or behind a load balancer like HAProxy, or reverse proxy like Apache or Nginx:</p>
+<div class="highlight-python"><pre>Browser ------ Load balancer/Reverse proxy ------ Xitrum instances</pre>
 </div>
+<p>As mentioned in <a class="reference internal" href="cache.html"><em>the section about caching</em></a>, Xitrum serves static
+files very fast. You don&#8217;t need to config load balancer/reverse proxy to serve
+static files.</p>
 <div class="section" id="package-directory">
 <h2>Package directory<a class="headerlink" href="#package-directory" title="Permalink to this headline">¶</a></h2>
 <p>Run <tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">xitrum-package</span></tt> to prepare <tt class="docutils literal"><span class="pre">target/xitrum</span></tt> directory, ready to
@@ -95,6 +98,11 @@ is a very good tool. To install it on CentOS, see
 </div>
 <div class="section" id="tune-linux-for-many-connections">
 <h2>Tune Linux for many connections<a class="headerlink" href="#tune-linux-for-many-connections" title="Permalink to this headline">¶</a></h2>
+<p>Good read:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.frozentux.net/ipsysctl-tutorial/chunkyhtml/">Ipsysctl tutorial</a></li>
+<li><a class="reference external" href="http://www.frozentux.net/iptables-tutorial/chunkyhtml/">Iptables tutorial</a></li>
+</ul>
 <div class="section" id="increase-open-file-limit">
 <h3>Increase open file limit<a class="headerlink" href="#increase-open-file-limit" title="Permalink to this headline">¶</a></h3>
 <p>Each connection is seen by Linux as an open file.
@@ -229,7 +237,7 @@ but you also need to tune the kernel as above.</p>
         <li class="right" >
           <a href="i18n.html" title="I18n"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

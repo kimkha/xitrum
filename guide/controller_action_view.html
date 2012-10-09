@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller, action, and view &mdash; Xitrum 1.9.6 documentation</title>
+    <title>Controller, action, and view &mdash; Xitrum 1.9.7 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.6',
+        VERSION:     '1.9.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.6 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -81,12 +81,18 @@ class MyController extends Controller {
 <p>Of course you can refactor the view into a separate Scala file.</p>
 <p>There are methods for responding things other than views:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">respondText</span></tt>: responds anything as a string without layout</li>
-<li><tt class="docutils literal"><span class="pre">respondJson</span></tt>: responds JSON</li>
+<li><tt class="docutils literal"><span class="pre">respondText(&quot;hello&quot;)</span></tt>: responds a string without layout</li>
+<li><tt class="docutils literal"><span class="pre">respondHtml(&quot;&lt;html&gt;...&lt;/html&gt;&quot;)</span></tt>: same as above, with content type set to &#8220;text/html&#8221;</li>
+<li><tt class="docutils literal"><span class="pre">respondJson(List(1,</span> <span class="pre">2,</span> <span class="pre">3))</span></tt>: converts Scala object to JSON object then responds</li>
+<li><tt class="docutils literal"><span class="pre">respondJs(&quot;myFunction([1,</span> <span class="pre">2,</span> <span class="pre">3])&quot;)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">respondJsonP(List(1,</span> <span class="pre">2,</span> <span class="pre">3),</span> <span class="pre">&quot;myFunction&quot;)</span></tt>: combination of the above two</li>
+<li><tt class="docutils literal"><span class="pre">respondJsonText(&quot;[1,</span> <span class="pre">2,</span> <span class="pre">3]&quot;)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">respondJsonPText(&quot;[1,</span> <span class="pre">2,</span> <span class="pre">3]&quot;,</span> <span class="pre">&quot;myFunction&quot;)</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">respondBinary</span></tt>: responds an array of bytes</li>
 <li><tt class="docutils literal"><span class="pre">respondFile</span></tt>: sends a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
-(send-file) is used</li>
+(aka send-file) is used</li>
+<li><tt class="docutils literal"><span class="pre">respondWebSocket</span></tt>: responds a WebSocket text frame</li>
 </ul>
 <div class="section" id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
@@ -108,7 +114,7 @@ trait AppController extends Controller {
         &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
       &lt;/head&gt;
       &lt;body&gt;
-        {respondedView}
+        {renderedView}
         {jsForView}
       &lt;/body&gt;
     &lt;/html&gt;
@@ -258,7 +264,7 @@ or &#8220;ssp&#8221; as the last parameter to <cite>renderScalate</cite> or <cit
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

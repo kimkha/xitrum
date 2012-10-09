@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Filters &mdash; Xitrum 1.9.6 documentation</title>
+    <title>Filters &mdash; Xitrum 1.9.7 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.6',
+        VERSION:     '1.9.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.6 documentation" href="index.html" />
-    <link rel="next" title="Cache" href="cache.html" />
+    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
+    <link rel="next" title="Server-side cache" href="cache.html" />
     <link rel="prev" title="Upload" href="upload.html" /> 
   </head>
   <body>
@@ -36,12 +36,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="cache.html" title="Cache"
+          <a href="cache.html" title="Server-side cache"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="upload.html" title="Upload"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -196,15 +196,13 @@ after filters) will not be run</li>
 <li>If an around filter decide not to call <tt class="docutils literal"><span class="pre">action</span></tt>, the inner nested
 around filters will not be run</li>
 </ul>
-<div class="highlight-python"><pre>before1 -true-&gt; before2 -true-&gt; +----------------------+ --&gt; after1 --&gt; after2
-                                | around1 (1 of 2)     |
-                                | +------------------+ |
-                                | | around2 (1 of 2) | |
-                                | | action           | |
-                                | | around2 (2 of 2) | |
-                                | +------------------+ |
-                                | around2 (2 of 2)     |
-                                +----------------------+</pre>
+<div class="highlight-python"><pre>before1 -true-&gt; before2 -true-&gt; +--------------------+ --&gt; after1 --&gt; after2
+                                | around1 (1 of 2)   |
+                                |   around2 (1 of 2) |
+                                |     action         |
+                                |   around2 (2 of 2) |
+                                | around1 (2 of 2)   |
+                                +--------------------+</pre>
 </div>
 </div>
 </div>
@@ -231,7 +229,7 @@ around filters will not be run</li>
                         title="previous chapter">Upload</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="cache.html"
-                        title="next chapter">Cache</a></p>
+                        title="next chapter">Server-side cache</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/filter.txt"
@@ -261,12 +259,12 @@ around filters will not be run</li>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="cache.html" title="Cache"
+          <a href="cache.html" title="Server-side cache"
              >next</a> |</li>
         <li class="right" >
           <a href="upload.html" title="Upload"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.6 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
