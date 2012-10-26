@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller, action, and view &mdash; Xitrum 1.9.7 documentation</title>
+    <title>Controller, action, and view &mdash; Xitrum 1.9.8 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.7',
+        VERSION:     '1.9.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.8 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -93,6 +93,7 @@ class MyController extends Controller {
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
 (aka send-file) is used</li>
 <li><tt class="docutils literal"><span class="pre">respondWebSocket</span></tt>: responds a WebSocket text frame</li>
+<li><tt class="docutils literal"><span class="pre">respondEventSource(&quot;data&quot;,</span> <span class="pre">&quot;event&quot;)</span></tt></li>
 </ul>
 <div class="section" id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
@@ -207,6 +208,50 @@ or &#8220;ssp&#8221; as the last parameter to <cite>renderScalate</cite> or <cit
 </pre></div>
 </div>
 </div>
+<div class="section" id="controller-object">
+<h2>Controller object<a class="headerlink" href="#controller-object" title="Permalink to this headline">¶</a></h2>
+<p>From a controller, to refer to an action of another controller, use controller
+object like this:</p>
+<div class="highlight-python"><pre>import xitrum.Controller
+
+object LoginController extends LoginController
+class LoginController extends Controller {
+  def login = GET("login") {...}
+
+  def doLogin = POST("login") {
+    ...
+    // After login success
+    redirectTo(AdminController.index)  // &lt;-- HERE
+  }
+}
+
+object AdminController extends AdminController
+class AdminController extends Controller {
+  def index = GET("admin") {
+    ...
+    // Check if the user has not logged in, redirect him to the login page
+    redirectTo(LoginController.login)  // &lt;-- HERE
+  }
+}</pre>
+</div>
+<p>In short, you create controller object and call action methods on it.</p>
+<div class="section" id="caveat">
+<h3>Caveat<a class="headerlink" href="#caveat" title="Permalink to this headline">¶</a></h3>
+<p>From controller class, do not import everything in controller object like this:</p>
+<div class="highlight-python"><pre>object LoginController extends LoginController
+class LoginController extends Controller {
+  import LoginController._
+  ...
+}</pre>
+</div>
+<p>Doing that will cause many strange runtime error in the Xitrum framework, like this:</p>
+<div class="highlight-python"><pre>java.lang.NullPointerException: null
+  at xitrum.scope.request.RequestEnv.request(RequestEnv.scala:58) ~[xitrum_2.9.2.jar:1.9.8]
+  at xitrum.scope.request.ExtEnv$class.cookies(ExtEnv.scala:26) ~[xitrum_2.9.2.jar:1.9.8]
+  ...</pre>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -220,6 +265,10 @@ or &#8220;ssp&#8221; as the last parameter to <cite>renderScalate</cite> or <cit
 <li><a class="reference internal" href="#">Controller, action, and view</a><ul>
 <li><a class="reference internal" href="#layout">Layout</a></li>
 <li><a class="reference internal" href="#scalate">Scalate</a></li>
+<li><a class="reference internal" href="#controller-object">Controller object</a><ul>
+<li><a class="reference internal" href="#caveat">Caveat</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -264,7 +313,7 @@ or &#8220;ssp&#8221; as the last parameter to <cite>renderScalate</cite> or <cit
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

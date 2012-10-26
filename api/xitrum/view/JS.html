@@ -34,7 +34,7 @@
           <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a name="xitrum.comet.CometController" class="extype" href="../comet/CometController.html">CometController</a>, <a name="xitrum.comet.CometController" class="extype" href="../comet/CometController$.html">CometController</a>, <a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a>, <a name="xitrum.routing.JSRoutesController" class="extype" href="../routing/JSRoutesController.html">JSRoutesController</a>, <a name="xitrum.routing.JSRoutesController" class="extype" href="../routing/JSRoutesController$.html">JSRoutesController</a>, <a name="xitrum.view.Responder" class="extype" href="Responder.html">Responder</a></div>
+          <div class="subClasses hiddenContent"><a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a>, <a name="xitrum.routing.JSRoutesController" class="extype" href="../routing/JSRoutesController.html">JSRoutesController</a>, <a name="xitrum.routing.JSRoutesController" class="extype" href="../routing/JSRoutesController$.html">JSRoutesController</a>, <a name="xitrum.view.Responder" class="extype" href="Responder.html">Responder</a>, <a name="xitrum.sockjs.SockJsController" class="extype" href="../sockjs/SockJsController.html">SockJsController</a></div>
         </div></div>
     
 
@@ -288,18 +288,6 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.view.JS#jsCometGet" data-isabs="false">
-      <a id="jsCometGet(String,String):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">jsCometGet</span><span class="params">(<span name="topic">topic: String</span>, <span name="callback">callback: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="xitrum.view.JS#jsDefaults" data-isabs="false">
       <a id="jsDefaults:Group"></a>
       <h4 class="signature">
@@ -323,7 +311,12 @@
         <span class="name">jsEscape</span><span class="params">(<span name="string">string: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">See escape_javascript of Rails</p>
+      <p class="shortcomment cmt">Do not use this to escape JSON, because they are different! For example
+JSON does not escape ' character, while JavaScript does.</p><div class="fullcomment"><div class="comment cmt"><p>Do not use this to escape JSON, because they are different! For example
+JSON does not escape ' character, while JavaScript does. To escape JSON,
+use Jerkson:
+com.codahale.jerkson.Json.generate(List(message))</p><p>org.apache.commons.lang3.StringEscapeUtils is used internally.
+</p></div></div>
     </li><li visbl="pub" name="xitrum.view.JS#jsForView" data-isabs="false">
       <a id="jsForView:Serializable"></a>
       <h4 class="signature">

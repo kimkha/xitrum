@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum 1.9.7 documentation</title>
+    <title>Async response &mdash; Xitrum 1.9.8 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.7',
+        VERSION:     '1.9.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.8 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -67,7 +67,8 @@
 <li><tt class="docutils literal"><span class="pre">respondFile</span></tt>: sends a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
 (aka send-file) is used</li>
-<li><tt class="docutils literal"><span class="pre">respondWebSocket</span></tt>: responds a WebSocket text frame</li>
+<li><tt class="docutils literal"><span class="pre">respondWebSocket(&quot;text&quot;)</span></tt>: responds a WebSocket text frame</li>
+<li><tt class="docutils literal"><span class="pre">respondEventSource(&quot;data&quot;,</span> <span class="pre">&quot;event&quot;)</span></tt></li>
 </ul>
 <p>Xitrum does not automatically send any default response.
 You must explicitly call respondXXX methods above to send response.
@@ -89,23 +90,23 @@ You can use it to perform actions when the response has actually been sent.</p>
 <div class="highlight-python"><pre>import xitrum.Controller
 
 class HelloSockJS extends Controller {
-  // /echo is the entry point
-  def echo = WEBSOCKET("echo", new WebSocketHandler {
-    def onOpen() {
-      // If you don't want to accept the connection,
-      // call channel.close()
-      log.debug("onOpen")
-    }
+  def echo = WEBSOCKET("echo") {
+    // If you don't want to accept the connection, call channel.close()
+    acceptWebSocket(new WebSocketHandler {
+      def onOpen() {
+        log.debug("onOpen")
+      }
 
-    def onMessage(text: String) {
-      // Send back data to the SockJS client
-      respondWebSocket(text.toUpperCase)
-    }
+      def onMessage(message: String) {
+        // Send back data to the SockJS client
+        respondWebSocket(message.toUpperCase)
+      }
 
-    def onClose() {
-      log.debug("onClose")
-    }
-  })
+      def onClose() {
+        log.debug("onClose")
+      }
+    })
+  }
 }</pre>
 </div>
 <p>To get URL to the above WebSocket action:</p>
@@ -113,6 +114,65 @@ class HelloSockJS extends Controller {
 
 // Probably you want to use this in Scalate view etc.
 val url = HelloWebSocket.echo.webSocketAbsoluteUrl</pre>
+</div>
+</div>
+<div class="section" id="sockjs">
+<h2>SockJS<a class="headerlink" href="#sockjs" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/sockjs/sockjs-client">SockJS</a> is a browser JavaScript
+library that provides a WebSocket-like object.
+SockJS tries to use WebSocket first. If that fails it can use a variety
+of ways but still presents them through the WebSocket-like object.</p>
+<p>If you want to work with WebSocket API on all kind of browsers, you should use
+SockJS and avoid using WebSocket directly.</p>
+<div class="highlight-python"><pre>&lt;script&gt;
+  var sock = new SockJS('http://mydomain.com/path_prefix');
+  sock.onopen = function() {
+    console.log('open');
+  };
+  sock.onmessage = function(e) {
+    console.log('message', e.data);
+  };
+  sock.onclose = function() {
+    console.log('close');
+  };
+&lt;/script&gt;</pre>
+</div>
+<p>Xitrum includes the JavaScript file of SockJS.
+In your view template, just write like this:</p>
+<div class="highlight-python"><pre>...
+html
+  head
+    != jsDefaults
+...</pre>
+</div>
+<p>SockJS does require a <a class="reference external" href="https://github.com/sockjs/sockjs-protocol">server counterpart</a>.
+Xitrum automatically does it for you.</p>
+<div class="highlight-python"><pre>import xitrum.{Controller, SockJsHandler}
+import xitrum.handler.Server
+import xitrum.routing.Routes
+
+class EchoSockJsHandler extends SockJsHandler {
+  def onOpen() {}
+
+  def onMessage(message: String) {
+    send(message)
+  }
+
+  def onClose() {}
+}
+
+object Boot {
+  def main(args: Array[String]) {
+    Routes.sockJs(classOf[EchoSockJsHandler], "echo")
+    Server.start()
+  }
+}</pre>
+</div>
+<p>See <a class="reference external" href="https://github.com/sockjs/sockjs-node#various-issues-and-design-considerations">Various issues and design considerations</a>:</p>
+<div class="highlight-python"><pre>Basically cookies are not suited for SockJS model. If you want to authorize a
+session, provide a unique token on a page, send it as a first thing over SockJS
+connection and validate it on the server side. In essence, this is how cookies
+work.</pre>
 </div>
 </div>
 <div class="section" id="ajax-long-polling">
@@ -236,6 +296,16 @@ else
   // You can also use ``addConnectionClosedListener``.</pre>
 </div>
 </div>
+<div class="section" id="event-source">
+<h3>Event Source<a class="headerlink" href="#event-source" title="Permalink to this headline">¶</a></h3>
+<p>See <a class="reference external" href="http://dev.w3.org/html5/eventsource/">http://dev.w3.org/html5/eventsource/</a></p>
+<p>Event Source response is a special kind of chunked response.
+Data must be Must be  UTF-8.</p>
+<p>To respond event source, call <tt class="docutils literal"><span class="pre">respondEventSource</span></tt> as many time as you want.</p>
+<div class="highlight-python"><pre>respondEventSource("data1", "event1")
+respondEventSource("data2")  // Event name defaults to "message"</pre>
+</div>
+</div>
 </div>
 </div>
 
@@ -249,6 +319,7 @@ else
   <ul>
 <li><a class="reference internal" href="#">Async response</a><ul>
 <li><a class="reference internal" href="#websocket">WebSocket</a></li>
+<li><a class="reference internal" href="#sockjs">SockJS</a></li>
 <li><a class="reference internal" href="#ajax-long-polling">Ajax long polling</a><ul>
 <li><a class="reference internal" href="#chat-example">Chat example</a></li>
 <li><a class="reference internal" href="#publish-message">Publish message</a></li>
@@ -256,6 +327,7 @@ else
 </li>
 <li><a class="reference internal" href="#chunked-response">Chunked response</a><ul>
 <li><a class="reference internal" href="#forever-iframe">Forever iframe</a></li>
+<li><a class="reference internal" href="#event-source">Event Source</a></li>
 </ul>
 </li>
 </ul>
@@ -302,7 +374,7 @@ else
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

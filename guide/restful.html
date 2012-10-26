@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RESTful APIs &mdash; Xitrum 1.9.7 documentation</title>
+    <title>RESTful APIs &mdash; Xitrum 1.9.8 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.7',
+        VERSION:     '1.9.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.8 documentation" href="index.html" />
     <link rel="next" title="Postbacks" href="postback.html" />
     <link rel="prev" title="Controller, action, and view" href="controller_action_view.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="controller_action_view.html" title="Controller, action, and view"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -82,24 +82,24 @@ that JAR file into another app and that app automatically has blog feature!
 Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe way.</p>
 <div class="section" id="route-cache">
 <h2>Route cache<a class="headerlink" href="#route-cache" title="Permalink to this headline">¶</a></h2>
-<p>For better startup speed, routes are cached to file <tt class="docutils literal"><span class="pre">routes.sclasner</span></tt>.
+<p>For better startup speed, routes are cached to file <tt class="docutils literal"><span class="pre">routes.cache</span></tt>.
 While developing, routes in .class files in the <tt class="docutils literal"><span class="pre">target</span></tt> directory are not
 cached. If you change library dependencies that contain routes, you may need to
-delete <tt class="docutils literal"><span class="pre">routes.sclasner</span></tt>. This file should not be committed to your project
+delete <tt class="docutils literal"><span class="pre">routes.cache</span></tt>. This file should not be committed to your project
 source code repository.</p>
 </div>
 <div class="section" id="route-order-with-first-and-last">
 <h2>Route order with first and last<a class="headerlink" href="#route-order-with-first-and-last" title="Permalink to this headline">¶</a></h2>
 <p>When you want to route like this:</p>
 <div class="highlight-python"><pre>/articles/:id --&gt; Articles#show
-/articles/new --&gt; Articles#niw</pre>
+/articles/new --&gt; Articles#nevv</pre>
 </div>
 <p>You must make sure the second route be checked first. <tt class="docutils literal"><span class="pre">first</span></tt> is for this purpose:</p>
 <div class="highlight-python"><pre>class Articles extends Controller {
   pathPrefix = "articles"
 
   def show = GET(":id") {...}
-  def niw  = first.GET("new") {...}
+  def nevv = first.GET("new") {...}
 }</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">last</span></tt> is similar.</p>
@@ -237,7 +237,7 @@ which has <tt class="docutils literal"><span class="pre">toString(Charset)</span
         <li class="right" >
           <a href="controller_action_view.html" title="Controller, action, and view"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

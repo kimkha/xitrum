@@ -237,6 +237,18 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="xitrum.util.Gzip#isCompressed" data-isabs="false">
+      <a id="isCompressed(Array[Byte]):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isCompressed</span><span class="params">(<span name="bytes">bytes: <span name="scala.Array" class="extype">Array</span>[<span name="scala.Byte" class="extype">Byte</span>]</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.Any#isInstanceOf" data-isabs="false">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <h4 class="signature">
@@ -249,6 +261,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.util.Gzip#mayUncompress" data-isabs="false">
+      <a id="mayUncompress(Array[Byte]):Array[Byte]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mayUncompress</span><span class="params">(<span name="maybeCompressed">maybeCompressed: <span name="scala.Array" class="extype">Array</span>[<span name="scala.Byte" class="extype">Byte</span>]</span>)</span><span class="result">: <span name="scala.Array" class="extype">Array</span>[<span name="scala.Byte" class="extype">Byte</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The uncompressed bytes, or the input itself if it's not compressed</p></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -323,6 +347,18 @@
       <p class="shortcomment cmt">If compressed, CONTENT_LENGTH is updated and CONTENT_ENCODING is set to &quot;gzip&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>If compressed, CONTENT_LENGTH is updated and CONTENT_ENCODING is set to &quot;gzip&quot;.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>Response body content as bytes
 </p></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.util.Gzip#uncompress" data-isabs="false">
+      <a id="uncompress(Array[Byte]):Array[Byte]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uncompress</span><span class="params">(<span name="bytes">bytes: <span name="scala.Array" class="extype">Array</span>[<span name="scala.Byte" class="extype">Byte</span>]</span>)</span><span class="result">: <span name="scala.Array" class="extype">Array</span>[<span name="scala.Byte" class="extype">Byte</span>]</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
       <a id="wait():Unit"></a>
       <h4 class="signature">

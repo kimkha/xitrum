@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scopes &mdash; Xitrum 1.9.7 documentation</title>
+    <title>Scopes &mdash; Xitrum 1.9.8 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.7',
+        VERSION:     '1.9.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.8 documentation" href="index.html" />
     <link rel="next" title="Validation" href="validation.html" />
     <link rel="prev" title="Serve flash socket policy file" href="flash.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="flash.html" title="Serve flash socket policy file"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -153,9 +153,23 @@ but Netty detects and outputs either &#8220;max-age&#8221; or &#8220;expires&#82
 </div>
 <div class="section" id="session">
 <h2>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h2>
+<p>Session storing, restoring, encrypting etc. is done automatically by Xitrum.
+You don&#8217;t have to mess with them.</p>
 <p>In your actions, you can use <tt class="docutils literal"><span class="pre">session</span></tt>. It is an instance of
 <tt class="docutils literal"><span class="pre">scala.collection.mutable.Map[String,</span> <span class="pre">Any]</span></tt>. Things in <tt class="docutils literal"><span class="pre">session</span></tt> must be
 serializable.</p>
+<p>For example, to mark that a user has logged in, you can set his username into the
+session:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">session</span><span class="p">(</span><span class="s">&quot;userId&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="n">userId</span>
+</pre></div>
+</div>
+<p>Later, if you want to check if a user has logged in or not, just check if
+there&#8217;s a username in his session:</p>
+<div class="highlight-python"><pre>if (session.isDefinedAt("userId")) println("This user has logged in")</pre>
+</div>
+<p>Storing user ID and pull the user from database on each access is usually a good
+practice. That way changes to the user are updated on each access (including
+changes to user roles/authorizations).</p>
 <div class="section" id="resetsession">
 <h3>resetSession<a class="headerlink" href="#resetsession" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://guides.rubyonrails.org/security.html#session-fixation">One line of code will protect you from session fixation</a>.</p>
@@ -165,7 +179,7 @@ attack, in the action that lets users login, call <tt class="docutils literal"><
   def login = GET("login") {
     ...
     resetSession()  // Reset first before doing anything else with the session
-    session("username") = username
+    session("userId") = userId
   }
 }</pre>
 </div>
@@ -199,18 +213,36 @@ else
 </div>
 <div class="section" id="session-store">
 <h3>Session store<a class="headerlink" href="#session-store" title="Permalink to this headline">¶</a></h3>
-<p>In config/xitrum.properties (<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/plugin/src/main/resources/xitrum_resources/config/xitrum.properties">example</a>),
+<p>In config/xitrum.json (<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/plugin/src/main/resources/xitrum_resources/config/xitrum.json">example</a>),
 you can config the session store:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">session_store</span> <span class="o">=</span> <span class="n">xitrum</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">CookieSessionStore</span>
-</pre></div>
+<div class="highlight-python"><pre>...
+"session": {
+  // To store sessions on client side: xitrum.scope.session.CookieSessionStore
+  // To store sessions on server side: xitrum.scope.session.HazelcastSessionStore
+  // "store": "xitrum.scope.session.CookieSessionStore",
+  "store": "xitrum.scope.session.HazelcastSessionStore",
+
+  // If you run multiple sites on the same domain, make sure that there's no
+  // cookie name conflict between sites
+  "cookieName": "_session",
+
+  // Key to encrypt session cookie etc.
+  // Do not use the example below! Use your own!
+  // If you deploy your application to several instances be sure to use the same key!
+  "secureKey": "ajconghoaofuxahoi92chunghiaujivietnamlasdoclapjfltudoil98hanhphucup8"
+}
+...</pre>
 </div>
-<p>If you want to store session on server side using Hazelcast:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">session_store</span> <span class="o">=</span> <span class="n">xitrum</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">HazelcastSessionStore</span>
-</pre></div>
-</div>
-<p>You may need to setup session replication by <a class="reference internal" href="cluster.html"><em>configuring Hazelcast</em></a>.</p>
-<p>If you want to create your own session store, implement
-<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/scope/session/SessionStore.scala">SessionStore</a>.</p>
+<p>If you run a cluster of Xitrum web servers and store sessions on server side,
+setup session replication by <a class="reference internal" href="cluster.html"><em>configuring Hazelcast</em></a>.</p>
+<p>The two default session stores are enough for normal cases.
+But if you have a special case and want to implement your own session store,
+extend
+<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/scope/session/SessionStore.scala">SessionStore</a>
+and implement the two methods.</p>
+<p>Then to tell Xitrum to use your session store, set its class name to xitrum.json.</p>
+<p>Good read:
+<a class="reference external" href="http://www.technicalinfo.net/papers/WebBasedSessionManagement.html">Web Based Session Management - Best practices in managing HTTP-based client sessions</a>.</p>
 </div>
 </div>
 <div class="section" id="object-vs-val">
@@ -301,7 +333,7 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
         <li class="right" >
           <a href="flash.html" title="Serve flash socket policy file"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

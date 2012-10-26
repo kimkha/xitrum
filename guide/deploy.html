@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Deploy to production server &mdash; Xitrum 1.9.7 documentation</title>
+    <title>Deploy to production server &mdash; Xitrum 1.9.8 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.7',
+        VERSION:     '1.9.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.7 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.9.8 documentation" href="index.html" />
     <link rel="next" title="Clustering with Hazelcast" href="cluster.html" />
     <link rel="prev" title="I18n" href="i18n.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="i18n.html" title="I18n"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,12 +55,35 @@
 <p>You may run Xitrum directly:</p>
 <div class="highlight-python"><pre>Browser ------ Xitrum instance</pre>
 </div>
-<p>Or behind a load balancer like HAProxy, or reverse proxy like Apache or Nginx:</p>
+<p>Or behind a load balancer like HAProxy, or reverse proxy like Nginx:</p>
 <div class="highlight-python"><pre>Browser ------ Load balancer/Reverse proxy ------ Xitrum instances</pre>
 </div>
-<p>As mentioned in <a class="reference internal" href="cache.html"><em>the section about caching</em></a>, Xitrum serves static
-files very fast. You don&#8217;t need to config load balancer/reverse proxy to serve
-static files.</p>
+<p>If you use WebSocket or SockJS feature in Xitrum and want to run Xitrum behind
+Nginx 1.2, you must install additional module like
+<a class="reference external" href="https://github.com/yaoweibin/nginx_tcp_proxy_module">nginx_tcp_proxy_module</a>.</p>
+<p>HAProxy is much easier to use. It suits Xitrum because as mentioned in
+<a class="reference internal" href="cache.html"><em>the section about caching</em></a>, Xitrum serves static files
+<a class="reference external" href="https://gist.github.com/3293596">very fast</a>. You don&#8217;t need to use static file
+serving feature in Nginx.</p>
+<p>A HAProxy typically config file looks like this:</p>
+<div class="highlight-python"><pre>defaults
+  timeout connect 5s
+  timeout client 50s
+  timeout server 50s
+
+listen letsnote 0.0.0.0:80
+  mode http
+  # For SockJS long polling, can't use option httpclose
+  # http://code.google.com/p/haproxy-docs/wiki/forwardfor
+  # http://code.google.com/p/haproxy-docs/wiki/http_server_close
+  # http://serverfault.com/questions/30311/remote-ips-with-haproxy
+  option forwardfor
+  option http-server-close
+  server xitrum1 127.0.0.1:8001
+  server xitrum2 127.0.0.1:8002</pre>
+</div>
+<p>See also:
+<a class="reference external" href="http://serverfault.com/questions/165883/is-there-a-way-to-add-more-backend-server-to-haproxy-without-restarting-haproxy">http://serverfault.com/questions/165883/is-there-a-way-to-add-more-backend-server-to-haproxy-without-restarting-haproxy</a></p>
 <div class="section" id="package-directory">
 <h2>Package directory<a class="headerlink" href="#package-directory" title="Permalink to this headline">¶</a></h2>
 <p>Run <tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">xitrum-package</span></tt> to prepare <tt class="docutils literal"><span class="pre">target/xitrum</span></tt> directory, ready to
@@ -91,7 +114,7 @@ and directories (README, INSTALL, doc etc.), config <tt class="docutils literal"
 start the web server in production environment.</p>
 <div class="highlight-python"><pre>bin/runner.sh quickstart.Boot</pre>
 </div>
-<p>You may want to modify runner.sh to tune JVM settings. Also see <tt class="docutils literal"><span class="pre">config/xitrum.properties</span></tt>.</p>
+<p>You may want to modify runner.sh to tune JVM settings. Also see <tt class="docutils literal"><span class="pre">config/xitrum.json</span></tt>.</p>
 <p>To start Xitrum in background when the system starts, <a class="reference external" href="http://cr.yp.to/daemontools.html">daemontools</a>
 is a very good tool. To install it on CentOS, see
 <a class="reference external" href="http://whomwah.com/2008/11/04/installing-daemontools-on-centos5-x86_64/">this instruction</a>.</p>
@@ -237,7 +260,7 @@ but you also need to tune the kernel as above.</p>
         <li class="right" >
           <a href="i18n.html" title="I18n"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.7 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.9.8 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

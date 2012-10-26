@@ -386,6 +386,18 @@ No one is stupid enough to store large files in resources.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.etag.Etag#quote" data-isabs="false">
+      <a id="quote(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">quote</span><span class="params">(<span name="etag">etag: String</span>)</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Etag without quotes is technically illegal.</p>
     </li><li visbl="pub" name="xitrum.etag.Etag#respondIfEtagsIdentical" data-isabs="false">
       <a id="respondIfEtagsIdentical(Controller,String):Boolean"></a>
       <h4 class="signature">
@@ -398,6 +410,18 @@ No one is stupid enough to store large files in resources.
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if NOT_MODIFIED response has been sent</p></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.etag.Etag#set" data-isabs="false">
+      <a id="set(HttpResponse,String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="params">(<span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>, <span name="etag">etag: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">

@@ -151,53 +151,53 @@
               
         </dd></dl></div>
     </li><li visbl="pub" name="xitrum.util.SecureBase64#decrypt" data-isabs="false">
-      <a id="decrypt(String,String):Option[Any]"></a>
+      <a id="decrypt(String,String,Boolean):Option[Any]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">decrypt</span><span class="params">(<span name="base64String">base64String: String</span>, <span name="key">key: String</span>)</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Any" class="extype">Any</span>]</span>
+        <span class="name">decrypt</span><span class="params">(<span name="base64String">base64String: String</span>, <span name="key">key: String</span>, <span name="forCookie">forCookie: <span name="scala.Boolean" class="extype">Boolean</span></span>)</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Any" class="extype">Any</span>]</span>
       </span>
       </h4>
       
     </li><li visbl="pub" name="xitrum.util.SecureBase64#decrypt" data-isabs="false">
-      <a id="decrypt(String):Option[Any]"></a>
+      <a id="decrypt(String,Boolean):Option[Any]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">decrypt</span><span class="params">(<span name="base64String">base64String: String</span>)</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Any" class="extype">Any</span>]</span>
+        <span class="name">decrypt</span><span class="params">(<span name="base64String">base64String: String</span>, <span name="forCookie">forCookie: <span name="scala.Boolean" class="extype">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span name="scala.Option" class="extype">Option</span>[<span name="scala.Any" class="extype">Any</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">forCookie</dt><dd class="cmt"><p>If true, tries to GZIP uncompress if the input is compressed</p></dd></dl></div>
     </li><li visbl="pub" name="xitrum.util.SecureBase64#encrypt" data-isabs="false">
-      <a id="encrypt(Any,String):String"></a>
+      <a id="encrypt(Any,String,Boolean):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">encrypt</span><span class="params">(<span name="value">value: <span name="scala.Any" class="extype">Any</span></span>, <span name="key">key: String</span>)</span><span class="result">: String</span>
+        <span class="name">encrypt</span><span class="params">(<span name="value">value: <span name="scala.Any" class="extype">Any</span></span>, <span name="key">key: String</span>, <span name="forCookie">forCookie: <span name="scala.Boolean" class="extype">Boolean</span></span>)</span><span class="result">: String</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">forCookie</dt><dd class="cmt"><p>If true, tries to GZIP compress if &gt; 4KB; the result may &gt; 4KB</p></dd></dl></div>
     </li><li visbl="pub" name="xitrum.util.SecureBase64#encrypt" data-isabs="false">
-      <a id="encrypt(Any):String"></a>
+      <a id="encrypt(Any,Boolean):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">encrypt</span><span class="params">(<span name="value">value: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: String</span>
+        <span class="name">encrypt</span><span class="params">(<span name="value">value: <span name="scala.Any" class="extype">Any</span></span>, <span name="forCookie">forCookie: <span name="scala.Boolean" class="extype">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: String</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">forCookie</dt><dd class="cmt"><p>If true, tries to GZIP compress if &gt; 4KB; the result may &gt; 4KB</p></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">

@@ -162,20 +162,6 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.routing.Routes#actions" data-isabs="false">
-      <a id="actions:Map[HttpMethod, (ArrayBuffer[Action], ArrayBuffer[Action], ArrayBuffer[Action])]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">actions</span><span class="result">: <span name="scala.collection.mutable.Map" class="extype">Map</span>[<span name="org.jboss.netty.handler.codec.http.HttpMethod" class="extype">HttpMethod</span>, (<span name="scala.collection.mutable.ArrayBuffer" class="extype">ArrayBuffer</span>[<a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a>], <span name="scala.collection.mutable.ArrayBuffer" class="extype">ArrayBuffer</span>[<a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a>], <span name="scala.collection.mutable.ArrayBuffer" class="extype">ArrayBuffer</span>[<a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a>])]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Route matching: httpMethod -&gt; order -&gt; pattern
-When matched, method is used for creating a new controller instance,
-then the method is invoked on that instance to get the action.</p>
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -203,6 +189,18 @@ then the method is invoked on that instance to get the action.</p>
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="xitrum.routing.Routes#createSockJsHandler" data-isabs="false">
+      <a id="createSockJsHandler(String):SockJsHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createSockJsHandler</span><span class="params">(<span name="pathPrefix">pathPrefix: String</span>)</span><span class="result">: <a name="xitrum.SockJsHandler" class="extype" href="../SockJsHandler.html">SockJsHandler</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -263,6 +261,18 @@ then the method is invoked on that instance to get the action.</p>
       </span>
       <span class="symbol">
         <span class="name">fromCacheFileOrRecollect</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.Routes#fromSockJsController" data-isabs="false">
+      <a id="fromSockJsController():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fromSockJsController</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       
@@ -410,6 +420,42 @@ then the method is invoked on that instance to get the action.</p>
       </span>
       </h4>
       
+    </li><li visbl="pub" name="xitrum.routing.Routes#printSockJsRoutes" data-isabs="false">
+      <a id="printSockJsRoutes():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">printSockJsRoutes</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.Routes#sockJs" data-isabs="false">
+      <a id="sockJs(Class[_ &lt;: xitrum.SockJsHandler],String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sockJs</span><span class="params">(<span name="SockJsHandlerClass">SockJsHandlerClass: Class[_ &lt;: xitrum.SockJsHandler]</span>, <span name="pathPrefix">pathPrefix: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.routing.Routes#sockJsPathPrefix" data-isabs="false">
+      <a id="sockJsPathPrefix(Class[_ &lt;: xitrum.SockJsHandler]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sockJsPathPrefix</span><span class="params">(<span name="sockJsHandlerClass">sockJsHandlerClass: Class[_ &lt;: xitrum.SockJsHandler]</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">sockJsHandlerClass</dt><dd class="cmt"><p>Normal SockJsHandler subclass or object class</p></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">

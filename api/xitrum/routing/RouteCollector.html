@@ -65,7 +65,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">RouteCollector</span><span class="params">(<span name="cachedFileName">cachedFileName: String</span>)</span>
+        <span class="name">RouteCollector</span><span class="params">()</span>
       </span>
       </h4>
       
@@ -205,19 +205,31 @@
               
         </dd></dl></div>
     </li><li visbl="pub" name="xitrum.routing.RouteCollector#fromCacheFileOrRecollect" data-isabs="false">
-      <a id="fromCacheFileOrRecollect():Map[String, Seq[String]]"></a>
+      <a id="fromCacheFileOrRecollect(String):Map[String, Seq[String]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fromCacheFileOrRecollect</span><span class="params">()</span><span class="result">: Map[String, Seq[String]]</span>
+        <span class="name">fromCacheFileOrRecollect</span><span class="params">(<span name="cachedFileName">cachedFileName: String</span>)</span><span class="result">: Map[String, Seq[String]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Because java.</p><div class="fullcomment"><div class="comment cmt"><p>Because java.lang.reflect.Method is not serializable, we return a map of
 controller class name -&gt; action method names.
 </p></div></div>
+    </li><li visbl="pub" name="xitrum.routing.RouteCollector#fromSockJsController" data-isabs="false">
+      <a id="fromSockJsController:Map[String, Seq[String]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fromSockJsController</span><span class="result">: Map[String, Seq[String]]</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#getClass" data-isabs="false">
       <a id="getClass():java.lang.Class[_]"></a>
       <h4 class="signature">

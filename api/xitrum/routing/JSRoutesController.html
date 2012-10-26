@@ -336,30 +336,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.ActionFactory#SOCKJS" data-isabs="false">
-      <a id="SOCKJS(⇒ Any):Action"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SOCKJS</span><span class="params">(<span name="body">body: ⇒ <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.ActionFactory#SOCKJS" data-isabs="false">
-      <a id="SOCKJS(String)(⇒ Any):Action"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SOCKJS</span><span class="params">(<span name="pattern">pattern: String</span>)</span><span class="params">(<span name="body">body: ⇒ <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.controller.ActionFactory#WEBSOCKET" data-isabs="false">
       <a id="WEBSOCKET(⇒ Any):Action"></a>
       <h4 class="signature">
@@ -902,7 +878,7 @@ the connection.
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">first</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
@@ -1078,18 +1054,6 @@ the connection.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.JS#jsCometGet" data-isabs="false">
-      <a id="jsCometGet(String,String):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">jsCometGet</span><span class="params">(<span name="topic">topic: String</span>, <span name="callback">callback: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.JS#jsDefaults" data-isabs="false">
       <a id="jsDefaults:Group"></a>
       <h4 class="signature">
@@ -1113,7 +1077,12 @@ the connection.
         <span class="name">jsEscape</span><span class="params">(<span name="string">string: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">See escape_javascript of Rails</p><div class="fullcomment"><div class="comment cmt"><p>See escape_javascript of Rails</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
+      <p class="shortcomment cmt">Do not use this to escape JSON, because they are different! For example
+JSON does not escape ' character, while JavaScript does.</p><div class="fullcomment"><div class="comment cmt"><p>Do not use this to escape JSON, because they are different! For example
+JSON does not escape ' character, while JavaScript does. To escape JSON,
+use Jerkson:
+com.codahale.jerkson.Json.generate(List(message))</p><p>org.apache.commons.lang3.StringEscapeUtils is used internally.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.JS#jsForView" data-isabs="false">
       <a id="jsForView:Serializable"></a>
       <h4 class="signature">
@@ -1257,7 +1226,7 @@ render it to the flash area right away.
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">last</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
@@ -1444,6 +1413,18 @@ render it to the flash area right away.
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>IP of the original remote HTTP client (not the proxy), X-Forwarded-For is supported</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.Net" class="extype" href="../controller/Net.html">Net</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Responder#renderEventSource" data-isabs="false">
+      <a id="renderEventSource(Any,String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderEventSource</span><span class="params">(<span name="data">data: <span name="scala.Any" class="extype">Any</span></span>, <span name="event">event: String = <span class="symbol">&quot;message&quot;</span></span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#renderFragment" data-isabs="false">
       <a id="renderFragment(Class[_],String):String"></a>
       <h4 class="signature">
@@ -1620,6 +1601,24 @@ The current controller instance will be imported in the template as &quot;helper
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Responder#respondEventSource" data-isabs="false">
+      <a id="respondEventSource(Any,String):ChannelFuture"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">respondEventSource</span><span class="params">(<span name="data">data: <span name="scala.Any" class="extype">Any</span></span>, <span name="event">event: String = <span class="symbol">&quot;message&quot;</span></span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">To respond event source, call this method as many time as you want.</p><div class="fullcomment"><div class="comment cmt"><p>To respond event source, call this method as many time as you want.
+Event Source response is a special kind of chunked response.
+Data must be Must be  UTF-8.
+See:
+- http://sockjs.github.com/sockjs-protocol/sockjs-protocol-0.3.3.html#section-94
+- http://dev.w3.org/html5/eventsource/
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondFile" data-isabs="false">
       <a id="respondFile(String):ChannelFuture"></a>
       <h4 class="signature">
@@ -1727,7 +1726,7 @@ thus no conversion is needed, use respondJsonPText.</p><p>Content-Type header is
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondJsonPText</span><span class="params">(<span name="any">any: <span name="scala.Any" class="extype">Any</span></span>, <span name="function">function: String</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
+        <span class="name">respondJsonPText</span><span class="params">(<span name="text">text: <span name="scala.Any" class="extype">Any</span></span>, <span name="function">function: String</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Wraps the text with the given JavaScript function name, and responds.</p><div class="fullcomment"><div class="comment cmt"><p>Wraps the text with the given JavaScript function name, and responds.</p><p>Content-Type header is set to &quot;application/javascript&quot;.
@@ -1902,14 +1901,14 @@ src/main/view/scalate/&lt;/class/name/of/the/controller/of/the/given/action&gt;/
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondWebSocket" data-isabs="false">
-      <a id="respondWebSocket(String):ChannelFuture"></a>
+      <a id="respondWebSocket(Any):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondWebSocket</span><span class="params">(<span name="text">text: String</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
+        <span class="name">respondWebSocket</span><span class="params">(<span name="text">text: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>

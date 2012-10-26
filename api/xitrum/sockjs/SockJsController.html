@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.comet.CometController</title>
+          <title>xitrum.sockjs.SockJsController</title>
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
@@ -12,26 +12,26 @@
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="type">
       <div id="definition">
-        <a title="Go to companion" href="CometController.html"><img src="../../lib/object_to_class_big.png" /></a>
-        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a>.<a name="xitrum.comet" class="extype" href="package.html">comet</a></p>
-        <h1><a title="Go to companion" href="CometController.html">CometController</a></h1>
+        <a title="Go to companion" href="SockJsController$.html"><img src="../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a>.<a name="xitrum.sockjs" class="extype" href="package.html">sockjs</a></p>
+        <h1><a title="Go to companion" href="SockJsController$.html">SockJsController</a></h1>
       </div>
 
       <h4 class="signature" id="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">CometController</span><span class="result"> extends <a name="xitrum.comet.CometController" class="extype" href="CometController.html">CometController</a></span>
+        <span class="name">SockJsController</span><span class="result"> extends <a name="xitrum.scope.request.RequestEnv" class="extype" href="../scope/request/RequestEnv.html">RequestEnv</a> with <a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a> with <a name="xitrum.SkipCSRFCheck" class="extype" href="../SkipCSRFCheck.html">SkipCSRFCheck</a></span>
       </span>
       </h4>
       
       <div class="fullcommenttop" id="comment"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a name="xitrum.comet.CometController" class="extype" href="CometController.html">CometController</a>, <a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a>, <a name="xitrum.I18n" class="extype" href="../I18n.html">I18n</a>, <a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a>, <a name="xitrum.view.Knockout" class="extype" href="../view/Knockout.html">Knockout</a>, <a name="xitrum.view.Flash" class="extype" href="../view/Flash.html">Flash</a>, <a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a>, <a name="xitrum.controller.UrlFor" class="extype" href="../controller/UrlFor.html">UrlFor</a>, <a name="xitrum.controller.Redirect" class="extype" href="../controller/Redirect.html">Redirect</a>, <a name="xitrum.controller.WebSocket" class="extype" href="../controller/WebSocket.html">WebSocket</a>, <a name="xitrum.controller.BasicAuth" class="extype" href="../controller/BasicAuth.html">BasicAuth</a>, <a name="xitrum.controller.Filter" class="extype" href="../controller/Filter.html">Filter</a>, <a name="xitrum.controller.Net" class="extype" href="../controller/Net.html">Net</a>, <a name="xitrum.Logger" class="extype" href="../Logger.html">Logger</a>, <a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a>, <a name="xitrum.scope.request.ExtEnv" class="extype" href="../scope/request/ExtEnv.html">ExtEnv</a>, <a name="xitrum.scope.session.CSRF" class="extype" href="../scope/session/CSRF.html">CSRF</a>, <a name="xitrum.scope.request.ParamAccess" class="extype" href="../scope/request/ParamAccess.html">ParamAccess</a>, <a name="xitrum.scope.request.RequestEnv" class="extype" href="../scope/request/RequestEnv.html">RequestEnv</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
+          <div class="superTypes hiddenContent"><a name="xitrum.SkipCSRFCheck" class="extype" href="../SkipCSRFCheck.html">SkipCSRFCheck</a>, <a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a>, <a name="xitrum.I18n" class="extype" href="../I18n.html">I18n</a>, <a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a>, <a name="xitrum.view.Knockout" class="extype" href="../view/Knockout.html">Knockout</a>, <a name="xitrum.view.Flash" class="extype" href="../view/Flash.html">Flash</a>, <a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a>, <a name="xitrum.controller.UrlFor" class="extype" href="../controller/UrlFor.html">UrlFor</a>, <a name="xitrum.controller.Redirect" class="extype" href="../controller/Redirect.html">Redirect</a>, <a name="xitrum.controller.WebSocket" class="extype" href="../controller/WebSocket.html">WebSocket</a>, <a name="xitrum.controller.BasicAuth" class="extype" href="../controller/BasicAuth.html">BasicAuth</a>, <a name="xitrum.controller.Filter" class="extype" href="../controller/Filter.html">Filter</a>, <a name="xitrum.controller.Net" class="extype" href="../controller/Net.html">Net</a>, <a name="xitrum.Logger" class="extype" href="../Logger.html">Logger</a>, <a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a>, <a name="xitrum.scope.request.ExtEnv" class="extype" href="../scope/request/ExtEnv.html">ExtEnv</a>, <a name="xitrum.scope.session.CSRF" class="extype" href="../scope/session/CSRF.html">CSRF</a>, <a name="xitrum.scope.request.ParamAccess" class="extype" href="../scope/request/ParamAccess.html">ParamAccess</a>, <a name="xitrum.scope.request.RequestEnv" class="extype" href="../scope/request/RequestEnv.html">RequestEnv</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div></div>
     
 
@@ -45,7 +45,7 @@
               <span class="filtertype">Inherited</span>
               <ol><li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li></ol>
-              <ol id="linearization"><li name="xitrum.comet.CometController" class="in"><span>CometController</span></li><li name="xitrum.comet.CometController" class="in"><span>CometController</span></li><li name="xitrum.Controller" class="in"><span>Controller</span></li><li name="xitrum.I18n" class="in"><span>I18n</span></li><li name="xitrum.view.Responder" class="in"><span>Responder</span></li><li name="xitrum.view.Knockout" class="in"><span>Knockout</span></li><li name="xitrum.view.Flash" class="in"><span>Flash</span></li><li name="xitrum.view.JS" class="in"><span>JS</span></li><li name="xitrum.controller.UrlFor" class="in"><span>UrlFor</span></li><li name="xitrum.controller.Redirect" class="in"><span>Redirect</span></li><li name="xitrum.controller.WebSocket" class="in"><span>WebSocket</span></li><li name="xitrum.controller.BasicAuth" class="in"><span>BasicAuth</span></li><li name="xitrum.controller.Filter" class="in"><span>Filter</span></li><li name="xitrum.controller.Net" class="in"><span>Net</span></li><li name="xitrum.Logger" class="in"><span>Logger</span></li><li name="xitrum.controller.ActionFactory" class="in"><span>ActionFactory</span></li><li name="xitrum.scope.request.ExtEnv" class="in"><span>ExtEnv</span></li><li name="xitrum.scope.session.CSRF" class="in"><span>CSRF</span></li><li name="xitrum.scope.request.ParamAccess" class="in"><span>ParamAccess</span></li><li name="xitrum.scope.request.RequestEnv" class="in"><span>RequestEnv</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+              <ol id="linearization"><li name="xitrum.sockjs.SockJsController" class="in"><span>SockJsController</span></li><li name="xitrum.SkipCSRFCheck" class="in"><span>SkipCSRFCheck</span></li><li name="xitrum.Controller" class="in"><span>Controller</span></li><li name="xitrum.I18n" class="in"><span>I18n</span></li><li name="xitrum.view.Responder" class="in"><span>Responder</span></li><li name="xitrum.view.Knockout" class="in"><span>Knockout</span></li><li name="xitrum.view.Flash" class="in"><span>Flash</span></li><li name="xitrum.view.JS" class="in"><span>JS</span></li><li name="xitrum.controller.UrlFor" class="in"><span>UrlFor</span></li><li name="xitrum.controller.Redirect" class="in"><span>Redirect</span></li><li name="xitrum.controller.WebSocket" class="in"><span>WebSocket</span></li><li name="xitrum.controller.BasicAuth" class="in"><span>BasicAuth</span></li><li name="xitrum.controller.Filter" class="in"><span>Filter</span></li><li name="xitrum.controller.Net" class="in"><span>Net</span></li><li name="xitrum.Logger" class="in"><span>Logger</span></li><li name="xitrum.controller.ActionFactory" class="in"><span>ActionFactory</span></li><li name="xitrum.scope.request.ExtEnv" class="in"><span>ExtEnv</span></li><li name="xitrum.scope.session.CSRF" class="in"><span>CSRF</span></li><li name="xitrum.scope.request.ParamAccess" class="in"><span>ParamAccess</span></li><li name="xitrum.scope.request.RequestEnv" class="in"><span>RequestEnv</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
             </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -55,7 +55,22 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div class="members" id="constructors">
+              <h3>Instance Constructors</h3>
+              <ol><li visbl="pub" name="xitrum.sockjs.SockJsController#this" data-isabs="false">
+      <a id="this:SockJsController"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">SockJsController</span><span class="params">()</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         <div class="types members" id="types">
               <h3>Type Members</h3>
@@ -315,30 +330,6 @@
       </span>
       <span class="symbol">
         <span class="name">PUT</span><span class="params">(<span name="pattern">pattern: String</span>)</span><span class="params">(<span name="body">body: ⇒ <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.ActionFactory#SOCKJS" data-isabs="false">
-      <a id="SOCKJS(⇒ Any):Action"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SOCKJS</span><span class="params">(<span name="body">body: ⇒ <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.controller.ActionFactory#SOCKJS" data-isabs="false">
-      <a id="SOCKJS(String)(⇒ Any):Action"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SOCKJS</span><span class="params">(<span name="pattern">pattern: String</span>)</span><span class="params">(<span name="body">body: ⇒ <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a></dd></dl></div>
@@ -852,6 +843,18 @@ the connection.
       </span>
       </h4>
       <p class="shortcomment cmt">Creates route for 404 or 500 error handler.</p><div class="fullcomment"><div class="comment cmt"><p>Creates route for 404 or 500 error handler.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.ActionFactory" class="extype" href="../controller/ActionFactory.html">ActionFactory</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#eventSourceTransportReceive" data-isabs="false">
+      <a id="eventSourceTransportReceive:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eventSourceTransportReceive</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.scope.request.RequestEnv#fileUploadParams" data-isabs="false">
       <a id="fileUploadParams:FileUploadParams"></a>
       <h4 class="signature">
@@ -884,7 +887,7 @@ the connection.
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">first</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
@@ -940,6 +943,18 @@ the connection.
       </span>
       </h4>
       <p class="shortcomment cmt">Default language is &quot;en&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Default language is &quot;en&quot;.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.I18n" class="extype" href="../I18n.html">I18n</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#greeting" data-isabs="false">
+      <a id="greeting:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">greeting</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.scope.request.RequestEnv#handlerEnv" data-isabs="false">
       <a id="handlerEnv:HandlerEnv"></a>
       <h4 class="signature">
@@ -964,18 +979,54 @@ the connection.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.comet.CometController#index" data-isabs="false">
-      <a id="index:Action"></a>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#htmlfileTransportReceive" data-isabs="false">
+      <a id="htmlfileTransportReceive:Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">index</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+        <span class="name">htmlfileTransportReceive</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.comet.CometController" class="extype" href="CometController.html">CometController</a></dd></dl></div>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#iframe" data-isabs="false">
+      <a id="iframe:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">iframe</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#infoGET" data-isabs="false">
+      <a id="infoGET:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">infoGET</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#infoOPTIONS" data-isabs="false">
+      <a id="infoOPTIONS:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">infoOPTIONS</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.view.JS#isAjax" data-isabs="false">
       <a id="isAjax:Boolean"></a>
       <h4 class="signature">
@@ -1072,18 +1123,6 @@ the connection.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.JS#jsCometGet" data-isabs="false">
-      <a id="jsCometGet(String,String):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">jsCometGet</span><span class="params">(<span name="topic">topic: String</span>, <span name="callback">callback: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.JS#jsDefaults" data-isabs="false">
       <a id="jsDefaults:Group"></a>
       <h4 class="signature">
@@ -1107,7 +1146,12 @@ the connection.
         <span class="name">jsEscape</span><span class="params">(<span name="string">string: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">See escape_javascript of Rails</p><div class="fullcomment"><div class="comment cmt"><p>See escape_javascript of Rails</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
+      <p class="shortcomment cmt">Do not use this to escape JSON, because they are different! For example
+JSON does not escape ' character, while JavaScript does.</p><div class="fullcomment"><div class="comment cmt"><p>Do not use this to escape JSON, because they are different! For example
+JSON does not escape ' character, while JavaScript does. To escape JSON,
+use Jerkson:
+com.codahale.jerkson.Json.generate(List(message))</p><p>org.apache.commons.lang3.StringEscapeUtils is used internally.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.JS#jsForView" data-isabs="false">
       <a id="jsForView:Serializable"></a>
       <h4 class="signature">
@@ -1198,6 +1242,30 @@ Used in application layout to display the flash message right after a view is lo
 Used in Ajax request handling to respond a message and have the browser
 render it to the flash area right away.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Flash" class="extype" href="../view/Flash.html">Flash</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#jsonPPollingTransportReceive" data-isabs="false">
+      <a id="jsonPPollingTransportReceive:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jsonPPollingTransportReceive</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#jsonPTransportSend" data-isabs="false">
+      <a id="jsonPTransportSend:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jsonPTransportSend</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.view.Knockout#koApplyBindingsCs" data-isabs="false">
       <a id="koApplyBindingsCs(Any,String,Action,String):Unit"></a>
       <h4 class="signature">
@@ -1251,7 +1319,7 @@ render it to the flash area right away.
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">last</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
@@ -1402,18 +1470,18 @@ render it to the flash area right away.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.comet.CometController#publish" data-isabs="false">
-      <a id="publish:Action"></a>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#rawWebsocketTransport" data-isabs="false">
+      <a id="rawWebsocketTransport:Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">publish</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+        <span class="name">rawWebsocketTransport</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.comet.CometController" class="extype" href="CometController.html">CometController</a></dd></dl></div>
+      
     </li><li visbl="pub" name="xitrum.controller.Redirect#redirectTo" data-isabs="false">
       <a id="redirectTo(Action,(String, Any)*):ChannelFuture"></a>
       <h4 class="signature">
@@ -1450,6 +1518,18 @@ render it to the flash area right away.
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>IP of the original remote HTTP client (not the proxy), X-Forwarded-For is supported</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.Net" class="extype" href="../controller/Net.html">Net</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Responder#renderEventSource" data-isabs="false">
+      <a id="renderEventSource(Any,String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderEventSource</span><span class="params">(<span name="data">data: <span name="scala.Any" class="extype">Any</span></span>, <span name="event">event: String = <span class="symbol">&quot;message&quot;</span></span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#renderFragment" data-isabs="false">
       <a id="renderFragment(Class[_],String):String"></a>
       <h4 class="signature">
@@ -1626,6 +1706,24 @@ The current controller instance will be imported in the template as &quot;helper
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Responder#respondEventSource" data-isabs="false">
+      <a id="respondEventSource(Any,String):ChannelFuture"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">respondEventSource</span><span class="params">(<span name="data">data: <span name="scala.Any" class="extype">Any</span></span>, <span name="event">event: String = <span class="symbol">&quot;message&quot;</span></span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">To respond event source, call this method as many time as you want.</p><div class="fullcomment"><div class="comment cmt"><p>To respond event source, call this method as many time as you want.
+Event Source response is a special kind of chunked response.
+Data must be Must be  UTF-8.
+See:
+- http://sockjs.github.com/sockjs-protocol/sockjs-protocol-0.3.3.html#section-94
+- http://dev.w3.org/html5/eventsource/
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondFile" data-isabs="false">
       <a id="respondFile(String):ChannelFuture"></a>
       <h4 class="signature">
@@ -1733,7 +1831,7 @@ thus no conversion is needed, use respondJsonPText.</p><p>Content-Type header is
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondJsonPText</span><span class="params">(<span name="any">any: <span name="scala.Any" class="extype">Any</span></span>, <span name="function">function: String</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
+        <span class="name">respondJsonPText</span><span class="params">(<span name="text">text: <span name="scala.Any" class="extype">Any</span></span>, <span name="function">function: String</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Wraps the text with the given JavaScript function name, and responds.</p><div class="fullcomment"><div class="comment cmt"><p>Wraps the text with the given JavaScript function name, and responds.</p><p>Content-Type header is set to &quot;application/javascript&quot;.
@@ -1908,14 +2006,14 @@ src/main/view/scalate/&lt;/class/name/of/the/controller/of/the/given/action&gt;/
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondWebSocket" data-isabs="false">
-      <a id="respondWebSocket(String):ChannelFuture"></a>
+      <a id="respondWebSocket(Any):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondWebSocket</span><span class="params">(<span name="text">text: String</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
+        <span class="name">respondWebSocket</span><span class="params">(<span name="text">text: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
@@ -2331,6 +2429,90 @@ textParams.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.controller.Net" class="extype" href="../controller/Net.html">Net</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#websocketTransport" data-isabs="false">
+      <a id="websocketTransport:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">websocketTransport</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#xhrPollingTransportOPTIONSReceive" data-isabs="false">
+      <a id="xhrPollingTransportOPTIONSReceive:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xhrPollingTransportOPTIONSReceive</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#xhrPollingTransportReceive" data-isabs="false">
+      <a id="xhrPollingTransportReceive:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xhrPollingTransportReceive</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#xhrStreamingTransportOPTIONSReceive" data-isabs="false">
+      <a id="xhrStreamingTransportOPTIONSReceive:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xhrStreamingTransportOPTIONSReceive</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#xhrStreamingTransportReceive" data-isabs="false">
+      <a id="xhrStreamingTransportReceive:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xhrStreamingTransportReceive</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#xhrTransportOPTIONSSend" data-isabs="false">
+      <a id="xhrTransportOPTIONSSend:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xhrTransportOPTIONSSend</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsController#xhrTransportSend" data-isabs="false">
+      <a id="xhrTransportSend:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xhrTransportSend</span><span class="result">: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.view.Flash#xitrumCSS" data-isabs="false">
       <a id="xitrumCSS:String"></a>
       <h4 class="signature">
@@ -2350,8 +2532,8 @@ textParams.
         </div>
 
         <div id="inheritedMembers">
-        <div name="xitrum.comet.CometController" class="parent">
-              <h3>Inherited from <a name="xitrum.comet.CometController" class="extype" href="CometController.html">CometController</a></h3>
+        <div name="xitrum.SkipCSRFCheck" class="parent">
+              <h3>Inherited from <a name="xitrum.SkipCSRFCheck" class="extype" href="../SkipCSRFCheck.html">SkipCSRFCheck</a></h3>
             </div><div name="xitrum.Controller" class="parent">
               <h3>Inherited from <a name="xitrum.Controller" class="extype" href="../Controller.html">Controller</a></h3>
             </div><div name="xitrum.I18n" class="parent">

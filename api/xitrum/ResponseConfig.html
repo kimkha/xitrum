@@ -25,7 +25,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">ResponseConfig</span><span class="params">(<span name="smallStaticFileSizeInKB">smallStaticFileSizeInKB: <span name="scala.Int" class="extype">Int</span></span>, <span name="maxCachedSmallStaticFiles">maxCachedSmallStaticFiles: <span name="scala.Int" class="extype">Int</span></span>)</span><span class="result"> extends <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="name">ResponseConfig</span><span class="params">(<span name="maxSizeInKBOfCachedStaticFiles">maxSizeInKBOfCachedStaticFiles: <span name="scala.Int" class="extype">Int</span></span>, <span name="maxNumberOfCachedStaticFiles">maxNumberOfCachedStaticFiles: <span name="scala.Int" class="extype">Int</span></span>, <span name="clientMustRevalidateStaticFiles">clientMustRevalidateStaticFiles: <span name="scala.Boolean" class="extype">Boolean</span></span>)</span><span class="result"> extends <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
@@ -65,7 +65,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ResponseConfig</span><span class="params">(<span name="smallStaticFileSizeInKB">smallStaticFileSizeInKB: <span name="scala.Int" class="extype">Int</span></span>, <span name="maxCachedSmallStaticFiles">maxCachedSmallStaticFiles: <span name="scala.Int" class="extype">Int</span></span>)</span>
+        <span class="name">ResponseConfig</span><span class="params">(<span name="maxSizeInKBOfCachedStaticFiles">maxSizeInKBOfCachedStaticFiles: <span name="scala.Int" class="extype">Int</span></span>, <span name="maxNumberOfCachedStaticFiles">maxNumberOfCachedStaticFiles: <span name="scala.Int" class="extype">Int</span></span>, <span name="clientMustRevalidateStaticFiles">clientMustRevalidateStaticFiles: <span name="scala.Boolean" class="extype">Boolean</span></span>)</span>
       </span>
       </h4>
       
@@ -162,6 +162,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ResponseConfig" class="extype" href="">ResponseConfig</a> → Equals</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.ResponseConfig#clientMustRevalidateStaticFiles" data-isabs="false">
+      <a id="clientMustRevalidateStaticFiles:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clientMustRevalidateStaticFiles</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="prt" name="scala.AnyRef#clone" data-isabs="false">
       <a id="clone():AnyRef"></a>
       <h4 class="signature">
@@ -252,15 +264,27 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.ResponseConfig#maxCachedSmallStaticFiles" data-isabs="false">
-      <a id="maxCachedSmallStaticFiles:Int"></a>
+    </li><li visbl="pub" name="xitrum.ResponseConfig#maxNumberOfCachedStaticFiles" data-isabs="false">
+      <a id="maxNumberOfCachedStaticFiles:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">maxCachedSmallStaticFiles</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+        <span class="name">maxNumberOfCachedStaticFiles</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.ResponseConfig#maxSizeInKBOfCachedStaticFiles" data-isabs="false">
+      <a id="maxSizeInKBOfCachedStaticFiles:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maxSizeInKBOfCachedStaticFiles</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
       </span>
       </h4>
       
@@ -348,18 +372,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ResponseConfig" class="extype" href="">ResponseConfig</a> → Product</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.ResponseConfig#smallStaticFileSizeInKB" data-isabs="false">
-      <a id="smallStaticFileSizeInKB:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">smallStaticFileSizeInKB</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">

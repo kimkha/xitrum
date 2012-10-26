@@ -189,7 +189,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="ResponseConfig.html"><span class="name">ResponseConfig</span></a><span class="params">(<span name="smallStaticFileSizeInKB">smallStaticFileSizeInKB: Int</span>, <span name="maxCachedSmallStaticFiles">maxCachedSmallStaticFiles: Int</span>)</span><span class="result"> extends Product with Serializable</span>
+        <a href="ResponseConfig.html"><span class="name">ResponseConfig</span></a><span class="params">(<span name="maxSizeInKBOfCachedStaticFiles">maxSizeInKBOfCachedStaticFiles: Int</span>, <span name="maxNumberOfCachedStaticFiles">maxNumberOfCachedStaticFiles: Int</span>, <span name="clientMustRevalidateStaticFiles">clientMustRevalidateStaticFiles: Boolean</span>)</span><span class="result"> extends Product with Serializable</span>
       </span>
       </h4>
       
@@ -241,6 +241,18 @@
       </span>
       </h4>
       <p class="comment cmt">By default all non-GET requests are checked for anti-CSRF token.</p>
+    </li><li visbl="pub" name="xitrum.SockJsHandler" data-isabs="true">
+      <a id="SockJsHandler:SockJsHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SockJsHandler.html"><span class="name">SockJsHandler</span></a><span class="result"> extends Logger</span>
+      </span>
+      </h4>
+      
     </li></ol>
             </div>
 
@@ -272,18 +284,6 @@
       </span>
       </h4>
       <p class="comment cmt">See config/xitrum.</p>
-    </li><li visbl="pub" name="xitrum.comet" data-isabs="false">
-      <a id="comet:comet"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="comet/package.html"><span class="name">comet</span></a>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="xitrum.controller" data-isabs="false">
       <a id="controller:controller"></a>
       <h4 class="signature">
@@ -377,6 +377,18 @@
       </span>
       <span class="symbol">
         <a href="scope/package.html"><span class="name">scope</span></a>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs" data-isabs="false">
+      <a id="sockjs:sockjs"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="sockjs/package.html"><span class="name">sockjs</span></a>
       </span>
       </h4>
       
