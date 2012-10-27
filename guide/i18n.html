@@ -84,7 +84,7 @@ touch i18n.pot
 sbt/sbt compile</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">clean</span></tt> is to delete all .class files, forcing SBT to recompile the whole
-project. Because after <tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">clean</span></tt>, SBT will try to redownload all dependencies,
+project. Because after <tt class="docutils literal"><span class="pre">sbt/sbt</span> <span class="pre">clean</span></tt>, SBT will try to redownload all <a class="reference internal" href="deps.html"><em>dependencies</em></a>,
 you can do a little faster with the command <tt class="docutils literal"><span class="pre">find</span> <span class="pre">target</span> <span class="pre">-name</span> <span class="pre">*.class</span> <span class="pre">-delete</span></tt>,
 which deletes all .class files in the <tt class="docutils literal"><span class="pre">target</span></tt> directory.</p>
 <p>After the recompilation, i18n.pot will be filled with gettext messages extracted
