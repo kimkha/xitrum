@@ -81,32 +81,26 @@ blazing fast), etc. and you have, wow.</p>
 </div></blockquote>
 <p>Features:</p>
 <ul class="simple">
-<li>Fast built-in HTTP and HTTPS web server based on <a class="reference external" href="http://netty.io/">Netty</a>.</li>
+<li>Typesafe, in the spirit of Scala. All the APIs try to be as typesafe as possible.</li>
+<li>Async, in the spirit of Netty. Your request proccessing action does not have
+to respond immediately. Long polling, chunked response (streaming), WebSocket,
+and SockJS are supported.</li>
+<li>Fast built-in HTTP and HTTPS web server based on <a class="reference external" href="http://netty.io/">Netty</a>.
+Xitrum&#8217;s static file serving speed is <a class="reference external" href="https://gist.github.com/3293596">similar to that of Nginx</a>.</li>
 <li>Extensive client-side and server-side caching for faster responding.
 At the web server layer, small files are cached in memory, big files are sent
-using NIO&#8217;s zero copy. Xitrum&#8217;s static file serving speed is
-<a class="reference external" href="https://gist.github.com/3293596">similar to that of Nginx</a>.
+using NIO&#8217;s zero copy.
 At the web framework layer you have can declare page, action, and object cache
 in the Rails style.
 <a class="reference external" href="http://code.google.com/speed/page-speed/docs/rules_intro.html">All Google&#8217;s best practices</a>
 like conditional GET are applied for client-side caching.
 You can also force browsers to always send request to server to revalidate cache before using.</li>
-<li>The framework tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
-and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
-use than Lift. You can easily create both RESTful APIs and postbacks. <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
-is controller-first like Scalatra, not
-<a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.
-Most people are familliar with controller-first style.</li>
 <li>Routes are automatically collected in the spirit of JAX-RS (but without annotations!)
 and Rails Engines. You don&#8217;t have to declare all routes in a single place.
 Think of this feature as distributed routes. You can plug an app into another app.
 If you have a blog engine, you can package it as a JAR file, then you can put
 that JAR file into another app and that app automatically has blog feature!
 Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe way.</li>
-<li>Typesafe, in the spirit of Scala. All the APIs try to be as typesafe as possible.</li>
-<li>Async, in the spirit of Netty. Your request proccessing action does not have
-to respond immediately. Long polling, chunked response (streaming), WebSocket,
-and SockJS are supported.</li>
 <li>Views can be written in a separate <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
 template file or Scala inline XML. Both are typesafe.</li>
 <li>Sessions can be stored in cookies (more scalable) or clustered <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> (more secure).
@@ -120,6 +114,12 @@ You don&#8217;t have to manually mess with properties files.
 You can use powerful tools like <a class="reference external" href="http://www.poedit.net/screenshots.php">Poedit</a>
 for translating and merging translations.
 gettext is unlike most other solutions, both singular and plural forms are supported.</li>
+<li>Xitrum tries to fill the spectrum between <a class="reference external" href="https://github.com/scalatra/scalatra">Scalatra</a>
+and <a class="reference external" href="http://liftweb.net/">Lift</a>: more powerful than Scalatra and easier to
+use than Lift. You can easily create both RESTful APIs and postbacks. <a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a>
+is controller-first like Scalatra, not
+<a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.
+Most people are familliar with controller-first style.</li>
 </ul>
 <p><a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> also gives:</p>
 <ul class="simple">
