@@ -213,6 +213,22 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.handler.up.NoPipelining#if_keepAliveRequest_then_resumeReading_else_closeOnComplete" data-isabs="false">
+      <a id="if_keepAliveRequest_then_resumeReading_else_closeOnComplete(HttpRequest,Channel,ChannelFuture):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">if_keepAliveRequest_then_resumeReading_else_closeOnComplete</span><span class="params">(<span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>, <span name="channel">channel: <span name="org.jboss.netty.channel.Channel" class="extype">Channel</span></span>, <span name="channelFuture">channelFuture: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Handle keep alive as long as there's the request contains
+'connection:Keep-Alive' header, no matter what the client is 1.</p><div class="fullcomment"><div class="comment cmt"><p>Handle keep alive as long as there's the request contains
+'connection:Keep-Alive' header, no matter what the client is 1.0 or 1.1:
+http://sockjs.github.com/sockjs-protocol/sockjs-protocol-0.3.3.html#section-157
+</p></div></div>
     </li><li visbl="pub" name="scala.Any#isInstanceOf" data-isabs="false">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <h4 class="signature">
@@ -270,18 +286,6 @@
       </span>
       <span class="symbol">
         <span class="name">pauseReading</span><span class="params">(<span name="channel">channel: <span name="org.jboss.netty.channel.Channel" class="extype">Channel</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.handler.up.NoPipelining#resumeReadingForKeepAliveRequestOrCloseOnComplete" data-isabs="false">
-      <a id="resumeReadingForKeepAliveRequestOrCloseOnComplete(HttpRequest,Channel,ChannelFuture):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">resumeReadingForKeepAliveRequestOrCloseOnComplete</span><span class="params">(<span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>, <span name="channel">channel: <span name="org.jboss.netty.channel.Channel" class="extype">Channel</span></span>, <span name="channelFuture">channelFuture: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       

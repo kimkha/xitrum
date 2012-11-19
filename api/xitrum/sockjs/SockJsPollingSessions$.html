@@ -123,30 +123,60 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#TIMEOUT_FOR_SockJsPollingSession" data-isabs="false">
-      <a id="TIMEOUT_FOR_SockJsPollingSession:Int"></a>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#TIMEOUT_ASK" data-isabs="false">
+      <a id="TIMEOUT_ASK:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">TIMEOUT_FOR_SockJsPollingSession</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+        <span class="name">TIMEOUT_ASK</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#TIMEOUT_FOR_SockJsPollingSessions" data-isabs="false">
-      <a id="TIMEOUT_FOR_SockJsPollingSessions:Int"></a>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#TIMEOUT_CONNECTION" data-isabs="false">
+      <a id="TIMEOUT_CONNECTION:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">TIMEOUT_FOR_SockJsPollingSessions</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+        <span class="name">TIMEOUT_CONNECTION</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
       </span>
       </h4>
       
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#TIMEOUT_HEARTBEAT" data-isabs="false">
+      <a id="TIMEOUT_HEARTBEAT:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TIMEOUT_HEARTBEAT</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#abortByClient" data-isabs="false">
+      <a id="abortByClient(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">abortByClient</span><span class="params">(<span name="sockJsSessionId">sockJsSessionId: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">When SockJsController wants to send keep alive message or normal message,
+as the result of SubscribeByClientResultMessages, but the connection has
+been aborted, it will call this method to remove the session.</p><div class="fullcomment"><div class="comment cmt"><p>When SockJsController wants to send keep alive message or normal message,
+as the result of SubscribeByClientResultMessages, but the connection has
+been aborted, it will call this method to remove the session.
+See http://groups.google.com/group/sockjs/browse_thread/thread/392cd07c4a75400b/9a4593a71e90173b#9a4593a71e90173b
+</p></div></div>
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -174,18 +204,6 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#closeByClient" data-isabs="false">
-      <a id="closeByClient(String):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">closeByClient</span><span class="params">(<span name="sockJsSessionId">sockJsSessionId: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#closeByHandler" data-isabs="false">
       <a id="closeByHandler(ActorRef):Unit"></a>
       <h4 class="signature">
@@ -197,7 +215,7 @@
         <span class="name">closeByHandler</span><span class="params">(<span name="actorRef">actorRef: <span name="akka.actor.ActorRef" class="extype">ActorRef</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Until the timeout occurs, the server must serve the close message.</p>
     </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -309,6 +327,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#sendMessageByHandler" data-isabs="false">
+      <a id="sendMessageByHandler(ActorRef,String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sendMessageByHandler</span><span class="params">(<span name="actorRef">actorRef: <span name="akka.actor.ActorRef" class="extype">ActorRef</span></span>, <span name="message">message: String</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#sendMessagesByClient" data-isabs="false">
       <a id="sendMessagesByClient(String,List[String]):Boolean"></a>
       <h4 class="signature">
@@ -321,18 +351,6 @@
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>false means session not found</p></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#sendMessagesByHandler" data-isabs="false">
-      <a id="sendMessagesByHandler(ActorRef,List[String]):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sendMessagesByHandler</span><span class="params">(<span name="actorRef">actorRef: <span name="akka.actor.ActorRef" class="extype">ActorRef</span></span>, <span name="messages">messages: List[String]</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions#subscribeOnceByClient" data-isabs="false">
       <a id="subscribeOnceByClient(String,String,(SockJsSubscribeByClientResult) ⇒ Unit):Unit"></a>
       <h4 class="signature">

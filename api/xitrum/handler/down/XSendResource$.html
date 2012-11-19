@@ -147,6 +147,18 @@
       </span>
       </h4>
       
+    </li><li visbl="pub" name="xitrum.handler.down.XSendResource#X_SENDRESOURCE_HEADER_IS_FROM_CONTROLLER" data-isabs="false">
+      <a id="X_SENDRESOURCE_HEADER_IS_FROM_CONTROLLER:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">X_SENDRESOURCE_HEADER_IS_FROM_CONTROLLER</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -310,26 +322,26 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li visbl="pub" name="xitrum.handler.down.XSendResource#sendResource" data-isabs="false">
-      <a id="sendResource(ChannelHandlerContext,ChannelEvent,HttpRequest,HttpResponse,String):Unit"></a>
+      <a id="sendResource(ChannelHandlerContext,ChannelEvent,HttpRequest,HttpResponse,String,Boolean):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sendResource</span><span class="params">(<span name="ctx">ctx: <span name="org.jboss.netty.channel.ChannelHandlerContext" class="extype">ChannelHandlerContext</span></span>, <span name="e">e: <span name="org.jboss.netty.channel.ChannelEvent" class="extype">ChannelEvent</span></span>, <span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>, <span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>, <span name="path">path: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">sendResource</span><span class="params">(<span name="ctx">ctx: <span name="org.jboss.netty.channel.ChannelHandlerContext" class="extype">ChannelHandlerContext</span></span>, <span name="e">e: <span name="org.jboss.netty.channel.ChannelEvent" class="extype">ChannelEvent</span></span>, <span name="request">request: <span name="org.jboss.netty.handler.codec.http.HttpRequest" class="extype">HttpRequest</span></span>, <span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>, <span name="path">path: String</span>, <span name="noLog">noLog: <span name="scala.Boolean" class="extype">Boolean</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>false if not found</p></dd></dl></div>
     </li><li visbl="pub" name="xitrum.handler.down.XSendResource#setHeader" data-isabs="false">
-      <a id="setHeader(HttpResponse,String):Unit"></a>
+      <a id="setHeader(HttpResponse,String,Boolean):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setHeader</span><span class="params">(<span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>, <span name="path">path: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">setHeader</span><span class="params">(<span name="response">response: <span name="org.jboss.netty.handler.codec.http.HttpResponse" class="extype">HttpResponse</span></span>, <span name="path">path: String</span>, <span name="fromController">fromController: <span name="scala.Boolean" class="extype">Boolean</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       
