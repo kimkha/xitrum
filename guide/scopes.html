@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scopes &mdash; Xitrum 1.9.9 documentation</title>
+    <title>Scopes &mdash; Xitrum 1.10 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.9',
+        VERSION:     '1.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.9 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.10 documentation" href="index.html" />
     <link rel="next" title="Validation" href="validation.html" />
     <link rel="prev" title="Serve flash socket policy file" href="flash.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="flash.html" title="Serve flash socket policy file"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.9 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -84,15 +84,61 @@ override <a class="reference external" href="https://github.com/ngocdaothanh/xit
 <p>For file upload: <tt class="docutils literal"><span class="pre">param[FileUpload](&quot;x&quot;)</span></tt>, <tt class="docutils literal"><span class="pre">params[FileUpload](&quot;x&quot;)</span></tt> etc.
 For more details, see <a class="reference internal" href="upload.html"><em>Upload chapter</em></a>.</p>
 </div>
+<div class="section" id="at">
+<h3>&#8220;at&#8221;<a class="headerlink" href="#at" title="Permalink to this headline">¶</a></h3>
+<p>To pass things around when processing a request (e.g. from action to view or layout)
+you can use <tt class="docutils literal"><span class="pre">at</span></tt>. <tt class="docutils literal"><span class="pre">at</span></tt> type is <tt class="docutils literal"><span class="pre">scala.collection.mutable.HashMap[String,</span> <span class="pre">Any]</span></tt>.
+If you know Rails, you&#8217;ll see <tt class="docutils literal"><span class="pre">at</span></tt> is a clone of <tt class="docutils literal"><span class="pre">&#64;</span></tt> of Rails.</p>
+<p>Articles.scala</p>
+<div class="highlight-python"><pre>class Articles extends AppController {
+  def show = GET(":id") {
+    val (title, body) = ...  // Get from DB
+    at("title") = title
+    respondInlineView(body)
+  }
+}</pre>
+</div>
+<p>AppController.scala</p>
+<div class="highlight-python"><pre>import xitrum.Controller
+import xitrum.view.DocType
+
+trait AppController extends Controller {
+  override def layout = DocType.html5(
+    &lt;html&gt;
+      &lt;head&gt;
+        {antiCSRFMeta}
+        {xitrumCSS}
+        {jsDefaults}
+        &lt;title&gt;{if (at.isDefinedAt("title")) "My Site - " + at("title") else "My Site"}&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        {renderedView}
+        {jsForView}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+}</pre>
+</div>
+</div>
 <div class="section" id="requestvar">
 <h3>RequestVar<a class="headerlink" href="#requestvar" title="Permalink to this headline">¶</a></h3>
-<p>To pass things around when processing a request (e.g. from action to view or layout)
-in the typesafe way, you should use RequestVar.</p>
+<p><tt class="docutils literal"><span class="pre">at</span></tt> in the above section is not typesafe because you can set anything to the
+map. To be more typesafe, you should use RequestVar, which is a wrapper arround
+<tt class="docutils literal"><span class="pre">at</span></tt>.</p>
 <p>RVar.scala</p>
 <div class="highlight-python"><pre>import xitrum.RequestVar
 
 object RVar {
   object title extends RequestVar[String]
+}</pre>
+</div>
+<p>Articles.scala</p>
+<div class="highlight-python"><pre>class Articles extends AppController {
+  def show = GET(":id") {
+    val (title, body) = ...  // Get from DB
+    RVar.title.set(title)
+    respondInlineView(body)
+  }
 }</pre>
 </div>
 <p>AppController.scala</p>
@@ -116,40 +162,37 @@ trait AppController extends Controller {
   )
 }</pre>
 </div>
-<p>Articles.scala</p>
-<div class="highlight-python"><pre>class Articles extends AppController {
-  def show = GET(":id") {
-    val (title, body) = ...  // Get from DB
-    RVar.title.set(title)
-    respondInlineView(body)
-  }
-}</pre>
-</div>
 </div>
 </div>
 <div class="section" id="cookie">
 <h2>Cookie<a class="headerlink" href="#cookie" title="Permalink to this headline">¶</a></h2>
-<p>Inside an action, you can use <tt class="docutils literal"><span class="pre">cookies</span></tt>. It is a subclass of Java&#8217;s <a class="reference external" href="http://download.oracle.com/javase/6/docs/api/java/util/TreeSet.html">TreeSet</a>
-that contains <a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/Cookie.html">Cookie</a>.
-It is basically a normal TreeSet with an additional <tt class="docutils literal"><span class="pre">get</span></tt> method to lookup a cookie:</p>
-<div class="highlight-python"><pre>cookies.get("myCookie") match {
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/HTTP_cookie#Domain_and_Path">Read Wikipedia about cookie path etc.</a></p>
+<p>Inside an action, use <tt class="docutils literal"><span class="pre">requestCookies</span></tt>, a <tt class="docutils literal"><span class="pre">Map[String,</span> <span class="pre">String]</span></tt>, to read cookies sent by browser.</p>
+<div class="highlight-python"><pre>requestCookies.get("myCookie") match {
   case None         =&gt; ...
-  case Some(cookie) =&gt; ...
+  case Some(string) =&gt; ...
 }</pre>
 </div>
-<p>To add a cookie, create an instance of <a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/DefaultCookie.html">DefaultCookie</a>
-and add it to <tt class="docutils literal"><span class="pre">cookies</span></tt>:</p>
-<div class="highlight-python"><pre>val cookie = new DefaultCookie("myCookie", "String value")
-cookies.add(cookie)</pre>
+<p>To send cookie to browser, create an instance of <a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/DefaultCookie.html">DefaultCookie</a>
+and append it to <tt class="docutils literal"><span class="pre">responseCookies</span></tt>, an <tt class="docutils literal"><span class="pre">ArrayBuffer</span></tt> that contains <a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/Cookie.html">Cookie</a>.</p>
+<div class="highlight-python"><pre>val cookie = new DefaultCookie("name", "value")
+cookie.setHttpOnly(true)  // true: JavaScript cannot access this cookie
+responseCookies.append(cookie)</pre>
 </div>
-<p>Remember that there&#8217;s no way for the server to directly delete a cookie on browsers.
-Instead, to delete immediately set max age to 0. To delete when the browser closes windows,
-set max age to Integer.MIN_VALUE.</p>
+<p>If you don&#8217;t set cookie&#8217;s path by calling <tt class="docutils literal"><span class="pre">cookie.setPath(cookiePath)</span></tt>, its
+path will be set to the site&#8217;s root path (<tt class="docutils literal"><span class="pre">xitrum.Config.withBaseUrl(&quot;/&quot;)</span></tt>).
+This avoids accidental duplicate cookies.</p>
+<p>To delete a cookie sent by browser, send a cookie with the same name and set
+its max age to 0. The browser will expire it immediately. To tell browser to
+delete cookie when the browser closes windows, set max age to <tt class="docutils literal"><span class="pre">Integer.MIN_VALUE</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cookie</span><span class="o">.</span><span class="n">setMaxAge</span><span class="p">(</span><span class="n">Integer</span><span class="o">.</span><span class="n">MIN_VALUE</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note that <a class="reference external" href="http://mrcoles.com/blog/cookies-max-age-vs-expires/">Internet Explorer does not support &#8220;max-age&#8221;</a>,
 but Netty detects and outputs either &#8220;max-age&#8221; or &#8220;expires&#8221; properly. Don&#8217;t worry!</p>
+<p>If you want to sign your cookie value to prevent user from tampering, use
+<tt class="docutils literal"><span class="pre">xitrum.util.SecureBase64.encrypt</span></tt> and <tt class="docutils literal"><span class="pre">xitrum.util.SecureBase64.encrypt</span></tt>.
+For more information, see <a class="reference internal" href="howto.html"><em>How to encrypt data</em></a>.</p>
 </div>
 <div class="section" id="session">
 <h2>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h2>
@@ -170,20 +213,20 @@ there&#8217;s a username in his session:</p>
 <p>Storing user ID and pull the user from database on each access is usually a good
 practice. That way changes to the user are updated on each access (including
 changes to user roles/authorizations).</p>
-<div class="section" id="resetsession">
-<h3>resetSession<a class="headerlink" href="#resetsession" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="session-clear">
+<h3>session.clear()<a class="headerlink" href="#session-clear" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://guides.rubyonrails.org/security.html#session-fixation">One line of code will protect you from session fixation</a>.</p>
 <p>Read the link above to know about session fixation. To prevent session fixation
-attack, in the action that lets users login, call <tt class="docutils literal"><span class="pre">resetSession</span></tt>.</p>
+attack, in the action that lets users login, call <tt class="docutils literal"><span class="pre">session.clear()</span></tt>.</p>
 <div class="highlight-python"><pre>class LoginController extends Controller {
   def login = GET("login") {
     ...
-    resetSession()  // Reset first before doing anything else with the session
+    session.clear()  // Reset first before doing anything else with the session
     session("userId") = userId
   }
 }</pre>
 </div>
-<p>To log users out, also call <tt class="docutils literal"><span class="pre">resetSession</span></tt>.</p>
+<p>To log users out, also call <tt class="docutils literal"><span class="pre">session.clear()</span></tt>.</p>
 </div>
 <div class="section" id="sessionvar">
 <h3>SessionVar<a class="headerlink" href="#sessionvar" title="Permalink to this headline">¶</a></h3>
@@ -207,8 +250,8 @@ else
   &lt;a href={urlFor[LoginAction]}&gt;Login&lt;/a&gt;</pre>
 </div>
 <ul class="simple">
-<li>To delete the session var: <tt class="docutils literal"><span class="pre">SVar.username.delete</span></tt></li>
-<li>To reset the whole session: <tt class="docutils literal"><span class="pre">resetSession</span></tt></li>
+<li>To delete the session var: <tt class="docutils literal"><span class="pre">SVar.username.delete()</span></tt></li>
+<li>To reset the whole session: <tt class="docutils literal"><span class="pre">session.clear()</span></tt></li>
 </ul>
 </div>
 <div class="section" id="session-store">
@@ -278,12 +321,13 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
 <li><a class="reference internal" href="#request">Request</a><ul>
 <li><a class="reference internal" href="#kinds-of-params">Kinds of params</a></li>
 <li><a class="reference internal" href="#accesing-params">Accesing params</a></li>
+<li><a class="reference internal" href="#at">&#8220;at&#8221;</a></li>
 <li><a class="reference internal" href="#requestvar">RequestVar</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#cookie">Cookie</a></li>
 <li><a class="reference internal" href="#session">Session</a><ul>
-<li><a class="reference internal" href="#resetsession">resetSession</a></li>
+<li><a class="reference internal" href="#session-clear">session.clear()</a></li>
 <li><a class="reference internal" href="#sessionvar">SessionVar</a></li>
 <li><a class="reference internal" href="#session-store">Session store</a></li>
 </ul>
@@ -333,7 +377,7 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
         <li class="right" >
           <a href="flash.html" title="Serve flash socket policy file"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.9 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

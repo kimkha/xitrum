@@ -40,11 +40,55 @@ override `convertText <https://github.com/ngocdaothanh/xitrum/blob/master/src/ma
 For file upload: ``param[FileUpload]("x")``, ``params[FileUpload]("x")`` etc.
 For more details, see :doc:`Upload chapter </upload>`.
 
+"at"
+~~~~
+
+To pass things around when processing a request (e.g. from action to view or layout)
+you can use ``at``. ``at`` type is ``scala.collection.mutable.HashMap[String, Any]``.
+If you know Rails, you'll see ``at`` is a clone of ``@`` of Rails.
+
+Articles.scala
+
+::
+
+  class Articles extends AppController {
+    def show = GET(":id") {
+      val (title, body) = ...  // Get from DB
+      at("title") = title
+      respondInlineView(body)
+    }
+  }
+
+AppController.scala
+
+::
+
+  import xitrum.Controller
+  import xitrum.view.DocType
+
+  trait AppController extends Controller {
+    override def layout = DocType.html5(
+      <html>
+        <head>
+          {antiCSRFMeta}
+          {xitrumCSS}
+          {jsDefaults}
+          <title>{if (at.isDefinedAt("title")) "My Site - " + at("title") else "My Site"}</title>
+        </head>
+        <body>
+          {renderedView}
+          {jsForView}
+        </body>
+      </html>
+    )
+  }
+
 RequestVar
 ~~~~~~~~~~
 
-To pass things around when processing a request (e.g. from action to view or layout)
-in the typesafe way, you should use RequestVar.
+``at`` in the above section is not typesafe because you can set anything to the
+map. To be more typesafe, you should use RequestVar, which is a wrapper arround
+``at``.
 
 RVar.scala
 
@@ -54,6 +98,18 @@ RVar.scala
 
   object RVar {
     object title extends RequestVar[String]
+  }
+
+Articles.scala
+
+::
+
+  class Articles extends AppController {
+    def show = GET(":id") {
+      val (title, body) = ...  // Get from DB
+      RVar.title.set(title)
+      respondInlineView(body)
+    }
   }
 
 AppController.scala
@@ -80,43 +136,36 @@ AppController.scala
     )
   }
 
-Articles.scala
-
-::
-
-  class Articles extends AppController {
-    def show = GET(":id") {
-      val (title, body) = ...  // Get from DB
-      RVar.title.set(title)
-      respondInlineView(body)
-    }
-  }
-
 Cookie
 ------
 
-Inside an action, you can use ``cookies``. It is a subclass of Java's `TreeSet <http://download.oracle.com/javase/6/docs/api/java/util/TreeSet.html>`_
-that contains `Cookie <http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/Cookie.html>`_.
-It is basically a normal TreeSet with an additional ``get`` method to lookup a cookie:
+`Read Wikipedia about cookie path etc. <http://en.wikipedia.org/wiki/HTTP_cookie#Domain_and_Path>`_
+
+Inside an action, use ``requestCookies``, a ``Map[String, String]``, to read cookies sent by browser.
 
 ::
 
-  cookies.get("myCookie") match {
+  requestCookies.get("myCookie") match {
     case None         => ...
-    case Some(cookie) => ...
+    case Some(string) => ...
   }
 
-To add a cookie, create an instance of `DefaultCookie <http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/DefaultCookie.html>`_
-and add it to ``cookies``:
+To send cookie to browser, create an instance of `DefaultCookie <http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/DefaultCookie.html>`_
+and append it to ``responseCookies``, an ``ArrayBuffer`` that contains `Cookie <http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/Cookie.html>`_.
 
 ::
 
-  val cookie = new DefaultCookie("myCookie", "String value")
-  cookies.add(cookie)
+  val cookie = new DefaultCookie("name", "value")
+  cookie.setHttpOnly(true)  // true: JavaScript cannot access this cookie
+  responseCookies.append(cookie)
 
-Remember that there's no way for the server to directly delete a cookie on browsers.
-Instead, to delete immediately set max age to 0. To delete when the browser closes windows,
-set max age to Integer.MIN_VALUE.
+If you don't set cookie's path by calling ``cookie.setPath(cookiePath)``, its
+path will be set to the site's root path (``xitrum.Config.withBaseUrl("/")``).
+This avoids accidental duplicate cookies.
+
+To delete a cookie sent by browser, send a cookie with the same name and set
+its max age to 0. The browser will expire it immediately. To tell browser to
+delete cookie when the browser closes windows, set max age to ``Integer.MIN_VALUE``:
 
 ::
 
@@ -124,6 +173,10 @@ set max age to Integer.MIN_VALUE.
 
 Note that `Internet Explorer does not support "max-age" <http://mrcoles.com/blog/cookies-max-age-vs-expires/>`_,
 but Netty detects and outputs either "max-age" or "expires" properly. Don't worry!
+
+If you want to sign your cookie value to prevent user from tampering, use
+``xitrum.util.SecureBase64.encrypt`` and ``xitrum.util.SecureBase64.encrypt``.
+For more information, see :doc:`How to encrypt data </howto>`.
 
 Session
 -------
@@ -153,25 +206,25 @@ Storing user ID and pull the user from database on each access is usually a good
 practice. That way changes to the user are updated on each access (including
 changes to user roles/authorizations).
 
-resetSession
-~~~~~~~~~~~~
+session.clear()
+~~~~~~~~~~~~~~~
 
 `One line of code will protect you from session fixation <http://guides.rubyonrails.org/security.html#session-fixation>`_.
 
 Read the link above to know about session fixation. To prevent session fixation
-attack, in the action that lets users login, call ``resetSession``.
+attack, in the action that lets users login, call ``session.clear()``.
 
 ::
 
   class LoginController extends Controller {
     def login = GET("login") {
       ...
-      resetSession()  // Reset first before doing anything else with the session
+      session.clear()  // Reset first before doing anything else with the session
       session("userId") = userId
     }
   }
 
-To log users out, also call ``resetSession``.
+To log users out, also call ``session.clear()``.
 
 SessionVar
 ~~~~~~~~~~
@@ -205,8 +258,8 @@ Display the username:
   else
     <a href={urlFor[LoginAction]}>Login</a>
 
-* To delete the session var: ``SVar.username.delete``
-* To reset the whole session: ``resetSession``
+* To delete the session var: ``SVar.username.delete()``
+* To reset the whole session: ``session.clear()``
 
 Session store
 ~~~~~~~~~~~~~

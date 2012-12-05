@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller, action, and view &mdash; Xitrum 1.9.9 documentation</title>
+    <title>Controller, action, and view &mdash; Xitrum 1.10 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.9',
+        VERSION:     '1.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.9 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.10 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.9 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -153,7 +153,7 @@ respondInlineView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLay
 <div class="section" id="scalate">
 <h2>Scalate<a class="headerlink" href="#scalate" title="Permalink to this headline">¶</a></h2>
 <p>For small views you can use Scala XML for convenience, but for big views you
-should use <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>.</p>
+should use <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a> templates.</p>
 <p>scr/main/scala/quickstart/controller/AppController.scala:</p>
 <div class="highlight-python"><pre>package quickstart.controller
 
@@ -193,19 +193,49 @@ html
 a(href={currentAction.url}) Path to current action
 p= currentController.asInstanceOf[MyController].hello("World")</pre>
 </div>
-<p>In views you can use all methods of the class <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/Controller.scala">xitrum.Controller</a>.
-If you want to have exactly instance of the current controller, cast <tt class="docutils literal"><span class="pre">currentController</span></tt> to
+<p>In templates you can use all methods of the class <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/Controller.scala">xitrum.Controller</a>,
+like <tt class="docutils literal"><span class="pre">xitrumCSS</span></tt>. Also, you can use utility methods provided by Scalate like <tt class="docutils literal"><span class="pre">unescape</span></tt>.
+See the <a class="reference external" href="http://scalate.fusesource.org/documentation/index.html">Scalate doc</a>.
+Note that these methods are not available for Mustache templates (see the next
+section).</p>
+<p>If you want to have exactly instance of the current controller, cast <tt class="docutils literal"><span class="pre">currentController</span></tt> to
 the controller you wish.</p>
 <p>The default Scalate template type is <a class="reference external" href="http://scalate.fusesource.org/documentation/jade.html">Jade</a>.
 You can also use <a class="reference external" href="http://scalate.fusesource.org/documentation/mustache.html">Mustache</a>,
 <a class="reference external" href="http://scalate.fusesource.org/documentation/scaml-reference.html">Scaml</a>, or
 <a class="reference external" href="http://scalate.fusesource.org/documentation/ssp-reference.html">Ssp</a>.
-To config the default template type, see <cite>scalate</cite> in xitrum.json.</p>
+To config the default template type, see xitrum.json file in the config directory
+of your Xitrum application.</p>
 <p>You can override the default template type by passing &#8220;jade&#8221;, &#8220;mustache&#8221;, &#8220;scamal&#8221;,
-or &#8220;ssp&#8221; as the last parameter to <cite>renderScalate</cite> or <cite>respondView</cite>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">renderScalate</span><span class="p">(</span><span class="n">classOf</span><span class="p">[</span><span class="n">AppAction</span><span class="p">],</span> <span class="s">&quot;mustache&quot;</span><span class="p">)</span>
-<span class="n">respondView</span><span class="p">(</span><span class="s">&quot;scaml&quot;</span><span class="p">)</span>
+or &#8220;ssp&#8221; to <cite>respondView</cite>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">respondView</span><span class="p">(</span><span class="s">&quot;mustache&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="section" id="id2">
+<h3>Mustache<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Must read:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://mustache.github.com/mustache.5.html">Mustache syntax</a></li>
+<li><a class="reference external" href="http://scalate.fusesource.org/documentation/mustache.html">Scalate implementation</a></li>
+</ul>
+<p>You can&#8217;t do some things with Mustache like with Jade, because Mustache syntax
+is stricter.</p>
+<p>To pass things from action to Mustache template, you must use <tt class="docutils literal"><span class="pre">at</span></tt>:</p>
+<p>Action:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">at</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="s">&quot;Jack&quot;</span>
+<span class="n">at</span><span class="p">(</span><span class="s">&quot;xitrumCSS&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="n">xitrumCSS</span>
+</pre></div>
+</div>
+<p>Mustache template:</p>
+<div class="highlight-python"><pre>My name is {{name}}
+{{xitrumCSS}}</pre>
+</div>
+<p>Note that you can&#8217;t use the below keys for <tt class="docutils literal"><span class="pre">at</span></tt> map to pass things to Scalate
+template, because they&#8217;re already used:</p>
+<ul class="simple">
+<li>&#8220;context&#8221;: for Sclate utility object, which contains methods like <tt class="docutils literal"><span class="pre">unescape</span></tt></li>
+<li>&#8220;helper&#8221;: for the current controller object</li>
+</ul>
 </div>
 </div>
 <div class="section" id="controller-object">
@@ -264,7 +294,10 @@ class LoginController extends Controller {
   <ul>
 <li><a class="reference internal" href="#">Controller, action, and view</a><ul>
 <li><a class="reference internal" href="#layout">Layout</a></li>
-<li><a class="reference internal" href="#scalate">Scalate</a></li>
+<li><a class="reference internal" href="#scalate">Scalate</a><ul>
+<li><a class="reference internal" href="#id2">Mustache</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#controller-object">Controller object</a><ul>
 <li><a class="reference internal" href="#caveat">Caveat</a></li>
 </ul>
@@ -313,7 +346,7 @@ class LoginController extends Controller {
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.9 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

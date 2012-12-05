@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RESTful APIs &mdash; Xitrum 1.9.9 documentation</title>
+    <title>RESTful APIs &mdash; Xitrum 1.10 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.9.9',
+        VERSION:     '1.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.9.9 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.10 documentation" href="index.html" />
     <link rel="next" title="Postbacks" href="postback.html" />
     <link rel="prev" title="Controller, action, and view" href="controller_action_view.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="controller_action_view.html" title="Controller, action, and view"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.9 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -149,6 +149,23 @@ trait AppController extends Controller {
 <p>The token will be automatically included in all non-GET Ajax requests sent by
 jQuery.</p>
 </div>
+<div class="section" id="anticsrfinput">
+<h2>antiCSRFInput<a class="headerlink" href="#anticsrfinput" title="Permalink to this headline">¶</a></h2>
+<p>If you manually write form in Scalate template, use <tt class="docutils literal"><span class="pre">antiCSRFInput</span></tt>:</p>
+<div class="highlight-python"><pre>form(method="post" action={Admin.addGroup.url})
+  != antiCSRFInput
+
+  label Group name *
+  input.required(type="text" name="name" placeholder="Required")
+  br
+
+  label Group description
+  input(type="text" name="desc")
+  br
+
+  input(type="submit" value="Add")</pre>
+</div>
+</div>
 <div class="section" id="skipcsrfcheck">
 <h2>SkipCSRFCheck<a class="headerlink" href="#skipcsrfcheck" title="Permalink to this headline">¶</a></h2>
 <p>When you create APIs for machines, e.g. smartphones, you may want to skip this
@@ -191,6 +208,7 @@ which has <tt class="docutils literal"><span class="pre">toString(Charset)</span
 <li><a class="reference internal" href="#route-order-with-first-and-last">Route order with first and last</a></li>
 <li><a class="reference internal" href="#regex-in-route">Regex in route</a></li>
 <li><a class="reference internal" href="#anti-csrf">Anti-CSRF</a></li>
+<li><a class="reference internal" href="#anticsrfinput">antiCSRFInput</a></li>
 <li><a class="reference internal" href="#skipcsrfcheck">SkipCSRFCheck</a></li>
 <li><a class="reference internal" href="#read-entire-request-body">Read entire request body</a></li>
 </ul>
@@ -237,7 +255,7 @@ which has <tt class="docutils literal"><span class="pre">toString(Charset)</span
         <li class="right" >
           <a href="controller_action_view.html" title="Controller, action, and view"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.9.9 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
