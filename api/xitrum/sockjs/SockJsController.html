@@ -771,18 +771,6 @@ the connection.
       </span>
       </h4>
       <p class="shortcomment cmt">Applications may override this method to convert to more types.</p><div class="fullcomment"><div class="comment cmt"><p>Applications may override this method to convert to more types.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.ParamAccess" class="extype" href="../scope/request/ParamAccess.html">ParamAccess</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.scope.request.ExtEnv#cookies" data-isabs="false">
-      <a id="cookies:Cookies"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">cookies</span><span class="result">: <a name="xitrum.scope.request.Cookies" class="extype" href="../scope/request/Cookies.html">Cookies</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.ExtEnv" class="extype" href="../scope/request/ExtEnv.html">ExtEnv</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.controller.UrlFor#currentAction" data-isabs="false">
       <a id="currentAction:Action"></a>
       <h4 class="signature">
@@ -1646,18 +1634,21 @@ The current controller instance will be imported in the template as &quot;helper
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.RequestEnv" class="extype" href="../scope/request/RequestEnv.html">RequestEnv</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.scope.request.ExtEnv#resetSession" data-isabs="false">
-      <a id="resetSession():Unit"></a>
+    </li><li visbl="pub" name="xitrum.scope.request.ExtEnv#requestCookies" data-isabs="false">
+      <a id="requestCookies:Map[String, String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">resetSession</span><span class="params">()</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">requestCookies</span><span class="result">: Map[String, String]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.ExtEnv" class="extype" href="../scope/request/ExtEnv.html">ExtEnv</a></dd></dl></div>
+      <p class="shortcomment cmt">Browsers will not send cookie attributes back to the server.</p><div class="fullcomment"><div class="comment cmt"><p>Browsers will not send cookie attributes back to the server. They will only
+send the cookie’s name-value pair.
+http://en.wikipedia.org/wiki/HTTP_cookie#Cookie_attributes
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.ExtEnv" class="extype" href="../scope/request/ExtEnv.html">ExtEnv</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respond" data-isabs="false">
       <a id="respond():ChannelFuture"></a>
       <h4 class="signature">
@@ -2041,6 +2032,18 @@ src/main/view/scalate/&lt;/class/name/of/the/controller/of/the/given/action&gt;/
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.RequestEnv" class="extype" href="../scope/request/RequestEnv.html">RequestEnv</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.scope.request.ExtEnv#responseCookies" data-isabs="false">
+      <a id="responseCookies:ArrayBuffer[Cookie]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">responseCookies</span><span class="result">: <span name="scala.collection.mutable.ArrayBuffer" class="extype">ArrayBuffer</span>[<span name="org.jboss.netty.handler.codec.http.Cookie" class="extype">Cookie</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.ExtEnv" class="extype" href="../scope/request/ExtEnv.html">ExtEnv</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.controller.Net#scheme" data-isabs="false">
       <a id="scheme:String"></a>
       <h4 class="signature">
@@ -2088,7 +2091,7 @@ src/main/view/scalate/&lt;/class/name/of/the/controller/of/the/given/action&gt;/
         <span class="name">session</span><span class="result">: Session</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.ExtEnv" class="extype" href="../scope/request/ExtEnv.html">ExtEnv</a></dd></dl></div>
+      <p class="shortcomment cmt">To reset session: session.</p><div class="fullcomment"><div class="comment cmt"><p>To reset session: session.clear()</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.request.ExtEnv" class="extype" href="../scope/request/ExtEnv.html">ExtEnv</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.scope.request.ExtEnv#sessiono" data-isabs="false">
       <a id="sessiono[T](String):Option[T]"></a>
       <h4 class="signature">

@@ -38,10 +38,10 @@
       <div class="occurrences"><a name="xitrum.handler.down.XSendFile" class="extype" href="../xitrum/handler/down/XSendFile$.html">XSendFile</a> </div>
     </div><div class="entry">
       <div class="name">SendMessageByHandler</div>
-      <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> <a name="xitrum.sockjs.SockJsPollingSessions" class="extype" href="../xitrum/sockjs/SockJsPollingSessions$.html">SockJsPollingSessions</a> </div>
+      <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> <a name="xitrum.sockjs.SockJsNonWebSocketSessions" class="extype" href="../xitrum/sockjs/SockJsNonWebSocketSessions$.html">SockJsNonWebSocketSessions</a> </div>
     </div><div class="entry">
       <div class="name">SendMessagesByClient</div>
-      <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> <a name="xitrum.sockjs.SockJsPollingSessions" class="extype" href="../xitrum/sockjs/SockJsPollingSessions$.html">SockJsPollingSessions</a> </div>
+      <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> <a name="xitrum.sockjs.SockJsNonWebSocketSessions" class="extype" href="../xitrum/sockjs/SockJsNonWebSocketSessions$.html">SockJsNonWebSocketSessions</a> </div>
     </div><div class="entry">
       <div class="name">sendResource</div>
       <div class="occurrences"><a name="xitrum.handler.down.XSendResource" class="extype" href="../xitrum/handler/down/XSendResource$.html">XSendResource</a> </div>
@@ -79,6 +79,9 @@
       <div class="name">SessionHolder</div>
       <div class="occurrences"><a name="xitrum.imperatively" class="extype" href="../xitrum/imperatively/package.html">imperatively</a> </div>
     </div><div class="entry">
+      <div class="name">sessionId</div>
+      <div class="occurrences"><a name="xitrum.scope.session.HazelcastSession" class="extype" href="../xitrum/scope/session/HazelcastSession.html">HazelcastSession</a> </div>
+    </div><div class="entry">
       <div class="name">sessiono</div>
       <div class="occurrences"><a name="xitrum.scope.request.ExtEnv" class="extype" href="../xitrum/scope/request/ExtEnv.html">ExtEnv</a> </div>
     </div><div class="entry">
@@ -102,9 +105,6 @@
     </div><div class="entry">
       <div class="name">setCookieAndSessionIfTouchedOnRespond</div>
       <div class="occurrences"><a name="xitrum.scope.request.ExtEnv" class="extype" href="../xitrum/scope/request/ExtEnv.html">ExtEnv</a> </div>
-    </div><div class="entry">
-      <div class="name">setCookiesWhenRespond</div>
-      <div class="occurrences"><a name="xitrum.scope.request.Cookies" class="extype" href="../xitrum/scope/request/Cookies.html">Cookies</a> </div>
     </div><div class="entry">
       <div class="name">setHeader</div>
       <div class="occurrences"><a name="xitrum.handler.down.XSendFile" class="extype" href="../xitrum/handler/down/XSendFile$.html">XSendFile</a> <a name="xitrum.handler.down.XSendResource" class="extype" href="../xitrum/handler/down/XSendResource$.html">XSendResource</a> </div>
@@ -148,20 +148,20 @@
       <div class="name">SockJsHandler</div>
       <div class="occurrences"><a name="xitrum" class="extype" href="../xitrum/package.html">xitrum</a> </div>
     </div><div class="entry">
-      <div class="name">sockJsPathPrefix</div>
-      <div class="occurrences"><a name="xitrum.routing.Routes" class="extype" href="../xitrum/routing/Routes$.html">Routes</a> </div>
-    </div><div class="entry">
-      <div class="name">SockJsPollingSession</div>
+      <div class="name">SockJsNonWebSocketSession</div>
       <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> </div>
     </div><div class="entry">
-      <div class="name">SockJsPollingSessionActorMessage</div>
+      <div class="name">SockJsNonWebSocketSessionActorMessage</div>
       <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> </div>
     </div><div class="entry">
-      <div class="name">sockJsPollingSessionActorRef</div>
+      <div class="name">sockJsNonWebSocketSessionActorRef</div>
       <div class="occurrences"><a name="xitrum.SockJsHandler" class="extype" href="../xitrum/SockJsHandler.html">SockJsHandler</a> </div>
     </div><div class="entry">
-      <div class="name">SockJsPollingSessions</div>
+      <div class="name">SockJsNonWebSocketSessions</div>
       <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> </div>
+    </div><div class="entry">
+      <div class="name">sockJsPathPrefix</div>
+      <div class="occurrences"><a name="xitrum.routing.Routes" class="extype" href="../xitrum/routing/Routes$.html">Routes</a> </div>
     </div><div class="entry">
       <div class="name">SockJsSubscribeByClientResult</div>
       <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> </div>
@@ -206,9 +206,9 @@
       <div class="occurrences"><a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> </div>
     </div><div class="entry">
       <div class="name">SubscribeOnceByClient</div>
-      <div class="occurrences"><a name="xitrum.sockjs.SockJsPollingSessions" class="extype" href="../xitrum/sockjs/SockJsPollingSessions$.html">SockJsPollingSessions</a> <a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> </div>
+      <div class="occurrences"><a name="xitrum.sockjs.SockJsNonWebSocketSessions" class="extype" href="../xitrum/sockjs/SockJsNonWebSocketSessions$.html">SockJsNonWebSocketSessions</a> <a name="xitrum.sockjs" class="extype" href="../xitrum/sockjs/package.html">sockjs</a> </div>
     </div><div class="entry">
       <div class="name">subscribeStreamingByClient</div>
-      <div class="occurrences"><a name="xitrum.sockjs.SockJsPollingSessions" class="extype" href="../xitrum/sockjs/SockJsPollingSessions$.html">SockJsPollingSessions</a> </div>
+      <div class="occurrences"><a name="xitrum.sockjs.SockJsNonWebSocketSessions" class="extype" href="../xitrum/sockjs/SockJsNonWebSocketSessions$.html">SockJsNonWebSocketSessions</a> </div>
     </div></body>
       </html>

@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.sockjs.SockJsPollingSessionActorMessage</title>
+          <title>xitrum.sockjs.SockJsNonWebSocketSessions</title>
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
@@ -12,29 +12,26 @@
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="type">
+        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
       <div id="definition">
-        <img src="../../lib/trait_big.png" />
+        <img src="../../lib/object_big.png" />
         <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a>.<a name="xitrum.sockjs" class="extype" href="package.html">sockjs</a></p>
-        <h1>SockJsPollingSessionActorMessage</h1>
+        <h1>SockJsNonWebSocketSessions</h1>
       </div>
 
       <h4 class="signature" id="signature">
       <span class="modifier_kind">
-        <span class="modifier">sealed </span>
-        <span class="kind">trait</span>
+        <span class="modifier"></span>
+        <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">SockJsPollingSessionActorMessage</span><span class="result"> extends AnyRef</span>
+        <span class="name">SockJsNonWebSocketSessions</span><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"><div class="toggleContainer block">
+      <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>This acts the middleman between client and server SockJS handler.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a name="xitrum.sockjs.CloseByHandler" class="extype" href="CloseByHandler$.html">CloseByHandler</a>, <a name="xitrum.sockjs.SendMessageByHandler" class="extype" href="SendMessageByHandler.html">SendMessageByHandler</a>, <a name="xitrum.sockjs.SendMessagesByClient" class="extype" href="SendMessagesByClient.html">SendMessagesByClient</a>, <a name="xitrum.sockjs.SubscribeOnceByClient" class="extype" href="SubscribeOnceByClient$.html">SubscribeOnceByClient</a>, <a name="xitrum.sockjs.UnsubscribeByClient" class="extype" href="UnsubscribeByClient$.html">UnsubscribeByClient</a></div>
         </div></div>
     
 
@@ -48,7 +45,7 @@
               <span class="filtertype">Inherited</span>
               <ol><li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li></ol>
-              <ol id="linearization"><li name="xitrum.sockjs.SockJsPollingSessionActorMessage" class="in"><span>SockJsPollingSessionActorMessage</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+              <ol id="linearization"><li name="xitrum.sockjs.SockJsNonWebSocketSessions" class="in"><span>SockJsNonWebSocketSessions</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
             </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -126,6 +123,60 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#TIMEOUT_ASK" data-isabs="false">
+      <a id="TIMEOUT_ASK:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TIMEOUT_ASK</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#TIMEOUT_CONNECTION" data-isabs="false">
+      <a id="TIMEOUT_CONNECTION:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TIMEOUT_CONNECTION</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#TIMEOUT_HEARTBEAT" data-isabs="false">
+      <a id="TIMEOUT_HEARTBEAT:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TIMEOUT_HEARTBEAT</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#abortByClient" data-isabs="false">
+      <a id="abortByClient(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">abortByClient</span><span class="params">(<span name="sockJsSessionId">sockJsSessionId: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">When SockJsController wants to send keep alive message or normal message,
+as the result of SubscribeByClientResultMessages, but the connection has
+been aborted, it will call this method to remove the session.</p><div class="fullcomment"><div class="comment cmt"><p>When SockJsController wants to send keep alive message or normal message,
+as the result of SubscribeByClientResultMessages, but the connection has
+been aborted, it will call this method to remove the session.
+See http://groups.google.com/group/sockjs/browse_thread/thread/392cd07c4a75400b/9a4593a71e90173b#9a4593a71e90173b
+</p></div></div>
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -153,6 +204,18 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#closeByHandler" data-isabs="false">
+      <a id="closeByHandler(ActorRef):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">closeByHandler</span><span class="params">(<span name="actorRef">actorRef: <span name="akka.actor.ActorRef" class="extype">ActorRef</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Until the timeout occurs, the server must serve the close message.</p>
     </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -264,6 +327,55 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#sendMessageByHandler" data-isabs="false">
+      <a id="sendMessageByHandler(ActorRef,String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sendMessageByHandler</span><span class="params">(<span name="actorRef">actorRef: <span name="akka.actor.ActorRef" class="extype">ActorRef</span></span>, <span name="message">message: String</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#sendMessagesByClient" data-isabs="false">
+      <a id="sendMessagesByClient(String,List[String]):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sendMessagesByClient</span><span class="params">(<span name="sockJsSessionId">sockJsSessionId: String</span>, <span name="messages">messages: List[String]</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>false means session not found</p></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#subscribeOnceByClient" data-isabs="false">
+      <a id="subscribeOnceByClient(String,String,(SockJsSubscribeByClientResult) ⇒ Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">subscribeOnceByClient</span><span class="params">(<span name="pathPrefix">pathPrefix: String</span>, <span name="sockJsSessionId">sockJsSessionId: String</span>, <span name="callback">callback: (<a name="xitrum.sockjs.SockJsSubscribeByClientResult" class="extype" href="SockJsSubscribeByClientResult.html">SockJsSubscribeByClientResult</a>) ⇒ <span name="scala.Unit" class="extype">Unit</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#subscribeStreamingByClient" data-isabs="false">
+      <a id="subscribeStreamingByClient(String,String,(SockJsSubscribeByClientResult) ⇒ Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">subscribeStreamingByClient</span><span class="params">(<span name="pathPrefix">pathPrefix: String</span>, <span name="sockJsSessionId">sockJsSessionId: String</span>, <span name="callback">callback: (<a name="xitrum.sockjs.SockJsSubscribeByClientResult" class="extype" href="SockJsSubscribeByClientResult.html">SockJsSubscribeByClientResult</a>) ⇒ <span name="scala.Boolean" class="extype">Boolean</span></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">callback result: true means subscribeStreaming should be called again to get more messages
+</p>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">
@@ -288,6 +400,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions#unsubscribeByClient" data-isabs="false">
+      <a id="unsubscribeByClient(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">unsubscribeByClient</span><span class="params">(<span name="sockJsSessionId">sockJsSessionId: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
       <a id="wait():Unit"></a>
       <h4 class="signature">

@@ -68,7 +68,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SendMessageByHandler.html"><span class="name">SendMessageByHandler</span></a><span class="params">(<span name="message">message: String</span>)</span><span class="result"> extends SockJsPollingSessionActorMessage with Product with Serializable</span>
+        <a href="SendMessageByHandler.html"><span class="name">SendMessageByHandler</span></a><span class="params">(<span name="message">message: String</span>)</span><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
       </span>
       </h4>
       
@@ -80,7 +80,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SendMessagesByClient.html"><span class="name">SendMessagesByClient</span></a><span class="params">(<span name="messages">messages: List[String]</span>)</span><span class="result"> extends SockJsPollingSessionActorMessage with Product with Serializable</span>
+        <a href="SendMessagesByClient.html"><span class="name">SendMessagesByClient</span></a><span class="params">(<span name="messages">messages: List[String]</span>)</span><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
       </span>
       </h4>
       
@@ -96,28 +96,28 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSession" data-isabs="false">
-      <a id="SockJsPollingSession:SockJsPollingSession"></a>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSession" data-isabs="false">
+      <a id="SockJsNonWebSocketSession:SockJsNonWebSocketSession"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SockJsPollingSession.html"><span class="name">SockJsPollingSession</span></a><span class="result"> extends Actor</span>
+        <a href="SockJsNonWebSocketSession.html"><span class="name">SockJsNonWebSocketSession</span></a><span class="result"> extends Actor</span>
       </span>
       </h4>
       <p class="comment cmt">There should be at most one subscriber:
 http://sockjs.</p>
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessionActorMessage" data-isabs="true">
-      <a id="SockJsPollingSessionActorMessage:SockJsPollingSessionActorMessage"></a>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage" data-isabs="true">
+      <a id="SockJsNonWebSocketSessionActorMessage:SockJsNonWebSocketSessionActorMessage"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">sealed </span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SockJsPollingSessionActorMessage.html"><span class="name">SockJsPollingSessionActorMessage</span></a><span class="result"> extends AnyRef</span>
+        <a href="SockJsNonWebSocketSessionActorMessage.html"><span class="name">SockJsNonWebSocketSessionActorMessage</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
@@ -160,7 +160,7 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="CloseByHandler$.html"><span class="name">CloseByHandler</span></a><span class="result"> extends SockJsPollingSessionActorMessage with Product with Serializable</span>
+        <a href="CloseByHandler$.html"><span class="name">CloseByHandler</span></a><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
       </span>
       </h4>
       
@@ -188,15 +188,15 @@ http://sockjs.</p>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsPollingSessions" data-isabs="false">
-      <a id="SockJsPollingSessions:SockJsPollingSessions"></a>
+    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions" data-isabs="false">
+      <a id="SockJsNonWebSocketSessions:SockJsNonWebSocketSessions"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SockJsPollingSessions$.html"><span class="name">SockJsPollingSessions</span></a><span class="result"> extends AnyRef</span>
+        <a href="SockJsNonWebSocketSessions$.html"><span class="name">SockJsNonWebSocketSessions</span></a><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       <p class="comment cmt">This acts the middleman between client and server SockJS handler.</p>
@@ -256,7 +256,7 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SubscribeOnceByClient$.html"><span class="name">SubscribeOnceByClient</span></a><span class="result"> extends SockJsPollingSessionActorMessage with Product with Serializable</span>
+        <a href="SubscribeOnceByClient$.html"><span class="name">SubscribeOnceByClient</span></a><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
       </span>
       </h4>
       
@@ -268,7 +268,7 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="UnsubscribeByClient$.html"><span class="name">UnsubscribeByClient</span></a><span class="result"> extends SockJsPollingSessionActorMessage with Product with Serializable</span>
+        <a href="UnsubscribeByClient$.html"><span class="name">UnsubscribeByClient</span></a><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
       </span>
       </h4>
       

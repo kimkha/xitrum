@@ -288,7 +288,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Called only at the first access to the session.</p><div class="fullcomment"><div class="comment cmt"><p>Called only at the first access to the session. If session is not used,
-no proccessing is performed.
+no proccessing is performed. If called, &quot;restore&quot; is always called before &quot;store&quot;.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.session.HazelcastSessionStore" class="extype" href="">HazelcastSessionStore</a> → <a name="xitrum.scope.session.SessionStore" class="extype" href="SessionStore.html">SessionStore</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.scope.session.HazelcastSessionStore#store" data-isabs="false">
       <a id="store(Session,ExtEnv):Unit"></a>
@@ -301,10 +301,7 @@ no proccessing is performed.
         <span class="name">store</span><span class="params">(<span name="session">session: Session</span>, <span name="extEnv">extEnv: <a name="xitrum.scope.request.ExtEnv" class="extype" href="../request/ExtEnv.html">ExtEnv</a></span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Called before the response is sent to the client, but only if &quot;restore&quot; has
-been called.</p><div class="fullcomment"><div class="comment cmt"><p>Called before the response is sent to the client, but only if &quot;restore&quot; has
-been called.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.session.HazelcastSessionStore" class="extype" href="">HazelcastSessionStore</a> → <a name="xitrum.scope.session.SessionStore" class="extype" href="SessionStore.html">SessionStore</a></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">session</dt><dd class="cmt"><p>has been restored by &quot;restore&quot; method</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.scope.session.HazelcastSessionStore" class="extype" href="">HazelcastSessionStore</a> → <a name="xitrum.scope.session.SessionStore" class="extype" href="SessionStore.html">SessionStore</a></dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">

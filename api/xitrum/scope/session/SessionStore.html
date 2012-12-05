@@ -76,7 +76,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Called only at the first access to the session.</p><div class="fullcomment"><div class="comment cmt"><p>Called only at the first access to the session. If session is not used,
-no proccessing is performed.
+no proccessing is performed. If called, &quot;restore&quot; is always called before &quot;store&quot;.
 </p></div></div>
     </li><li visbl="pub" name="xitrum.scope.session.SessionStore#store" data-isabs="true">
       <a id="store(Session,ExtEnv):Unit"></a>
@@ -90,7 +90,11 @@ no proccessing is performed.
       </span>
       </h4>
       <p class="shortcomment cmt">Called before the response is sent to the client, but only if &quot;restore&quot; has
-been called.</p>
+been called.</p><div class="fullcomment"><div class="comment cmt"><p>Called before the response is sent to the client, but only if &quot;restore&quot; has
+been called. If called, &quot;store&quot; is always called after &quot;restore&quot;.</p><p>If session is empty:
+- If browser did not send session cookie: do nothing, do not send back useless cookie
+- If browser did send session cookie: set max age to 0 to make browser delete session cookie immediately
+</p></div></div>
     </li></ol>
             </div>
 

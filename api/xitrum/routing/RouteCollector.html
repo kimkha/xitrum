@@ -215,8 +215,8 @@
         <span class="name">fromCacheFileOrRecollect</span><span class="params">(<span name="cachedFileName">cachedFileName: String</span>)</span><span class="result">: Map[String, Seq[String]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Because java.</p><div class="fullcomment"><div class="comment cmt"><p>Because java.lang.reflect.Method is not serializable, we return a map of
-controller class name -&gt; action method names.
+      <p class="shortcomment cmt">Because java.</p><div class="fullcomment"><div class="comment cmt"><p>Because java.lang.reflect.Method is not serializable for saving to the
+cache file, we return a map of: controller class name -&gt; action method names.
 </p></div></div>
     </li><li visbl="pub" name="xitrum.routing.RouteCollector#fromSockJsController" data-isabs="false">
       <a id="fromSockJsController:Map[String, Seq[String]]"></a>
