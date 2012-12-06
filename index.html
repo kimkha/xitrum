@@ -107,7 +107,7 @@ Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe w
 <li>Views can be written in a separate <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
 template file or Scala inline XML. Both are typesafe.</li>
 <li>Sessions can be stored in cookies (more scalable) or clustered <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> (more secure).
-<a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> is recommended when using continuations-based Actions, since serialized
+Hazelcast is recommended when using continuations-based Actions, since serialized
 continuations are usually too big to store in cookies. Hazelcast also gives
 in-process (thus faster and simpler to use) distribued cache and pubsub, you
 don&#8217;t need separate cache and pubsub servers.</li>
