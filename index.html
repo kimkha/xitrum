@@ -108,7 +108,9 @@ Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe w
 template file or Scala inline XML. Both are typesafe.</li>
 <li>Sessions can be stored in cookies (more scalable) or clustered <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> (more secure).
 <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> is recommended when using continuations-based Actions, since serialized
-continuations are usually too big to store in cookies.</li>
+continuations are usually too big to store in cookies. Hazelcast also gives
+in-process (thus faster and simpler to use) distribued cache and pubsub, you
+don&#8217;t need separate cache and pubsub servers.</li>
 <li><a class="reference external" href="http://docs.jquery.com/Plugins/validation">jQuery Validation</a> is integrated
 for browser side and server side validation.</li>
 <li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>.
@@ -123,12 +125,6 @@ use than Lift. You can easily create both RESTful APIs and postbacks. <a class="
 is controller-first like Scalatra, not
 <a class="reference external" href="http://www.assembla.com/wiki/show/liftweb/View_First">view-first</a> like Lift.
 Most people are familliar with controller-first style.</li>
-</ul>
-<p><a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> also gives:</p>
-<ul class="simple">
-<li>In-process and distribued cache, you don&#8217;t need separate cache servers.</li>
-<li>In-process and distribued <a class="reference external" href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet (with WebSocket)</a>,
-you can scale Comet to multiple web servers.</li>
 </ul>
 <p><a class="reference external" href="http://ngocdaothanh.github.com/xitrum">Xitrum</a> is <a class="reference external" href="https://github.com/ngocdaothanh/xitrum">open source</a>, please join
 its <a class="reference external" href="http://groups.google.com/group/xitrum-framework">Google group</a>.</p>
