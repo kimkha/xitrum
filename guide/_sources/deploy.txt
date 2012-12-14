@@ -22,7 +22,7 @@ HAProxy is much easier to use. It suits Xitrum because as mentioned in
 `very fast <https://gist.github.com/3293596>`_. You don't need to use static file
 serving feature in Nginx.
 
-A HAProxy typically config file looks like this:
+A HAProxy typical config file looks like this:
 
 ::
 
@@ -131,9 +131,6 @@ modify /etc/sysctl.conf:
   # This gives the kernel more memory for TCP
   # which you need with many (100k+) open socket connections
   net.ipv4.tcp_mem = 50576 64768 98152
-
-  # I was also masquerading the port Comet was on, you might not need this
-  net.ipv4.netfilter.ip_conntrack_max = 1048576
 
   # Backlog
   net.core.netdev_max_backlog = 2048

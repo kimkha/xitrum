@@ -494,18 +494,6 @@ render it to the flash area right away.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Knockout" class="extype" href="Knockout.html">Knockout</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.Responder#layout" data-isabs="false">
-      <a id="layout:Any"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">layout</span><span class="result">: <span name="scala.Any" class="extype">Any</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="scala.AnyRef#ne" data-isabs="false">
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -542,110 +530,6 @@ render it to the flash area right away.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.Responder#renderEventSource" data-isabs="false">
-      <a id="renderEventSource(Any,String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderEventSource</span><span class="params">(<span name="data">data: <span name="scala.Any" class="extype">Any</span></span>, <span name="event">event: String = <span class="symbol">&quot;message&quot;</span></span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      
-    </li><li visbl="pub" name="xitrum.view.Responder#renderFragment" data-isabs="false">
-      <a id="renderFragment(Class[_],String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderFragment</span><span class="params">(<span name="controllerClass">controllerClass: Class[_]</span>, <span name="fragment">fragment: String</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as renderFragment(controllerClass, fragment, templateType),
-where templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as renderFragment(controllerClass, fragment, templateType),
-where templateType is as configured in xitrum.json.
-</p></div></div>
-    </li><li visbl="pub" name="xitrum.view.Responder#renderFragment" data-isabs="false">
-      <a id="renderFragment(Class[_],String,String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderFragment</span><span class="params">(<span name="controllerClass">controllerClass: Class[_]</span>, <span name="fragment">fragment: String</span>, <span name="templateType">templateType: String</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Renders Scalate template file with the path:
-src/main/view/scalate/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file with the path:
-src/main/view/scalate/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.&lt;templateType&gt;
-</p></div><dl class="paramcmts block"><dt class="param">controllerClass</dt><dd class="cmt"><p>should be one of the parent classes of the current controller
-                       because the current controller instance will be imported
-                       in the template as &quot;helper&quot;</p></dd><dt class="param">templateType</dt><dd class="cmt"><p>&quot;jade&quot;, &quot;mustache&quot;, &quot;scaml&quot;, or &quot;ssp&quot;
-</p></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.Responder#renderScalate" data-isabs="false">
-      <a id="renderScalate(Class[_]):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderScalate</span><span class="params">(<span name="controllerClass">controllerClass: Class[_]</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as renderScalate(controllerClass, templateType),
-where templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as renderScalate(controllerClass, templateType),
-where templateType is as configured in xitrum.json.
-</p></div></div>
-    </li><li visbl="pub" name="xitrum.view.Responder#renderScalate" data-isabs="false">
-      <a id="renderScalate(Class[_],String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderScalate</span><span class="params">(<span name="controllerClass">controllerClass: Class[_]</span>, <span name="templateType">templateType: String</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Renders Scalate template file with the path:
-src/main/view/scalate/&lt;the/given/controller/Class&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file with the path:
-src/main/view/scalate/&lt;the/given/controller/Class&gt;.&lt;templateType&gt;
-</p></div><dl class="paramcmts block"><dt class="param">controllerClass</dt><dd class="cmt"><p>should be one of the parent classes of the current controller
-                       because the current controller instance will be imported
-                       in the template as &quot;helper&quot;</p></dd><dt class="param">templateType</dt><dd class="cmt"><p>&quot;jade&quot;, &quot;mustache&quot;, &quot;scaml&quot;, or &quot;ssp&quot;
-</p></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.Responder#renderScalate" data-isabs="false">
-      <a id="renderScalate(String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderScalate</span><span class="params">(<span name="relPath">relPath: String</span>)</span><span class="result">: String</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Renders Scalate template file relative to src/main/view/scalate directory.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file relative to src/main/view/scalate directory.
-The current controller instance will be imported in the template as &quot;helper&quot;.
-</p></div></div>
-    </li><li visbl="pub" name="xitrum.view.Responder#renderedView" data-isabs="false">
-      <a id="renderedView:Any"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderedView</span><span class="result">: <span name="scala.Any" class="extype">Any</span></span>
-      </span>
-      </h4>
-      
     </li><li visbl="pub" name="xitrum.view.Responder#respond" data-isabs="false">
       <a id="respond():ChannelFuture"></a>
       <h4 class="signature">

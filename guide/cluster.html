@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Clustering with Hazelcast &mdash; Xitrum 1.10 documentation</title>
+    <title>Clustering with Hazelcast &mdash; Xitrum 1.11 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.10',
+        VERSION:     '1.11',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.10 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.11 documentation" href="index.html" />
     <link rel="next" title="HOWTO" href="howto.html" />
     <link rel="prev" title="Deploy to production server" href="deploy.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="deploy.html" title="Deploy to production server"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.10 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.11 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,19 +59,19 @@ Load balancer/proxy server ---- Xitrum instance 2
                               \ Xitrum instance 3</pre>
 </div>
 <p>Cache and Comet are clustered out of the box thanks to <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>.
-Please see <tt class="docutils literal"><span class="pre">hazelcast_mode</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.json</span></tt>, <tt class="docutils literal"><span class="pre">config/hazelcast_cluster_member_or_super_client.xml</span></tt>,
-<tt class="docutils literal"><span class="pre">config/hazelcast_java_client.properties</span></tt>, and read <a class="reference external" href="http://www.hazelcast.com/documentation.jsp#Config">Hazelcast&#8217;s documentation</a>
+Please see <tt class="docutils literal"><span class="pre">hazelcastMode</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.json</span></tt>, <tt class="docutils literal"><span class="pre">config/hazelcast_cluster_or_lite_member.xml</span></tt>,
+<tt class="docutils literal"><span class="pre">config/hazelcast_java_client.properties</span></tt>, and read <a class="reference external" href="http://www.hazelcast.com/docs/2.4/manual/single_html/#Config">Hazelcast&#8217;s documentation</a>
 to know how to config.</p>
 <p>Session are stored in cookie by default. You don&#8217;t need to worry how to share
 sessions among Xitrum instances. But if you use <a class="reference internal" href="scopes.html"><em>HazelcastSessionStore</em></a>,
 you may need to setup session replication by setting <tt class="docutils literal"><span class="pre">backup-count</span></tt> at the map
-<tt class="docutils literal"><span class="pre">xitrum/session</span></tt> in config/hazelcast_cluster_member_or_super_client.xml to more than 0.</p>
+<tt class="docutils literal"><span class="pre">xitrum/session</span></tt> in config/hazelcast_cluster_or_lite_member.xml to more than 0.</p>
 <div class="section" id="xitrum-config-hazelcastinstance">
 <h2>xitrum.Config.hazelcastInstance<a class="headerlink" href="#xitrum-config-hazelcastinstance" title="Permalink to this headline">¶</a></h2>
 <p>Xitrum includes Hazelcast for cache and Comet. Thus, you can also use Hazelcast
 in your Xitrum project yourself.</p>
 <p>Hazelcast has <a class="reference external" href="http://www.hazelcast.com/documentation.jsp#Clients">3 modes</a>:
-cluster member, super client, and Java client. Please see <tt class="docutils literal"><span class="pre">hazelcast_mode</span></tt>
+cluster member, lite member, and Java client. Please see <tt class="docutils literal"><span class="pre">hazelcastMode</span></tt>
 in <tt class="docutils literal"><span class="pre">config/xitrum.json</span></tt>.</p>
 <p>Xitrum handles these modes automatically. When you need to get a Hazelcast map,
 do not do like this:</p>
@@ -139,11 +139,11 @@ val myMap = Config.hazelcastInstance.getMap("myMap")</pre>
         <li class="right" >
           <a href="deploy.html" title="Deploy to production server"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.10 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.11 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, Ngoc Dao.
+        &copy; Copyright 2010, Ngoc Dao.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
