@@ -68,25 +68,8 @@ Nginx 1.2, you must install additional module like
 serving feature in Nginx.</p>
 <div class="section" id="haproxy">
 <h2>HAProxy<a class="headerlink" href="#haproxy" title="Permalink to this headline">¶</a></h2>
-<p>A HAProxy typical config file looks like this:</p>
-<div class="highlight-python"><pre>defaults
-  timeout connect 5s
-  timeout client 50s
-  timeout server 50s
-
-listen myproxy 0.0.0.0:80
-  mode http
-  # For SockJS long polling, can't use option httpclose
-  # http://code.google.com/p/haproxy-docs/wiki/forwardfor
-  # http://code.google.com/p/haproxy-docs/wiki/http_server_close
-  # http://serverfault.com/questions/30311/remote-ips-with-haproxy
-  option forwardfor
-  option http-server-close
-  server xitrum1 127.0.0.1:8001
-  server xitrum2 127.0.0.1:8002</pre>
-</div>
-<p>See also:
-<a class="reference external" href="http://serverfault.com/questions/165883/is-there-a-way-to-add-more-backend-server-to-haproxy-without-restarting-haproxy">http://serverfault.com/questions/165883/is-there-a-way-to-add-more-backend-server-to-haproxy-without-restarting-haproxy</a></p>
+<p>To config HAProxy for SockJS, see <a class="reference external" href="https://github.com/sockjs/sockjs-node/blob/master/examples/haproxy.cfg">this example</a>.</p>
+<p>To have HAProxy reload config file without restarting, see <a class="reference external" href="http://serverfault.com/questions/165883/is-there-a-way-to-add-more-backend-server-to-haproxy-without-restarting-haproxy">this discussion</a>.</p>
 </div>
 <div class="section" id="package-directory">
 <h2>Package directory<a class="headerlink" href="#package-directory" title="Permalink to this headline">¶</a></h2>
