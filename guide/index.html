@@ -70,8 +70,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="controller_action_view.html">Controller, action, and view</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="controller_action_view.html#layout">Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controller_action_view.html#scalate">Scalate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="controller_action_view.html#controller-object">Controller object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller_action_view.html#scalate">Scalate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controller_action_view.html#id2">Mustache</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="controller_action_view.html#controller-object">Controller object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="controller_action_view.html#caveat">Caveat</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="restful.html">RESTful APIs</a><ul>
@@ -99,15 +105,27 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="js.html">JavaScript and JSON</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="js.html#javascript">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js.html#javascript">JavaScript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="js.html#add-javascript-fragments-to-view">Add JavaScript fragments to view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="js.html#respond-javascript-directly-without-view">Respond JavaScript directly without view</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="js.html#json">JSON</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="async.html">Async response</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="async.html#websocket">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="async.html#sockjs">SockJS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="async.html#ajax-long-polling">Ajax long polling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="async.html#chunked-response">Chunked response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="async.html#ajax-long-polling">Ajax long polling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="async.html#chat-example">Chat example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="async.html#publish-message">Publish message</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="async.html#chunked-response">Chunked response</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="async.html#forever-iframe">Forever iframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="async.html#event-source">Event Source</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="static.html">Static files</a><ul>
@@ -121,9 +139,20 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="flash.html">Serve flash socket policy file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scopes.html">Scopes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scopes.html#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scopes.html#request">Request</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scopes.html#kinds-of-params">Kinds of params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scopes.html#accesing-params">Accesing params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scopes.html#at">&#8220;at&#8221;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scopes.html#requestvar">RequestVar</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="scopes.html#cookie">Cookie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scopes.html#session">Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scopes.html#session">Session</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scopes.html#session-clear">session.clear()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scopes.html#sessionvar">SessionVar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scopes.html#session-store">Session store</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="scopes.html#object-vs-val">object vs. val</a></li>
 </ul>
 </li>
@@ -166,7 +195,12 @@
 <li class="toctree-l2"><a class="reference internal" href="deploy.html#package-directory">Package directory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deploy.html#customize-xitrum-package">Customize xitrum-package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deploy.html#start-xitrum-in-production-mode">Start Xitrum in production mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deploy.html#tune-linux-for-many-connections">Tune Linux for many connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy.html#tune-linux-for-many-connections">Tune Linux for many connections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deploy.html#increase-open-file-limit">Increase open file limit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deploy.html#tune-kernel">Tune kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deploy.html#note-about-backlog">Note about backlog</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cluster.html">Clustering with Hazelcast</a><ul>
@@ -175,10 +209,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">HOWTO</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#determine-is-the-request-is-ajax-request">Determine is the request is Ajax request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#basic-authentication">Basic authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#basic-authentication">Basic authentication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto.html#config-basic-authentication-for-the-whole-site">Config basic authentication for the whole site</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto.html#add-basic-authentication-to-a-controller">Add basic authentication to a controller</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#link-to-an-action">Link to an action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#log">Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="howto.html#load-config-files">Load config files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#load-config-files">Load config files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto.html#json-file">JSON file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto.html#properties-file">Properties file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto.html#typesafe-config-file">Typesafe config file</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="howto.html#encrypt-data">Encrypt data</a></li>
 </ul>
 </li>
