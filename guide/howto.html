@@ -111,7 +111,7 @@ In any action, you can do like this:</p>
 }</pre>
 </div>
 <p>In build.sbt, notice this line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;ch.qos.logback&quot;</span> <span class="o">%</span> <span class="s">&quot;logback-classic&quot;</span> <span class="o">%</span> <span class="s">&quot;1.0.0&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;ch.qos.logback&quot;</span> <span class="o">%</span> <span class="s">&quot;logback-classic&quot;</span> <span class="o">%</span> <span class="s">&quot;1.0.9&quot;</span>
 </pre></div>
 </div>
 <p>This means that <a class="reference external" href="http://logback.qos.ch/">Logback</a> is used by default.
@@ -120,17 +120,18 @@ You may replace Logback with any implementation of SLF4J.</p>
 </div>
 <div class="section" id="load-config-files">
 <h2>Load config files<a class="headerlink" href="#load-config-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="json-file">
+<h3>JSON file<a class="headerlink" href="#json-file" title="Permalink to this headline">¶</a></h3>
 <p>JSON is neat for config files that need nested structures.</p>
 <p>Save your own config files in &#8220;config&#8221; directory. This directory is put into
 classpath in development mode by build.sbt and in production mode by bin/runner.sh.</p>
 <p>myconfig.json:</p>
-<div class="highlight-python"><pre>{
-  // You can write comment in JSON file like this
-  "username": "God",
-  // Keys must be quoted with double quotes
-  "password": "Does God need a password?",
-  "children": ["Adam", "Eva"]
-}</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;God&quot;</span><span class="p">,</span>
+  <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;Does God need a password?&quot;</span><span class="p">,</span>
+  <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;Adam&quot;</span><span class="p">,</span> <span class="s">&quot;Eva&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 <p>Load it:</p>
 <div class="highlight-python"><pre>import xitrum.util.Loader
@@ -138,22 +139,49 @@ classpath in development mode by build.sbt and in production mode by bin/runner.
 case class MyConfig(username: String, password: String, children: List[String])
 val myConfig = Loader.jsonFromClasspath[MyConfig]("myconfig.json")</pre>
 </div>
+<p>Notes:</p>
+<ul class="simple">
+<li>Keys and strings must be quoted with double quotes</li>
+<li>Currently, you cannot write comment in JSON file</li>
+</ul>
+</div>
+<div class="section" id="properties-file">
+<h3>Properties file<a class="headerlink" href="#properties-file" title="Permalink to this headline">¶</a></h3>
 <p>You can also use properties files, but you should use JSON whenever possible
 because it&#8217;s much better. Properties files are not typesafe, do not support UTF-8
 and nested structures etc.</p>
-<p>myconfig.properties</p>
+<p>myconfig.properties:</p>
 <div class="highlight-python"><pre>username = God
 password = Does God need a password?
 children = Adam, Eva</pre>
 </div>
+<p>Load it:</p>
 <div class="highlight-python"><pre>import xitrum.util.Loader
 
 // Here you get an instance of java.util.Properties
 val properties = Loader.propertiesFromClasspath("myconfig.properties")</pre>
 </div>
-<p>Xitrum also includes Akka, which includes
-<a class="reference external" href="https://github.com/typesafehub/config">Typesafe Config</a>.
+</div>
+<div class="section" id="typesafe-config-file">
+<h3>Typesafe config file<a class="headerlink" href="#typesafe-config-file" title="Permalink to this headline">¶</a></h3>
+<p>Xitrum also includes Akka, which includes the
+<a class="reference external" href="https://github.com/typesafehub/config">config library</a> created by the
+<a class="reference external" href="http://typesafe.com/company">company called Typesafe</a>.
 It may be a better way to load config files.</p>
+<p>myconfig.conf:</p>
+<div class="highlight-python"><pre>username = God
+password = Does God need a password?
+children = ["Adam", "Eva"]</pre>
+</div>
+<p>Load it:</p>
+<div class="highlight-python"><pre>import com.typesafe.config.{Config, ConfigFactory}
+
+val config   = ConfigFactory.load("myconfig.conf")
+val username = config.getString("username")
+val password = config.getString("password")
+val children = config.getStringList("children")</pre>
+</div>
+</div>
 </div>
 <div class="section" id="encrypt-data">
 <h2>Encrypt data<a class="headerlink" href="#encrypt-data" title="Permalink to this headline">¶</a></h2>
@@ -205,7 +233,12 @@ is used.</p>
 </li>
 <li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
 <li><a class="reference internal" href="#log">Log</a></li>
-<li><a class="reference internal" href="#load-config-files">Load config files</a></li>
+<li><a class="reference internal" href="#load-config-files">Load config files</a><ul>
+<li><a class="reference internal" href="#json-file">JSON file</a></li>
+<li><a class="reference internal" href="#properties-file">Properties file</a></li>
+<li><a class="reference internal" href="#typesafe-config-file">Typesafe config file</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#encrypt-data">Encrypt data</a></li>
 </ul>
 </li>
