@@ -54,30 +54,16 @@
 <h1>Development flow with SBT, Eclipse, and JRebel<a class="headerlink" href="#development-flow-with-sbt-eclipse-and-jrebel" title="Permalink to this headline">¶</a></h1>
 <p>This chapter assumes that you have installed Eclipse and
 <a class="reference external" href="http://www.scala-ide.org/">Scala plugin for Eclipse</a>.</p>
-<div class="section" id="create-a-new-xitrum-project">
-<h2>Create a new Xitrum project<a class="headerlink" href="#create-a-new-xitrum-project" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ignore-files">
+<h2>Ignore files<a class="headerlink" href="#ignore-files" title="Permalink to this headline">¶</a></h2>
 <p>Create a new project as described at the <a class="reference internal" href="tutorial.html"><em>tutorial</em></a>.
 These should be <a class="reference external" href="https://github.com/ngocdaothanh/xitrum-new/blob/master/.gitignore">ignored</a>:</p>
 <div class="highlight-python"><pre>.*
 log
-project
+project/project
+project/target
 routes.cache
 target</pre>
-</div>
-<p>If you&#8217;re using git you can clone the
-<a class="reference external" href="https://github.com/ngocdaothanh/xitrum-new">xitrum-new</a>
-project from GitHub:</p>
-<div class="highlight-python"><pre>git clone –depth 1 https://github.com/ngocdaothanh/xitrum-new.git my_project
-cd my_project
-rm -rf .git
-git init
-git add -f .gitignore</pre>
-</div>
-<p>Alternatively:</p>
-<div class="highlight-python"><pre>wget -O xitrum-new.zip https://github.com/ngocdaothanh/xitrum-new/archive/master.zip</pre>
-</div>
-<p>Or:</p>
-<div class="highlight-python"><pre>curl -L -o xitrum-new.zip https://github.com/ngocdaothanh/xitrum-new/archive/master.zip</pre>
 </div>
 </div>
 <div class="section" id="import-the-project-to-eclipse">
@@ -139,7 +125,7 @@ automatically reload the generated .class files.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Development flow with SBT, Eclipse, and JRebel</a><ul>
-<li><a class="reference internal" href="#create-a-new-xitrum-project">Create a new Xitrum project</a></li>
+<li><a class="reference internal" href="#ignore-files">Ignore files</a></li>
 <li><a class="reference internal" href="#import-the-project-to-eclipse">Import the project to Eclipse</a></li>
 <li><a class="reference internal" href="#install-jrebel">Install JRebel</a></li>
 <li><a class="reference internal" href="#use-jrebel">Use JRebel</a></li>
