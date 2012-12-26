@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>JavaScript and JSON &mdash; Xitrum 1.11 documentation</title>
+    <title>JavaScript and JSON &mdash; Xitrum 1.12 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.11',
+        VERSION:     '1.12',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.11 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.12 documentation" href="index.html" />
     <link rel="next" title="Async response" href="async.html" />
     <link rel="prev" title="XML" href="xml.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="xml.html" title="XML"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.11 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.12 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -104,13 +104,21 @@ trait AppController extends Controller {
 </div>
 <div class="section" id="json">
 <h2>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
-<p>Xitrum includes <a class="reference external" href="https://github.com/codahale/jerkson">Jerkson</a>.
+<p>Xitrum includes <a class="reference external" href="https://github.com/json4s/json4s">JSON4S</a>.
 Please read about it to know how to parse and generate JSON.</p>
+<p>To convert between Scala case object and JSON string:</p>
+<div class="highlight-python"><pre>import xitrum.util.Json
+
+case class Person(name: String, age: Int, phone: Option[String])
+val person1 = Person("Jack", 20, None)
+val json    = Json.generate(person)
+val person2 = Json.parse(json)</pre>
+</div>
 <p>To respond JSON:</p>
 <div class="highlight-python"><pre>val scalaData = List(1, 2, 3)  // An example
 respondJson(scalaData)</pre>
 </div>
-<p>JSON is also very neat for config files that need nested structures.
+<p>JSON is also neat for config files that need nested structures.
 See <a class="reference internal" href="howto.html"><em>Load config files</em></a>.</p>
 </div>
 </div>
@@ -174,7 +182,7 @@ See <a class="reference internal" href="howto.html"><em>Load config files</em></
         <li class="right" >
           <a href="xml.html" title="XML"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.11 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.12 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

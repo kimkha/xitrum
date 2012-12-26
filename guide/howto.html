@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>HOWTO &mdash; Xitrum 1.11 documentation</title>
+    <title>HOWTO &mdash; Xitrum 1.12 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.11',
+        VERSION:     '1.12',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.11 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.12 documentation" href="index.html" />
     <link rel="next" title="Netty handlers" href="handler.html" />
     <link rel="prev" title="Clustering with Hazelcast" href="cluster.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.11 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.12 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -69,8 +69,8 @@ else
 <h2>Basic authentication<a class="headerlink" href="#basic-authentication" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="config-basic-authentication-for-the-whole-site">
 <h3>Config basic authentication for the whole site<a class="headerlink" href="#config-basic-authentication-for-the-whole-site" title="Permalink to this headline">¶</a></h3>
-<p>In config/xitrum.json:</p>
-<div class="highlight-python"><pre>"globalBasicAuthentication": {
+<p>In config/xitrum.conf:</p>
+<div class="highlight-python"><pre>"basicAuth": {
   "realm":    "xitrum",
   "username": "xitrum",
   "password": "xitrum"
@@ -120,9 +120,10 @@ You may replace Logback with any implementation of SLF4J.</p>
 </div>
 <div class="section" id="load-config-files">
 <h2>Load config files<a class="headerlink" href="#load-config-files" title="Permalink to this headline">¶</a></h2>
+<p>JSON is neat for config files that need nested structures.</p>
 <p>Save your own config files in &#8220;config&#8221; directory. This directory is put into
 classpath in development mode by build.sbt and in production mode by bin/runner.sh.</p>
-<p>myconfig.json</p>
+<p>myconfig.json:</p>
 <div class="highlight-python"><pre>{
   // You can write comment in JSON file like this
   "username": "God",
@@ -132,8 +133,10 @@ classpath in development mode by build.sbt and in production mode by bin/runner.
 }</pre>
 </div>
 <p>Load it:</p>
-<div class="highlight-python"><pre>case class MyConfig(username: String, password: String, children: List[String])
-val myConfig = xitrum.util.Loader.jsonFromClasspath[MyConfig]("myconfig.json")</pre>
+<div class="highlight-python"><pre>import xitrum.util.Loader
+
+case class MyConfig(username: String, password: String, children: List[String])
+val myConfig = Loader.jsonFromClasspath[MyConfig]("myconfig.json")</pre>
 </div>
 <p>You can also use properties files, but you should use JSON whenever possible
 because it&#8217;s much better. Properties files are not typesafe, do not support UTF-8
@@ -143,9 +146,14 @@ and nested structures etc.</p>
 password = Does God need a password?
 children = Adam, Eva</pre>
 </div>
-<div class="highlight-python"><pre>// Here you get an instance of java.util.Properties
-val properties = xitrum.util.Loader.propertiesFromClasspath("myconfig.properties")</pre>
+<div class="highlight-python"><pre>import xitrum.util.Loader
+
+// Here you get an instance of java.util.Properties
+val properties = Loader.propertiesFromClasspath("myconfig.properties")</pre>
 </div>
+<p>Xitrum also includes Akka, which includes
+<a class="reference external" href="https://github.com/typesafehub/config">Typesafe Config</a>.
+It may be a better way to load config files.</p>
 </div>
 <div class="section" id="encrypt-data">
 <h2>Encrypt data<a class="headerlink" href="#encrypt-data" title="Permalink to this headline">¶</a></h2>
@@ -153,6 +161,7 @@ val properties = xitrum.util.Loader.propertiesFromClasspath("myconfig.properties
 you can use MD5 or something like that.</p>
 <p>If you want to decrypt later, you can use the utility Xitrum provides:</p>
 <div class="highlight-python"><pre>import xitrum.util.Secure
+
 val encrypted: Array[Byte]         = Secure.encrypt("my data".getBytes)
 val decrypted: Option[Array[Byte]] = Secure.decrypt(encrypted)</pre>
 </div>
@@ -160,6 +169,7 @@ val decrypted: Option[Array[Byte]] = Secure.decrypt(encrypted)</pre>
 normal string (to embed to HTML for response etc.).</p>
 <p>If you can combine the above operations in one step:</p>
 <div class="highlight-python"><pre>import xitrum.util.SecureBase64
+
 val encrypted: String         = SecureBase64.encrypt("my object")
 val decrypted: Option[String] = SecureBase64.decrypt(encrypted).asInstanceOf[Option[String]]</pre>
 </div>
@@ -173,7 +183,7 @@ As a result, your data must be serializable.</p>
 <span class="n">SecureBase64</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypted</span><span class="p">,</span> <span class="s">&quot;my key&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If no key is specified, <tt class="docutils literal"><span class="pre">secureKey</span></tt> in xitrum.json file in config directory
+<p>If no key is specified, <tt class="docutils literal"><span class="pre">secureKey</span></tt> in xitrum.conf file in config directory
 is used.</p>
 </div>
 </div>
@@ -241,7 +251,7 @@ is used.</p>
         <li class="right" >
           <a href="cluster.html" title="Clustering with Hazelcast"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.11 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.12 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
