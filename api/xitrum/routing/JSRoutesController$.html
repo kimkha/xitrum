@@ -1062,8 +1062,7 @@ the connection.
       <p class="shortcomment cmt">Do not use this to escape JSON, because they are different! For example
 JSON does not escape ' character, while JavaScript does.</p><div class="fullcomment"><div class="comment cmt"><p>Do not use this to escape JSON, because they are different! For example
 JSON does not escape ' character, while JavaScript does. To escape JSON,
-use Jerkson:
-com.codahale.jerkson.Json.generate(List(message))</p><p>org.apache.commons.lang3.StringEscapeUtils is used internally.
+use JSON4S or xitrum.util.Json, e.g xitrum.util.Json.generate(List(string)).</p><p>org.apache.commons.lang3.StringEscapeUtils is used internally.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.JS" class="extype" href="../view/JS.html">JS</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.JS#jsForView" data-isabs="false">
       <a id="jsForView:Serializable"></a>
@@ -1168,50 +1167,50 @@ render it to the flash area right away.
       </h4>
       
     </li><li visbl="pub" name="xitrum.view.Knockout#koApplyBindingsCs" data-isabs="false">
-      <a id="koApplyBindingsCs(Any,String,Action,String):Unit"></a>
+      <a id="koApplyBindingsCs(AnyRef,String,Action,String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">koApplyBindingsCs</span><span class="params">(<span name="model">model: <span name="scala.Any" class="extype">Any</span></span>, <span name="scopeSelector">scopeSelector: String</span>, <span name="syncAction">syncAction: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>, <span name="cs">cs: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">koApplyBindingsCs</span><span class="params">(<span name="model">model: AnyRef</span>, <span name="scopeSelector">scopeSelector: String</span>, <span name="syncAction">syncAction: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>, <span name="cs">cs: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Knockout" class="extype" href="../view/Knockout.html">Knockout</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Knockout#koApplyBindingsCs" data-isabs="false">
-      <a id="koApplyBindingsCs(Any,Action,String):Unit"></a>
+      <a id="koApplyBindingsCs(AnyRef,Action,String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">koApplyBindingsCs</span><span class="params">(<span name="model">model: <span name="scala.Any" class="extype">Any</span></span>, <span name="syncAction">syncAction: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>, <span name="cs">cs: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">koApplyBindingsCs</span><span class="params">(<span name="model">model: AnyRef</span>, <span name="syncAction">syncAction: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>, <span name="cs">cs: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Knockout" class="extype" href="../view/Knockout.html">Knockout</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Knockout#koApplyBindingsJs" data-isabs="false">
-      <a id="koApplyBindingsJs(Any,String,Action,String):Unit"></a>
+      <a id="koApplyBindingsJs(AnyRef,String,Action,String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">koApplyBindingsJs</span><span class="params">(<span name="model">model: <span name="scala.Any" class="extype">Any</span></span>, <span name="scopeSelector">scopeSelector: String</span>, <span name="syncAction">syncAction: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>, <span name="js">js: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">koApplyBindingsJs</span><span class="params">(<span name="model">model: AnyRef</span>, <span name="scopeSelector">scopeSelector: String</span>, <span name="syncAction">syncAction: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>, <span name="js">js: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Knockout" class="extype" href="../view/Knockout.html">Knockout</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Knockout#koApplyBindingsJs" data-isabs="false">
-      <a id="koApplyBindingsJs(Any,Action,String):Unit"></a>
+      <a id="koApplyBindingsJs(AnyRef,Action,String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">koApplyBindingsJs</span><span class="params">(<span name="model">model: <span name="scala.Any" class="extype">Any</span></span>, <span name="syncAction">syncAction: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>, <span name="js">js: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
+        <span class="name">koApplyBindingsJs</span><span class="params">(<span name="model">model: AnyRef</span>, <span name="syncAction">syncAction: <a name="xitrum.controller.Action" class="extype" href="../controller/Action.html">Action</a></span>, <span name="js">js: String</span>)</span><span class="result">: <span name="scala.Unit" class="extype">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Knockout" class="extype" href="../view/Knockout.html">Knockout</a></dd></dl></div>
@@ -1444,7 +1443,7 @@ render it to the flash area right away.
       </h4>
       <p class="shortcomment cmt">Same as renderFragment(controllerClass, fragment, templateType),
 where templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as renderFragment(controllerClass, fragment, templateType),
-where templateType is as configured in xitrum.json.
+where templateType is as configured in xitrum.conf.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Renderer#renderFragment" data-isabs="false">
       <a id="renderFragment(Class[_],String,String):String"></a>
@@ -1464,6 +1463,30 @@ src/main/view/scalate/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.&lt;t
                        because the current controller instance will be imported
                        in the template as &quot;helper&quot;</p></dd><dt class="param">templateType</dt><dd class="cmt"><p>&quot;jade&quot;, &quot;mustache&quot;, &quot;scaml&quot;, or &quot;ssp&quot;
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderJadeString" data-isabs="false">
+      <a id="renderJadeString(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderJadeString</span><span class="params">(<span name="templateContent">templateContent: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderMustacheString" data-isabs="false">
+      <a id="renderMustacheString(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderMustacheString</span><span class="params">(<span name="templateContent">templateContent: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Renderer#renderScalate" data-isabs="false">
       <a id="renderScalate(Class[_]):String"></a>
       <h4 class="signature">
@@ -1477,7 +1500,7 @@ src/main/view/scalate/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.&lt;t
       </h4>
       <p class="shortcomment cmt">Same as renderScalate(controllerClass, templateType),
 where templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as renderScalate(controllerClass, templateType),
-where templateType is as configured in xitrum.json.
+where templateType is as configured in xitrum.conf.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Renderer#renderScalate" data-isabs="false">
       <a id="renderScalate(Class[_],String):String"></a>
@@ -1497,20 +1520,56 @@ src/main/view/scalate/&lt;the/given/controller/Class&gt;.&lt;templateType&gt;
                        because the current controller instance will be imported
                        in the template as &quot;helper&quot;</p></dd><dt class="param">templateType</dt><dd class="cmt"><p>&quot;jade&quot;, &quot;mustache&quot;, &quot;scaml&quot;, or &quot;ssp&quot;
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.Renderer#renderScalate" data-isabs="false">
-      <a id="renderScalate(String):String"></a>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderScalateFile" data-isabs="false">
+      <a id="renderScalateFile(String):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderScalate</span><span class="params">(<span name="relPath">relPath: String</span>)</span><span class="result">: String</span>
+        <span class="name">renderScalateFile</span><span class="params">(<span name="relPath">relPath: String</span>)</span><span class="result">: String</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Renders Scalate template file relative to src/main/view/scalate directory.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file relative to src/main/view/scalate directory.
 The current controller instance will be imported in the template as &quot;helper&quot;.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderScalateString" data-isabs="false">
+      <a id="renderScalateString(String,String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderScalateString</span><span class="params">(<span name="templateContent">templateContent: String</span>, <span name="templateType">templateType: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">templateType</dt><dd class="cmt"><p>jade, mustache, scaml, ssp</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderScamlString" data-isabs="false">
+      <a id="renderScamlString(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderScamlString</span><span class="params">(<span name="templateContent">templateContent: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderSspString" data-isabs="false">
+      <a id="renderSspString(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderSspString</span><span class="params">(<span name="templateContent">templateContent: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Renderer" class="extype" href="../view/Renderer.html">Renderer</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Renderer#renderedView" data-isabs="false">
       <a id="renderedView:Any"></a>
       <h4 class="signature">
@@ -1695,14 +1754,14 @@ a relative path.</p><p>To sanitize the path, use xitrum.util.PathSanitizer.
       </h4>
       <p class="shortcomment cmt">Content-Type header is set to &quot;application/javascript&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Content-Type header is set to &quot;application/javascript&quot;.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondJson" data-isabs="false">
-      <a id="respondJson(Any):ChannelFuture"></a>
+      <a id="respondJson(AnyRef):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondJson</span><span class="params">(<span name="obj">obj: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
+        <span class="name">respondJson</span><span class="params">(<span name="obj">obj: AnyRef</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Converts the given Scala object to JSON object, and responds it.</p><div class="fullcomment"><div class="comment cmt"><p>Converts the given Scala object to JSON object, and responds it.
@@ -1712,14 +1771,14 @@ use respondJsonText(text).</p><p>Content-Type header is set to &quot;application
 It makes debugging a pain.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondJsonP" data-isabs="false">
-      <a id="respondJsonP(Any,String):ChannelFuture"></a>
+      <a id="respondJsonP(AnyRef,String):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondJsonP</span><span class="params">(<span name="obj">obj: <span name="scala.Any" class="extype">Any</span></span>, <span name="function">function: String</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
+        <span class="name">respondJsonP</span><span class="params">(<span name="obj">obj: AnyRef</span>, <span name="function">function: String</span>)</span><span class="result">: <span name="org.jboss.netty.channel.ChannelFuture" class="extype">ChannelFuture</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Converts the given Scala object to JSON object, wraps it with the given
@@ -1817,7 +1876,7 @@ set to &quot;text/plain&quot;.
 where action is currentAction, customLayout is from the controller's layout method and
 templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as respondView(action, customLayout, templateType),
 where action is currentAction, customLayout is from the controller's layout method and
-templateType is as configured in xitrum.json.
+templateType is as configured in xitrum.conf.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondView" data-isabs="false">
       <a id="respondView(Action):ChannelFuture"></a>
@@ -1834,7 +1893,7 @@ templateType is as configured in xitrum.json.
 where customLayout is from the controller's layout method and
 templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as respondView(action, customLayout, templateType),
 where customLayout is from the controller's layout method and
-templateType is as configured in xitrum.json.
+templateType is as configured in xitrum.conf.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondView" data-isabs="false">
       <a id="respondView(String):ChannelFuture"></a>
@@ -1879,7 +1938,7 @@ where customLayout is from the controller's layout method.
       </h4>
       <p class="shortcomment cmt">Same as respondView(action, customLayout, templateType),
 where templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as respondView(action, customLayout, templateType),
-where templateType is as configured in xitrum.json.
+where templateType is as configured in xitrum.conf.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.view.Responder" class="extype" href="../view/Responder.html">Responder</a></dd></dl></div>
     </li><li visbl="pub" name="xitrum.view.Responder#respondView" data-isabs="false">
       <a id="respondView(Action,() ⇒ Any,String):ChannelFuture"></a>

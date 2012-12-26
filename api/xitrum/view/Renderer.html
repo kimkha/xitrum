@@ -313,7 +313,7 @@
       </h4>
       <p class="shortcomment cmt">Same as renderFragment(controllerClass, fragment, templateType),
 where templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as renderFragment(controllerClass, fragment, templateType),
-where templateType is as configured in xitrum.json.
+where templateType is as configured in xitrum.conf.
 </p></div></div>
     </li><li visbl="pub" name="xitrum.view.Renderer#renderFragment" data-isabs="false">
       <a id="renderFragment(Class[_],String,String):String"></a>
@@ -333,6 +333,30 @@ src/main/view/scalate/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.&lt;t
                        because the current controller instance will be imported
                        in the template as &quot;helper&quot;</p></dd><dt class="param">templateType</dt><dd class="cmt"><p>&quot;jade&quot;, &quot;mustache&quot;, &quot;scaml&quot;, or &quot;ssp&quot;
 </p></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderJadeString" data-isabs="false">
+      <a id="renderJadeString(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderJadeString</span><span class="params">(<span name="templateContent">templateContent: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderMustacheString" data-isabs="false">
+      <a id="renderMustacheString(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderMustacheString</span><span class="params">(<span name="templateContent">templateContent: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.view.Renderer#renderScalate" data-isabs="false">
       <a id="renderScalate(Class[_]):String"></a>
       <h4 class="signature">
@@ -346,7 +370,7 @@ src/main/view/scalate/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.&lt;t
       </h4>
       <p class="shortcomment cmt">Same as renderScalate(controllerClass, templateType),
 where templateType is as configured in xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Same as renderScalate(controllerClass, templateType),
-where templateType is as configured in xitrum.json.
+where templateType is as configured in xitrum.conf.
 </p></div></div>
     </li><li visbl="pub" name="xitrum.view.Renderer#renderScalate" data-isabs="false">
       <a id="renderScalate(Class[_],String):String"></a>
@@ -366,20 +390,56 @@ src/main/view/scalate/&lt;the/given/controller/Class&gt;.&lt;templateType&gt;
                        because the current controller instance will be imported
                        in the template as &quot;helper&quot;</p></dd><dt class="param">templateType</dt><dd class="cmt"><p>&quot;jade&quot;, &quot;mustache&quot;, &quot;scaml&quot;, or &quot;ssp&quot;
 </p></dd></dl></div>
-    </li><li visbl="pub" name="xitrum.view.Renderer#renderScalate" data-isabs="false">
-      <a id="renderScalate(String):String"></a>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderScalateFile" data-isabs="false">
+      <a id="renderScalateFile(String):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderScalate</span><span class="params">(<span name="relPath">relPath: String</span>)</span><span class="result">: String</span>
+        <span class="name">renderScalateFile</span><span class="params">(<span name="relPath">relPath: String</span>)</span><span class="result">: String</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Renders Scalate template file relative to src/main/view/scalate directory.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file relative to src/main/view/scalate directory.
 The current controller instance will be imported in the template as &quot;helper&quot;.
 </p></div></div>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderScalateString" data-isabs="false">
+      <a id="renderScalateString(String,String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderScalateString</span><span class="params">(<span name="templateContent">templateContent: String</span>, <span name="templateType">templateType: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">templateType</dt><dd class="cmt"><p>jade, mustache, scaml, ssp</p></dd></dl></div>
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderScamlString" data-isabs="false">
+      <a id="renderScamlString(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderScamlString</span><span class="params">(<span name="templateContent">templateContent: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      
+    </li><li visbl="pub" name="xitrum.view.Renderer#renderSspString" data-isabs="false">
+      <a id="renderSspString(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderSspString</span><span class="params">(<span name="templateContent">templateContent: String</span>)</span><span class="result">: String</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="xitrum.view.Renderer#renderedView" data-isabs="false">
       <a id="renderedView:Any"></a>
       <h4 class="signature">

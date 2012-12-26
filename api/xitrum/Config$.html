@@ -25,13 +25,13 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">Config</span><span class="result"> extends <a name="xitrum.Logger" class="extype" href="Logger.html">Logger</a> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="name">Config</span><span class="result"> extends <a name="xitrum.Logger" class="extype" href="Logger.html">Logger</a></span>
       </span>
       </h4>
       
       <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>See config/xitrum.properties</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span name="scala.Serializable" class="extype">Serializable</span>, <span name="java.io.Serializable" class="extype">Serializable</span>, <a name="xitrum.Logger" class="extype" href="Logger.html">Logger</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
+          <div class="superTypes hiddenContent"><a name="xitrum.Logger" class="extype" href="Logger.html">Logger</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div></div>
     
 
@@ -45,7 +45,7 @@
               <span class="filtertype">Inherited</span>
               <ol><li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li></ol>
-              <ol id="linearization"><li name="xitrum.Config" class="in"><span>Config</span></li><li name="scala.Serializable" class="in"><span>Serializable</span></li><li name="java.io.Serializable" class="in"><span>Serializable</span></li><li name="xitrum.Logger" class="in"><span>Logger</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+              <ol id="linearization"><li name="xitrum.Config" class="in"><span>Config</span></li><li name="xitrum.Logger" class="in"><span>Logger</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
             </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -175,7 +175,7 @@ http://grizzly.java.net/nonav/docs/docbkx2.0/html/bestpractices.html
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">baseUrl</span><span class="result">: String</span>
+        <span class="name">baseUrl</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
       
@@ -205,7 +205,7 @@ http://grizzly.java.net/nonav/docs/docbkx2.0/html/bestpractices.html
         <span class="name">config</span><span class="result">: <a name="xitrum.Config" class="extype" href="Config.html">Config</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loaded from xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Loaded from xitrum.json</p></div></div>
+      <p class="shortcomment cmt">Loaded from config/xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Loaded from config/xitrum.conf</p></div></div>
     </li><li visbl="pub" name="scala.AnyRef#eq" data-isabs="false">
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
@@ -371,18 +371,6 @@ sbt console mode and don't like this overhead)
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="prt" name="xitrum.Config#readResolve" data-isabs="false">
-      <a id="readResolve():AnyRef"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readResolve</span><span class="params">()</span><span class="result">: AnyRef</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li visbl="pub" name="xitrum.Config#requestCharset" data-isabs="false">
       <a id="requestCharset:Charset"></a>
       <h4 class="signature">
@@ -525,11 +513,7 @@ will cause the browser to send request to http://xitrum/postback/zOIc0v...
         </div>
 
         <div id="inheritedMembers">
-        <div name="scala.Serializable" class="parent">
-              <h3>Inherited from <span name="scala.Serializable" class="extype">Serializable</span></h3>
-            </div><div name="java.io.Serializable" class="parent">
-              <h3>Inherited from <span name="java.io.Serializable" class="extype">Serializable</span></h3>
-            </div><div name="xitrum.Logger" class="parent">
+        <div name="xitrum.Logger" class="parent">
               <h3>Inherited from <a name="xitrum.Logger" class="extype" href="Logger.html">Logger</a></h3>
             </div><div name="scala.AnyRef" class="parent">
               <h3>Inherited from AnyRef</h3>

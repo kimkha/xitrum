@@ -22,16 +22,16 @@
       <h4 class="signature" id="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">ReverseProxyConfig</span><span class="params">(<span name="ips">ips: List[String]</span>, <span name="baseUrl">baseUrl: String</span>)</span><span class="result"> extends <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="name">ReverseProxyConfig</span><span class="result"> extends AnyRef</span>
       </span>
       </h4>
       
       <div class="fullcommenttop" id="comment"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span name="scala.Serializable" class="extype">Serializable</span>, <span name="java.io.Serializable" class="extype">Serializable</span>, <span name="scala.Product" class="extype">Product</span>, <span name="scala.Equals" class="extype">Equals</span>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
+          <div class="superTypes hiddenContent">AnyRef, <span name="scala.Any" class="extype">Any</span></div>
         </div></div>
     
 
@@ -45,7 +45,7 @@
               <span class="filtertype">Inherited</span>
               <ol><li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li></ol>
-              <ol id="linearization"><li name="xitrum.ReverseProxyConfig" class="in"><span>ReverseProxyConfig</span></li><li name="scala.Serializable" class="in"><span>Serializable</span></li><li name="java.io.Serializable" class="in"><span>Serializable</span></li><li name="scala.Product" class="in"><span>Product</span></li><li name="scala.Equals" class="in"><span>Equals</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
+              <ol id="linearization"><li name="xitrum.ReverseProxyConfig" class="in"><span>ReverseProxyConfig</span></li><li name="scala.AnyRef" class="in"><span>AnyRef</span></li><li name="scala.Any" class="in"><span>Any</span></li></ol>
             </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -65,7 +65,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ReverseProxyConfig</span><span class="params">(<span name="ips">ips: List[String]</span>, <span name="baseUrl">baseUrl: String</span>)</span>
+        <span class="name">ReverseProxyConfig</span><span class="params">(<span name="config">config: <span name="com.typesafe.config.Config" class="extype">Config</span></span>)</span>
       </span>
       </h4>
       
@@ -158,22 +158,10 @@
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">baseUrl</span><span class="result">: String</span>
+        <span class="name">baseUrl</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.ReverseProxyConfig#canEqual" data-isabs="false">
-      <a id="canEqual(Any):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">canEqual</span><span class="params">(<span name="arg0">arg0: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ReverseProxyConfig" class="extype" href="">ReverseProxyConfig</a> → Equals</dd></dl></div>
     </li><li visbl="prt" name="scala.AnyRef#clone" data-isabs="false">
       <a id="clone():AnyRef"></a>
       <h4 class="signature">
@@ -201,7 +189,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.ReverseProxyConfig#equals" data-isabs="false">
+    </li><li visbl="pub" name="scala.AnyRef#equals" data-isabs="false">
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -212,7 +200,7 @@
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span name="scala.Any" class="extype">Any</span></span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ReverseProxyConfig" class="extype" href="">ReverseProxyConfig</a> → Equals → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li visbl="prt" name="scala.AnyRef#finalize" data-isabs="false">
       <a id="finalize():Unit"></a>
       <h4 class="signature">
@@ -240,7 +228,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.ReverseProxyConfig#hashCode" data-isabs="false">
+    </li><li visbl="pub" name="scala.AnyRef#hashCode" data-isabs="false">
       <a id="hashCode():Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -251,7 +239,7 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ReverseProxyConfig" class="extype" href="">ReverseProxyConfig</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li visbl="pub" name="xitrum.ReverseProxyConfig#ips" data-isabs="false">
       <a id="ips:List[String]"></a>
       <h4 class="signature">
@@ -260,7 +248,7 @@
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">ips</span><span class="result">: List[String]</span>
+        <span class="name">ips</span><span class="result">: <span name="java.util.List" class="extype">List</span>[<span name="java.lang.String" class="extype">String</span>]</span>
       </span>
       </h4>
       
@@ -312,54 +300,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.ReverseProxyConfig#productArity" data-isabs="false">
-      <a id="productArity:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">productArity</span><span class="result">: <span name="scala.Int" class="extype">Int</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ReverseProxyConfig" class="extype" href="">ReverseProxyConfig</a> → Product</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.ReverseProxyConfig#productElement" data-isabs="false">
-      <a id="productElement(Int):Any"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">productElement</span><span class="params">(<span name="arg0">arg0: <span name="scala.Int" class="extype">Int</span></span>)</span><span class="result">: <span name="scala.Any" class="extype">Any</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ReverseProxyConfig" class="extype" href="">ReverseProxyConfig</a> → Product</dd></dl></div>
-    </li><li visbl="pub" name="scala.Product#productIterator" data-isabs="false">
-      <a id="productIterator:Iterator[Any]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">productIterator</span><span class="result">: Iterator[<span name="scala.Any" class="extype">Any</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Product</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.ReverseProxyConfig#productPrefix" data-isabs="false">
-      <a id="productPrefix:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">productPrefix</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ReverseProxyConfig" class="extype" href="">ReverseProxyConfig</a> → Product</dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#synchronized" data-isabs="false">
       <a id="synchronized[T0](⇒ T0):T0"></a>
       <h4 class="signature">
@@ -372,7 +312,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li visbl="pub" name="xitrum.ReverseProxyConfig#toString" data-isabs="false">
+    </li><li visbl="pub" name="scala.AnyRef#toString" data-isabs="false">
       <a id="toString():String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -380,10 +320,10 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: String</span>
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span name="java.lang.String" class="extype">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="xitrum.ReverseProxyConfig" class="extype" href="">ReverseProxyConfig</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li visbl="pub" name="scala.AnyRef#wait" data-isabs="false">
       <a id="wait():Unit"></a>
       <h4 class="signature">
@@ -432,37 +372,11 @@
     </li></ol>
             </div>
 
-        <div class="values members" id="values">
-              <h3>Deprecated Value Members</h3>
-              <ol><li visbl="pub" name="scala.Product#productElements" data-isabs="false">
-      <a id="productElements:Iterator[Any]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.8.0) use productIterator instead">productElements</span><span class="result">: Iterator[<span name="scala.Any" class="extype">Any</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Product</dd><dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.8.0)</i> use productIterator instead</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
-        <div name="scala.Serializable" class="parent">
-              <h3>Inherited from <span name="scala.Serializable" class="extype">Serializable</span></h3>
-            </div><div name="java.io.Serializable" class="parent">
-              <h3>Inherited from <span name="java.io.Serializable" class="extype">Serializable</span></h3>
-            </div><div name="scala.Product" class="parent">
-              <h3>Inherited from <span name="scala.Product" class="extype">Product</span></h3>
-            </div><div name="scala.Equals" class="parent">
-              <h3>Inherited from <span name="scala.Equals" class="extype">Equals</span></h3>
-            </div><div name="scala.AnyRef" class="parent">
+        <div name="scala.AnyRef" class="parent">
               <h3>Inherited from AnyRef</h3>
             </div><div name="scala.Any" class="parent">
               <h3>Inherited from <span name="scala.Any" class="extype">Any</span></h3>
