@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.handler.up</title>
+          <title>up - xitrum.handler.up</title>
+          <meta name="description" content="up - xitrum.handler.up" />
+          <meta name="keywords" content="up xitrum.handler.up" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../../lib/template.css" />
-      <script type="text/javascript" src="../../../lib/jquery.js"></script>
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../../lib/template.js"></script>
       <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'xitrum.handler.up.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../../lib/package_big.png" />
-        <p id="owner"><a name="xitrum" class="extype" href="../../package.html">xitrum</a>.<a name="xitrum.handler" class="extype" href="../package.html">handler</a></p>
+        <p id="owner"><a href="../../package.html" class="extype" name="xitrum">xitrum</a>.<a href="../package.html" class="extype" name="xitrum.handler">handler</a></p>
         <h1>up</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.handler.up.BadClientSilencer" data-isabs="true">
+              <ol><li name="xitrum.handler.up.BadClientSilencer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BadClientSilencerextendsLogger"></a>
       <a id="BadClientSilencer:BadClientSilencer"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,11 +72,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="BadClientSilencer.html"><span class="name">BadClientSilencer</span></a><span class="result"> extends Logger</span>
+        <a href="BadClientSilencer.html"><span class="name">BadClientSilencer</span></a><span class="result"> extends <a href="../../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       <p class="comment cmt">Bad client = closed connection, malformed request etc.</p>
-    </li><li visbl="pub" name="xitrum.handler.up.BaseUrlRemover" data-isabs="false">
+    </li><li name="xitrum.handler.up.BaseUrlRemover" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BaseUrlRemoverextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="BaseUrlRemover:BaseUrlRemover"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -68,14 +85,15 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="BaseUrlRemover.html"><span class="name">BaseUrlRemover</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="BaseUrlRemover.html"><span class="name">BaseUrlRemover</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.up.BasicAuth" data-isabs="false">
+    </li><li name="xitrum.handler.up.BasicAuth" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BasicAuthextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="BasicAuth:BasicAuth"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -83,14 +101,15 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="BasicAuth.html"><span class="name">BasicAuth</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="BasicAuth.html"><span class="name">BasicAuth</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.up.BodyParser" data-isabs="false">
+    </li><li name="xitrum.handler.up.BodyParser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BodyParserextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="BodyParser:BodyParser"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,14 +117,15 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="BodyParser.html"><span class="name">BodyParser</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="BodyParser.html"><span class="name">BodyParser</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.up.Dispatcher" data-isabs="false">
+    </li><li name="xitrum.handler.up.Dispatcher" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DispatcherextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="Dispatcher:Dispatcher"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -113,14 +133,15 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Dispatcher.html"><span class="name">Dispatcher</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="Dispatcher.html"><span class="name">Dispatcher</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.up.FlashSocketPolicyRequestDecoder" data-isabs="false">
+    </li><li name="xitrum.handler.up.FlashSocketPolicyRequestDecoder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlashSocketPolicyRequestDecoderextendsFrameDecoder"></a>
       <a id="FlashSocketPolicyRequestDecoder:FlashSocketPolicyRequestDecoder"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -128,11 +149,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="FlashSocketPolicyRequestDecoder.html"><span class="name">FlashSocketPolicyRequestDecoder</span></a><span class="result"> extends FrameDecoder</span>
+        <a href="FlashSocketPolicyRequestDecoder.html"><span class="name">FlashSocketPolicyRequestDecoder</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.handler.codec.frame.FrameDecoder">FrameDecoder</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.up.FlashSocketPolicyResponseSender" data-isabs="false">
+    </li><li name="xitrum.handler.up.FlashSocketPolicyResponseSender" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FlashSocketPolicyResponseSenderextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="FlashSocketPolicyResponseSender:FlashSocketPolicyResponseSender"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -140,14 +162,15 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="FlashSocketPolicyResponseSender.html"><span class="name">FlashSocketPolicyResponseSender</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="FlashSocketPolicyResponseSender.html"><span class="name">FlashSocketPolicyResponseSender</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.up.MethodOverrider" data-isabs="false">
+    </li><li name="xitrum.handler.up.MethodOverrider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MethodOverriderextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="MethodOverrider:MethodOverrider"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -155,12 +178,13 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MethodOverrider.html"><span class="name">MethodOverrider</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="MethodOverrider.html"><span class="name">MethodOverrider</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <p class="comment cmt">If the real request method is POST and &quot;_method&quot; param exists (taken out by BodyParser),
 the &quot;_method&quot; param will override the POST method.</p>
-    </li><li visbl="pub" name="xitrum.handler.up.NoPipelining" data-isabs="false">
+    </li><li name="xitrum.handler.up.NoPipelining" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NoPipeliningextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="NoPipelining:NoPipelining"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -168,14 +192,15 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="NoPipelining.html"><span class="name">NoPipelining</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="NoPipelining.html"><span class="name">NoPipelining</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.up.PublicFileServer" data-isabs="false">
+    </li><li name="xitrum.handler.up.PublicFileServer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PublicFileServerextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="PublicFileServer:PublicFileServer"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -183,11 +208,12 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PublicFileServer.html"><span class="name">PublicFileServer</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="PublicFileServer.html"><span class="name">PublicFileServer</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <p class="comment cmt">Serves files in &quot;static/public&quot; directory.</p>
-    </li><li visbl="pub" name="xitrum.handler.up.PublicResourceServer" data-isabs="false">
+    </li><li name="xitrum.handler.up.PublicResourceServer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PublicResourceServerextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="PublicResourceServer:PublicResourceServer"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -195,11 +221,12 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PublicResourceServer.html"><span class="name">PublicResourceServer</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="PublicResourceServer.html"><span class="name">PublicResourceServer</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <p class="comment cmt">Routes /resources/public/xxx URL to resources in classpath.</p>
-    </li><li visbl="pub" name="xitrum.handler.up.Request2Env" data-isabs="false">
+    </li><li name="xitrum.handler.up.Request2Env" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Request2EnvextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="Request2Env:Request2Env"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -207,14 +234,15 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Request2Env.html"><span class="name">Request2Env</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="Request2Env.html"><span class="name">Request2Env</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.up.UriParser" data-isabs="false">
+    </li><li name="xitrum.handler.up.UriParser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="UriParserextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="UriParser:UriParser"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -222,14 +250,15 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="UriParser.html"><span class="name">UriParser</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="UriParser.html"><span class="name">UriParser</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Sharable</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li visbl="pub" name="xitrum.handler.up.WebSocketDispatcher" data-isabs="false">
+    </li><li name="xitrum.handler.up.WebSocketDispatcher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WebSocketDispatcherextendsSimpleChannelUpstreamHandlerwithBadClientSilencer"></a>
       <a id="WebSocketDispatcher:WebSocketDispatcher"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -237,7 +266,7 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="WebSocketDispatcher.html"><span class="name">WebSocketDispatcher</span></a><span class="result"> extends SimpleChannelUpstreamHandler with BadClientSilencer</span>
+        <a href="WebSocketDispatcher.html"><span class="name">WebSocketDispatcher</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.SimpleChannelUpstreamHandler">SimpleChannelUpstreamHandler</span> with <a href="BadClientSilencer.html" class="extype" name="xitrum.handler.up.BadClientSilencer">BadClientSilencer</a></span>
       </span>
       </h4>
       <p class="comment cmt">See https://github.</p>
@@ -246,9 +275,10 @@ the &quot;_method&quot; param will override the POST method.</p>
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="xitrum.handler.up.BasicAuth" data-isabs="false">
+              <ol><li name="xitrum.handler.up.BasicAuth" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BasicAuth"></a>
       <a id="BasicAuth:BasicAuth"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -256,11 +286,12 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="BasicAuth$.html"><span class="name">BasicAuth</span></a><span class="result"> extends AnyRef</span>
+        <a href="BasicAuth$.html"><span class="name">BasicAuth</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.up.BodyParser" data-isabs="false">
+    </li><li name="xitrum.handler.up.BodyParser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BodyParser"></a>
       <a id="BodyParser:BodyParser"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -268,11 +299,12 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="BodyParser$.html"><span class="name">BodyParser</span></a><span class="result"> extends AnyRef</span>
+        <a href="BodyParser$.html"><span class="name">BodyParser</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.up.Dispatcher" data-isabs="false">
+    </li><li name="xitrum.handler.up.Dispatcher" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Dispatcher"></a>
       <a id="Dispatcher:Dispatcher"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -280,11 +312,12 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Dispatcher$.html"><span class="name">Dispatcher</span></a><span class="result"> extends Logger</span>
+        <a href="Dispatcher$.html"><span class="name">Dispatcher</span></a><span class="result"> extends <a href="../../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.up.FlashSocketPolicyRequestDecoder" data-isabs="false">
+    </li><li name="xitrum.handler.up.FlashSocketPolicyRequestDecoder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlashSocketPolicyRequestDecoder"></a>
       <a id="FlashSocketPolicyRequestDecoder:FlashSocketPolicyRequestDecoder"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -292,11 +325,12 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="FlashSocketPolicyRequestDecoder$.html"><span class="name">FlashSocketPolicyRequestDecoder</span></a><span class="result"> extends AnyRef</span>
+        <a href="FlashSocketPolicyRequestDecoder$.html"><span class="name">FlashSocketPolicyRequestDecoder</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.up.FlashSocketPolicyResponseSender" data-isabs="false">
+    </li><li name="xitrum.handler.up.FlashSocketPolicyResponseSender" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlashSocketPolicyResponseSender"></a>
       <a id="FlashSocketPolicyResponseSender:FlashSocketPolicyResponseSender"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -304,11 +338,12 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="FlashSocketPolicyResponseSender$.html"><span class="name">FlashSocketPolicyResponseSender</span></a><span class="result"> extends AnyRef</span>
+        <a href="FlashSocketPolicyResponseSender$.html"><span class="name">FlashSocketPolicyResponseSender</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.up.NoPipelining" data-isabs="false">
+    </li><li name="xitrum.handler.up.NoPipelining" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NoPipelining"></a>
       <a id="NoPipelining:NoPipelining"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -316,7 +351,7 @@ the &quot;_method&quot; param will override the POST method.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="NoPipelining$.html"><span class="name">NoPipelining</span></a><span class="result"> extends AnyRef</span>
+        <a href="NoPipelining$.html"><span class="name">NoPipelining</span></a>
       </span>
       </h4>
       
@@ -324,10 +359,20 @@ the &quot;_method&quot; param will override the POST method.</p>
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>

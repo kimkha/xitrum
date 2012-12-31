@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.validator</title>
+          <title>validator - xitrum.validator</title>
+          <meta name="description" content="validator - xitrum.validator" />
+          <meta name="keywords" content="validator xitrum.validator" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
-      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'xitrum.validator.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../lib/package_big.png" />
-        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a></p>
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a></p>
         <h1>validator</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.validator.EqualTo" data-isabs="false">
+              <ol><li name="xitrum.validator.EqualTo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EqualToextendsValidator"></a>
       <a id="EqualTo:EqualTo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,11 +72,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="EqualTo.html"><span class="name">EqualTo</span></a><span class="result"> extends Validator</span>
+        <a href="EqualTo.html"><span class="name">EqualTo</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.Max" data-isabs="false">
+    </li><li name="xitrum.validator.Max" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MaxextendsValidator"></a>
       <a id="Max:Max"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -68,11 +85,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Max.html"><span class="name">Max</span></a><span class="result"> extends Validator</span>
+        <a href="Max.html"><span class="name">Max</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.MaxLength" data-isabs="false">
+    </li><li name="xitrum.validator.MaxLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MaxLengthextendsValidator"></a>
       <a id="MaxLength:MaxLength"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -80,11 +98,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MaxLength.html"><span class="name">MaxLength</span></a><span class="result"> extends Validator</span>
+        <a href="MaxLength.html"><span class="name">MaxLength</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.Min" data-isabs="false">
+    </li><li name="xitrum.validator.Min" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MinextendsValidator"></a>
       <a id="Min:Min"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,11 +111,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Min.html"><span class="name">Min</span></a><span class="result"> extends Validator</span>
+        <a href="Min.html"><span class="name">Min</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.MinLength" data-isabs="false">
+    </li><li name="xitrum.validator.MinLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MinLengthextendsValidator"></a>
       <a id="MinLength:MinLength"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -104,11 +124,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MinLength.html"><span class="name">MinLength</span></a><span class="result"> extends Validator</span>
+        <a href="MinLength.html"><span class="name">MinLength</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.Range" data-isabs="false">
+    </li><li name="xitrum.validator.Range" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RangeextendsValidator"></a>
       <a id="Range:Range"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -116,11 +137,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Range.html"><span class="name">Range</span></a><span class="result"> extends Validator</span>
+        <a href="Range.html"><span class="name">Range</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.RangeLength" data-isabs="false">
+    </li><li name="xitrum.validator.RangeLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RangeLengthextendsValidator"></a>
       <a id="RangeLength:RangeLength"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -128,11 +150,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="RangeLength.html"><span class="name">RangeLength</span></a><span class="result"> extends Validator</span>
+        <a href="RangeLength.html"><span class="name">RangeLength</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.Validator" data-isabs="true">
+    </li><li name="xitrum.validator.Validator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ValidatorextendsObject"></a>
       <a id="Validator:Validator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -140,7 +163,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Validator.html"><span class="name">Validator</span></a><span class="result"> extends AnyRef</span>
+        <a href="Validator.html"><span class="name">Validator</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
@@ -149,9 +172,10 @@
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="xitrum.validator.Email" data-isabs="false">
+              <ol><li name="xitrum.validator.Email" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Email"></a>
       <a id="Email:Email"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -159,11 +183,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Email$.html"><span class="name">Email</span></a><span class="result"> extends Validator</span>
+        <a href="Email$.html"><span class="name">Email</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.EqualTo" data-isabs="false">
+    </li><li name="xitrum.validator.EqualTo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EqualTo"></a>
       <a id="EqualTo:EqualTo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -171,11 +196,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="EqualTo$.html"><span class="name">EqualTo</span></a><span class="result"> extends AnyRef</span>
+        <a href="EqualTo$.html"><span class="name">EqualTo</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.Max" data-isabs="false">
+    </li><li name="xitrum.validator.Max" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Max"></a>
       <a id="Max:Max"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -183,11 +209,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Max$.html"><span class="name">Max</span></a><span class="result"> extends AnyRef</span>
+        <a href="Max$.html"><span class="name">Max</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.MaxLength" data-isabs="false">
+    </li><li name="xitrum.validator.MaxLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MaxLength"></a>
       <a id="MaxLength:MaxLength"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -195,11 +222,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="MaxLength$.html"><span class="name">MaxLength</span></a><span class="result"> extends AnyRef</span>
+        <a href="MaxLength$.html"><span class="name">MaxLength</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.Min" data-isabs="false">
+    </li><li name="xitrum.validator.Min" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Min"></a>
       <a id="Min:Min"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -207,11 +235,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Min$.html"><span class="name">Min</span></a><span class="result"> extends AnyRef</span>
+        <a href="Min$.html"><span class="name">Min</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.MinLength" data-isabs="false">
+    </li><li name="xitrum.validator.MinLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MinLength"></a>
       <a id="MinLength:MinLength"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -219,11 +248,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="MinLength$.html"><span class="name">MinLength</span></a><span class="result"> extends AnyRef</span>
+        <a href="MinLength$.html"><span class="name">MinLength</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.Range" data-isabs="false">
+    </li><li name="xitrum.validator.Range" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Range"></a>
       <a id="Range:Range"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -231,11 +261,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Range$.html"><span class="name">Range</span></a><span class="result"> extends AnyRef</span>
+        <a href="Range$.html"><span class="name">Range</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.RangeLength" data-isabs="false">
+    </li><li name="xitrum.validator.RangeLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RangeLength"></a>
       <a id="RangeLength:RangeLength"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -243,11 +274,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="RangeLength$.html"><span class="name">RangeLength</span></a><span class="result"> extends AnyRef</span>
+        <a href="RangeLength$.html"><span class="name">RangeLength</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.Required" data-isabs="false">
+    </li><li name="xitrum.validator.Required" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Required"></a>
       <a id="Required:Required"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -255,11 +287,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Required$.html"><span class="name">Required</span></a><span class="result"> extends Validator</span>
+        <a href="Required$.html"><span class="name">Required</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator.URL" data-isabs="false">
+    </li><li name="xitrum.validator.URL" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="URL"></a>
       <a id="URL:URL"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -267,7 +300,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="URL$.html"><span class="name">URL</span></a><span class="result"> extends Validator</span>
+        <a href="URL$.html"><span class="name">URL</span></a><span class="result"> extends <a href="Validator.html" class="extype" name="xitrum.validator.Validator">Validator</a></span>
       </span>
       </h4>
       
@@ -275,10 +308,20 @@
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>

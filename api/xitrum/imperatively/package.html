@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.imperatively</title>
+          <title>imperatively - xitrum.imperatively</title>
+          <meta name="description" content="imperatively - xitrum.imperatively" />
+          <meta name="keywords" content="imperatively xitrum.imperatively" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
-      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'xitrum.imperatively.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../lib/package_big.png" />
-        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a></p>
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a></p>
         <h1>imperatively</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,22 +61,24 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.imperatively.GenericImperatively" data-isabs="true">
-      <a id="GenericImperatively:GenericImperatively[A, B]"></a>
+              <ol><li name="xitrum.imperatively.GenericImperatively" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="GenericImperatively[A,B]extendsObject"></a>
+      <a id="GenericImperatively[A,B]:GenericImperatively[A,B]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="GenericImperatively.html"><span class="name">GenericImperatively</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result"> extends AnyRef</span>
+        <a href="GenericImperatively.html"><span class="name">GenericImperatively</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       <p class="comment cmt">See:
   http://www.</p>
-    </li><li visbl="pub" name="xitrum.imperatively.Imperatively" data-isabs="true">
+    </li><li name="xitrum.imperatively.Imperatively" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ImperativelyextendsGenericImperatively[Map[String,String],scala.xml.NodeBuffer]withSerializable"></a>
       <a id="Imperatively:Imperatively"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -69,7 +86,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Imperatively.html"><span class="name">Imperatively</span></a><span class="result"> extends GenericImperatively[Map[String, String], NodeBuffer] with Serializable</span>
+        <a href="Imperatively.html"><span class="name">Imperatively</span></a><span class="result"> extends <a href="GenericImperatively.html" class="extype" name="xitrum.imperatively.GenericImperatively">GenericImperatively</a>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>], <span class="extype" name="scala.xml.NodeBuffer">NodeBuffer</span>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -78,9 +95,10 @@
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="xitrum.imperatively.SessionHolder" data-isabs="false">
+              <ol><li name="xitrum.imperatively.SessionHolder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SessionHolder"></a>
       <a id="SessionHolder:SessionHolder"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,7 +106,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SessionHolder$.html"><span class="name">SessionHolder</span></a><span class="result"> extends ThreadLocal[Session]</span>
+        <a href="SessionHolder$.html"><span class="name">SessionHolder</span></a><span class="result"> extends <span class="extype" name="java.lang.ThreadLocal">ThreadLocal</span>[<a href="../scope/session/package.html#Session=scala.collection.mutable.Map[String,Any]" class="extmbr" name="xitrum.scope.session.Session">Session</a>]</span>
       </span>
       </h4>
       
@@ -96,10 +114,20 @@
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>

@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.handler</title>
+          <title>handler - xitrum.handler</title>
+          <meta name="description" content="handler - xitrum.handler" />
+          <meta name="keywords" content="handler xitrum.handler" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
-      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'xitrum.handler.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../lib/package_big.png" />
-        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a></p>
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a></p>
         <h1>handler</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.handler.ChannelPipelineFactory" data-isabs="false">
+              <ol><li name="xitrum.handler.ChannelPipelineFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ChannelPipelineFactoryextendsChannelPipelineFactory"></a>
       <a id="ChannelPipelineFactory:ChannelPipelineFactory"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,11 +72,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ChannelPipelineFactory.html"><span class="name">ChannelPipelineFactory</span></a><span class="result"> extends ChannelPipelineFactory</span>
+        <a href="ChannelPipelineFactory.html"><span class="name">ChannelPipelineFactory</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.ChannelPipelineFactory">org.jboss.netty.channel.ChannelPipelineFactory</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.FlashSocketChannelPipelineFactory" data-isabs="false">
+    </li><li name="xitrum.handler.FlashSocketChannelPipelineFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlashSocketChannelPipelineFactoryextendsChannelPipelineFactory"></a>
       <a id="FlashSocketChannelPipelineFactory:FlashSocketChannelPipelineFactory"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -68,11 +85,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="FlashSocketChannelPipelineFactory.html"><span class="name">FlashSocketChannelPipelineFactory</span></a><span class="result"> extends ChannelPipelineFactory</span>
+        <a href="FlashSocketChannelPipelineFactory.html"><span class="name">FlashSocketChannelPipelineFactory</span></a><span class="result"> extends <span class="extype" name="org.jboss.netty.channel.ChannelPipelineFactory">org.jboss.netty.channel.ChannelPipelineFactory</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.HandlerEnv" data-isabs="false">
+    </li><li name="xitrum.handler.HandlerEnv" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HandlerEnvextendsHashMap[String,Any]"></a>
       <a id="HandlerEnv:HandlerEnv"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -80,7 +98,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="HandlerEnv.html"><span class="name">HandlerEnv</span></a><span class="result"> extends HashMap[String, Any]</span>
+        <a href="HandlerEnv.html"><span class="name">HandlerEnv</span></a><span class="result"> extends <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">Env is basically a map for sharing data between handlers.</p>
@@ -89,9 +107,10 @@
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="xitrum.handler.AccessLog" data-isabs="false">
+              <ol><li name="xitrum.handler.AccessLog" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AccessLog"></a>
       <a id="AccessLog:AccessLog"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -99,11 +118,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="AccessLog$.html"><span class="name">AccessLog</span></a><span class="result"> extends Logger</span>
+        <a href="AccessLog$.html"><span class="name">AccessLog</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.ChannelPipelineFactory" data-isabs="false">
+    </li><li name="xitrum.handler.ChannelPipelineFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ChannelPipelineFactory"></a>
       <a id="ChannelPipelineFactory:ChannelPipelineFactory"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -111,11 +131,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="ChannelPipelineFactory$.html"><span class="name">ChannelPipelineFactory</span></a><span class="result"> extends AnyRef</span>
+        <a href="ChannelPipelineFactory$.html"><span class="name">ChannelPipelineFactory</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.FlashSocketPolicyServer" data-isabs="false">
+    </li><li name="xitrum.handler.FlashSocketPolicyServer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlashSocketPolicyServer"></a>
       <a id="FlashSocketPolicyServer:FlashSocketPolicyServer"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -123,11 +144,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="FlashSocketPolicyServer$.html"><span class="name">FlashSocketPolicyServer</span></a><span class="result"> extends Logger</span>
+        <a href="FlashSocketPolicyServer$.html"><span class="name">FlashSocketPolicyServer</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.NetOption" data-isabs="false">
+    </li><li name="xitrum.handler.NetOption" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NetOption"></a>
       <a id="NetOption:NetOption"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -135,11 +157,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="NetOption$.html"><span class="name">NetOption</span></a><span class="result"> extends AnyRef</span>
+        <a href="NetOption$.html"><span class="name">NetOption</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.Server" data-isabs="false">
+    </li><li name="xitrum.handler.Server" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Server"></a>
       <a id="Server:Server"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -147,11 +170,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Server$.html"><span class="name">Server</span></a><span class="result"> extends Logger</span>
+        <a href="Server$.html"><span class="name">Server</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.ServerSsl" data-isabs="false">
+    </li><li name="xitrum.handler.ServerSsl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ServerSsl"></a>
       <a id="ServerSsl:ServerSsl"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -159,11 +183,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="ServerSsl$.html"><span class="name">ServerSsl</span></a><span class="result"> extends AnyRef</span>
+        <a href="ServerSsl$.html"><span class="name">ServerSsl</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.down" data-isabs="false">
+    </li><li name="xitrum.handler.down" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="down"></a>
       <a id="down:down"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -175,7 +200,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler.up" data-isabs="false">
+    </li><li name="xitrum.handler.up" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="up"></a>
       <a id="up:up"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -191,10 +217,20 @@
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>

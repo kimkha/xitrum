@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.sockjs</title>
+          <title>sockjs - xitrum.sockjs</title>
+          <meta name="description" content="sockjs - xitrum.sockjs" />
+          <meta name="keywords" content="sockjs xitrum.sockjs" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
-      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'xitrum.sockjs.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../lib/package_big.png" />
-        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a></p>
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a></p>
         <h1>sockjs</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.sockjs.QueueMessage" data-isabs="false">
+              <ol><li name="xitrum.sockjs.QueueMessage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="QueueMessageextendsSerializable"></a>
       <a id="QueueMessage:QueueMessage"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,11 +72,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="QueueMessage.html"><span class="name">QueueMessage</span></a><span class="result"> extends Serializable</span>
+        <a href="QueueMessage.html"><span class="name">QueueMessage</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">Needs to be Serializable to be stored in Hazelcast</p>
-    </li><li visbl="pub" name="xitrum.sockjs.SendMessageByHandler" data-isabs="false">
+    </li><li name="xitrum.sockjs.SendMessageByHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SendMessageByHandlerextendsSockJsNonWebSocketSessionActorMessagewithProductwithSerializable"></a>
       <a id="SendMessageByHandler:SendMessageByHandler"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -68,11 +85,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SendMessageByHandler.html"><span class="name">SendMessageByHandler</span></a><span class="params">(<span name="message">message: String</span>)</span><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
+        <a href="SendMessageByHandler.html"><span class="name">SendMessageByHandler</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="SockJsNonWebSocketSessionActorMessage.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage">SockJsNonWebSocketSessionActorMessage</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SendMessagesByClient" data-isabs="false">
+    </li><li name="xitrum.sockjs.SendMessagesByClient" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SendMessagesByClientextendsSockJsNonWebSocketSessionActorMessagewithProductwithSerializable"></a>
       <a id="SendMessagesByClient:SendMessagesByClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -80,11 +98,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SendMessagesByClient.html"><span class="name">SendMessagesByClient</span></a><span class="params">(<span name="messages">messages: List[String]</span>)</span><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
+        <a href="SendMessagesByClient.html"><span class="name">SendMessagesByClient</span></a><span class="params">(<span name="messages">messages: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <a href="SockJsNonWebSocketSessionActorMessage.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage">SockJsNonWebSocketSessionActorMessage</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsController" data-isabs="false">
+    </li><li name="xitrum.sockjs.SockJsController" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SockJsControllerextendsRequestEnvwithControllerwithSkipCSRFCheck"></a>
       <a id="SockJsController:SockJsController"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,11 +111,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SockJsController.html"><span class="name">SockJsController</span></a><span class="result"> extends RequestEnv with Controller with SkipCSRFCheck</span>
+        <a href="SockJsController.html"><span class="name">SockJsController</span></a><span class="result"> extends <a href="../scope/request/RequestEnv.html" class="extype" name="xitrum.scope.request.RequestEnv">RequestEnv</a> with <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a> with <a href="../SkipCSRFCheck.html" class="extype" name="xitrum.SkipCSRFCheck">SkipCSRFCheck</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSession" data-isabs="false">
+    </li><li name="xitrum.sockjs.SockJsNonWebSocketSession" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SockJsNonWebSocketSessionextendsActor"></a>
       <a id="SockJsNonWebSocketSession:SockJsNonWebSocketSession"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -104,12 +124,13 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SockJsNonWebSocketSession.html"><span class="name">SockJsNonWebSocketSession</span></a><span class="result"> extends Actor</span>
+        <a href="SockJsNonWebSocketSession.html"><span class="name">SockJsNonWebSocketSession</span></a><span class="result"> extends <span class="extype" name="akka.actor.Actor">Actor</span></span>
       </span>
       </h4>
       <p class="comment cmt">There should be at most one subscriber:
 http://sockjs.</p>
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage" data-isabs="true">
+    </li><li name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SockJsNonWebSocketSessionActorMessageextendsObject"></a>
       <a id="SockJsNonWebSocketSessionActorMessage:SockJsNonWebSocketSessionActorMessage"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -117,11 +138,12 @@ http://sockjs.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SockJsNonWebSocketSessionActorMessage.html"><span class="name">SockJsNonWebSocketSessionActorMessage</span></a><span class="result"> extends AnyRef</span>
+        <a href="SockJsNonWebSocketSessionActorMessage.html"><span class="name">SockJsNonWebSocketSessionActorMessage</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsSubscribeByClientResult" data-isabs="true">
+    </li><li name="xitrum.sockjs.SockJsSubscribeByClientResult" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SockJsSubscribeByClientResultextendsObject"></a>
       <a id="SockJsSubscribeByClientResult:SockJsSubscribeByClientResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -129,11 +151,12 @@ http://sockjs.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SockJsSubscribeByClientResult.html"><span class="name">SockJsSubscribeByClientResult</span></a><span class="result"> extends AnyRef</span>
+        <a href="SockJsSubscribeByClientResult.html"><span class="name">SockJsSubscribeByClientResult</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SubscribeByClientResultMessages" data-isabs="false">
+    </li><li name="xitrum.sockjs.SubscribeByClientResultMessages" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SubscribeByClientResultMessagesextendsSockJsSubscribeByClientResultwithProductwithSerializable"></a>
       <a id="SubscribeByClientResultMessages:SubscribeByClientResultMessages"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -141,7 +164,7 @@ http://sockjs.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SubscribeByClientResultMessages.html"><span class="name">SubscribeByClientResultMessages</span></a><span class="params">(<span name="messages">messages: List[String]</span>)</span><span class="result"> extends SockJsSubscribeByClientResult with Product with Serializable</span>
+        <a href="SubscribeByClientResultMessages.html"><span class="name">SubscribeByClientResultMessages</span></a><span class="params">(<span name="messages">messages: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <a href="SockJsSubscribeByClientResult.html" class="extype" name="xitrum.sockjs.SockJsSubscribeByClientResult">SockJsSubscribeByClientResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -150,9 +173,10 @@ http://sockjs.</p>
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="xitrum.sockjs.CloseByHandler" data-isabs="false">
+              <ol><li name="xitrum.sockjs.CloseByHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CloseByHandler"></a>
       <a id="CloseByHandler:CloseByHandler"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -160,11 +184,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="CloseByHandler$.html"><span class="name">CloseByHandler</span></a><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
+        <a href="CloseByHandler$.html"><span class="name">CloseByHandler</span></a><span class="result"> extends <a href="SockJsNonWebSocketSessionActorMessage.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage">SockJsNonWebSocketSessionActorMessage</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.MessageQueue" data-isabs="false">
+    </li><li name="xitrum.sockjs.MessageQueue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MessageQueue"></a>
       <a id="MessageQueue:MessageQueue"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -172,11 +197,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="MessageQueue$.html"><span class="name">MessageQueue</span></a><span class="result"> extends AnyRef</span>
+        <a href="MessageQueue$.html"><span class="name">MessageQueue</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsController" data-isabs="false">
+    </li><li name="xitrum.sockjs.SockJsController" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SockJsController"></a>
       <a id="SockJsController:SockJsController"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -184,11 +210,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SockJsController$.html"><span class="name">SockJsController</span></a><span class="result"> extends AnyRef</span>
+        <a href="SockJsController$.html"><span class="name">SockJsController</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SockJsNonWebSocketSessions" data-isabs="false">
+    </li><li name="xitrum.sockjs.SockJsNonWebSocketSessions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SockJsNonWebSocketSessions"></a>
       <a id="SockJsNonWebSocketSessions:SockJsNonWebSocketSessions"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -196,11 +223,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SockJsNonWebSocketSessions$.html"><span class="name">SockJsNonWebSocketSessions</span></a><span class="result"> extends AnyRef</span>
+        <a href="SockJsNonWebSocketSessions$.html"><span class="name">SockJsNonWebSocketSessions</span></a>
       </span>
       </h4>
       <p class="comment cmt">This acts the middleman between client and server SockJS handler.</p>
-    </li><li visbl="pub" name="xitrum.sockjs.SubscribeByClientResultAnotherConnectionStillOpen" data-isabs="false">
+    </li><li name="xitrum.sockjs.SubscribeByClientResultAnotherConnectionStillOpen" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SubscribeByClientResultAnotherConnectionStillOpen"></a>
       <a id="SubscribeByClientResultAnotherConnectionStillOpen:SubscribeByClientResultAnotherConnectionStillOpen"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -208,11 +236,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SubscribeByClientResultAnotherConnectionStillOpen$.html"><span class="name">SubscribeByClientResultAnotherConnectionStillOpen</span></a><span class="result"> extends SockJsSubscribeByClientResult with Product with Serializable</span>
+        <a href="SubscribeByClientResultAnotherConnectionStillOpen$.html"><span class="name">SubscribeByClientResultAnotherConnectionStillOpen</span></a><span class="result"> extends <a href="SockJsSubscribeByClientResult.html" class="extype" name="xitrum.sockjs.SockJsSubscribeByClientResult">SockJsSubscribeByClientResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SubscribeByClientResultClosed" data-isabs="false">
+    </li><li name="xitrum.sockjs.SubscribeByClientResultClosed" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SubscribeByClientResultClosed"></a>
       <a id="SubscribeByClientResultClosed:SubscribeByClientResultClosed"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -220,11 +249,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SubscribeByClientResultClosed$.html"><span class="name">SubscribeByClientResultClosed</span></a><span class="result"> extends SockJsSubscribeByClientResult with Product with Serializable</span>
+        <a href="SubscribeByClientResultClosed$.html"><span class="name">SubscribeByClientResultClosed</span></a><span class="result"> extends <a href="SockJsSubscribeByClientResult.html" class="extype" name="xitrum.sockjs.SockJsSubscribeByClientResult">SockJsSubscribeByClientResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SubscribeByClientResultErrorAfterOpenHasBeenSent" data-isabs="false">
+    </li><li name="xitrum.sockjs.SubscribeByClientResultErrorAfterOpenHasBeenSent" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SubscribeByClientResultErrorAfterOpenHasBeenSent"></a>
       <a id="SubscribeByClientResultErrorAfterOpenHasBeenSent:SubscribeByClientResultErrorAfterOpenHasBeenSent"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -232,11 +262,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SubscribeByClientResultErrorAfterOpenHasBeenSent$.html"><span class="name">SubscribeByClientResultErrorAfterOpenHasBeenSent</span></a><span class="result"> extends SockJsSubscribeByClientResult with Product with Serializable</span>
+        <a href="SubscribeByClientResultErrorAfterOpenHasBeenSent$.html"><span class="name">SubscribeByClientResultErrorAfterOpenHasBeenSent</span></a><span class="result"> extends <a href="SockJsSubscribeByClientResult.html" class="extype" name="xitrum.sockjs.SockJsSubscribeByClientResult">SockJsSubscribeByClientResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SubscribeByClientResultOpen" data-isabs="false">
+    </li><li name="xitrum.sockjs.SubscribeByClientResultOpen" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SubscribeByClientResultOpen"></a>
       <a id="SubscribeByClientResultOpen:SubscribeByClientResultOpen"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -244,11 +275,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SubscribeByClientResultOpen$.html"><span class="name">SubscribeByClientResultOpen</span></a><span class="result"> extends SockJsSubscribeByClientResult with Product with Serializable</span>
+        <a href="SubscribeByClientResultOpen$.html"><span class="name">SubscribeByClientResultOpen</span></a><span class="result"> extends <a href="SockJsSubscribeByClientResult.html" class="extype" name="xitrum.sockjs.SockJsSubscribeByClientResult">SockJsSubscribeByClientResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.SubscribeOnceByClient" data-isabs="false">
+    </li><li name="xitrum.sockjs.SubscribeOnceByClient" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SubscribeOnceByClient"></a>
       <a id="SubscribeOnceByClient:SubscribeOnceByClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -256,11 +288,12 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SubscribeOnceByClient$.html"><span class="name">SubscribeOnceByClient</span></a><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
+        <a href="SubscribeOnceByClient$.html"><span class="name">SubscribeOnceByClient</span></a><span class="result"> extends <a href="SockJsNonWebSocketSessionActorMessage.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage">SockJsNonWebSocketSessionActorMessage</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs.UnsubscribeByClient" data-isabs="false">
+    </li><li name="xitrum.sockjs.UnsubscribeByClient" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UnsubscribeByClient"></a>
       <a id="UnsubscribeByClient:UnsubscribeByClient"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -268,7 +301,7 @@ http://sockjs.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="UnsubscribeByClient$.html"><span class="name">UnsubscribeByClient</span></a><span class="result"> extends SockJsNonWebSocketSessionActorMessage with Product with Serializable</span>
+        <a href="UnsubscribeByClient$.html"><span class="name">UnsubscribeByClient</span></a><span class="result"> extends <a href="SockJsNonWebSocketSessionActorMessage.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage">SockJsNonWebSocketSessionActorMessage</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -276,10 +309,20 @@ http://sockjs.</p>
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>

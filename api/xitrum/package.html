@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum</title>
+          <title>xitrum - xitrum</title>
+          <meta name="description" content="xitrum - xitrum" />
+          <meta name="keywords" content="xitrum xitrum" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../lib/template.css" />
-      <script type="text/javascript" src="../lib/jquery.js"></script>
+      <link href="../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../lib/template.js"></script>
       <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../index.html';
+            var hash = 'xitrum.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../lib/package_big.png" />
         
         <h1>xitrum</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.BasicAuthConfig" data-isabs="false">
+              <ol><li name="xitrum.BasicAuthConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BasicAuthConfigextendsObject"></a>
       <a id="BasicAuthConfig:BasicAuthConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,11 +72,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="BasicAuthConfig.html"><span class="name">BasicAuthConfig</span></a><span class="result"> extends AnyRef</span>
+        <a href="BasicAuthConfig.html"><span class="name">BasicAuthConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.Config" data-isabs="false">
+    </li><li name="xitrum.Config" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ConfigextendsObject"></a>
       <a id="Config:Config"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -68,11 +85,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Config.html"><span class="name">Config</span></a><span class="result"> extends AnyRef</span>
+        <a href="Config.html"><span class="name">Config</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.Controller" data-isabs="true">
+    </li><li name="xitrum.Controller" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ControllerextendsRequestEnvwithExtEnvwithActionFactorywithLoggerwithNetwithFilterwithBasicAuthwithWebSocketwithRedirectwithUrlForwithRendererwithResponderwithI18n"></a>
       <a id="Controller:Controller"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -80,11 +98,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Controller.html"><span class="name">Controller</span></a><span class="result"> extends RequestEnv with ExtEnv with ActionFactory with Logger with Net with Filter with BasicAuth with WebSocket with Redirect with UrlFor with Renderer with Responder with I18n</span>
+        <a href="Controller.html"><span class="name">Controller</span></a><span class="result"> extends <a href="scope/request/RequestEnv.html" class="extype" name="xitrum.scope.request.RequestEnv">RequestEnv</a> with <a href="scope/request/ExtEnv.html" class="extype" name="xitrum.scope.request.ExtEnv">ExtEnv</a> with <a href="controller/ActionFactory.html" class="extype" name="xitrum.controller.ActionFactory">ActionFactory</a> with <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a> with <a href="controller/Net.html" class="extype" name="xitrum.controller.Net">Net</a> with <a href="controller/Filter.html" class="extype" name="xitrum.controller.Filter">Filter</a> with <a href="controller/BasicAuth.html" class="extype" name="xitrum.controller.BasicAuth">BasicAuth</a> with <a href="controller/WebSocket.html" class="extype" name="xitrum.controller.WebSocket">WebSocket</a> with <a href="controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a> with <a href="controller/UrlFor.html" class="extype" name="xitrum.controller.UrlFor">UrlFor</a> with <a href="view/Renderer.html" class="extype" name="xitrum.view.Renderer">Renderer</a> with <a href="view/Responder.html" class="extype" name="xitrum.view.Responder">Responder</a> with <a href="I18n.html" class="extype" name="xitrum.I18n">I18n</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.ErrorController" data-isabs="true">
+    </li><li name="xitrum.ErrorController" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ErrorControllerextendsObject"></a>
       <a id="ErrorController:ErrorController"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,11 +111,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="ErrorController.html"><span class="name">ErrorController</span></a><span class="result"> extends AnyRef</span>
+        <a href="ErrorController.html"><span class="name">ErrorController</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.I18n" data-isabs="true">
+    </li><li name="xitrum.I18n" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="I18nextendsObject"></a>
       <a id="I18n:I18n"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -104,11 +124,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="I18n.html"><span class="name">I18n</span></a><span class="result"> extends AnyRef</span>
+        <a href="I18n.html"><span class="name">I18n</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.KeystoreConfig" data-isabs="false">
+    </li><li name="xitrum.KeystoreConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KeystoreConfigextendsObject"></a>
       <a id="KeystoreConfig:KeystoreConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -116,11 +137,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="KeystoreConfig.html"><span class="name">KeystoreConfig</span></a><span class="result"> extends AnyRef</span>
+        <a href="KeystoreConfig.html"><span class="name">KeystoreConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.Logger" data-isabs="true">
+    </li><li name="xitrum.Logger" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LoggerextendsObject"></a>
       <a id="Logger:Logger"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -128,12 +150,13 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Logger.html"><span class="name">Logger</span></a><span class="result"> extends AnyRef</span>
+        <a href="Logger.html"><span class="name">Logger</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       <p class="comment cmt">Although the class name can be determined by sniffing around on the stack:
 (Thread.</p>
-    </li><li visbl="pub" name="xitrum.PortConfig" data-isabs="false">
+    </li><li name="xitrum.PortConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PortConfigextendsObject"></a>
       <a id="PortConfig:PortConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -141,11 +164,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PortConfig.html"><span class="name">PortConfig</span></a><span class="result"> extends AnyRef</span>
+        <a href="PortConfig.html"><span class="name">PortConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.RequestConfig" data-isabs="false">
+    </li><li name="xitrum.RequestConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RequestConfigextendsObject"></a>
       <a id="RequestConfig:RequestConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -153,23 +177,25 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="RequestConfig.html"><span class="name">RequestConfig</span></a><span class="result"> extends AnyRef</span>
+        <a href="RequestConfig.html"><span class="name">RequestConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.RequestVar" data-isabs="false">
-      <a id="RequestVar:RequestVar[T]"></a>
+    </li><li name="xitrum.RequestVar" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RequestVar[T]extendsObject"></a>
+      <a id="RequestVar[T]:RequestVar[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="RequestVar.html"><span class="name">RequestVar</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends AnyRef</span>
+        <a href="RequestVar.html"><span class="name">RequestVar</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.ResponseConfig" data-isabs="false">
+    </li><li name="xitrum.ResponseConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ResponseConfigextendsObject"></a>
       <a id="ResponseConfig:ResponseConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -177,11 +203,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ResponseConfig.html"><span class="name">ResponseConfig</span></a><span class="result"> extends AnyRef</span>
+        <a href="ResponseConfig.html"><span class="name">ResponseConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.ReverseProxyConfig" data-isabs="false">
+    </li><li name="xitrum.ReverseProxyConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReverseProxyConfigextendsObject"></a>
       <a id="ReverseProxyConfig:ReverseProxyConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -189,11 +216,12 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ReverseProxyConfig.html"><span class="name">ReverseProxyConfig</span></a><span class="result"> extends AnyRef</span>
+        <a href="ReverseProxyConfig.html"><span class="name">ReverseProxyConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.SessionConfig" data-isabs="false">
+    </li><li name="xitrum.SessionConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SessionConfigextendsObject"></a>
       <a id="SessionConfig:SessionConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -201,23 +229,25 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SessionConfig.html"><span class="name">SessionConfig</span></a><span class="result"> extends AnyRef</span>
+        <a href="SessionConfig.html"><span class="name">SessionConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.SessionVar" data-isabs="false">
-      <a id="SessionVar:SessionVar[T]"></a>
+    </li><li name="xitrum.SessionVar" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SessionVar[T]extendsObject"></a>
+      <a id="SessionVar[T]:SessionVar[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SessionVar.html"><span class="name">SessionVar</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends AnyRef</span>
+        <a href="SessionVar.html"><span class="name">SessionVar</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.SkipCSRFCheck" data-isabs="true">
+    </li><li name="xitrum.SkipCSRFCheck" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SkipCSRFCheckextendsObject"></a>
       <a id="SkipCSRFCheck:SkipCSRFCheck"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -225,11 +255,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SkipCSRFCheck.html"><span class="name">SkipCSRFCheck</span></a><span class="result"> extends AnyRef</span>
+        <a href="SkipCSRFCheck.html"><span class="name">SkipCSRFCheck</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       <p class="comment cmt">By default all non-GET requests are checked for anti-CSRF token.</p>
-    </li><li visbl="pub" name="xitrum.SockJsHandler" data-isabs="true">
+    </li><li name="xitrum.SockJsHandler" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SockJsHandlerextendsLogger"></a>
       <a id="SockJsHandler:SockJsHandler"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -237,7 +268,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SockJsHandler.html"><span class="name">SockJsHandler</span></a><span class="result"> extends Logger</span>
+        <a href="SockJsHandler.html"><span class="name">SockJsHandler</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       
@@ -246,9 +277,10 @@
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="xitrum.Cache" data-isabs="false">
+              <ol><li name="xitrum.Cache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Cache"></a>
       <a id="Cache:Cache"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -256,11 +288,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Cache$.html"><span class="name">Cache</span></a><span class="result"> extends Logger</span>
+        <a href="Cache$.html"><span class="name">Cache</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.Config" data-isabs="false">
+    </li><li name="xitrum.Config" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Config"></a>
       <a id="Config:Config"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -268,11 +301,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Config$.html"><span class="name">Config</span></a><span class="result"> extends Logger</span>
+        <a href="Config$.html"><span class="name">Config</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       <p class="comment cmt">See config/xitrum.</p>
-    </li><li visbl="pub" name="xitrum.controller" data-isabs="false">
+    </li><li name="xitrum.controller" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="controller"></a>
       <a id="controller:controller"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -284,7 +318,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.etag" data-isabs="false">
+    </li><li name="xitrum.etag" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="etag"></a>
       <a id="etag:etag"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -296,7 +331,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.exception" data-isabs="false">
+    </li><li name="xitrum.exception" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="exception"></a>
       <a id="exception:exception"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -308,7 +344,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.handler" data-isabs="false">
+    </li><li name="xitrum.handler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="handler"></a>
       <a id="handler:handler"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -320,7 +357,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.i18n" data-isabs="false">
+    </li><li name="xitrum.i18n" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="i18n"></a>
       <a id="i18n:i18n"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -332,7 +370,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.imperatively" data-isabs="false">
+    </li><li name="xitrum.imperatively" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="imperatively"></a>
       <a id="imperatively:imperatively"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -344,7 +383,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.routing" data-isabs="false">
+    </li><li name="xitrum.routing" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="routing"></a>
       <a id="routing:routing"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -356,7 +396,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.scope" data-isabs="false">
+    </li><li name="xitrum.scope" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="scope"></a>
       <a id="scope:scope"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -368,7 +409,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.sockjs" data-isabs="false">
+    </li><li name="xitrum.sockjs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sockjs"></a>
       <a id="sockjs:sockjs"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -380,7 +422,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.util" data-isabs="false">
+    </li><li name="xitrum.util" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="util"></a>
       <a id="util:util"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -392,7 +435,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.validator" data-isabs="false">
+    </li><li name="xitrum.validator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="validator"></a>
       <a id="validator:validator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -404,7 +448,8 @@
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.view" data-isabs="false">
+    </li><li name="xitrum.view" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="view"></a>
       <a id="view:view"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -420,10 +465,20 @@
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>

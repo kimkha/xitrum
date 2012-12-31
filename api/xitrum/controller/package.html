@@ -2,24 +2,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>xitrum.controller</title>
+          <title>controller - xitrum.controller</title>
+          <meta name="description" content="controller - xitrum.controller" />
+          <meta name="keywords" content="controller xitrum.controller" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link type="text/css" media="screen" rel="stylesheet" href="../../lib/template.css" />
-      <script type="text/javascript" src="../../lib/jquery.js"></script>
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'xitrum.controller.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body onload="sh_highlightDocument('../lib/', '.min.js');" class="value">
+        <body class="value">
       <div id="definition">
         <img src="../../lib/package_big.png" />
-        <p id="owner"><a name="xitrum" class="extype" href="../package.html">xitrum</a></p>
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a></p>
         <h1>controller</h1>
       </div>
 
-      <h4 class="signature" id="signature">
+      <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
@@ -29,11 +44,11 @@
       </span>
       </h4>
       
-      <div class="fullcommenttop" id="comment"></div>
-    
+          <div id="comment" class="fullcommenttop"></div>
+        
 
       <div id="mbrsel">
-        <div id="textfilter"><span class="pre"></span><span class="input"><input accesskey="/" type="text" /></span><span class="post"></span></div>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
         
         
         <div id="visbl">
@@ -46,9 +61,10 @@
         <div id="allMembers">
         
 
-        <div class="types members" id="types">
+        <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="xitrum.controller.Action" data-isabs="false">
+              <ol><li name="xitrum.controller.Action" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActionextendsProductwithSerializable"></a>
       <a id="Action:Action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -56,11 +72,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Action.html"><span class="name">Action</span></a><span class="params">(<span name="route">route: Route</span>, <span name="method">method: Method</span>, <span name="body">body: () ⇒ Unit</span>, <span name="cacheSeconds">cacheSeconds: Int</span>)</span><span class="result"> extends Product with Serializable</span>
+        <a href="Action.html"><span class="name">Action</span></a><span class="params">(<span name="route">route: <a href="../routing/Route.html" class="extype" name="xitrum.routing.Route">Route</a></span>, <span name="method">method: <span class="extype" name="java.lang.reflect.Method">Method</span></span>, <span name="body">body: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="cacheSeconds">cacheSeconds: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt"></p>
-    </li><li visbl="pub" name="xitrum.controller.ActionFactory" data-isabs="true">
+    </li><li name="xitrum.controller.ActionFactory" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActionFactoryextendsObject"></a>
       <a id="ActionFactory:ActionFactory"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -68,12 +85,13 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="ActionFactory.html"><span class="name">ActionFactory</span></a><span class="result"> extends AnyRef</span>
+        <a href="ActionFactory.html"><span class="name">ActionFactory</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       <p class="comment cmt">val action1 = GET(&quot;pattern&quot;) {
 }</p>
-    </li><li visbl="pub" name="xitrum.controller.AfterFilter" data-isabs="false">
+    </li><li name="xitrum.controller.AfterFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AfterFilterextendsProductwithSerializable"></a>
       <a id="AfterFilter:AfterFilter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -81,11 +99,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="AfterFilter.html"><span class="name">AfterFilter</span></a><span class="params">(<span name="body">body: () ⇒ Any</span>, <span name="only">only: ArrayBuffer[Route]</span>, <span name="except">except: ArrayBuffer[Route]</span>)</span><span class="result"> extends Product with Serializable</span>
+        <a href="AfterFilter.html"><span class="name">AfterFilter</span></a><span class="params">(<span name="body">body: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="only">only: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<a href="../routing/Route.html" class="extype" name="xitrum.routing.Route">Route</a>]</span>, <span name="except">except: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<a href="../routing/Route.html" class="extype" name="xitrum.routing.Route">Route</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.AroundFilter" data-isabs="false">
+    </li><li name="xitrum.controller.AroundFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AroundFilterextendsProductwithSerializable"></a>
       <a id="AroundFilter:AroundFilter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -93,11 +112,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="AroundFilter.html"><span class="name">AroundFilter</span></a><span class="params">(<span name="body">body: (() ⇒ Any) ⇒ Any</span>, <span name="only">only: ArrayBuffer[Route]</span>, <span name="except">except: ArrayBuffer[Route]</span>)</span><span class="result"> extends Product with Serializable</span>
+        <a href="AroundFilter.html"><span class="name">AroundFilter</span></a><span class="params">(<span name="body">body: (() ⇒ <span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="only">only: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<a href="../routing/Route.html" class="extype" name="xitrum.routing.Route">Route</a>]</span>, <span name="except">except: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<a href="../routing/Route.html" class="extype" name="xitrum.routing.Route">Route</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.BasicAuth" data-isabs="true">
+    </li><li name="xitrum.controller.BasicAuth" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BasicAuthextendsObject"></a>
       <a id="BasicAuth:BasicAuth"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -105,11 +125,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="BasicAuth.html"><span class="name">BasicAuth</span></a><span class="result"> extends AnyRef</span>
+        <a href="BasicAuth.html"><span class="name">BasicAuth</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.BeforeFilter" data-isabs="false">
+    </li><li name="xitrum.controller.BeforeFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BeforeFilterextendsProductwithSerializable"></a>
       <a id="BeforeFilter:BeforeFilter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -117,11 +138,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="BeforeFilter.html"><span class="name">BeforeFilter</span></a><span class="params">(<span name="body">body: () ⇒ Boolean</span>, <span name="only">only: ArrayBuffer[Route]</span>, <span name="except">except: ArrayBuffer[Route]</span>)</span><span class="result"> extends Product with Serializable</span>
+        <a href="BeforeFilter.html"><span class="name">BeforeFilter</span></a><span class="params">(<span name="body">body: () ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="only">only: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<a href="../routing/Route.html" class="extype" name="xitrum.routing.Route">Route</a>]</span>, <span name="except">except: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<a href="../routing/Route.html" class="extype" name="xitrum.routing.Route">Route</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.Filter" data-isabs="true">
+    </li><li name="xitrum.controller.Filter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="FilterextendsObject"></a>
       <a id="Filter:Filter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -129,11 +151,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Filter.html"><span class="name">Filter</span></a><span class="result"> extends AnyRef</span>
+        <a href="Filter.html"><span class="name">Filter</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.Net" data-isabs="true">
+    </li><li name="xitrum.controller.Net" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NetextendsObject"></a>
       <a id="Net:Net"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -141,11 +164,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Net.html"><span class="name">Net</span></a><span class="result"> extends AnyRef</span>
+        <a href="Net.html"><span class="name">Net</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.Redirect" data-isabs="true">
+    </li><li name="xitrum.controller.Redirect" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RedirectextendsObject"></a>
       <a id="Redirect:Redirect"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -153,11 +177,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Redirect.html"><span class="name">Redirect</span></a><span class="result"> extends AnyRef</span>
+        <a href="Redirect.html"><span class="name">Redirect</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.UrlFor" data-isabs="true">
+    </li><li name="xitrum.controller.UrlFor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UrlForextendsObject"></a>
       <a id="UrlFor:UrlFor"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -165,11 +190,12 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="UrlFor.html"><span class="name">UrlFor</span></a><span class="result"> extends AnyRef</span>
+        <a href="UrlFor.html"><span class="name">UrlFor</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.WebSocket" data-isabs="true">
+    </li><li name="xitrum.controller.WebSocket" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="WebSocketextendsObject"></a>
       <a id="WebSocket:WebSocket"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -177,7 +203,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="WebSocket.html"><span class="name">WebSocket</span></a><span class="result"> extends AnyRef</span>
+        <a href="WebSocket.html"><span class="name">WebSocket</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       <p class="comment cmt">See https://github.</p>
@@ -186,9 +212,10 @@
 
         
 
-        <div class="values members" id="values">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li visbl="pub" name="xitrum.controller.Net" data-isabs="false">
+              <ol><li name="xitrum.controller.Net" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Net"></a>
       <a id="Net:Net"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -196,11 +223,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Net$.html"><span class="name">Net</span></a><span class="result"> extends AnyRef</span>
+        <a href="Net$.html"><span class="name">Net</span></a>
       </span>
       </h4>
       
-    </li><li visbl="pub" name="xitrum.controller.PathPrefix" data-isabs="false">
+    </li><li name="xitrum.controller.PathPrefix" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PathPrefix"></a>
       <a id="PathPrefix:PathPrefix"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -208,7 +236,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="PathPrefix$.html"><span class="name">PathPrefix</span></a><span class="result"> extends AnyRef</span>
+        <a href="PathPrefix$.html"><span class="name">PathPrefix</span></a>
       </span>
       </h4>
       
@@ -216,10 +244,20 @@
             </div>
 
         
+
+        
         </div>
 
         <div id="inheritedMembers">
         
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
         </div>
 
       </div>
