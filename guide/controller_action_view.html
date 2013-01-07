@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller, action, and view &mdash; Xitrum 1.12 documentation</title>
+    <title>Controller, action, and view &mdash; Xitrum 1.13 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.12',
+        VERSION:     '1.13',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.12 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.13 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.12 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.13 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -97,10 +97,18 @@ because <a class="reference external" href="http://www.ibm.com/developerworks/li
 </ul>
 <div class="section" id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
-<p>With <tt class="docutils literal"><span class="pre">respondInlineView</span></tt>, layout is rendered. By default the layout is what passed to
-<tt class="docutils literal"><span class="pre">respondInlineView</span></tt>. You can customize the layout by overriding the <tt class="docutils literal"><span class="pre">layout</span></tt> method.</p>
-<p>Typically, you create a parent class which has a common layout for many views,
-like this:</p>
+<p>When you respond a view with <tt class="docutils literal"><span class="pre">respondView</span></tt> or <tt class="docutils literal"><span class="pre">respondInlineView</span></tt>, Xitrum
+renders it to a String, and sets the String to <tt class="docutils literal"><span class="pre">renderedView</span></tt> variable. Xitrum
+then calls <tt class="docutils literal"><span class="pre">layout</span></tt> method of the current controller, finally Xitrum responds
+the result of this method to the browser.</p>
+<p>By default <tt class="docutils literal"><span class="pre">layout</span></tt> method just returns <tt class="docutils literal"><span class="pre">renderedView</span></tt> itself. If you want
+to decorate your view with something, override this method. If you include
+<tt class="docutils literal"><span class="pre">renderedView</span></tt> in the method, the view will be included as part of your layout.</p>
+<p>The point is <tt class="docutils literal"><span class="pre">layout</span></tt> is called after your action&#8217;s view, and whatever returned
+is what responded to the browser. This mechanism is simple and straight forward.
+No magic. For convenience, you may think that there&#8217;s no layout in Xitrum at all.
+There&#8217;s just the <tt class="docutils literal"><span class="pre">layout</span></tt> method and you do whatever you want with it.</p>
+<p>Typically, you create a parent class which has a common layout for many views:</p>
 <p>AppController.scala</p>
 <div class="highlight-python"><pre>import xitrum.Controller
 import xitrum.view.DocType
@@ -346,7 +354,7 @@ class LoginController extends Controller {
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.12 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.13 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
