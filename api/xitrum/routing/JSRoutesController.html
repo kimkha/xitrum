@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -50,7 +50,11 @@
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
           <div class="subClasses hiddenContent"><a href="JSRoutesController$.html" class="extype" name="xitrum.routing.JSRoutesController">JSRoutesController</a></div>
-        </div></div>
+        </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
+                <span class="toggle diagram-link">Type Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph47" viewBox="0.00 0.00 213.00 158.00" height="158pt" width="213pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 154)" class="graph" id="graph1"><polygon points="-4,5 -4,-154 210,-154 210,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph47_0"><a xlink:title="xitrum.routing.JSRoutesController (this class)" xlink:href="#inheritance-diagram"><polygon points="170.25,-88 39.75,-88 39.75,-62 170.25,-62 170.25,-88" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-83" x="50" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="72" text-anchor="start">JSRoutesController</text></a></g><!-- node1 --><g class="node object" id="graph47_1"><a xlink:title="xitrum.routing.JSRoutesController" xlink:href="JSRoutesController$.html#inheritance-diagram"><polygon points="170.25,-26 39.75,-26 39.75,-0 170.25,-0 170.25,-26" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-21" x="50" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="72" text-anchor="start">JSRoutesController</text></a></g><!-- node0&#45;&gt;node1 --><g class="edge inheritance" id="graph47_0_1"><a xlink:title="JSRoutesController is a subtype of JSRoutesController"><path d="M105,-56.6826C105,-46.8961 105,-34.9026 105,-26.1238" stroke="#d4d4d4" fill="none"></path><polygon points="103.25,-56.8581 105,-61.8581 106.75,-56.8581 103.25,-56.8581" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node2 --><g class="node class" id="graph47_2"><a xlink:title="xitrum.scope.request.RequestEnv" xlink:href="../scope/request/RequestEnv.html#inheritance-diagram"><polygon points="98.25,-150 -0.25,-150 -0.25,-124 98.25,-124 98.25,-150" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-145" x="10" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="32" text-anchor="start">RequestEnv</text></a></g><!-- node2&#45;&gt;node0 --><g class="edge inheritance" id="graph47_2_0"><a xlink:title="JSRoutesController is a subtype of RequestEnv"><path d="M63.908,-120.027C73.2541,-110.014 85.1115,-97.3091 93.6844,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="62.4647,-119.009 60.3324,-123.858 65.0234,-121.397 62.4647,-119.009" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node3 --><g class="node trait" id="graph47_3"><a xlink:title="xitrum.Controller" xlink:href="../Controller.html#inheritance-diagram"><polygon points="205,-150 117,-150 117,-124 205,-124 205,-150" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-145" x="127" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="149" text-anchor="start">Controller</text></a></g><!-- node3&#45;&gt;node0 --><g class="edge inheritance" id="graph47_3_0"><a xlink:title="JSRoutesController is a subtype of Controller"><path d="M146.092,-120.027C136.746,-110.014 124.888,-97.3091 116.316,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="144.977,-121.397 149.668,-123.858 147.535,-119.009 144.977,-121.397" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+              </div></div>
         
 
       <div id="mbrsel">
@@ -898,8 +902,8 @@ the connection.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
+    </li><li name="xitrum.Controller#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(controller:Any):Boolean"></a>
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -907,10 +911,10 @@ the connection.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">equals</span><span class="params">(<span name="controller">controller: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <p class="shortcomment cmt">You can write: if (currentController == MyController) .</p><div class="fullcomment"><div class="comment cmt"><p>You can write: if (currentController == MyController) ...</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a> → AnyRef → Any</dd></dl></div>
     </li><li name="xitrum.controller.ActionFactory#errorAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="errorAction(body:=&gt;Unit):xitrum.controller.Action"></a>
       <a id="errorAction(⇒Unit):Action"></a>

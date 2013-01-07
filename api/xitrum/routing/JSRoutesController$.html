@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -47,7 +47,11 @@
           <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="JSRoutesController.html" class="extype" name="xitrum.routing.JSRoutesController">JSRoutesController</a>, <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a>, <a href="../I18n.html" class="extype" name="xitrum.I18n">I18n</a>, <a href="../view/Responder.html" class="extype" name="xitrum.view.Responder">Responder</a>, <a href="../view/Knockout.html" class="extype" name="xitrum.view.Knockout">Knockout</a>, <a href="../view/Flash.html" class="extype" name="xitrum.view.Flash">Flash</a>, <a href="../view/JS.html" class="extype" name="xitrum.view.JS">JS</a>, <a href="../view/Renderer.html" class="extype" name="xitrum.view.Renderer">Renderer</a>, <a href="../controller/UrlFor.html" class="extype" name="xitrum.controller.UrlFor">UrlFor</a>, <a href="../controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a>, <a href="../controller/WebSocket.html" class="extype" name="xitrum.controller.WebSocket">WebSocket</a>, <a href="../controller/BasicAuth.html" class="extype" name="xitrum.controller.BasicAuth">BasicAuth</a>, <a href="../controller/Filter.html" class="extype" name="xitrum.controller.Filter">Filter</a>, <a href="../controller/Net.html" class="extype" name="xitrum.controller.Net">Net</a>, <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a>, <a href="../controller/ActionFactory.html" class="extype" name="xitrum.controller.ActionFactory">ActionFactory</a>, <a href="../scope/request/ExtEnv.html" class="extype" name="xitrum.scope.request.ExtEnv">ExtEnv</a>, <a href="../scope/session/CSRF.html" class="extype" name="xitrum.scope.session.CSRF">CSRF</a>, <a href="../scope/request/ParamAccess.html" class="extype" name="xitrum.scope.request.ParamAccess">ParamAccess</a>, <a href="../scope/request/RequestEnv.html" class="extype" name="xitrum.scope.request.RequestEnv">RequestEnv</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+        </div><div class="toggleContainer block diagram-container" id="content-diagram-container">
+                <span class="toggle diagram-link">Content Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="content-diagram"><svg class="package-diagram" id="graph48" viewBox="0.00 0.00 194.00 96.00" height="96pt" width="194pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 92)" class="graph" id="graph1"><polygon points="-4,5 -4,-92 191,-92 191,5 -4,5" stroke="white" fill="white"></polygon><!-- node0 --><g class="node outside object" id="graph48_0"><a xlink:title="xitrum.scope.request.ParamAccess.DefaultsTo" xlink:href="../scope/request/ParamAccess$DefaultsTo$.html#inheritance-diagram"><polygon points="139,-26 47,-26 47,-0 139,-0 139,-26" stroke="#ababab" fill="#e1e1e1"></polygon><image xlink:href="../../lib/object_diagram.png" y="-21" x="57" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#7d7d7d" font-size="10.00" font-family="Arial" y="-9" x="79" text-anchor="start">DefaultsTo</text></a></g><!-- node1 --><g class="node outside trait" id="graph48_1"><a xlink:title="xitrum.scope.request.ParamAccess.LowPriorityDefaultsTo" xlink:href="../scope/request/ParamAccess$LowPriorityDefaultsTo.html#inheritance-diagram"><polygon points="186.25,-88 -0.25,-88 -0.25,-62 186.25,-62 186.25,-88" stroke="#ababab" fill="#e1e1e1"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-83" x="10" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#7d7d7d" font-size="10.00" font-family="Arial" y="-71" x="32" text-anchor="start">Controller.LowPriorityDefaultsTo</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph48_1_0"><a xlink:title="DefaultsTo is a subtype of Controller.LowPriorityDefaultsTo"><path d="M93,-56.6826C93,-46.8961 93,-34.9026 93,-26.1238" stroke="#d4d4d4" fill="none"></path><polygon points="91.2501,-56.8581 93,-61.8581 94.7501,-56.8581 91.2501,-56.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+              </div></div>
         
 
       <div id="mbrsel">
@@ -879,8 +883,8 @@ the connection.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
+    </li><li name="xitrum.Controller#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(controller:Any):Boolean"></a>
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -888,10 +892,10 @@ the connection.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">equals</span><span class="params">(<span name="controller">controller: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <p class="shortcomment cmt">You can write: if (currentController == MyController) .</p><div class="fullcomment"><div class="comment cmt"><p>You can write: if (currentController == MyController) ...</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a> → AnyRef → Any</dd></dl></div>
     </li><li name="xitrum.controller.ActionFactory#errorAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="errorAction(body:=&gt;Unit):xitrum.controller.Action"></a>
       <a id="errorAction(⇒Unit):Action"></a>
