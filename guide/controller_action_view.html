@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller, action, and view &mdash; Xitrum 1.13 documentation</title>
+    <title>Controller, action, and view &mdash; Xitrum 1.14 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.13',
+        VERSION:     '1.14',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.13 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.14 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.13 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.14 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -168,7 +168,7 @@ should use <a class="reference external" href="http://scalate.fusesource.org/">S
 import xitrum.Controller
 
 trait AppController extends Controller {
-  override def layout = renderScalate(classOf[AppAction])
+  override def layout = renderViewNoLayout(classOf[AppAction])
 }</pre>
 </div>
 <p>scr/main/scala/quickstart/action/MyController.scala:</p>
@@ -216,8 +216,7 @@ To config the default template type, see xitrum.conf file in the config director
 of your Xitrum application.</p>
 <p>You can override the default template type by passing &#8220;jade&#8221;, &#8220;mustache&#8221;, &#8220;scamal&#8221;,
 or &#8220;ssp&#8221; to <cite>respondView</cite>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">respondView</span><span class="p">(</span><span class="s">&quot;mustache&quot;</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python"><pre>respondView(Map("type" -&gt;"mustache"))</pre>
 </div>
 <div class="section" id="id2">
 <h3>Mustache<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -354,7 +353,7 @@ class LoginController extends Controller {
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.13 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.14 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
