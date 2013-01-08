@@ -2,22 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Config - xitrum.Config</title>
-          <meta name="description" content="Config - xitrum.Config" />
-          <meta name="keywords" content="Config xitrum.Config" />
+          <title>TemplateEngine - xitrum.view.TemplateEngine</title>
+          <meta name="description" content="TemplateEngine - xitrum.view.TemplateEngine" />
+          <meta name="keywords" content="TemplateEngine xitrum.view.TemplateEngine" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../lib/template.js"></script>
-      <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
-      <script type="text/javascript" src="../lib/modernizr.custom.js"></script><script type="text/javascript" src="../lib/diagrams.js" id="diagrams-js"></script>
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
-            var url = '../index.html';
-            var hash = 'xitrum.Config';
+            var url = '../../index.html';
+            var hash = 'xitrum.view.TemplateEngine';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -29,28 +29,31 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="Config$.html" title="Go to companion"><img src="../lib/class_to_object_big.png" /></a>
-        <p id="owner"><a href="package.html" class="extype" name="xitrum">xitrum</a></p>
-        <h1><a href="Config$.html" title="Go to companion">Config</a></h1>
+        <img src="../../lib/trait_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.view">view</a></p>
+        <h1>TemplateEngine</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Config</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">TemplateEngine</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Template engines should extend this trait and implement its methods.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="ScalateTemplateEngine.html" class="extype" name="xitrum.view.ScalateTemplateEngine">ScalateTemplateEngine</a></div>
         </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
                 <span class="toggle diagram-link">Type Hierarchy</span>
                 <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
-                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph104" viewBox="0.00 0.00 130.00 120.00" height="120pt" width="130pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 127,-116 127,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph104_0"><a xlink:title="xitrum.Config (this class)" xlink:href="#inheritance-diagram"><polygon points="97.25,-50 24.75,-50 24.75,-24 97.25,-24 97.25,-50" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../lib/class_diagram.png" y="-45" x="35" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-33" x="57" text-anchor="start">Config</text></a></g><!-- node1 --><g class="node class" id="graph104_1"><a xlink:title="scala.AnyRef"><polygon points="99.25,-112 22.75,-112 22.75,-86 99.25,-86 99.25,-112" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../lib/class_diagram.png" y="-107" x="33" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-95" x="55" text-anchor="start">AnyRef</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph104_1_0"><a xlink:title="Config is a subtype of AnyRef"><path d="M61,-80.6826C61,-70.8961 61,-58.9026 61,-50.1238" stroke="#d4d4d4" fill="none"></path><polygon points="59.2501,-80.8581 61,-85.8581 62.7501,-80.8581 59.2501,-80.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph3" viewBox="0.00 0.00 172.00 158.00" height="158pt" width="172pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 154)" class="graph" id="graph1"><polygon points="-4,5 -4,-154 169,-154 169,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this trait" id="graph3_0"><a xlink:title="xitrum.view.TemplateEngine (this trait)" xlink:href="#inheritance-diagram"><polygon points="140,-88 24,-88 24,-62 140,-62 140,-88" stroke="#37657d" fill="#498aad"></polygon><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="56" text-anchor="start">TemplateEngine</text><image xlink:href="../../lib/trait_diagram.png" width="16px" height="16px" preserveAspectRatio="xMinYMin meet" x="34.0" y="-82.3334" xmlns:xlink="http://www.w3.org/1999/xlink"></image></a></g><!-- node1 --><g class="node class" id="graph3_1"><a xlink:title="xitrum.view.ScalateTemplateEngine" xlink:href="ScalateTemplateEngine.html#inheritance-diagram"><polygon points="156.25,-26 7.75,-26 7.75,-0 156.25,-0 156.25,-26" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-21" x="18" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="40" text-anchor="start">ScalateTemplateEngine</text></a></g><!-- node0&#45;&gt;node1 --><g class="edge inheritance" id="graph3_0_1"><a xlink:title="ScalateTemplateEngine is a subtype of TemplateEngine"><path d="M82,-56.6826C82,-46.8961 82,-34.9026 82,-26.1238" stroke="#d4d4d4" fill="none"></path><polygon points="80.2501,-56.8581 82,-61.8581 83.7501,-56.8581 80.2501,-56.8581" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node2 --><g class="node class" id="graph3_2"><a xlink:title="scala.AnyRef"><polygon points="120.25,-150 43.75,-150 43.75,-124 120.25,-124 120.25,-150" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-145" x="54" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="76" text-anchor="start">AnyRef</text></a></g><!-- node2&#45;&gt;node0 --><g class="edge inheritance" id="graph3_2_0"><a xlink:title="TemplateEngine is a subtype of AnyRef"><path d="M82,-118.683C82,-108.896 82,-96.9026 82,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="80.2501,-118.858 82,-123.858 83.7501,-118.858 80.2501,-118.858" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
               </div></div>
         
 
@@ -68,7 +71,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="xitrum.Config"><span>Config</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="xitrum.view.TemplateEngine"><span>TemplateEngine</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -86,30 +89,56 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="xitrum.Config#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(config:com.typesafe.config.Config):xitrum.Config"></a>
-      <a id="&lt;init&gt;:Config"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Config</span><span class="params">(<span name="config">config: <span class="extype" name="com.typesafe.config.Config">com.typesafe.config.Config</span></span>)</span>
-      </span>
-      </h4>
-      
-    </li></ol>
-            </div>
-
         
 
         
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="xitrum.view.TemplateEngine#renderFragment" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="renderFragment(controller:xitrum.Controller,controllerClass:Class[_],fragment:String,options:Map[String,Any]):String"></a>
+      <a id="renderFragment(Controller,Class[_],String,Map[String,Any]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderFragment</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders the template fragment associated with the controller.</p>
+    </li><li name="xitrum.view.TemplateEngine#renderTemplate" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="renderTemplate(controller:xitrum.Controller,controllerClass:Class[_],options:Map[String,Any]):String"></a>
+      <a id="renderTemplate(Controller,Class[_],Map[String,Any]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders the template associated with the controller.</p>
+    </li><li name="xitrum.view.TemplateEngine#renderTemplate" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="renderTemplate(controller:xitrum.Controller,action:xitrum.controller.Action,controllerName:String,actionName:String,options:Map[String,Any]):String"></a>
+      <a id="renderTemplate(Controller,Action,String,String,Map[String,Any]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="controllerName">controllerName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="actionName">actionName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders the template associated with the action of the controller.</p>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -188,19 +217,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="xitrum.Config#basicAuth" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="basicAuth:Option[xitrum.BasicAuthConfig]"></a>
-      <a id="basicAuth:Option[BasicAuthConfig]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">basicAuth</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="BasicAuthConfig.html" class="extype" name="xitrum.BasicAuthConfig">BasicAuthConfig</a>]</span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -217,19 +233,6 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="xitrum.Config#config" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="config:com.typesafe.config.Config"></a>
-      <a id="config:com.typesafe.config.Config"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">config</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">com.typesafe.config.Config</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -298,32 +301,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="xitrum.Config#hazelcastMode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="hazelcastMode:String"></a>
-      <a id="hazelcastMode:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hazelcastMode</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.Config#interface" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="interface:Option[String]"></a>
-      <a id="interface:Option[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">interface</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.lang.String">String</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -337,19 +314,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="xitrum.Config#keystore" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="keystore:xitrum.KeystoreConfig"></a>
-      <a id="keystore:KeystoreConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">keystore</span><span class="result">: <a href="KeystoreConfig.html" class="extype" name="xitrum.KeystoreConfig">KeystoreConfig</a></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -389,71 +353,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="xitrum.Config#port" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="port:xitrum.PortConfig"></a>
-      <a id="port:PortConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">port</span><span class="result">: <a href="PortConfig.html" class="extype" name="xitrum.PortConfig">PortConfig</a></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.Config#request" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="request:xitrum.RequestConfig"></a>
-      <a id="request:RequestConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">request</span><span class="result">: <a href="RequestConfig.html" class="extype" name="xitrum.RequestConfig">RequestConfig</a></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.Config#response" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="response:xitrum.ResponseConfig"></a>
-      <a id="response:ResponseConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">response</span><span class="result">: <a href="ResponseConfig.html" class="extype" name="xitrum.ResponseConfig">ResponseConfig</a></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.Config#reverseProxy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="reverseProxy:Option[xitrum.ReverseProxyConfig]"></a>
-      <a id="reverseProxy:Option[ReverseProxyConfig]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">reverseProxy</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="ReverseProxyConfig.html" class="extype" name="xitrum.ReverseProxyConfig">ReverseProxyConfig</a>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.Config#session" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="session:xitrum.SessionConfig"></a>
-      <a id="session:SessionConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">session</span><span class="result">: <a href="SessionConfig.html" class="extype" name="xitrum.SessionConfig">SessionConfig</a></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -467,19 +366,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="xitrum.Config#templateEngine" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="templateEngine:xitrum.view.TemplateEngine"></a>
-      <a id="templateEngine:TemplateEngine"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">templateEngine</span><span class="result">: <a href="view/TemplateEngine.html" class="extype" name="xitrum.view.TemplateEngine">TemplateEngine</a></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>

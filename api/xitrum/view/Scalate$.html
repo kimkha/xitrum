@@ -317,85 +317,121 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="xitrum.view.Scalate#renderFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderFile(controller:xitrum.Controller,relPath:String):String"></a>
-      <a id="renderFile(Controller,String):String"></a>
+    </li><li name="xitrum.view.Scalate#renderFragment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="renderFragment(controller:xitrum.Controller,controllerClass:Class[_],fragment:String,options:Map[String,Any]):String"></a>
+      <a id="renderFragment(Controller,Class[_],String,Map[String,Any]):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderFile</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="relPath">relPath: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderFragment</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map()</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders Scalate template file relative to src/main/scalate directory.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file relative to src/main/scalate directory.</p></div><dl class="paramcmts block"><dt class="param">controller</dt><dd class="cmt"><p>will be imported in the template as &quot;helper&quot;
-</p></dd></dl></div>
+      <p class="shortcomment cmt">Renders Scalate template file with the path:
+&lt;scalateDir&gt;/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file with the path:
+&lt;scalateDir&gt;/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.&lt;templateType&gt;
+</p></div></div>
     </li><li name="xitrum.view.Scalate#renderJadeString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderJadeString(controller:xitrum.Controller,templateContent:String):String"></a>
-      <a id="renderJadeString(Controller,String):String"></a>
+      <a id="renderJadeString(templateContent:String)(implicitcontroller:xitrum.Controller):String"></a>
+      <a id="renderJadeString(String)(Controller):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderJadeString</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderJadeString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
     </li><li name="xitrum.view.Scalate#renderMustacheString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderMustacheString(controller:xitrum.Controller,templateContent:String):String"></a>
-      <a id="renderMustacheString(Controller,String):String"></a>
+      <a id="renderMustacheString(templateContent:String)(implicitcontroller:xitrum.Controller):String"></a>
+      <a id="renderMustacheString(String)(Controller):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderMustacheString</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderMustacheString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
     </li><li name="xitrum.view.Scalate#renderScamlString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderScamlString(controller:xitrum.Controller,templateContent:String):String"></a>
-      <a id="renderScamlString(Controller,String):String"></a>
+      <a id="renderScamlString(templateContent:String)(implicitcontroller:xitrum.Controller):String"></a>
+      <a id="renderScamlString(String)(Controller):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderScamlString</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderScamlString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
     </li><li name="xitrum.view.Scalate#renderSspString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderSspString(controller:xitrum.Controller,templateContent:String):String"></a>
-      <a id="renderSspString(Controller,String):String"></a>
+      <a id="renderSspString(templateContent:String)(implicitcontroller:xitrum.Controller):String"></a>
+      <a id="renderSspString(String)(Controller):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderSspString</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderSspString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
     </li><li name="xitrum.view.Scalate#renderString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderString(controller:xitrum.Controller,templateContent:String,templateType:String):String"></a>
-      <a id="renderString(Controller,String,String):String"></a>
+      <a id="renderString(templateContent:String,templateType:String)(implicitcontroller:xitrum.Controller):String"></a>
+      <a id="renderString(String,String)(Controller):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderString</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="templateType">templateType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="templateType">templateType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">templateType</dt><dd class="cmt"><p>jade, mustache, scaml, ssp</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">templateType</dt><dd class="cmt"><p>jade, mustache, scaml, or ssp</p></dd></dl></div>
+    </li><li name="xitrum.view.Scalate#renderTemplate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="renderTemplate(controller:xitrum.Controller,controllerClass:Class[_],options:Map[String,Any]):String"></a>
+      <a id="renderTemplate(Controller,Class[_],Map[String,Any]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders Scalate template file at the path:
+&lt;scalateDir&gt;/&lt;/class/name/of/the/controller/of/the/given/action&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file at the path:
+&lt;scalateDir&gt;/&lt;/class/name/of/the/controller/of/the/given/action&gt;.&lt;templateType&gt;
+</p></div><dl class="paramcmts block"><dt class="param">controller</dt><dd class="cmt"><p>will be imported in the template as &quot;helper&quot;
+</p></dd></dl></div>
+    </li><li name="xitrum.view.Scalate#renderTemplate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="renderTemplate(controller:xitrum.Controller,action:xitrum.controller.Action,controllerName:String,actionName:String,options:Map[String,Any]):String"></a>
+      <a id="renderTemplate(Controller,Action,String,String,Map[String,Any]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="controllerName">controllerName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="actionName">actionName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Renders Scalate template file at the path:
+&lt;scalateDir&gt;/&lt;/class/name/of/the/controller/of/the/given/action&gt;/&lt;action name&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file at the path:
+&lt;scalateDir&gt;/&lt;/class/name/of/the/controller/of/the/given/action&gt;/&lt;action name&gt;.&lt;templateType&gt;
+</p></div><dl class="paramcmts block"><dt class="param">controller</dt><dd class="cmt"><p>will be imported in the template as &quot;helper&quot;
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
