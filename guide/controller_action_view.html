@@ -61,6 +61,8 @@ for other web sites.</li>
 <p>As a web framework, Xitrum aims to support you to solve these use cases easily.
 In Xitrum, there are 2 kinds of actions: <a class="reference internal" href="restful.html"><em>RESTful actions</em></a> and
 <a class="reference internal" href="postback.html"><em>postback actions</em></a>.</p>
+<div class="section" id="respond-to-client">
+<h2>Respond to client<a class="headerlink" href="#respond-to-client" title="Permalink to this headline">¶</a></h2>
 <p>From an action, to respond something to client, use:</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">respondText(&quot;hello&quot;)</span></tt>: responds a string without layout</li>
@@ -77,8 +79,9 @@ because <a class="reference external" href="http://www.ibm.com/developerworks/li
 <li><tt class="docutils literal"><span class="pre">respondWebSocket</span></tt>: responds a WebSocket text frame</li>
 <li><tt class="docutils literal"><span class="pre">respondEventSource(&quot;data&quot;,</span> <span class="pre">&quot;event&quot;)</span></tt></li>
 </ul>
-<div class="section" id="template-view-file">
-<h2>Template view file<a class="headerlink" href="#template-view-file" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="respond-template-view-file">
+<h2>Respond template view file<a class="headerlink" href="#respond-template-view-file" title="Permalink to this headline">¶</a></h2>
 <p>Each action may have an associated <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
 template view file. Instead of responding directly in the action with the above
 methods, you can use a separate view file.</p>
@@ -342,7 +345,8 @@ class LoginController extends Controller {
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Controller, action, and view</a><ul>
-<li><a class="reference internal" href="#template-view-file">Template view file</a><ul>
+<li><a class="reference internal" href="#respond-to-client">Respond to client</a></li>
+<li><a class="reference internal" href="#respond-template-view-file">Respond template view file</a><ul>
 <li><a class="reference internal" href="#id1">Mustache</a></li>
 </ul>
 </li>
