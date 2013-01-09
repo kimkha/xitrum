@@ -214,6 +214,21 @@ As a result, your data must be serializable.</p>
 <p>If no key is specified, <tt class="docutils literal"><span class="pre">secureKey</span></tt> in xitrum.conf file in config directory
 is used.</p>
 </div>
+<div class="section" id="create-your-own-template-engine">
+<h2>Create your own template engine<a class="headerlink" href="#create-your-own-template-engine" title="Permalink to this headline">¶</a></h2>
+<p>The default template engine is Scalate.
+If you want to create and use your own template engine:</p>
+<ol class="arabic simple">
+<li>Create a class that implements <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/view/TemplateEngine.scala">xitrum.view.TemplateEngine</a></li>
+<li>Set that class in <a class="reference external" href="https://github.com/ngocdaothanh/xitrum-new/blob/master/config/xitrum.conf#L47">xitrum.conf</a></li>
+<li>If your template engine needs config items, add them to xitrum.conf,
+then load them like this:</li>
+</ol>
+<div class="highlight-python"><pre>val defaultType = xitrum.Config.config.config.getString("scalateDefaultType")</pre>
+</div>
+<p>See project <a class="reference external" href="https://github.com/typesafehub/config">Typesafe Config</a> and
+<a class="reference external" href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/Config.html">its API</a>.</p>
+</div>
 </div>
 
 
@@ -240,6 +255,7 @@ is used.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#encrypt-data">Encrypt data</a></li>
+<li><a class="reference internal" href="#create-your-own-template-engine">Create your own template engine</a></li>
 </ul>
 </li>
 </ul>

@@ -61,25 +61,7 @@ for other web sites.</li>
 <p>As a web framework, Xitrum aims to support you to solve these use cases easily.
 In Xitrum, there are 2 kinds of actions: <a class="reference internal" href="restful.html"><em>RESTful actions</em></a> and
 <a class="reference internal" href="postback.html"><em>postback actions</em></a>.</p>
-<p>Normally, you write view directly in its action.</p>
-<div class="highlight-python"><pre>import xitrum.Controller
-
-class MyController extends Controller {
-  def index = GET {
-    val s = "World"  // Will be automatically escaped
-
-    respondInlineView(
-      &lt;html&gt;
-        &lt;body&gt;
-          &lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;
-        &lt;/body&gt;
-      &lt;/html&gt;
-    )
-  }
-}</pre>
-</div>
-<p>Of course you can refactor the view into a separate Scala file.</p>
-<p>There are methods for responding things other than views:</p>
+<p>From an action, to respond something to client, use:</p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">respondText(&quot;hello&quot;)</span></tt>: responds a string without layout</li>
 <li><tt class="docutils literal"><span class="pre">respondHtml(&quot;&lt;html&gt;...&lt;/html&gt;&quot;)</span></tt>: same as above, with content type set to &#8220;text/html&#8221;</li>
@@ -95,86 +77,16 @@ because <a class="reference external" href="http://www.ibm.com/developerworks/li
 <li><tt class="docutils literal"><span class="pre">respondWebSocket</span></tt>: responds a WebSocket text frame</li>
 <li><tt class="docutils literal"><span class="pre">respondEventSource(&quot;data&quot;,</span> <span class="pre">&quot;event&quot;)</span></tt></li>
 </ul>
-<div class="section" id="layout">
-<h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
-<p>When you respond a view with <tt class="docutils literal"><span class="pre">respondView</span></tt> or <tt class="docutils literal"><span class="pre">respondInlineView</span></tt>, Xitrum
-renders it to a String, and sets the String to <tt class="docutils literal"><span class="pre">renderedView</span></tt> variable. Xitrum
-then calls <tt class="docutils literal"><span class="pre">layout</span></tt> method of the current controller, finally Xitrum responds
-the result of this method to the browser.</p>
-<p>By default <tt class="docutils literal"><span class="pre">layout</span></tt> method just returns <tt class="docutils literal"><span class="pre">renderedView</span></tt> itself. If you want
-to decorate your view with something, override this method. If you include
-<tt class="docutils literal"><span class="pre">renderedView</span></tt> in the method, the view will be included as part of your layout.</p>
-<p>The point is <tt class="docutils literal"><span class="pre">layout</span></tt> is called after your action&#8217;s view, and whatever returned
-is what responded to the browser. This mechanism is simple and straight forward.
-No magic. For convenience, you may think that there&#8217;s no layout in Xitrum at all.
-There&#8217;s just the <tt class="docutils literal"><span class="pre">layout</span></tt> method and you do whatever you want with it.</p>
-<p>Typically, you create a parent class which has a common layout for many views:</p>
-<p>AppController.scala</p>
-<div class="highlight-python"><pre>import xitrum.Controller
-import xitrum.view.DocType
-
-trait AppController extends Controller {
-  override def layout = DocType.html5(
-    &lt;html&gt;
-      &lt;head&gt;
-        {antiCSRFMeta}
-        {xitrumCSS}
-        {jsDefaults}
-        &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
-      &lt;/head&gt;
-      &lt;body&gt;
-        {renderedView}
-        {jsForView}
-      &lt;/body&gt;
-    &lt;/html&gt;
-  )
-}</pre>
-</div>
-<p><tt class="docutils literal"><span class="pre">xitrumCSS</span></tt> includes the default CSS for Xitrum. You may remove it if you
-don&#8217;t like.
-<tt class="docutils literal"><span class="pre">jsDefaults</span></tt> includes jQuery, jQuery Validate plugin etc.
-should be put at layout&#8217;s &lt;head&gt;.
-<tt class="docutils literal"><span class="pre">jsForView</span></tt> contains JS fragments added by <tt class="docutils literal"><span class="pre">jsAddToView</span></tt>,
-should be put at layout&#8217;s bottom.</p>
-<p>MyController.scala</p>
-<div class="highlight-python"><pre>import xitrum.Controller
-
-class MyController extends AppController {
-  def index = GET {
-    val s = "World"
-    respondInlineView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;)
-  }
-}</pre>
-</div>
-<p>You can pass the layout directly to <tt class="docutils literal"><span class="pre">respondInlineView</span></tt>:</p>
-<div class="highlight-python"><pre>val specialLayout = () =&gt;
-  &lt;html&gt;
-    &lt;body&gt;
-      {respondedView}
-    &lt;/body&gt;
-  &lt;/html&gt;
-
-val s = "World"
-respondInlineView(&lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;, specialLayout _)</pre>
-</div>
-</div>
-<div class="section" id="scalate">
-<h2>Scalate<a class="headerlink" href="#scalate" title="Permalink to this headline">¶</a></h2>
-<p>For small views you can use Scala XML for convenience, but for big views you
-should use <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a> templates.</p>
-<p>scr/main/scala/quickstart/controller/AppController.scala:</p>
-<div class="highlight-python"><pre>package quickstart.controller
-
+<div class="section" id="template-view-file">
+<h2>Template view file<a class="headerlink" href="#template-view-file" title="Permalink to this headline">¶</a></h2>
+<p>Each action may have an associated <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
+template view file. Instead of responding directly in the action with the above
+methods, you can use a separate view file.</p>
+<p>scr/main/scala/mypackage/MyController.scala:</p>
+<div class="highlight-python"><pre>package mypackage
 import xitrum.Controller
 
-trait AppController extends Controller {
-  override def layout = renderViewNoLayout(classOf[AppAction])
-}</pre>
-</div>
-<p>scr/main/scala/quickstart/action/MyController.scala:</p>
-<div class="highlight-python"><pre>package quickstart.controller
-
-class MyController extends AppController {
+class MyController extends Controller {
   def index = GET {
     respondView()
   }
@@ -182,8 +94,10 @@ class MyController extends AppController {
   def hello(what: String) = "Hello %s".format(what)
 }</pre>
 </div>
-<p>scr/main/scalate/quickstart/controller/AppController.jade:</p>
-<div class="highlight-python"><pre>!!! 5
+<p>scr/main/scalate/mypackage/MyController/index.jade:</p>
+<div class="highlight-python"><pre>- import mypackage.MyController
+
+!!! 5
 html
   head
     != antiCSRFMeta
@@ -192,20 +106,22 @@ html
     title Welcome to Xitrum
 
   body
-    != respondedView
+    a(href={currentAction.url}) Path to the current action
+    p= currentController.asInstanceOf[MyController].hello("World")
+
     != jsForView</pre>
 </div>
-<p>scr/main/scalate/quickstart/controller/MyController/index.jade:</p>
-<div class="highlight-python"><pre>- import quickstart.controller.MyController
-
-a(href={currentAction.url}) Path to current action
-p= currentController.asInstanceOf[MyController].hello("World")</pre>
-</div>
-<p>In templates you can use all methods of the class <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/Controller.scala">xitrum.Controller</a>,
-like <tt class="docutils literal"><span class="pre">xitrumCSS</span></tt>. Also, you can use utility methods provided by Scalate like <tt class="docutils literal"><span class="pre">unescape</span></tt>.
-See the <a class="reference external" href="http://scalate.fusesource.org/documentation/index.html">Scalate doc</a>.
-Note that these methods are not available for Mustache templates (see the next
-section).</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">xitrumCSS</span></tt> includes the default CSS for Xitrum. You may remove it if you
+don&#8217;t like.</li>
+<li><tt class="docutils literal"><span class="pre">jsDefaults</span></tt> includes jQuery, jQuery Validate plugin etc.
+should be put at layout&#8217;s &lt;head&gt;.</li>
+<li><tt class="docutils literal"><span class="pre">jsForView</span></tt> contains JS fragments added by <tt class="docutils literal"><span class="pre">jsAddToView</span></tt>,
+should be put at layout&#8217;s bottom.</li>
+</ul>
+<p>In templates you can use all methods of the class <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/Controller.scala">xitrum.Controller</a>.
+Also, you can use utility methods provided by Scalate like <tt class="docutils literal"><span class="pre">unescape</span></tt>.
+See the <a class="reference external" href="http://scalate.fusesource.org/documentation/index.html">Scalate doc</a>.</p>
 <p>If you want to have exactly instance of the current controller, cast <tt class="docutils literal"><span class="pre">currentController</span></tt> to
 the controller you wish.</p>
 <p>The default Scalate template type is <a class="reference external" href="http://scalate.fusesource.org/documentation/jade.html">Jade</a>.
@@ -218,8 +134,8 @@ of your Xitrum application.</p>
 or &#8220;ssp&#8221; to <cite>respondView</cite>.</p>
 <div class="highlight-python"><pre>respondView(Map("type" -&gt;"mustache"))</pre>
 </div>
-<div class="section" id="id2">
-<h3>Mustache<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Mustache<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Must read:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://mustache.github.com/mustache.5.html">Mustache syntax</a></li>
@@ -243,6 +159,132 @@ template, because they&#8217;re already used:</p>
 <li>&#8220;context&#8221;: for Sclate utility object, which contains methods like <tt class="docutils literal"><span class="pre">unescape</span></tt></li>
 <li>&#8220;helper&#8221;: for the current controller object</li>
 </ul>
+</div>
+</div>
+<div class="section" id="layout">
+<h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
+<p>When you respond a view with <tt class="docutils literal"><span class="pre">respondView</span></tt> or <tt class="docutils literal"><span class="pre">respondInlineView</span></tt>, Xitrum
+renders it to a String, and sets the String to <tt class="docutils literal"><span class="pre">renderedView</span></tt> variable. Xitrum
+then calls <tt class="docutils literal"><span class="pre">layout</span></tt> method of the current controller, finally Xitrum responds
+the result of this method to the browser.</p>
+<p>By default <tt class="docutils literal"><span class="pre">layout</span></tt> method just returns <tt class="docutils literal"><span class="pre">renderedView</span></tt> itself. If you want
+to decorate your view with something, override this method. If you include
+<tt class="docutils literal"><span class="pre">renderedView</span></tt> in the method, the view will be included as part of your layout.</p>
+<p>The point is <tt class="docutils literal"><span class="pre">layout</span></tt> is called after your action&#8217;s view, and whatever returned
+is what responded to the browser. This mechanism is simple and straight forward.
+No magic. For convenience, you may think that there&#8217;s no layout in Xitrum at all.
+There&#8217;s just the <tt class="docutils literal"><span class="pre">layout</span></tt> method and you do whatever you want with it.</p>
+<p>Typically, you create a parent class which has a common layout for many views:</p>
+<p>src/main/scala/mypackage/AppController.scala</p>
+<div class="highlight-python"><pre>package mypackage
+import xitrum.Controller
+
+trait AppController extends Controller {
+  override def layout = renderViewNoLayout(classOf[AppController])
+}</pre>
+</div>
+<p>src/main/scalate/mypackage/AppController.jade</p>
+<div class="highlight-python"><pre>!!! 5
+html
+  head
+    != antiCSRFMeta
+    != xitrumCSS
+    != jsDefaults
+    title Welcome to Xitrum
+
+  body
+    != renderedView
+    != jsForView</pre>
+</div>
+<p>src/main/scala/mypackage/MyController.scala</p>
+<div class="highlight-python"><pre>package mypackage
+import AppController
+
+class MyController extends AppController {
+  def index = GET {
+    respondView()
+  }
+
+  def hello(what: String) = "Hello %s".format(what)
+}</pre>
+</div>
+<p>scr/main/scalate/mypackage/MyController/index.jade:</p>
+<div class="highlight-python"><pre>- import mypackage.MyController
+
+a(href={currentAction.url}) Path to the current action
+p= currentController.asInstanceOf[MyController].hello("World")</pre>
+</div>
+<div class="section" id="without-separate-layout-file">
+<h3>Without separate layout file<a class="headerlink" href="#without-separate-layout-file" title="Permalink to this headline">¶</a></h3>
+<p>AppController.scala</p>
+<div class="highlight-python"><pre>import xitrum.Controller
+import xitrum.view.DocType
+
+trait AppController extends Controller {
+  override def layout = DocType.html5(
+    &lt;html&gt;
+      &lt;head&gt;
+        {antiCSRFMeta}
+        {xitrumCSS}
+        {jsDefaults}
+        &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        {renderedView}
+        {jsForView}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+}</pre>
+</div>
+</div>
+<div class="section" id="pass-layout-directly-in-respondview">
+<h3>Pass layout directly in respondView<a class="headerlink" href="#pass-layout-directly-in-respondview" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>val specialLayout = () =&gt;
+  DocType.html5(
+    &lt;html&gt;
+      &lt;head&gt;
+        {antiCSRFMeta}
+        {xitrumCSS}
+        {jsDefaults}
+        &lt;title&gt;Welcome to Xitrum&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        {renderedView}
+        {jsForView}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  )
+
+respondView(specialLayout _)</pre>
+</div>
+</div>
+</div>
+<div class="section" id="inline-view">
+<h2>Inline view<a class="headerlink" href="#inline-view" title="Permalink to this headline">¶</a></h2>
+<p>Normally, you write view in a Scalate file. You can also write it directly:</p>
+<div class="highlight-python"><pre>import xitrum.Controller
+
+class MyController extends Controller {
+  def index = GET {
+    val s = "World"  // Will be automatically escaped
+    respondInlineView(
+      &lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;
+    )
+  }
+}</pre>
+</div>
+</div>
+<div class="section" id="render-fragment">
+<h2>Render fragment<a class="headerlink" href="#render-fragment" title="Permalink to this headline">¶</a></h2>
+<p>If you want to render the frament file
+scr/main/scalate/mypackage/MyController/_myfragment.jade:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">renderFragment</span><span class="p">(</span><span class="n">classOf</span><span class="p">[</span><span class="n">MyController</span><span class="p">],</span> <span class="s">&quot;myfragment&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If MyController is the current controller, you can skip it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">renderFragment</span><span class="p">(</span><span class="s">&quot;myfragment&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="controller-object">
@@ -300,11 +342,17 @@ class LoginController extends Controller {
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Controller, action, and view</a><ul>
-<li><a class="reference internal" href="#layout">Layout</a></li>
-<li><a class="reference internal" href="#scalate">Scalate</a><ul>
-<li><a class="reference internal" href="#id2">Mustache</a></li>
+<li><a class="reference internal" href="#template-view-file">Template view file</a><ul>
+<li><a class="reference internal" href="#id1">Mustache</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#layout">Layout</a><ul>
+<li><a class="reference internal" href="#without-separate-layout-file">Without separate layout file</a></li>
+<li><a class="reference internal" href="#pass-layout-directly-in-respondview">Pass layout directly in respondView</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inline-view">Inline view</a></li>
+<li><a class="reference internal" href="#render-fragment">Render fragment</a></li>
 <li><a class="reference internal" href="#controller-object">Controller object</a><ul>
 <li><a class="reference internal" href="#caveat">Caveat</a></li>
 </ul>

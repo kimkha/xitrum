@@ -70,17 +70,17 @@ you may need to setup session replication by setting <tt class="docutils literal
 <h2>xitrum.Config.hazelcastInstance<a class="headerlink" href="#xitrum-config-hazelcastinstance" title="Permalink to this headline">¶</a></h2>
 <p>Xitrum includes Hazelcast for cache and Comet. Thus, you can also use Hazelcast
 in your Xitrum project yourself.</p>
-<p>Hazelcast has <a class="reference external" href="http://www.hazelcast.com/documentation.jsp#Clients">3 modes</a>:
+<p>Hazelcast has <a class="reference external" href="http://www.hazelcast.com/docs/2.4/manual/multi_html/ch07s03.html">3 modes</a>:
 cluster member, lite member, and Java client. Please see <tt class="docutils literal"><span class="pre">hazelcastMode</span></tt>
-in <tt class="docutils literal"><span class="pre">config/xitrum.conf</span></tt>.</p>
-<p>Xitrum handles these modes automatically. When you need to get a Hazelcast map,
-do not do like this:</p>
-<div class="highlight-python"><pre>import com.hazelcast.core.Hazelcast
-val myMap = Hazelcast.getMap("myMap")</pre>
+in <tt class="docutils literal"><span class="pre">config/xitrum.conf</span></tt>. Xitrum handles these modes automatically.</p>
+<p>To craete a <a class="reference external" href="http://www.hazelcast.com/docs/2.4/manual/multi_html/ch02s03.html">Hazelcast map</a>:</p>
+<div class="highlight-python"><pre>import com.hazelcast.core.IMap
+import xitrum.Config
+val myMap = Config.hazelcastInstance.getMap("myMap").asInstanceOf[IMap[MyKeyType, MyValueType]]</pre>
 </div>
-<p>You should do like this:</p>
-<div class="highlight-python"><pre>import xitrum.Config.hazelcastInstance
-val myMap = Config.hazelcastInstance.getMap("myMap")</pre>
+<p>To create a <a class="reference external" href="http://www.hazelcast.com/docs/2.4/manual/multi_html/ch02s02.html">Hazelcast topic</a>:</p>
+<div class="highlight-python"><pre>import xitrum.Config
+val myTopic = Config.hazelcastInstance.getTopic[MyTopicEventType]("myTopicName")</pre>
 </div>
 </div>
 </div>
