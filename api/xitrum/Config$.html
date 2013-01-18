@@ -155,6 +155,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="xitrum.Config#ACTOR_SYSTEM_NAME" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ACTOR_SYSTEM_NAME:String"></a>
+      <a id="ACTOR_SYSTEM_NAME:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ACTOR_SYSTEM_NAME</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      
     </li><li name="xitrum.Config#BIG_TEXTUAL_RESPONSE_SIZE_IN_KB" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BIG_TEXTUAL_RESPONSE_SIZE_IN_KB:Int"></a>
       <a id="BIG_TEXTUAL_RESPONSE_SIZE_IN_KB:Int"></a>
@@ -189,6 +202,32 @@ http://code.google.com/speed/page-speed/docs/payload.html#GzipCompression</p><p>
 http://grizzly.</p><div class="fullcomment"><div class="comment cmt"><p>In case of CPU bound, the pool size should be equal the number of cores
 http://grizzly.java.net/nonav/docs/docbkx2.0/html/bestpractices.html
 </p></div></div>
+    </li><li name="xitrum.Config#actorSystem" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="actorSystem:akka.actor.ActorSystem"></a>
+      <a id="actorSystem:ActorSystem"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">actorSystem</span><span class="result">: <span class="extype" name="akka.actor.ActorSystem">ActorSystem</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">akka.</p><div class="fullcomment"><div class="comment cmt"><p>akka.actor.ActorSystem(&quot;xitrum&quot;)</p></div></div>
+    </li><li name="xitrum.Config#application" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="application:com.typesafe.config.Config"></a>
+      <a id="application:com.typesafe.config.Config"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">application</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">com.typesafe.config.Config</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">config/application.</p><div class="fullcomment"><div class="comment cmt"><p>config/application.conf</p></div></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -231,19 +270,6 @@ http://grizzly.java.net/nonav/docs/docbkx2.0/html/bestpractices.html
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="xitrum.Config#config" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="config:xitrum.Config"></a>
-      <a id="config:Config"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">config</span><span class="result">: <a href="Config.html" class="extype" name="xitrum.Config">Config</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Loaded from config/xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>Loaded from config/xitrum.conf</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -357,19 +383,6 @@ sbt console mode and don't like this overhead)
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="xitrum.Config#isProductionMode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="isProductionMode:Boolean"></a>
-      <a id="isProductionMode:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">isProductionMode</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">See bin/runner.</p><div class="fullcomment"><div class="comment cmt"><p>See bin/runner.sh</p></div></div>
     </li><li name="xitrum.Logger#logger" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logger:org.slf4j.Logger"></a>
       <a id="logger:org.slf4j.Logger"></a>
@@ -422,6 +435,21 @@ sbt console mode and don't like this overhead)
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="xitrum.Config#productionMode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="productionMode:Boolean"></a>
+      <a id="productionMode:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">productionMode</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">true if &quot;xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>true if &quot;xitrum.mode&quot; system property is set to &quot;production&quot;
+See bin/runner.sh.
+</p></div></div>
     </li><li name="xitrum.Config#requestCharset" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="requestCharset:java.nio.charset.Charset"></a>
       <a id="requestCharset:Charset"></a>
@@ -567,6 +595,19 @@ See https://github.com/ngocdaothanh/xitrum/issues/47
 //xitrum/postback/zOIc0v...
 will cause the browser to send request to http://xitrum/postback/zOIc0v...
 </p></dd></dl></div>
+    </li><li name="xitrum.Config#xitrum" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="xitrum:xitrum.Config"></a>
+      <a id="xitrum:Config"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xitrum</span><span class="result">: <a href="Config.html" class="extype" name="xitrum.Config">Config</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">config/xitrum.</p><div class="fullcomment"><div class="comment cmt"><p>config/xitrum.conf</p></div></div>
     </li></ol>
             </div>
 

@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>QueueMessage - xitrum.sockjs.QueueMessage</title>
-          <meta name="description" content="QueueMessage - xitrum.sockjs.QueueMessage" />
-          <meta name="keywords" content="QueueMessage xitrum.sockjs.QueueMessage" />
+          <title>SingleActorInstance - xitrum.util.SingleActorInstance</title>
+          <meta name="description" content="SingleActorInstance - xitrum.util.SingleActorInstance" />
+          <meta name="keywords" content="SingleActorInstance xitrum.util.SingleActorInstance" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -17,7 +17,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'xitrum.sockjs.QueueMessage';
+            var hash = 'xitrum.util.SingleActorInstance$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -27,31 +27,31 @@
    	  </script>
     
         </head>
-        <body class="type">
+        <body class="value">
       <div id="definition">
-        <img src="../../lib/class_big.png" />
-        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.sockjs">sockjs</a></p>
-        <h1>QueueMessage</h1>
+        <a href="SingleActorInstance.html" title="Go to companion"><img src="../../lib/object_to_class_big.png" /></a>
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.util">util</a></p>
+        <h1><a href="SingleActorInstance.html" title="Go to companion">SingleActorInstance</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">QueueMessage</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">SingleActorInstance</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Needs to be Serializable to be stored in Hazelcast</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This object provides &quot;single actor instance&quot; feature, implemented using
+Akka Remoting and Hazelcast:
+https://groups.google.com/group/akka-user/browse_thread/thread/23d6b2851648c1b0</p><p>You must config config/akka.conf to use Akka Remoting:
+http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html</p><p>With future version of Akka, this object may become obsolete.
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
-                <span class="toggle diagram-link">Type Hierarchy</span>
-                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
-                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph31" viewBox="0.00 0.00 172.00 120.00" height="120pt" width="172pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 169,-116 169,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph31_0"><a xlink:title="xitrum.sockjs.QueueMessage (this class)" xlink:href="#inheritance-diagram"><polygon points="139.25,-50 24.75,-50 24.75,-24 139.25,-24 139.25,-50" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-45" x="35" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-33" x="57" text-anchor="start">QueueMessage</text></a></g><!-- node1 --><g class="node trait" id="graph31_1"><a xlink:title="scala.Serializable"><polygon points="130,-112 34,-112 34,-86 130,-86 130,-112" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-107" x="44" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-95" x="66" text-anchor="start">Serializable</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph31_1_0"><a xlink:title="QueueMessage is a subtype of Serializable"><path d="M82,-80.6826C82,-70.8961 82,-58.9026 82,-50.1238" stroke="#d4d4d4" fill="none"></path><polygon points="80.2501,-80.8581 82,-85.8581 83.7501,-80.8581 80.2501,-80.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
-              </div></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
         
 
       <div id="mbrsel">
@@ -68,7 +68,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="xitrum.sockjs.QueueMessage"><span>QueueMessage</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="xitrum.util.SingleActorInstance"><span>SingleActorInstance</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -86,23 +86,7 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="xitrum.sockjs.QueueMessage#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(topic:String,timestamp:Long,body:Any):xitrum.sockjs.QueueMessage"></a>
-      <a id="&lt;init&gt;:QueueMessage"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">QueueMessage</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="timestamp">timestamp: <span class="extype" name="scala.Long">Long</span></span>, <span name="body">body: <span class="extype" name="scala.Any">Any</span></span>)</span>
-      </span>
-      </h4>
-      
-    </li></ol>
-            </div>
+        
 
         
 
@@ -175,6 +159,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="xitrum.util.SingleActorInstance#actor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="actor():akka.actor.ActorRef"></a>
+      <a id="actor():ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">actor</span><span class="params">()</span><span class="result">: <span class="extype" name="akka.actor.ActorRef">ActorRef</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -188,19 +185,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="xitrum.sockjs.QueueMessage#body" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="body:Any"></a>
-      <a id="body:Any"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">body</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -337,6 +321,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="xitrum.util.SingleActorInstance#start" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="start():Unit"></a>
+      <a id="start():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">start</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -350,20 +347,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="xitrum.sockjs.QueueMessage#timestamp" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="timestamp:Long"></a>
-      <a id="timestamp:Long"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">timestamp</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.sockjs.QueueMessage#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
       <h4 class="signature">
@@ -375,20 +359,7 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="xitrum.sockjs.QueueMessage">QueueMessage</a> → AnyRef → Any</dd></dl></div>
-    </li><li name="xitrum.sockjs.QueueMessage#topic" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="topic:String"></a>
-      <a id="topic:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">topic</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -446,11 +417,7 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

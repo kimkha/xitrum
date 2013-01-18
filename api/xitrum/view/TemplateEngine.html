@@ -95,7 +95,7 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="xitrum.view.TemplateEngine#renderFragment" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="xitrum.view.TemplateEngine#renderFragment" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="renderFragment(controller:xitrum.Controller,controllerClass:Class[_],fragment:String,options:Map[String,Any]):String"></a>
       <a id="renderFragment(Controller,Class[_],String,Map[String,Any]):String"></a>
       <h4 class="signature">
@@ -107,8 +107,11 @@
         <span class="name">renderFragment</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders the template fragment associated with the controller.</p>
-    </li><li name="xitrum.view.TemplateEngine#renderTemplate" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Renders the template fragment associated with the controller.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template fragment associated with the controller.</p><p>Ex: When controller = myapp.Site, fragment = &quot;footer&quot;,
+by default the Scalate template path will be:
+src/main/scalate/myapp/Site/_footer.jade
+</p></div></div>
+    </li><li name="xitrum.view.TemplateEngine#renderTemplate" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="renderTemplate(controller:xitrum.Controller,controllerClass:Class[_],options:Map[String,Any]):String"></a>
       <a id="renderTemplate(Controller,Class[_],Map[String,Any]):String"></a>
       <h4 class="signature">
@@ -120,8 +123,11 @@
         <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders the template associated with the controller.</p>
-    </li><li name="xitrum.view.TemplateEngine#renderTemplate" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Renders the template associated with the controller.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template associated with the controller.</p><p>Ex: When controller = myapp.Site,
+by default the Scalate template path will be:
+src/main/scalate/myapp/Site.jade
+</p></div></div>
+    </li><li name="xitrum.view.TemplateEngine#renderTemplate" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="renderTemplate(controller:xitrum.Controller,action:xitrum.controller.Action,controllerName:String,actionName:String,options:Map[String,Any]):String"></a>
       <a id="renderTemplate(Controller,Action,String,String,Map[String,Any]):String"></a>
       <h4 class="signature">
@@ -133,7 +139,10 @@
         <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="controllerName">controllerName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="actionName">actionName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders the template associated with the action of the controller.</p>
+      <p class="shortcomment cmt">Renders the template associated with the action of the controller.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template associated with the action of the controller.</p><p>Ex: When controller = myapp.Site, action = index,
+by default the Scalate template path will be:
+src/main/scalate/myapp/Site/index.jade
+</p></div></div>
     </li></ol>
             </div>
 

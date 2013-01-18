@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>SockJsNonWebSocketSession - xitrum.sockjs.SockJsNonWebSocketSession</title>
-          <meta name="description" content="SockJsNonWebSocketSession - xitrum.sockjs.SockJsNonWebSocketSession" />
-          <meta name="keywords" content="SockJsNonWebSocketSession xitrum.sockjs.SockJsNonWebSocketSession" />
+          <title>MessageQueue - xitrum.mq.MessageQueue</title>
+          <meta name="description" content="MessageQueue - xitrum.mq.MessageQueue" />
+          <meta name="keywords" content="MessageQueue xitrum.mq.MessageQueue" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -17,7 +17,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'xitrum.sockjs.SockJsNonWebSocketSession';
+            var hash = 'xitrum.mq.MessageQueue$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -27,36 +27,27 @@
    	  </script>
     
         </head>
-        <body class="type">
+        <body class="value">
       <div id="definition">
-        <img src="../../lib/class_big.png" />
-        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.sockjs">sockjs</a></p>
-        <h1>SockJsNonWebSocketSession</h1>
+        <img src="../../lib/object_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.mq">mq</a></p>
+        <h1>MessageQueue</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">SockJsNonWebSocketSession</span><span class="result"> extends <span class="extype" name="akka.actor.Actor">Actor</span></span>
+        <span class="name">MessageQueue</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>There should be at most one subscriber:
-http://sockjs.github.com/sockjs-protocol/sockjs-protocol-0.3.3.html</p><p>To avoid out of memory, the actor is stopped when there's no subscriber
-for a long time. Timeout is also used to check if there's no message
-for subscriber for a long time.
-See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in SockJsNonWebSocketSessions.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Simple message queue. Messages older than 60 seconds will automatically be removed.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="akka.actor.Actor">Actor</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
-                <span class="toggle diagram-link">Type Hierarchy</span>
-                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
-                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph21" viewBox="0.00 0.00 238.00 120.00" height="120pt" width="238pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 235,-116 235,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph21_0"><a xlink:title="xitrum.sockjs.SockJsNonWebSocketSession (this class)" xlink:href="#inheritance-diagram"><polygon points="205.25,-50 24.75,-50 24.75,-24 205.25,-24 205.25,-50" stroke="#115f3b" fill="#0a955b"></polygon><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-33" x="57" text-anchor="start">SockJsNonWebSocketSession</text><image xlink:href="../../lib/class_diagram.png" width="16px" height="16px" preserveAspectRatio="xMinYMin meet" x="35.0" y="-44.3334" xmlns:xlink="http://www.w3.org/1999/xlink"></image></a></g><!-- node1 --><g class="node trait" id="graph21_1"><a xlink:title="akka.actor.Actor"><polygon points="149,-112 81,-112 81,-86 149,-86 149,-112" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-107" x="91" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-95" x="113" text-anchor="start">Actor</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph21_1_0"><a xlink:title="SockJsNonWebSocketSession is a subtype of Actor"><path d="M115,-80.6826C115,-70.8961 115,-58.9026 115,-50.1238" stroke="#d4d4d4" fill="none"></path><polygon points="113.25,-80.8581 115,-85.8581 116.75,-80.8581 113.25,-80.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
-              </div></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
         
 
       <div id="mbrsel">
@@ -73,7 +64,7 @@ See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in SockJsNonWebSocketSessions.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="xitrum.sockjs.SockJsNonWebSocketSession"><span>SockJsNonWebSocketSession</span></li><li class="in" name="akka.actor.Actor"><span>Actor</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="xitrum.mq.MessageQueue"><span>MessageQueue</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -91,39 +82,23 @@ See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in SockJsNonWebSocketSessions.
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="xitrum.sockjs.SockJsNonWebSocketSession#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sockJsHandler:xitrum.SockJsHandler):xitrum.sockjs.SockJsNonWebSocketSession"></a>
-      <a id="&lt;init&gt;:SockJsNonWebSocketSession"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SockJsNonWebSocketSession</span><span class="params">(<span name="sockJsHandler">sockJsHandler: <a href="../SockJsHandler.html" class="extype" name="xitrum.SockJsHandler">SockJsHandler</a></span>)</span>
-      </span>
-      </h4>
-      
-    </li></ol>
-            </div>
+        
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="akka.actor.Actor.Receive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Receive=akka.actor.Actor.Receive"></a>
-      <a id="Receive:Receive"></a>
+              <ol><li name="xitrum.mq.MessageQueue.MessageListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MessageListener=Seq[xitrum.mq.QueueMessage]=&gt;Boolean"></a>
+      <a id="MessageListener:(Seq[QueueMessage])⇒Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">Receive</span><span class="result"> = <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Unit">Unit</span>]</span>
+        <span class="name">MessageListener</span><span class="result"> = (<span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.mq.QueueMessage">QueueMessage</a>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+      <p class="shortcomment cmt">The listener returns true if it wants itself to be unsubscribe.</p>
     </li></ol>
             </div>
 
@@ -225,19 +200,6 @@ See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in SockJsNonWebSocketSessions.
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="akka.actor.Actor#context" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="context:akka.actor.ActorContext"></a>
-      <a id="context:ActorContext"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">context</span><span class="result">: <span class="extype" name="akka.actor.ActorContext">ActorContext</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../akka/package.html" class="extype" name="akka">akka</a>] </dd><dt>Definition Classes</dt><dd>Actor</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -293,6 +255,19 @@ See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in SockJsNonWebSocketSessions.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="xitrum.mq.MessageQueue#getMessages" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getMessages(topic:String,lastTimestamp:Long):Seq[xitrum.mq.QueueMessage]"></a>
+      <a id="getMessages(String,Long):Seq[QueueMessage]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMessages</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="lastTimestamp">lastTimestamp: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.mq.QueueMessage">QueueMessage</a>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -358,110 +333,46 @@ See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in SockJsNonWebSocketSessions.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="akka.actor.Actor#postRestart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="postRestart(reason:&lt;?&gt;):Unit"></a>
-      <a id="postRestart(Throwable):Unit"></a>
+    </li><li name="xitrum.mq.MessageQueue#publish" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="publish(topic:String,message:Any):Unit"></a>
+      <a id="publish(String,Any):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">postRestart</span><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">publish</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="message">message: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
-    </li><li name="xitrum.sockjs.SockJsNonWebSocketSession#postStop" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="postStop():Unit"></a>
-      <a id="postStop():Unit"></a>
+      
+    </li><li name="xitrum.mq.MessageQueue#subscribe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="subscribe(topic:String,listener:Seq[xitrum.mq.QueueMessage]=&gt;Boolean,lastTimestamp:Long):Boolean"></a>
+      <a id="subscribe(String,(Seq[QueueMessage])⇒Boolean,Long):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">postStop</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">subscribe</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="listener">listener: (<span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.mq.QueueMessage">QueueMessage</a>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="lastTimestamp">lastTimestamp: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSession">SockJsNonWebSocketSession</a> → Actor</dd></dl></div>
-    </li><li name="akka.actor.Actor#preRestart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="preRestart(reason:&lt;?&gt;,message:&lt;?&gt;):Unit"></a>
-      <a id="preRestart(Throwable,Option[Any]):Unit"></a>
+      <p class="shortcomment cmt">Subscribe and get existing messages at the same time.</p><div class="fullcomment"><div class="comment cmt"><p>Subscribe and get existing messages at the same time.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if the listener has been subscribed
+</p></dd></dl></div>
+    </li><li name="xitrum.mq.MessageQueue#subscribe" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="subscribe(topic:String,listener:Seq[xitrum.mq.QueueMessage]=&gt;Boolean):Unit"></a>
+      <a id="subscribe(String,(Seq[QueueMessage])⇒Boolean):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">preRestart</span><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Throwable">Throwable</span></span>, <span name="message">message: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">subscribe</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="listener">listener: (<span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.mq.QueueMessage">QueueMessage</a>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
-    </li><li name="xitrum.sockjs.SockJsNonWebSocketSession#preStart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="preStart():Unit"></a>
-      <a id="preStart():Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">preStart</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSession">SockJsNonWebSocketSession</a> → Actor</dd></dl></div>
-    </li><li name="xitrum.sockjs.SockJsNonWebSocketSession#receive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="receive:PartialFunction[Any,Unit]"></a>
-      <a id="receive:PartialFunction[Any,Unit]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">receive</span><span class="result">: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Unit">Unit</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSession">SockJsNonWebSocketSession</a> → Actor</dd></dl></div>
-    </li><li name="akka.actor.Actor#self" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="self:akka.actor.ActorRef"></a>
-      <a id="self:ActorRef"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit final </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">self</span><span class="result">: <span class="extype" name="akka.actor.ActorRef">ActorRef</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
-    </li><li name="akka.actor.Actor#sender" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sender:akka.actor.ActorRef"></a>
-      <a id="sender:ActorRef"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sender</span><span class="result">: <span class="extype" name="akka.actor.ActorRef">ActorRef</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
-    </li><li name="akka.actor.Actor#supervisorStrategy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="supervisorStrategy:akka.actor.SupervisorStrategy"></a>
-      <a id="supervisorStrategy:SupervisorStrategy"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">supervisorStrategy</span><span class="result">: <span class="extype" name="akka.actor.SupervisorStrategy">SupervisorStrategy</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -488,19 +399,19 @@ See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in SockJsNonWebSocketSessions.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="akka.actor.Actor#unhandled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="unhandled(message:&lt;?&gt;):Unit"></a>
-      <a id="unhandled(Any):Unit"></a>
+    </li><li name="xitrum.mq.MessageQueue#unsubscribe" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="unsubscribe(topic:String,listener:Seq[xitrum.mq.QueueMessage]=&gt;Boolean):Unit"></a>
+      <a id="unsubscribe(String,(Seq[QueueMessage])⇒Boolean):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unhandled</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">unsubscribe</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="listener">listener: (<span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.mq.QueueMessage">QueueMessage</a>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -558,9 +469,7 @@ See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in SockJsNonWebSocketSessions.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="akka.actor.Actor">
-              <h3>Inherited from <span class="extype" name="akka.actor.Actor">Actor</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

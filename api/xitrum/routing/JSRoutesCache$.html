@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>MessageQueue - xitrum.sockjs.MessageQueue</title>
-          <meta name="description" content="MessageQueue - xitrum.sockjs.MessageQueue" />
-          <meta name="keywords" content="MessageQueue xitrum.sockjs.MessageQueue" />
+          <title>JSRoutesCache - xitrum.routing.JSRoutesCache</title>
+          <meta name="description" content="JSRoutesCache - xitrum.routing.JSRoutesCache" />
+          <meta name="keywords" content="JSRoutesCache xitrum.routing.JSRoutesCache" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -17,7 +17,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'xitrum.sockjs.MessageQueue$';
+            var hash = 'xitrum.routing.JSRoutesCache$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -30,8 +30,8 @@
         <body class="value">
       <div id="definition">
         <img src="../../lib/object_big.png" />
-        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.sockjs">sockjs</a></p>
-        <h1>MessageQueue</h1>
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.routing">routing</a></p>
+        <h1>JSRoutesCache</h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -40,7 +40,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">MessageQueue</span>
+        <span class="name">JSRoutesCache</span>
       </span>
       </h4>
       
@@ -64,7 +64,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="xitrum.sockjs.MessageQueue"><span>MessageQueue</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="xitrum.routing.JSRoutesCache"><span>JSRoutesCache</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -84,23 +84,7 @@
         <div id="allMembers">
         
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="xitrum.sockjs.MessageQueue.MessageListener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MessageListener=Seq[xitrum.sockjs.QueueMessage]=&gt;Boolean"></a>
-      <a id="MessageListener:(Seq[QueueMessage])⇒Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">MessageListener</span><span class="result"> = (<span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.sockjs.QueueMessage">QueueMessage</a>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">The listener returns true if it wants itself to be unsubscribe.</p>
-    </li></ol>
-            </div>
+        
 
         
 
@@ -226,6 +210,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="xitrum.routing.JSRoutesCache#etag" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="etag:String"></a>
+      <a id="etag:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">etag</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -255,16 +252,16 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="xitrum.sockjs.MessageQueue#getMessages" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getMessages(topic:String,lastTimestamp:Long):Seq[xitrum.sockjs.QueueMessage]"></a>
-      <a id="getMessages(String,Long):Seq[QueueMessage]"></a>
+    </li><li name="xitrum.routing.JSRoutesCache#gzippedRoutes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="gzippedRoutes:Array[Byte]"></a>
+      <a id="gzippedRoutes:Array[Byte]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">getMessages</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="lastTimestamp">lastTimestamp: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.sockjs.QueueMessage">QueueMessage</a>]</span>
+        <span class="name">gzippedRoutes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
       </span>
       </h4>
       
@@ -333,43 +330,16 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="xitrum.sockjs.MessageQueue#publish" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="publish(topic:String,message:Any):Unit"></a>
-      <a id="publish(String,Any):Unit"></a>
+    </li><li name="xitrum.routing.JSRoutesCache#routes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="routes:String"></a>
+      <a id="routes:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
-        <span class="name">publish</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="message">message: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.sockjs.MessageQueue#subscribe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="subscribe(topic:String,listener:Seq[xitrum.sockjs.QueueMessage]=&gt;Boolean,lastTimestamp:Long):Boolean"></a>
-      <a id="subscribe(String,(Seq[QueueMessage])⇒Boolean,Long):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">subscribe</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="listener">listener: (<span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.sockjs.QueueMessage">QueueMessage</a>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="lastTimestamp">lastTimestamp: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Subscribe and get existing messages at the same time.</p><div class="fullcomment"><div class="comment cmt"><p>Subscribe and get existing messages at the same time.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if the listener has been subscribed
-</p></dd></dl></div>
-    </li><li name="xitrum.sockjs.MessageQueue#subscribe" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="subscribe(topic:String,listener:Seq[xitrum.sockjs.QueueMessage]=&gt;Boolean):Unit"></a>
-      <a id="subscribe(String,(Seq[QueueMessage])⇒Boolean):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">subscribe</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="listener">listener: (<span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.sockjs.QueueMessage">QueueMessage</a>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">routes</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       
@@ -399,19 +369,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="xitrum.sockjs.MessageQueue#unsubscribe" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="unsubscribe(topic:String,listener:Seq[xitrum.sockjs.QueueMessage]=&gt;Boolean):Unit"></a>
-      <a id="unsubscribe(String,(Seq[QueueMessage])⇒Boolean):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">unsubscribe</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="listener">listener: (<span class="extype" name="scala.Seq">Seq</span>[<a href="QueueMessage.html" class="extype" name="xitrum.sockjs.QueueMessage">QueueMessage</a>]) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

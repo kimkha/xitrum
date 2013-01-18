@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>SockJsNonWebSocketSessionActorMessage - xitrum.sockjs.SockJsNonWebSocketSessionActorMessage</title>
-          <meta name="description" content="SockJsNonWebSocketSessionActorMessage - xitrum.sockjs.SockJsNonWebSocketSessionActorMessage" />
-          <meta name="keywords" content="SockJsNonWebSocketSessionActorMessage xitrum.sockjs.SockJsNonWebSocketSessionActorMessage" />
+          <title>QueueMessage - xitrum.mq.QueueMessage</title>
+          <meta name="description" content="QueueMessage - xitrum.mq.QueueMessage" />
+          <meta name="keywords" content="QueueMessage xitrum.mq.QueueMessage" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -17,7 +17,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'xitrum.sockjs.SockJsNonWebSocketSessionActorMessage';
+            var hash = 'xitrum.mq.QueueMessage';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -29,31 +29,28 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../lib/trait_big.png" />
-        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.sockjs">sockjs</a></p>
-        <h1>SockJsNonWebSocketSessionActorMessage</h1>
+        <img src="../../lib/class_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.mq">mq</a></p>
+        <h1>QueueMessage</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">sealed </span>
-        <span class="kind">trait</span>
+        <span class="modifier"></span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">SockJsNonWebSocketSessionActorMessage</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">QueueMessage</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Needs to be Serializable to be stored in Hazelcast</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="CloseByHandler$.html" class="extype" name="xitrum.sockjs.CloseByHandler">CloseByHandler</a>, <a href="SendMessageByHandler.html" class="extype" name="xitrum.sockjs.SendMessageByHandler">SendMessageByHandler</a>, <a href="SendMessagesByClient.html" class="extype" name="xitrum.sockjs.SendMessagesByClient">SendMessagesByClient</a>, <a href="SubscribeOnceByClient$.html" class="extype" name="xitrum.sockjs.SubscribeOnceByClient">SubscribeOnceByClient</a>, <a href="UnsubscribeByClient$.html" class="extype" name="xitrum.sockjs.UnsubscribeByClient">UnsubscribeByClient</a></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
                 <span class="toggle diagram-link">Type Hierarchy</span>
                 <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
-                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph26" viewBox="0.00 0.00 789.00 158.00" height="158pt" width="789pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 154)" class="graph" id="graph1"><polygon points="-4,5 -4,-154 786,-154 786,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this trait" id="graph26_0"><a xlink:title="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage (this trait)" xlink:href="#inheritance-diagram"><polygon points="505.25,-88 260.75,-88 260.75,-62 505.25,-62 505.25,-88" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-83" x="271" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="293" text-anchor="start">SockJsNonWebSocketSessionActorMessage</text></a></g><!-- node1 --><g class="node object" id="graph26_1"><a xlink:title="xitrum.sockjs.CloseByHandler" xlink:href="CloseByHandler$.html#inheritance-diagram"><polygon points="116.25,-26 -0.25,-26 -0.25,-0 116.25,-0 116.25,-26" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-21" x="10" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="32" text-anchor="start">CloseByHandler</text></a></g><!-- node0&#45;&gt;node1 --><g class="edge inheritance" id="graph26_0_1"><a xlink:title="CloseByHandler is a subtype of SockJsNonWebSocketSessionActorMessage"><path d="M312.382,-60.9628C253.774,-50.1428 171.413,-34.9378 116.454,-24.7916" stroke="#d4d4d4" fill="none"></path><polygon points="312.388,-62.7434 317.622,-61.9303 313.023,-59.3015 312.388,-62.7434" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node2 --><g class="node class" id="graph26_2"><a xlink:title="xitrum.sockjs.SendMessageByHandler" xlink:href="SendMessageByHandler.html#inheritance-diagram"><polygon points="289.25,-26 134.75,-26 134.75,-0 289.25,-0 289.25,-26" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-21" x="145" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="167" text-anchor="start">SendMessageByHandler</text></a></g><!-- node0&#45;&gt;node2 --><g class="edge inheritance" id="graph26_0_2"><a xlink:title="SendMessageByHandler is a subtype of SockJsNonWebSocketSessionActorMessage"><path d="M343.4,-60.1054C313.998,-49.7889 274.304,-35.8609 246.261,-26.0213" stroke="#d4d4d4" fill="none"></path><polygon points="343.098,-61.8539 348.396,-61.8581 344.257,-58.5513 343.098,-61.8539" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node3 --><g class="node class" id="graph26_3"><a xlink:title="xitrum.sockjs.SendMessagesByClient" xlink:href="SendMessagesByClient.html#inheritance-diagram"><polygon points="458,-26 308,-26 308,-0 458,-0 458,-26" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-21" x="318" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="340" text-anchor="start">SendMessagesByClient</text></a></g><!-- node0&#45;&gt;node3 --><g class="edge inheritance" id="graph26_0_3"><a xlink:title="SendMessagesByClient is a subtype of SockJsNonWebSocketSessionActorMessage"><path d="M383,-56.6826C383,-46.8961 383,-34.9026 383,-26.1238" stroke="#d4d4d4" fill="none"></path><polygon points="381.25,-56.8581 383,-61.8581 384.75,-56.8581 381.25,-56.8581" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node4 --><g class="node object" id="graph26_4"><a xlink:title="xitrum.sockjs.SubscribeOnceByClient" xlink:href="SubscribeOnceByClient$.html#inheritance-diagram"><polygon points="626,-26 476,-26 476,-0 626,-0 626,-26" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-21" x="486" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="508" text-anchor="start">SubscribeOnceByClient</text></a></g><!-- node0&#45;&gt;node4 --><g class="edge inheritance" id="graph26_0_4"><a xlink:title="SubscribeOnceByClient is a subtype of SockJsNonWebSocketSessionActorMessage"><path d="M421.905,-60.1054C450.791,-49.7889 489.789,-35.8609 517.34,-26.0213" stroke="#d4d4d4" fill="none"></path><polygon points="421.117,-58.5283 416.997,-61.8581 422.295,-61.8244 421.117,-58.5283" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node5 --><g class="node object" id="graph26_5"><a xlink:title="xitrum.sockjs.UnsubscribeByClient" xlink:href="UnsubscribeByClient$.html#inheritance-diagram"><polygon points="781.25,-26 644.75,-26 644.75,-0 781.25,-0 781.25,-26" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-21" x="655" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="677" text-anchor="start">UnsubscribeByClient</text></a></g><!-- node0&#45;&gt;node5 --><g class="edge inheritance" id="graph26_0_5"><a xlink:title="UnsubscribeByClient is a subtype of SockJsNonWebSocketSessionActorMessage"><path d="M454.492,-61.0014C511.605,-50.6174 591.029,-36.1765 646.723,-26.0504" stroke="#d4d4d4" fill="none"></path><polygon points="453.99,-59.314 449.383,-61.9303 454.616,-62.7575 453.99,-59.314" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node6 --><g class="node class" id="graph26_6"><a xlink:title="scala.AnyRef"><polygon points="421.25,-150 344.75,-150 344.75,-124 421.25,-124 421.25,-150" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-145" x="355" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="377" text-anchor="start">AnyRef</text></a></g><!-- node6&#45;&gt;node0 --><g class="edge inheritance" id="graph26_6_0"><a xlink:title="SockJsNonWebSocketSessionActorMessage is a subtype of AnyRef"><path d="M383,-118.683C383,-108.896 383,-96.9026 383,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="381.25,-118.858 383,-123.858 384.75,-118.858 381.25,-118.858" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph56" viewBox="0.00 0.00 172.00 120.00" height="120pt" width="172pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 169,-116 169,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph56_0"><a xlink:title="xitrum.mq.QueueMessage (this class)" xlink:href="#inheritance-diagram"><polygon points="139.25,-50 24.75,-50 24.75,-24 139.25,-24 139.25,-50" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-45" x="35" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-33" x="57" text-anchor="start">QueueMessage</text></a></g><!-- node1 --><g class="node trait" id="graph56_1"><a xlink:title="scala.Serializable"><polygon points="130,-112 34,-112 34,-86 130,-86 130,-112" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-107" x="44" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-95" x="66" text-anchor="start">Serializable</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph56_1_0"><a xlink:title="QueueMessage is a subtype of Serializable"><path d="M82,-80.6826C82,-70.8961 82,-58.9026 82,-50.1238" stroke="#d4d4d4" fill="none"></path><polygon points="80.2501,-80.8581 82,-85.8581 83.7501,-80.8581 80.2501,-80.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
               </div></div>
         
 
@@ -71,7 +68,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="xitrum.sockjs.SockJsNonWebSocketSessionActorMessage"><span>SockJsNonWebSocketSessionActorMessage</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="xitrum.mq.QueueMessage"><span>QueueMessage</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -89,7 +86,23 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="xitrum.mq.QueueMessage#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(topic:String,timestamp:Long,body:Any):xitrum.mq.QueueMessage"></a>
+      <a id="&lt;init&gt;:QueueMessage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">QueueMessage</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="timestamp">timestamp: <span class="extype" name="scala.Long">Long</span></span>, <span name="body">body: <span class="extype" name="scala.Any">Any</span></span>)</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -175,6 +188,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="xitrum.mq.QueueMessage#body" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="body:Any"></a>
+      <a id="body:Any"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">body</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -324,7 +350,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="xitrum.mq.QueueMessage#timestamp" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="timestamp:Long"></a>
+      <a id="timestamp:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">timestamp</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.mq.QueueMessage#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
       <h4 class="signature">
@@ -336,7 +375,20 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="xitrum.mq.QueueMessage">QueueMessage</a> → AnyRef → Any</dd></dl></div>
+    </li><li name="xitrum.mq.QueueMessage#topic" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="topic:String"></a>
+      <a id="topic:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">topic</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -394,7 +446,11 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
