@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum 1.14 documentation</title>
+    <title>Async response &mdash; Xitrum 1.15 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.14',
+        VERSION:     '1.15',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.14 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.15 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.14 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.15 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -106,16 +106,16 @@ class HelloSockJS extends Controller {
     // If you don't want to accept the connection, call channel.close()
     acceptWebSocket(new WebSocketHandler {
       def onOpen() {
-        log.debug("onOpen")
+        logger.debug("onOpen")
       }
 
       def onMessage(message: String) {
-        // Send back data to the SockJS client
+        // Send back data to the WebSocket client
         respondWebSocket(message.toUpperCase)
       }
 
       def onClose() {
-        log.debug("onClose")
+        logger.debug("onClose")
       }
     })
   }
@@ -167,6 +167,7 @@ class EchoSockJsHandler extends SockJsHandler {
   def onOpen() {}
 
   def onMessage(message: String) {
+    // Send back data to the SockJS client
     send(message)
   }
 
@@ -186,64 +187,7 @@ session, provide a unique token on a page, send it as a first thing over SockJS
 connection and validate it on the server side. In essence, this is how cookies
 work.</pre>
 </div>
-</div>
-<div class="section" id="ajax-long-polling">
-<h2>Ajax long polling<a class="headerlink" href="#ajax-long-polling" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="chat-example">
-<h3>Chat example<a class="headerlink" href="#chat-example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><pre>import xitrum.Controller
-import xitrum.comet.CometController
-import xitrum.validator.{Required, Validated}
-
-class ChatController {
-  def index = GET("chat") {
-    jsCometGet("chat", """
-      function(topic, timestamp, body) {
-        var text = '- ' + xitrum.escapeHtml(body.chatInput[0]) + '&lt;br /&gt;';
-        xitrum.appendAndScroll('#chatOutput', text);
-      }
-    """)
-
-    respondInlineView(
-      &lt;div id="chatOutput"&gt;&lt;/div&gt;
-
-      &lt;form data-postback="submit" action={CometController.publish.url} data-after="$('#chatInput').value('')"&gt;
-        &lt;input type="hidden" name="topic" value="chat" class="required" /&gt;
-        &lt;input type="text" id="chatInput" name="chatInput" class="required" /&gt;
-      &lt;/form&gt;
-    )
-  }
-}</pre>
-</div>
-<p><tt class="docutils literal"><span class="pre">jsCometGet</span></tt> will send long polling Ajax requests, get published messages,
-and call your callback function. The 3rd argument <tt class="docutils literal"><span class="pre">body</span></tt> is a hash
-containing everything inside the form commited to <tt class="docutils literal"><span class="pre">CometController</span></tt>.</p>
-</div>
-<div class="section" id="publish-message">
-<h3>Publish message<a class="headerlink" href="#publish-message" title="Permalink to this headline">¶</a></h3>
-<p>In the example above, <tt class="docutils literal"><span class="pre">CometController</span></tt> will receive form post and publish
-the message for you. If you want to publish the message yourself, call <tt class="docutils literal"><span class="pre">Comet.publish</span></tt>:</p>
-<div class="highlight-python"><pre>import xitrum.Controller
-import xitrum.comet.Comet
-
-class AdminController extends Controller {
-  def index = GET("admin") {
-    respondInlineView(
-      &lt;form data-postback="submit" action={publish.url}&gt;
-        &lt;label&gt;Message from admin:&lt;/label&gt;
-        &lt;input type="text" name="body" class="required" /&gt;
-      &lt;/form&gt;
-    )
-  }
-
-  def publish = POST("admin/chat") {
-    val body = param("body")
-    Comet.publish("chat", "[From admin]: " + body)
-    respondText("")
-  }
-}</pre>
-</div>
-</div>
+<p>To config SockJS clustering, see <a class="reference internal" href="cluster.html"><em>Clustering with Akka and Hazelcast</em></a>.</p>
 </div>
 <div class="section" id="chunked-response">
 <h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
@@ -332,11 +276,6 @@ respondEventSource("data2")  // Event name defaults to "message"</pre>
 <li><a class="reference internal" href="#">Async response</a><ul>
 <li><a class="reference internal" href="#websocket">WebSocket</a></li>
 <li><a class="reference internal" href="#sockjs">SockJS</a></li>
-<li><a class="reference internal" href="#ajax-long-polling">Ajax long polling</a><ul>
-<li><a class="reference internal" href="#chat-example">Chat example</a></li>
-<li><a class="reference internal" href="#publish-message">Publish message</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#chunked-response">Chunked response</a><ul>
 <li><a class="reference internal" href="#forever-iframe">Forever iframe</a></li>
 <li><a class="reference internal" href="#event-source">Event Source</a></li>
@@ -386,7 +325,7 @@ respondEventSource("data2")  // Event name defaults to "message"</pre>
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.14 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.15 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

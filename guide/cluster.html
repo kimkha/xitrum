@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Clustering with Hazelcast &mdash; Xitrum 1.14 documentation</title>
+    <title>Clustering with Akka and Hazelcast &mdash; Xitrum 1.15 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.14',
+        VERSION:     '1.15',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.14 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.15 documentation" href="index.html" />
     <link rel="next" title="HOWTO" href="howto.html" />
     <link rel="prev" title="Deploy to production server" href="deploy.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="deploy.html" title="Deploy to production server"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.14 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.15 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,17 +50,19 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="clustering-with-hazelcast">
-<h1>Clustering with Hazelcast<a class="headerlink" href="#clustering-with-hazelcast" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="clustering-with-akka-and-hazelcast">
+<h1>Clustering with Akka and Hazelcast<a class="headerlink" href="#clustering-with-akka-and-hazelcast" title="Permalink to this headline">¶</a></h1>
 <p>Xitrum is designed in mind to run in production environment as multiple instances
 behind a proxy server or load balancer:</p>
 <div class="highlight-python"><pre>                              / Xitrum instance 1
 Load balancer/proxy server ---- Xitrum instance 2
                               \ Xitrum instance 3</pre>
 </div>
-<p>Cache and Comet are clustered out of the box thanks to <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>.
-Please see <tt class="docutils literal"><span class="pre">hazelcastMode</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.conf</span></tt>, <tt class="docutils literal"><span class="pre">config/hazelcast_cluster_or_lite_member.xml</span></tt>,
-<tt class="docutils literal"><span class="pre">config/hazelcast_java_client.properties</span></tt>, and read <a class="reference external" href="http://www.hazelcast.com/docs/2.4/manual/single_html/#Config">Hazelcast&#8217;s documentation</a>
+<p>SockJS sessions and <a class="reference external" href="http://www.hazelcast.com/docs/2.5/manual/multi_html/ch02.html">many data structures</a>
+are clustered out of the box thanks to <a class="reference external" href="http://akka.io/">Akka</a> and <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>.</p>
+<p>Please see <tt class="docutils literal"><span class="pre">remote</span></tt> in <tt class="docutils literal"><span class="pre">config/akka.conf</span></tt> and <tt class="docutils literal"><span class="pre">hazelcastMode</span></tt> in <tt class="docutils literal"><span class="pre">config/xitrum.conf</span></tt>,
+and read <a class="reference external" href="http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html">Akka doc</a> and
+<a class="reference external" href="http://www.hazelcast.com/docs/2.5/manual/single_html/#Config">Hazelcast&#8217;s doc</a>
 to know how to config.</p>
 <p>Session are stored in cookie by default. You don&#8217;t need to worry how to share
 sessions among Xitrum instances. But if you use <a class="reference internal" href="scopes.html"><em>HazelcastSessionStore</em></a>,
@@ -68,17 +70,13 @@ you may need to setup session replication by setting <tt class="docutils literal
 <tt class="docutils literal"><span class="pre">xitrum/session</span></tt> in config/hazelcast_cluster_or_lite_member.xml to more than 0.</p>
 <div class="section" id="xitrum-config-hazelcastinstance">
 <h2>xitrum.Config.hazelcastInstance<a class="headerlink" href="#xitrum-config-hazelcastinstance" title="Permalink to this headline">¶</a></h2>
-<p>Xitrum includes Hazelcast for cache and Comet. Thus, you can also use Hazelcast
-in your Xitrum project yourself.</p>
-<p>Hazelcast has <a class="reference external" href="http://www.hazelcast.com/docs/2.4/manual/multi_html/ch07s03.html">3 modes</a>:
-cluster member, lite member, and Java client. Please see <tt class="docutils literal"><span class="pre">hazelcastMode</span></tt>
-in <tt class="docutils literal"><span class="pre">config/xitrum.conf</span></tt>. Xitrum handles these modes automatically.</p>
-<p>To craete a <a class="reference external" href="http://www.hazelcast.com/docs/2.4/manual/multi_html/ch02s03.html">Hazelcast map</a>:</p>
+<p>Xitrum includes Hazelcast. You can also use Hazelcast in your Xitrum project.</p>
+<p>To create a <a class="reference external" href="http://www.hazelcast.com/docs/2.5/manual/multi_html/ch02s03.html">distributed map</a>:</p>
 <div class="highlight-python"><pre>import com.hazelcast.core.IMap
 import xitrum.Config
 val myMap = Config.hazelcastInstance.getMap("myMap").asInstanceOf[IMap[MyKeyType, MyValueType]]</pre>
 </div>
-<p>To create a <a class="reference external" href="http://www.hazelcast.com/docs/2.4/manual/multi_html/ch02s02.html">Hazelcast topic</a>:</p>
+<p>To create a <a class="reference external" href="http://www.hazelcast.com/docs/2.5/manual/multi_html/ch02s02.html">distributed topic</a>:</p>
 <div class="highlight-python"><pre>import xitrum.Config
 val myTopic = Config.hazelcastInstance.getTopic[MyTopicEventType]("myTopicName")</pre>
 </div>
@@ -93,7 +91,7 @@ val myTopic = Config.hazelcastInstance.getTopic[MyTopicEventType]("myTopicName")
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Clustering with Hazelcast</a><ul>
+<li><a class="reference internal" href="#">Clustering with Akka and Hazelcast</a><ul>
 <li><a class="reference internal" href="#xitrum-config-hazelcastinstance">xitrum.Config.hazelcastInstance</a></li>
 </ul>
 </li>
@@ -139,7 +137,7 @@ val myTopic = Config.hazelcastInstance.getTopic[MyTopicEventType]("myTopicName")
         <li class="right" >
           <a href="deploy.html" title="Deploy to production server"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.14 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.15 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
