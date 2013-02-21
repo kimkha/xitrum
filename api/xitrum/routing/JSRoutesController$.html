@@ -844,7 +844,7 @@ the connection.
       </span>
       </h4>
       <p class="shortcomment cmt">Applications may override this method to convert to more types.</p><div class="fullcomment"><div class="comment cmt"><p>Applications may override this method to convert to more types.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../scope/request/ParamAccess.html" class="extype" name="xitrum.scope.request.ParamAccess">ParamAccess</a></dd></dl></div>
-    </li><li name="xitrum.controller.UrlFor#currentAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="xitrum.Controller#currentAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="currentAction:xitrum.controller.Action"></a>
       <a id="currentAction:Action"></a>
       <h4 class="signature">
@@ -856,7 +856,7 @@ the connection.
         <span class="name">currentAction</span><span class="result">: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../controller/UrlFor.html" class="extype" name="xitrum.controller.UrlFor">UrlFor</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></dd></dl></div>
     </li><li name="xitrum.Controller#currentController" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="currentController:xitrum.Controller"></a>
       <a id="currentController:Controller"></a>
@@ -978,6 +978,34 @@ the connection.
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../view/Flash.html" class="extype" name="xitrum.view.Flash">Flash</a></dd><dt>See also</dt><dd><span class="cmt"><p>jsFlash(msg).</p></span></dd></dl></div>
+    </li><li name="xitrum.controller.Redirect#forwardTo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="forwardTo(action:xitrum.controller.Action):Unit"></a>
+      <a id="forwardTo(Action):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forwardTo</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Tells another action to process the current request for the current action.</p><div class="fullcomment"><div class="comment cmt"><p>Tells another action to process the current request for the current action.
+See also redirectTo.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a></dd></dl></div>
+    </li><li name="xitrum.controller.Redirect#forwarding" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="forwarding:Boolean"></a>
+      <a id="forwarding:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forwarding</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set to true by forwardTo.</p><div class="fullcomment"><div class="comment cmt"><p>Set to true by forwardTo.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -1494,7 +1522,7 @@ render it to the flash area right away.
         <span class="name">redirectTo</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="params">params: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>)*</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a></dd></dl></div>
+      <p class="shortcomment cmt">See also forwardTo.</p><div class="fullcomment"><div class="comment cmt"><p>See also forwardTo.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a></dd></dl></div>
     </li><li name="xitrum.controller.Redirect#redirectTo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="redirectTo(location:String,status:org.jboss.netty.handler.codec.http.HttpResponseStatus):org.jboss.netty.channel.ChannelFuture"></a>
       <a id="redirectTo(String,HttpResponseStatus):ChannelFuture"></a>
@@ -1507,7 +1535,7 @@ render it to the flash area right away.
         <span class="name">redirectTo</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="status">status: <span class="extype" name="org.jboss.netty.handler.codec.http.HttpResponseStatus">HttpResponseStatus</span> = <span class="symbol">FOUND</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a></dd></dl></div>
+      <p class="shortcomment cmt">See also forwardTo.</p><div class="fullcomment"><div class="comment cmt"><p>See also forwardTo.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a></dd></dl></div>
     </li><li name="xitrum.controller.Net#remoteIp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="remoteIp:String"></a>
       <a id="remoteIp:String"></a>
