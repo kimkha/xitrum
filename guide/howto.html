@@ -83,7 +83,7 @@ else
 
 class MyController extends Controller {
   beforeFilter {
-    basicAuthenticate("Realm") { (username, password) =&gt;
+    basicAuth("Realm") { (username, password) =&gt;
       username == "username" &amp;&amp; password == "password"
     }
   }
@@ -201,8 +201,8 @@ normal string (to embed to HTML for response etc.).</p>
 val encrypted = SecureUrlSafeBase64.encrypt(mySerializableObject)  // A String
 val decrypted = SecureUrlSafeBase64.decrypt(encrypted).asInstanceOf[Option[mySerializableClass]]</pre>
 </div>
-<p><tt class="docutils literal"><span class="pre">SecureUrlSafeBase64</span></tt> uses <tt class="docutils literal"><span class="pre">xitrum.util.SeriDeseri</span></tt> to serialize and deserialize.
-Your data must be serializable.</p>
+<p><tt class="docutils literal"><span class="pre">SecureUrlSafeBase64</span></tt> uses <a class="reference external" href="https://github.com/twitter/chill">Twitter Chill</a>
+to serialize and deserialize. Your data must be serializable.</p>
 <p>You can specify a key for encryption:</p>
 <div class="highlight-python"><pre>val encrypted = Secure.encrypt("my data".getBytes, "my key")
 val decrypted = Secure.decrypt(encrypted, "my key")

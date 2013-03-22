@@ -77,7 +77,7 @@ class MyController extends Controller {
 
 class AppController extends Controller {
   val authenticate = beforeFilter {
-    basicAuthenticate("Realm") { (username, password) =&gt;
+    basicAuth("Realm") { (username, password) =&gt;
       username == "foo" &amp;&amp; password == "bar"
     }
   }
