@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dependencies &mdash; Xitrum 1.20 documentation</title>
+    <title>Dependencies &mdash; Xitrum 1.21 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.20',
+        VERSION:     '1.21',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.20 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.21 documentation" href="index.html" />
     <link rel="prev" title="Netty handlers" href="handler.html" /> 
   </head>
   <body>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="handler.html" title="Netty handlers"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.20 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.21 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,90 +50,44 @@
 <h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
 <p>This chapter lists all dependency libraries that Xitrum uses so that in
 your Xitrum project, you can use them directly if you want.</p>
-<ul>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://www.scala-lang.org/">Scala</a>:</dt>
-<dd><p class="first last">Xitrum is written in Scala language.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://netty.io/">Netty</a>:</dt>
-<dd><p class="first last">For async HTTP(S) server. Many features in Xitrum are based on those in Netty,
-like WebSocket and zero copy file serving.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://hazelcast.com/">Hazelcast</a>:</dt>
-<dd><p class="first last">For distributing caches, server side sessions, and message queues.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://akka.io/">Akka</a>:</dt>
-<dd><p class="first last">For SockJS. Akka itself has this interesting dependency which is also used by Xitrum:
-<a class="reference external" href="https://github.com/typesafehub/config">Typesafe Config</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>, <a class="reference external" href="https://github.com/chirino/scalamd">Scalamd</a>:</dt>
-<dd><p class="first last">For view template.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Rhino">Rhino</a>:</dt>
-<dd><p class="first last">For Scalate to compile CoffeeScript to JavaScript.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://github.com/json4s/json4s">JSON4S</a>:</dt>
-<dd><p class="first last">For parsing and generating JSON data.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://www.csg.ci.i.u-tokyo.ac.jp/~chiba/javassist/">Javassist</a>, <a class="reference external" href="https://github.com/ngocdaothanh/sclasner">Sclasner</a>:</dt>
-<dd><p class="first last">For scanning HTTP routes in controller classes in .class and .jar files.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://github.com/ngocdaothanh/scaposer">Scaposer</a>:</dt>
-<dd><p class="first last">For i18n.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://commons.apache.org/lang/">Commons Lang</a>:</dt>
-<dd><p class="first last">For escaping JSON data.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://github.com/twitter/chill">Twitter Chill</a>:</dt>
-<dd><p class="first last">For serializing and deserializing cookies and sessions.
+<ul class="simple">
+<li><a class="reference external" href="http://www.scala-lang.org/">Scala</a>:
+Xitrum is written in Scala language.</li>
+<li><a class="reference external" href="https://netty.io/">Netty</a>:
+For async HTTP(S) server. Many features in Xitrum are based on those in Netty,
+like WebSocket and zero copy file serving.</li>
+<li><a class="reference external" href="http://hazelcast.com/">Hazelcast</a>:
+For distributing caches, server side sessions, and message queues.</li>
+<li><a class="reference external" href="http://akka.io/">Akka</a>:
+For SockJS. Akka itself has this interesting dependency which is also used by Xitrum:
+<a class="reference external" href="https://github.com/typesafehub/config">Typesafe Config</a>.</li>
+<li><a class="reference external" href="https://github.com/ngocdaothanh/xitrum-scalate">xitrum-scalate</a>,
+<a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>,
+<a class="reference external" href="https://github.com/chirino/scalamd">Scalamd</a>:
+For view template.</li>
+<li><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Rhino">Rhino</a>:
+For Scalate to compile CoffeeScript to JavaScript.</li>
+<li><a class="reference external" href="https://github.com/json4s/json4s">JSON4S</a>:
+For parsing and generating JSON data. JSON4S depends on
+<a class="reference external" href="http://paranamer.codehaus.org/">Paranamer</a>.</li>
+<li><a class="reference external" href="http://www.csg.ci.i.u-tokyo.ac.jp/~chiba/javassist/">Javassist</a>, <a class="reference external" href="https://github.com/ngocdaothanh/sclasner">Sclasner</a>:
+For scanning HTTP routes in controller classes in .class and .jar files.</li>
+<li><a class="reference external" href="https://github.com/ngocdaothanh/scaposer">Scaposer</a>:
+For i18n.</li>
+<li><a class="reference external" href="http://commons.apache.org/lang/">Commons Lang</a>:
+For escaping JSON data.</li>
+<li><a class="reference external" href="https://github.com/twitter/chill">Twitter Chill</a>:
+For serializing and deserializing cookies and sessions.
 Chill is based on
 <a class="reference external" href="http://code.google.com/p/kryo/">Kryo</a>,
 <a class="reference external" href="http://code.google.com/p/objenesis/">Objenesis</a>,
 <a class="reference external" href="https://github.com/twitter/bijection">Bijection</a>,
 <a class="reference external" href="http://asm.ow2.org/">ASM</a>,
 <a class="reference external" href="http://commons.apache.org/proper/commons-codec/">Commons Codec</a>,
-<a class="reference external" href="http://paranamer.codehaus.org/">Paranamer</a>,
 <a class="reference external" href="http://code.google.com/p/reflectasm/">ReflectASM</a>,
-<a class="reference external" href="http://maths.uncommons.org/">Uncommons Maths</a>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="http://www.slf4j.org/">SLF4J</a>, <a class="reference external" href="http://logback.qos.ch/">Logback</a>:</dt>
-<dd><p class="first last">For logging.</p>
-</dd>
-</dl>
-</li>
+<a class="reference external" href="http://maths.uncommons.org/">Uncommons Maths</a>.</li>
+<li><a class="reference external" href="http://www.slf4j.org/">SLF4J</a>, <a class="reference external" href="http://logback.qos.ch/">Logback</a>:
+For logging.</li>
 </ul>
 </div>
 
@@ -177,7 +131,7 @@ Chill is based on
         <li class="right" >
           <a href="handler.html" title="Netty handlers"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.20 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.21 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

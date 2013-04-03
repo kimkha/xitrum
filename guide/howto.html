@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>HOWTO &mdash; Xitrum 1.20 documentation</title>
+    <title>HOWTO &mdash; Xitrum 1.21 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.20',
+        VERSION:     '1.21',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.20 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.21 documentation" href="index.html" />
     <link rel="next" title="Netty handlers" href="handler.html" />
     <link rel="prev" title="Clustering with Akka and Hazelcast" href="cluster.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="cluster.html" title="Clustering with Akka and Hazelcast"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.20 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.21 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -216,18 +216,12 @@ is used.</p>
 <div class="section" id="create-your-own-template-engine">
 <h2>Create your own template engine<a class="headerlink" href="#create-your-own-template-engine" title="Permalink to this headline">¶</a></h2>
 <p>The default template engine is Scalate.
-If you want to create and use your own template engine:</p>
+You can create and use your own template engine:</p>
 <ol class="arabic simple">
 <li>Create a class that implements <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/view/TemplateEngine.scala">xitrum.view.TemplateEngine</a></li>
 <li>Set that class in <a class="reference external" href="https://github.com/ngocdaothanh/xitrum-new/blob/master/config/xitrum.conf#L47">xitrum.conf</a></li>
-<li>If your template engine needs config items, add them to xitrum.conf,
-then load them like this:</li>
 </ol>
-<div class="highlight-python"><pre>import xitrum.Config
-val defaultType = Config.xitrum.config.getString("scalateDefaultType")</pre>
-</div>
-<p>See project <a class="reference external" href="https://github.com/typesafehub/config">Typesafe Config</a> and
-<a class="reference external" href="http://typesafehub.github.com/config/latest/api/com/typesafe/config/Config.html">its API</a>.</p>
+<p>For an example, see <a class="reference external" href="https://github.com/ngocdaothanh/xitrum-scalate">xitrum-scalate</a>.</p>
 </div>
 </div>
 
@@ -300,7 +294,7 @@ val defaultType = Config.xitrum.config.getString("scalateDefaultType")</pre>
         <li class="right" >
           <a href="cluster.html" title="Clustering with Akka and Hazelcast"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.20 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.21 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
