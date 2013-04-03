@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>SingleActorInstance - xitrum.util.SingleActorInstance</title>
-          <meta name="description" content="SingleActorInstance - xitrum.util.SingleActorInstance" />
-          <meta name="keywords" content="SingleActorInstance xitrum.util.SingleActorInstance" />
+          <title>ClusterSingletonActor - xitrum.util.ClusterSingletonActor</title>
+          <meta name="description" content="ClusterSingletonActor - xitrum.util.ClusterSingletonActor" />
+          <meta name="keywords" content="ClusterSingletonActor xitrum.util.ClusterSingletonActor" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -13,11 +13,11 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'xitrum.util.SingleActorInstance$';
+            var hash = 'xitrum.util.ClusterSingletonActor$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -29,9 +29,9 @@
         </head>
         <body class="value">
       <div id="definition">
-        <a href="SingleActorInstance.html" title="Go to companion"><img src="../../lib/object_to_class_big.png" /></a>
+        <a href="ClusterSingletonActor.html" title="Go to companion"><img src="../../lib/object_to_class_big.png" /></a>
         <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.util">util</a></p>
-        <h1><a href="SingleActorInstance.html" title="Go to companion">SingleActorInstance</a></h1>
+        <h1><a href="ClusterSingletonActor.html" title="Go to companion">ClusterSingletonActor</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -40,14 +40,14 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">SingleActorInstance</span>
+        <span class="name">ClusterSingletonActor</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This object provides &quot;single actor instance&quot; feature, implemented using
-Akka Remoting and Hazelcast:
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This feature is implemented using Akka Remoting and Hazelcast distributed lock:
 https://groups.google.com/group/akka-user/browse_thread/thread/23d6b2851648c1b0</p><p>You must config config/akka.conf to use Akka Remoting:
-http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html</p><p>With future version of Akka, this object may become obsolete.
+http://doc.akka.io/docs/akka/2.1.2/scala/remoting.html</p><p>With future version of Akka Cluster, this object may be removed:
+http://doc.akka.io/docs/akka/2.1.2/cluster/index.html</p><p>Caveat: Akka Remoting does not trigger Death Watch for lost connections.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -68,7 +68,7 @@ http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html</p><p>With future version
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="xitrum.util.SingleActorInstance"><span>SingleActorInstance</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="xitrum.util.ClusterSingletonActor"><span>ClusterSingletonActor</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -159,7 +159,7 @@ http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html</p><p>With future version
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="xitrum.util.SingleActorInstance#actor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="xitrum.util.ClusterSingletonActor#actor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="actor():akka.actor.ActorRef"></a>
       <a id="actor():ActorRef"></a>
       <h4 class="signature">
@@ -321,7 +321,7 @@ http://doc.akka.io/docs/akka/2.1.0/scala/remoting.html</p><p>With future version
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="xitrum.util.SingleActorInstance#start" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="xitrum.util.ClusterSingletonActor#start" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="start():Unit"></a>
       <a id="start():Unit"></a>
       <h4 class="signature">

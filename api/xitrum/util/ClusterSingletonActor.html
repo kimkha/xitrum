@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Scalate - xitrum.view.Scalate</title>
-          <meta name="description" content="Scalate - xitrum.view.Scalate" />
-          <meta name="keywords" content="Scalate xitrum.view.Scalate" />
+          <title>ClusterSingletonActor - xitrum.util.ClusterSingletonActor</title>
+          <meta name="description" content="ClusterSingletonActor - xitrum.util.ClusterSingletonActor" />
+          <meta name="keywords" content="ClusterSingletonActor xitrum.util.ClusterSingletonActor" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -13,11 +13,11 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
-            var hash = 'xitrum.view.Scalate$';
+            var hash = 'xitrum.util.ClusterSingletonActor';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -27,26 +27,26 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <img src="../../lib/object_big.png" />
-        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.view">view</a></p>
-        <h1>Scalate</h1>
+        <a href="ClusterSingletonActor$.html" title="Go to companion"><img src="../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../package.html" class="extype" name="xitrum">xitrum</a>.<a href="package.html" class="extype" name="xitrum.util">util</a></p>
+        <h1><a href="ClusterSingletonActor$.html" title="Go to companion">ClusterSingletonActor</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Scalate</span><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
+        <span class="name">ClusterSingletonActor</span><span class="result"> extends <span class="extype" name="akka.actor.Actor">Actor</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="akka.actor.Actor">Actor</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -64,7 +64,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="xitrum.view.Scalate"><span>Scalate</span></li><li class="in" name="xitrum.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="xitrum.util.ClusterSingletonActor"><span>ClusterSingletonActor</span></li><li class="in" name="akka.actor.Actor"><span>Actor</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -82,9 +82,41 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="xitrum.util.ClusterSingletonActor#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():xitrum.util.ClusterSingletonActor"></a>
+      <a id="&lt;init&gt;:ClusterSingletonActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ClusterSingletonActor</span><span class="params">()</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
-        
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="akka.actor.Actor.Receive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Receive=akka.actor.Actor.Receive"></a>
+      <a id="Receive:Receive"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Receive</span><span class="result"> = <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+    </li></ol>
+            </div>
 
         
 
@@ -184,6 +216,19 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="akka.actor.Actor#context" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="context:akka.actor.ActorContext"></a>
+      <a id="context:ActorContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">context</span><span class="result">: <span class="extype" name="akka.actor.ActorContext">ActorContext</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../akka/package.html" class="extype" name="akka">akka</a>] </dd><dt>Definition Classes</dt><dd>Actor</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -265,19 +310,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="xitrum.Logger#logger" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="logger:org.slf4j.Logger"></a>
-      <a id="logger:org.slf4j.Logger"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">logger</span><span class="result">: <span class="extype" name="org.slf4j.Logger">org.slf4j.Logger</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Logger name is inferred from the class name.</p><div class="fullcomment"><div class="comment cmt"><p>Logger name is inferred from the class name.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -317,137 +349,110 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="xitrum.view.Scalate#renderFragment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderFragment(controller:xitrum.Controller,controllerClass:Class[_],fragment:String,options:Map[String,Any]):String"></a>
-      <a id="renderFragment(Controller,Class[_],String,Map[String,Any]):String"></a>
+    </li><li name="akka.actor.Actor#postRestart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="postRestart(reason:&lt;?&gt;):Unit"></a>
+      <a id="postRestart(Throwable):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderFragment</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map()</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">postRestart</span><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders Scalate template file with the path:
-&lt;scalateDir&gt;/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file with the path:
-&lt;scalateDir&gt;/&lt;the/given/controller/Class&gt;/_&lt;fragment&gt;.&lt;templateType&gt;
-</p></div></div>
-    </li><li name="xitrum.view.Scalate#renderJadeString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderJadeString(templateContent:String)(implicitcontroller:xitrum.Controller):String"></a>
-      <a id="renderJadeString(String)(Controller):String"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+    </li><li name="akka.actor.Actor#postStop" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="postStop():Unit"></a>
+      <a id="postStop():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderJadeString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">postStop</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      
-    </li><li name="xitrum.view.Scalate#renderMustacheString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderMustacheString(templateContent:String)(implicitcontroller:xitrum.Controller):String"></a>
-      <a id="renderMustacheString(String)(Controller):String"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+    </li><li name="akka.actor.Actor#preRestart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="preRestart(reason:&lt;?&gt;,message:&lt;?&gt;):Unit"></a>
+      <a id="preRestart(Throwable,Option[Any]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderMustacheString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">preRestart</span><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Throwable">Throwable</span></span>, <span name="message">message: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      
-    </li><li name="xitrum.view.Scalate#renderScamlString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderScamlString(templateContent:String)(implicitcontroller:xitrum.Controller):String"></a>
-      <a id="renderScamlString(String)(Controller):String"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+    </li><li name="xitrum.util.ClusterSingletonActor#preStart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="preStart():Unit"></a>
+      <a id="preStart():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderScamlString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">preStart</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      
-    </li><li name="xitrum.view.Scalate#renderSspString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderSspString(templateContent:String)(implicitcontroller:xitrum.Controller):String"></a>
-      <a id="renderSspString(String)(Controller):String"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="xitrum.util.ClusterSingletonActor">ClusterSingletonActor</a> → Actor</dd></dl></div>
+    </li><li name="xitrum.util.ClusterSingletonActor#receive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="receive:PartialFunction[Any,Unit]"></a>
+      <a id="receive:PartialFunction[Any,Unit]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderSspString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">receive</span><span class="result">: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Unit">Unit</span>]</span>
       </span>
       </h4>
-      
-    </li><li name="xitrum.view.Scalate#renderString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderString(templateContent:String,templateType:String)(implicitcontroller:xitrum.Controller):String"></a>
-      <a id="renderString(String,String)(Controller):String"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="xitrum.util.ClusterSingletonActor">ClusterSingletonActor</a> → Actor</dd></dl></div>
+    </li><li name="akka.actor.Actor#self" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="self:akka.actor.ActorRef"></a>
+      <a id="self:ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">self</span><span class="result">: <span class="extype" name="akka.actor.ActorRef">ActorRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+    </li><li name="akka.actor.Actor#sender" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sender:akka.actor.ActorRef"></a>
+      <a id="sender:ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sender</span><span class="result">: <span class="extype" name="akka.actor.ActorRef">ActorRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
+    </li><li name="akka.actor.Actor#supervisorStrategy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="supervisorStrategy:akka.actor.SupervisorStrategy"></a>
+      <a id="supervisorStrategy:SupervisorStrategy"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderString</span><span class="params">(<span name="templateContent">templateContent: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="templateType">templateType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">supervisorStrategy</span><span class="result">: <span class="extype" name="akka.actor.SupervisorStrategy">SupervisorStrategy</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">templateType</dt><dd class="cmt"><p>jade, mustache, scaml, or ssp</p></dd></dl></div>
-    </li><li name="xitrum.view.Scalate#renderTemplate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderTemplate(controller:xitrum.Controller,controllerClass:Class[_],options:Map[String,Any]):String"></a>
-      <a id="renderTemplate(Controller,Class[_],Map[String,Any]):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Renders Scalate template file at the path:
-&lt;scalateDir&gt;/&lt;/class/name/of/the/controller/of/the/given/action&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file at the path:
-&lt;scalateDir&gt;/&lt;/class/name/of/the/controller/of/the/given/action&gt;.&lt;templateType&gt;
-</p></div><dl class="paramcmts block"><dt class="param">controller</dt><dd class="cmt"><p>will be imported in the template as &quot;helper&quot;
-</p></dd></dl></div>
-    </li><li name="xitrum.view.Scalate#renderTemplate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderTemplate(controller:xitrum.Controller,action:xitrum.controller.Action,controllerName:String,actionName:String,options:Map[String,Any]):String"></a>
-      <a id="renderTemplate(Controller,Action,String,String,Map[String,Any]):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="controllerName">controllerName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="actionName">actionName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Renders Scalate template file at the path:
-&lt;scalateDir&gt;/&lt;/class/name/of/the/controller/of/the/given/action&gt;/&lt;action name&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file at the path:
-&lt;scalateDir&gt;/&lt;/class/name/of/the/controller/of/the/given/action&gt;/&lt;action name&gt;.&lt;templateType&gt;
-</p></div><dl class="paramcmts block"><dt class="param">controller</dt><dd class="cmt"><p>will be imported in the template as &quot;helper&quot;
-</p></dd></dl></div>
-    </li><li name="xitrum.view.Scalate#renderTemplateFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderTemplateFile(templateFile:String)(implicitcontroller:xitrum.Controller):String"></a>
-      <a id="renderTemplateFile(String)(Controller):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderTemplateFile</span><span class="params">(<span name="templateFile">templateFile: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Renders Scalate template file
-</p><div class="fullcomment"><div class="comment cmt"><p>Renders Scalate template file
-</p></div><dl class="paramcmts block"><dt class="param">templateFile</dt><dd class="cmt"><p>absolute file path of template</p></dd><dt class="param">controller</dt><dd class="cmt"><p>will be imported in the template as &quot;helper&quot;
-</p></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -474,6 +479,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="akka.actor.Actor#unhandled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="unhandled(message:&lt;?&gt;):Unit"></a>
+      <a id="unhandled(Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">unhandled</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Actor</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -531,8 +549,8 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="xitrum.Logger">
-              <h3>Inherited from <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></h3>
+        <div class="parent" name="akka.actor.Actor">
+              <h3>Inherited from <span class="extype" name="akka.actor.Actor">Actor</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">

@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -63,7 +63,20 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="xitrum.util.LocalLRUCache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="xitrum.util.ClusterSingletonActor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ClusterSingletonActorextendsActor"></a>
+      <a id="ClusterSingletonActor:ClusterSingletonActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ClusterSingletonActor.html"><span class="name">ClusterSingletonActor</span></a><span class="result"> extends <span class="extype" name="akka.actor.Actor">Actor</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.util.LocalLRUCache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="LocalLRUCache[K,V]extendsLinkedHashMap[K,V]"></a>
       <a id="LocalLRUCache[K,V]:LocalLRUCache[K,V]"></a>
       <h4 class="signature">
@@ -115,19 +128,6 @@
       </span>
       </h4>
       
-    </li><li name="xitrum.util.SingleActorInstance" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SingleActorInstanceextendsActor"></a>
-      <a id="SingleActorInstance:SingleActorInstance"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="SingleActorInstance.html"><span class="name">SingleActorInstance</span></a><span class="result"> extends <span class="extype" name="akka.actor.Actor">Actor</span></span>
-      </span>
-      </h4>
-      
     </li></ol>
             </div>
 
@@ -148,6 +148,20 @@
       </span>
       </h4>
       
+    </li><li name="xitrum.util.ClusterSingletonActor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ClusterSingletonActor"></a>
+      <a id="ClusterSingletonActor:ClusterSingletonActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ClusterSingletonActor$.html"><span class="name">ClusterSingletonActor</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">This feature is implemented using Akka Remoting and Hazelcast distributed lock:
+https://groups.</p>
     </li><li name="xitrum.util.Gzip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Gzip"></a>
       <a id="Gzip:Gzip"></a>
@@ -248,25 +262,10 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SeriDeseri$.html"><span class="name">SeriDeseri</span></a>
+        <a href="SeriDeseri$.html"><span class="name">SeriDeseri</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       
-    </li><li name="xitrum.util.SingleActorInstance" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SingleActorInstance"></a>
-      <a id="SingleActorInstance:SingleActorInstance"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="SingleActorInstance$.html"><span class="name">SingleActorInstance</span></a>
-      </span>
-      </h4>
-      <p class="comment cmt">This object provides &quot;single actor instance&quot; feature, implemented using
-Akka Remoting and Hazelcast:
-https://groups.</p>
     </li><li name="xitrum.util.UrlSafeBase64" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="UrlSafeBase64"></a>
       <a id="UrlSafeBase64:UrlSafeBase64"></a>
@@ -276,7 +275,7 @@ https://groups.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="UrlSafeBase64$.html"><span class="name">UrlSafeBase64</span></a>
+        <a href="UrlSafeBase64$.html"><span class="name">UrlSafeBase64</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       <p class="comment cmt">URL-safe dialect is used:
