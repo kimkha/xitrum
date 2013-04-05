@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller, action, and view &mdash; Xitrum 1.21 documentation</title>
+    <title>Controller, action, and view &mdash; Xitrum 1.22 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.21',
+        VERSION:     '1.22',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.21 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.21 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -162,6 +162,33 @@ template, because they&#8217;re already used:</p>
 <li>&#8220;context&#8221;: for Sclate utility object, which contains methods like <tt class="docutils literal"><span class="pre">unescape</span></tt></li>
 <li>&#8220;helper&#8221;: for the current controller object</li>
 </ul>
+</div>
+<div class="section" id="coffeescript">
+<h3>CoffeeScript<a class="headerlink" href="#coffeescript" title="Permalink to this headline">¶</a></h3>
+<p>You can embed CoffeeScript in Scalate template using
+<a class="reference external" href="http://scalate.fusesource.org/documentation/jade-syntax.html#filters">:coffeescript filter</a>:</p>
+<div class="highlight-python"><pre>body
+  :coffeescript
+    alert "Hello, Coffee!"</pre>
+</div>
+<p>Output:</p>
+<div class="highlight-python"><pre>&lt;body&gt;
+  &lt;script type='text/javascript'&gt;
+    //&lt;![CDATA[
+      (function() {
+        alert("Hello, Coffee!");
+      }).call(this);
+    //]]&gt;
+  &lt;/script&gt;
+&lt;/body&gt;</pre>
+</div>
+<p>But note that it is <a class="reference external" href="http://groups.google.com/group/xitrum-framework/browse_thread/thread/6667a7608f0dc9c7">slow</a>:</p>
+<div class="highlight-python"><pre>jade+javascript+1thread: 1-2ms for page
+jade+coffesscript+1thread: 40-70ms for page
+jade+javascript+100threads: ~40ms for page
+jade+coffesscript+100threads: 400-700ms for page</pre>
+</div>
+<p>You pre-generate CoffeeScript to JavaScript if you need speed.</p>
 </div>
 </div>
 <div class="section" id="layout">
@@ -348,6 +375,7 @@ class LoginController extends Controller {
 <li><a class="reference internal" href="#respond-to-client">Respond to client</a></li>
 <li><a class="reference internal" href="#respond-template-view-file">Respond template view file</a><ul>
 <li><a class="reference internal" href="#id1">Mustache</a></li>
+<li><a class="reference internal" href="#coffeescript">CoffeeScript</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#layout">Layout</a><ul>
@@ -405,7 +433,7 @@ class LoginController extends Controller {
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.21 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
