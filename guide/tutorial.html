@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial &mdash; Xitrum 1.22 documentation</title>
+    <title>Tutorial &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" />
     <link rel="prev" title="Introduction" href="intro.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="intro.html" title="Introduction"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -79,8 +79,8 @@ sbt/sbt run</pre>
 and run the class <tt class="docutils literal"><span class="pre">quickstart.Boot</span></tt>, which starts the web server. In the console,
 you will see all the routes:</p>
 <div class="highlight-python"><pre>[INFO] Routes:
-GET  /                  quickstart.controller.Site#index
-GET  /xitrum/routes.js  xitrum.routing.JSRoutesController#routes
+GET  /                  quickstart.action.SiteIndex
+GET  /xitrum/routes.js  xitrum.routing.JSRoutesAction
 [INFO] HTTP server started on port 8000
 [INFO] HTTPS server started on port 4430
 [INFO] Xitrum started in development mode</pre>
@@ -90,7 +90,7 @@ convenient for you to have a list of routes if you want to write documentation
 for 3rd parties about the RESTful APIs in your web application.</p>
 <p>Open <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a> or <a class="reference external" href="https://localhost:4430/">https://localhost:4430/</a> in your browser. In the
 console you will see request information:</p>
-<div class="highlight-python"><pre>[DEBUG] GET quickstart.controller.Site#index, 1 [ms]</pre>
+<div class="highlight-python"><pre>[DEBUG] GET quickstart.action.SiteIndex, 1 [ms]</pre>
 </div>
 </div>
 </div>
@@ -150,7 +150,7 @@ console you will see request information:</p>
         <li class="right" >
           <a href="intro.html" title="Introduction"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

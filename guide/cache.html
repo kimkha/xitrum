@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Server-side cache &mdash; Xitrum 1.22 documentation</title>
+    <title>Server-side cache &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="I18n" href="i18n.html" />
     <link rel="prev" title="Filters" href="filter.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="filter.html" title="Filters"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -62,9 +62,9 @@ in the Rails style.
 like conditional GET are applied for client-side caching.</p>
 <p>For dynamic content, if the content does not change after created (as if it is
 a static file), you may set headers for clients to cache aggressively.
-In that case, call <tt class="docutils literal"><span class="pre">setClientCacheAggressively()</span></tt> in your controller.</p>
+In that case, call <tt class="docutils literal"><span class="pre">setClientCacheAggressively()</span></tt> in your action.</p>
 <p>Sometimes you may want to prevent client-side caching.
-In that case, call <tt class="docutils literal"><span class="pre">setNoClientCache()</span></tt> in your controller.</p>
+In that case, call <tt class="docutils literal"><span class="pre">setNoClientCache()</span></tt> in your action.</p>
 <p>Cache in the following section refers to server-side cache.</p>
 <p><a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>
 is integrated for page, action, and object cache. Of course you can
@@ -78,14 +78,21 @@ Load balancer/proxy server ---- Xitrum/memory cache instance 2
 <p>Cache works with async response.</p>
 <div class="section" id="cache-page-or-action">
 <h2>Cache page or action<a class="headerlink" href="#cache-page-or-action" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><pre>import xitrum.Controller
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.{GET, CacheActionMinute, CachePageMinute}
 
-class MyController extends Controller {
-  def index = cachePageMinute(1).GET {
+@GET("articles")
+@CachePageMinute(1)
+class ArticlesIndex extends Action {
+  def execute() {
     ...
   }
+}
 
-  def show = cacheActionMinute(1).GET(":id") {
+@GET("articles/:id")
+@CacheActionMinute(1)
+class ArticlesShow extends Action {
+  def execute() {
     ...
   }
 }</pre>
@@ -265,7 +272,7 @@ request        the cache already exists?
         <li class="right" >
           <a href="filter.html" title="Filters"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Static files &mdash; Xitrum 1.22 documentation</title>
+    <title>Static files &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="Serve flash socket policy file" href="flash.html" />
     <link rel="prev" title="Async response" href="async.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="async.html" title="Async response"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -88,30 +88,23 @@ URLs to them are in the form:</p>
 <h2>404 and 500<a class="headerlink" href="#and-500" title="Permalink to this headline">¶</a></h2>
 <p>404.html and 500.html in <tt class="docutils literal"><span class="pre">public</span></tt> directory are used when there&#8217;s no matching
 route and there&#8217;s error processing request, respectively. If you want to use
-your own handler, configure before starting web server:</p>
-<div class="highlight-python"><pre>import xitrum.routing.Routes
-import xitrum.handler.Server
+your own error handler:</p>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.{Error404, Error500}
 
-object Boot {
-  def main(args: Array[String]) {
-    Routes.error = classOf[My404And500ErrorHandlerController]
-    Server.start()
-  }
-}</pre>
-</div>
-<p>Response status is set to 404 or 500 before the actions are executed, so you
-don&#8217;t have to set yourself.</p>
-<div class="highlight-python"><pre>import xitrum.{Controller, ErrorController}
-
-class My404And500ErrorHandlerController extends Controller with ErrorController {
-  def error404 = errorAction {
+@Error404
+class My404ErrorHandlerAction extends Action {
+  def execute() {
     if (isAjax)
       jsRespond("alert(" + jsEscape("Not Found") + ")")
     else
       renderInlineView("Not Found")
   }
+}
 
-  def error500 = errorAction {
+@Error500
+class My500ErrorHandlerAction extends Action {
+  def execute() {
     if (isAjax)
       jsRespond("alert(" + jsEscape("Internal Server Error") + ")")
     else
@@ -119,6 +112,8 @@ class My404And500ErrorHandlerController extends Controller with ErrorController 
   }
 }</pre>
 </div>
+<p>Response status is set to 404 or 500 before the actions are executed, so you
+don&#8217;t have to set yourself.</p>
 </div>
 <div class="section" id="serve-resource-files-in-classpath">
 <h2>Serve resource files in classpath<a class="headerlink" href="#serve-resource-files-in-classpath" title="Permalink to this headline">¶</a></h2>
@@ -237,7 +232,7 @@ in <tt class="docutils literal"><span class="pre">config/xitrum.conf</span></tt>
         <li class="right" >
           <a href="async.html" title="Async response"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

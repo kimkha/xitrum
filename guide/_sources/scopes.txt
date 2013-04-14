@@ -18,7 +18,7 @@ There are 3 kinds of textual params, of type ``scala.collection.mutable.Map[Stri
 These params are merged in the above order as ``textParams``
 (from 1 to 3, the latter will override the former).
 
-``fileUploadParams`` is of type scala.collection.mutable.Map[String, List[`FileUpload <http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/multipart/FileUpload.html>`_]].
+``fileUploadParams`` is of type scala.collection.mutable.Map[String, List[`FileUpload <http://netty.io/3.6/api/org/jboss/netty/handler/codec/http/multipart/FileUpload.html>`_]].
 
 Accesing params
 ~~~~~~~~~~~~~~~
@@ -51,22 +51,23 @@ Articles.scala
 
 ::
 
-  class Articles extends AppController {
-    def show = GET(":id") {
+  @GET("articles/:id")
+  class ArticlesShow extends AppAction {
+    def execute() {
       val (title, body) = ...  // Get from DB
       at("title") = title
       respondInlineView(body)
     }
   }
 
-AppController.scala
+AppAction.scala
 
 ::
 
-  import xitrum.Controller
+  import xitrum.Action
   import xitrum.view.DocType
 
-  trait AppController extends Controller {
+  trait AppAction extends Action {
     override def layout = DocType.html5(
       <html>
         <head>
@@ -104,22 +105,23 @@ Articles.scala
 
 ::
 
-  class Articles extends AppController {
-    def show = GET(":id") {
+  @GET("articles/:id")
+  class ArticlesShow extends AppAction {
+    def execute() {
       val (title, body) = ...  // Get from DB
       RVar.title.set(title)
       respondInlineView(body)
     }
   }
 
-AppController.scala
+AppAction.scala
 
 ::
 
-  import xitrum.Controller
+  import xitrum.Action
   import xitrum.view.DocType
 
-  trait AppController extends Controller {
+  trait AppAction extends Action {
     override def layout = DocType.html5(
       <html>
         <head>
@@ -150,8 +152,8 @@ Inside an action, use ``requestCookies``, a ``Map[String, String]``, to read coo
     case Some(string) => ...
   }
 
-To send cookie to browser, create an instance of `DefaultCookie <http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/DefaultCookie.html>`_
-and append it to ``responseCookies``, an ``ArrayBuffer`` that contains `Cookie <http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/Cookie.html>`_.
+To send cookie to browser, create an instance of `DefaultCookie <http://netty.io/3.6/api/org/jboss/netty/handler/codec/http/DefaultCookie.html>`_
+and append it to ``responseCookies``, an ``ArrayBuffer`` that contains `Cookie <http://netty.io/3.6/api/org/jboss/netty/handler/codec/http/Cookie.html>`_.
 
 ::
 
@@ -216,8 +218,9 @@ attack, in the action that lets users login, call ``session.clear()``.
 
 ::
 
-  class LoginController extends Controller {
-    def login = GET("login") {
+  @GET("login")
+  class LoginAction extends Action {
+    def execute() {
       ...
       session.clear()  // Reset first before doing anything else with the session
       session("userId") = userId

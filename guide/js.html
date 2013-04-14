@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>JavaScript and JSON &mdash; Xitrum 1.22 documentation</title>
+    <title>JavaScript and JSON &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="Async response" href="async.html" />
     <link rel="prev" title="XML" href="xml.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="xml.html" title="XML"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,8 +58,8 @@
 <div class="section" id="add-javascript-fragments-to-view">
 <h3>Add JavaScript fragments to view<a class="headerlink" href="#add-javascript-fragments-to-view" title="Permalink to this headline">¶</a></h3>
 <p>In your action, call <tt class="docutils literal"><span class="pre">jsAddToView</span></tt> (multiple times if you need):</p>
-<div class="highlight-python"><pre>class MyController extends AppController {
-  def index = GET {
+<div class="highlight-python"><pre>class MyAction extends AppAction {
+  def execute() {
     ...
     jsAddToView("alert('Hello')")
     ...
@@ -70,10 +70,10 @@
 }</pre>
 </div>
 <p>In your layout, call <tt class="docutils literal"><span class="pre">jsForView</span></tt>:</p>
-<div class="highlight-python"><pre>import xitrum.Controller
+<div class="highlight-python"><pre>import xitrum.Action
 import xitrum.view.DocType
 
-trait AppController extends Controller {
+trait AppAction extends Action {
   override def layout = DocType.html5(
     &lt;html&gt;
       &lt;head&gt;
@@ -97,7 +97,7 @@ trait AppController extends Controller {
 </div>
 <p>To redirect:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">jsRedirectTo</span><span class="p">(</span><span class="s">&quot;http://cntt.tv/&quot;</span><span class="p">)</span>
-<span class="n">jsRedirectTo</span><span class="p">(</span><span class="n">AuthenticateController</span><span class="o">.</span><span class="n">login</span><span class="p">)</span>
+<span class="n">jsRedirectTo</span><span class="p">[</span><span class="n">LoginAction</span><span class="p">]()</span>
 </pre></div>
 </div>
 </div>
@@ -182,7 +182,7 @@ See <a class="reference internal" href="howto.html"><em>Load config files</em></
         <li class="right" >
           <a href="xml.html" title="XML"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>I18n &mdash; Xitrum 1.22 documentation</title>
+    <title>I18n &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="Deploy to production server" href="deploy.html" />
     <link rel="prev" title="Server-side cache" href="cache.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="cache.html" title="Server-side cache"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -56,13 +56,13 @@
 <img alt="http://www.poedit.net/screenshots/osx.png" src="http://www.poedit.net/screenshots/osx.png" />
 <div class="section" id="write-internationalized-messages-in-source-code">
 <h2>Write internationalized messages in source code<a class="headerlink" href="#write-internationalized-messages-in-source-code" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">xitrum.Controller</span></tt> extends <tt class="docutils literal"><span class="pre">xitrum.I18n</span></tt>, which has these methods:</p>
+<p><tt class="docutils literal"><span class="pre">xitrum.Action</span></tt> extends <tt class="docutils literal"><span class="pre">xitrum.I18n</span></tt>, which has these methods:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">t</span><span class="p">(</span><span class="s">&quot;Message&quot;</span><span class="p">)</span>
 <span class="n">tc</span><span class="p">(</span><span class="s">&quot;Context&quot;</span><span class="p">,</span> <span class="s">&quot;Message&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In a controller or action, just call them.
-In other places like models, you need to pass the current controller to them and
+<p>In a action or action, just call them.
+In other places like models, you need to pass the current action to them and
 call <tt class="docutils literal"><span class="pre">t</span></tt> and <tt class="docutils literal"><span class="pre">tc</span></tt> on it:</p>
 <div class="highlight-python"><pre>// In an action
 respondText(MyModel.hello(this))
@@ -143,7 +143,7 @@ from high to low.</li>
 If there&#8217;s no suitable language, the language is still the default &#8220;en&#8221;.</li>
 <li>To get the current language set above, call <tt class="docutils literal"><span class="pre">getLanguage</span></tt>.</li>
 </ul>
-<p>In your controller, typically in a before filter, to set language:</p>
+<p>In your action, typically in a before filter, to set language:</p>
 <div class="highlight-python"><pre>beforeFilter {
   val lango: Option[String] = yourMethodToGetUserPreferenceLanguageInSession()
   lango match {
@@ -247,7 +247,7 @@ nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3</p
         <li class="right" >
           <a href="cache.html" title="Server-side cache"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

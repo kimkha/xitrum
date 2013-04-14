@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Controller, action, and view &mdash; Xitrum 1.22 documentation</title>
+    <title>Action and view &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,21 +50,62 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="controller-action-and-view">
-<h1>Controller, action, and view<a class="headerlink" href="#controller-action-and-view" title="Permalink to this headline">¶</a></h1>
-<p>What do you create web applications for? There are 2 main use cases:</p>
-<ul class="simple">
-<li>To serve machines: you need to create RESTful APIs for smartphones, web services
-for other web sites.</li>
-<li>To serve human users: you need to create interactive web pages.</li>
-</ul>
-<p>As a web framework, Xitrum aims to support you to solve these use cases easily.
-In Xitrum, there are 2 kinds of actions: <a class="reference internal" href="restful.html"><em>RESTful actions</em></a> and
-<a class="reference internal" href="postback.html"><em>postback actions</em></a>.</p>
+  <div class="section" id="action-and-view">
+<h1>Action and view<a class="headerlink" href="#action-and-view" title="Permalink to this headline">¶</a></h1>
+<p>To be flexible, Xitrum provides 2 kinds of actions:
+normal action and actor action.</p>
+<div class="section" id="normal-action">
+<h2>Normal action<a class="headerlink" href="#normal-action" title="Permalink to this headline">¶</a></h2>
+<p>Use when you don&#8217;t do async call to outside from your action.</p>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.GET
+
+@GET("hello")
+class HelloAction extends Action {
+  def execute() {
+    respondText("Hello")
+  }
+}</pre>
+</div>
+</div>
+<div class="section" id="actor-action">
+<h2>Actor action<a class="headerlink" href="#actor-action" title="Permalink to this headline">¶</a></h2>
+<p>Use when you want to do async call to outside from your action.
+If you want your action to be an actor, instead of extending xitrum.Action,
+extend xitrum.Action.Actor.</p>
+<p>An actor instance will be created when there&#8217;s request. It will be stopped when the
+connection is closed or when the response has been sent by respondText,
+respondView etc. methods. For chunked response, it is not stopped right away.
+It is stopped when the last chunk is sent.</p>
+<div class="highlight-python"><pre>import scala.concurrent.duration._
+
+import xitrum.ActionActor
+import xitrum.annotation.GET
+
+@GET("actor")
+class ActionActorDemo extends ActionActor with AppAction {
+  // This is just a normal Akka actor
+
+  def execute() {
+    // See Akka doc about scheduler
+    import context.dispatcher
+    context.system.scheduler.scheduleOnce(3 seconds, self, System.currentTimeMillis)
+
+    // See Akka doc about "become"
+    context.become {
+      case pastTime =&gt;
+        respondInlineView("It's " + pastTime + " Unix ms 3s ago.")
+    }
+  }
+}</pre>
+</div>
+</div>
 <div class="section" id="respond-to-client">
 <h2>Respond to client<a class="headerlink" href="#respond-to-client" title="Permalink to this headline">¶</a></h2>
 <p>From an action, to respond something to client, use:</p>
 <ul class="simple">
+<li><tt class="docutils literal"><span class="pre">respondView</span></tt>: responds view template with or without layout</li>
+<li><tt class="docutils literal"><span class="pre">respondInlineView</span></tt>: responds with or without layout</li>
 <li><tt class="docutils literal"><span class="pre">respondText(&quot;hello&quot;)</span></tt>: responds a string without layout</li>
 <li><tt class="docutils literal"><span class="pre">respondHtml(&quot;&lt;html&gt;...&lt;/html&gt;&quot;)</span></tt>: same as above, with content type set to &#8220;text/html&#8221;</li>
 <li><tt class="docutils literal"><span class="pre">respondJson(List(1,</span> <span class="pre">2,</span> <span class="pre">3))</span></tt>: converts Scala object to JSON object then responds</li>
@@ -76,7 +117,6 @@ In Xitrum, there are 2 kinds of actions: <a class="reference internal" href="res
 <li><tt class="docutils literal"><span class="pre">respondFile</span></tt>: sends a file directly from disk, very fast
 because <a class="reference external" href="http://www.ibm.com/developerworks/library/j-zerocopy/">zero-copy</a>
 (aka send-file) is used</li>
-<li><tt class="docutils literal"><span class="pre">respondWebSocket</span></tt>: responds a WebSocket text frame</li>
 <li><tt class="docutils literal"><span class="pre">respondEventSource(&quot;data&quot;,</span> <span class="pre">&quot;event&quot;)</span></tt></li>
 </ul>
 </div>
@@ -85,20 +125,23 @@ because <a class="reference external" href="http://www.ibm.com/developerworks/li
 <p>Each action may have an associated <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
 template view file. Instead of responding directly in the action with the above
 methods, you can use a separate view file.</p>
-<p>scr/main/scala/mypackage/MyController.scala:</p>
+<p>scr/main/scala/mypackage/MyAction.scala:</p>
 <div class="highlight-python"><pre>package mypackage
-import xitrum.Controller
 
-class MyController extends Controller {
-  def index = GET {
+import xitrum.Action
+import xitrum.annotation.GET
+
+@GET("myAction")
+class MyAction extends Action {
+  def execute() {
     respondView()
   }
 
   def hello(what: String) = "Hello %s".format(what)
 }</pre>
 </div>
-<p>scr/main/scalate/mypackage/MyController/index.jade:</p>
-<div class="highlight-python"><pre>- import mypackage.MyController
+<p>scr/main/scalate/mypackage/MyAction.jade:</p>
+<div class="highlight-python"><pre>- import mypackage.MyAction
 
 !!! 5
 html
@@ -109,8 +152,8 @@ html
     title Welcome to Xitrum
 
   body
-    a(href={currentAction.url}) Path to the current action
-    p= currentController.asInstanceOf[MyController].hello("World")
+    a(href={url}) Path to the current action
+    p= currentAction.asInstanceOf[MyAction].hello("World")
 
     != jsForView</pre>
 </div>
@@ -122,11 +165,11 @@ should be put at layout&#8217;s &lt;head&gt;.</li>
 <li><tt class="docutils literal"><span class="pre">jsForView</span></tt> contains JS fragments added by <tt class="docutils literal"><span class="pre">jsAddToView</span></tt>,
 should be put at layout&#8217;s bottom.</li>
 </ul>
-<p>In templates you can use all methods of the class <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/Controller.scala">xitrum.Controller</a>.
+<p>In templates you can use all methods of the class <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/Action.scala">xitrum.Action</a>.
 Also, you can use utility methods provided by Scalate like <tt class="docutils literal"><span class="pre">unescape</span></tt>.
 See the <a class="reference external" href="http://scalate.fusesource.org/documentation/index.html">Scalate doc</a>.</p>
-<p>If you want to have exactly instance of the current controller, cast <tt class="docutils literal"><span class="pre">currentController</span></tt> to
-the controller you wish.</p>
+<p>If you want to have exactly instance of the current action, cast <tt class="docutils literal"><span class="pre">currentAction</span></tt> to
+the action you wish.</p>
 <p>The default Scalate template type is <a class="reference external" href="http://scalate.fusesource.org/documentation/jade.html">Jade</a>.
 You can also use <a class="reference external" href="http://scalate.fusesource.org/documentation/mustache.html">Mustache</a>,
 <a class="reference external" href="http://scalate.fusesource.org/documentation/scaml-reference.html">Scaml</a>, or
@@ -160,7 +203,7 @@ is stricter.</p>
 template, because they&#8217;re already used:</p>
 <ul class="simple">
 <li>&#8220;context&#8221;: for Sclate utility object, which contains methods like <tt class="docutils literal"><span class="pre">unescape</span></tt></li>
-<li>&#8220;helper&#8221;: for the current controller object</li>
+<li>&#8220;helper&#8221;: for the current action object</li>
 </ul>
 </div>
 <div class="section" id="coffeescript">
@@ -195,7 +238,7 @@ jade+coffesscript+100threads: 400-700ms for page</pre>
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
 <p>When you respond a view with <tt class="docutils literal"><span class="pre">respondView</span></tt> or <tt class="docutils literal"><span class="pre">respondInlineView</span></tt>, Xitrum
 renders it to a String, and sets the String to <tt class="docutils literal"><span class="pre">renderedView</span></tt> variable. Xitrum
-then calls <tt class="docutils literal"><span class="pre">layout</span></tt> method of the current controller, finally Xitrum responds
+then calls <tt class="docutils literal"><span class="pre">layout</span></tt> method of the current action, finally Xitrum responds
 the result of this method to the browser.</p>
 <p>By default <tt class="docutils literal"><span class="pre">layout</span></tt> method just returns <tt class="docutils literal"><span class="pre">renderedView</span></tt> itself. If you want
 to decorate your view with something, override this method. If you include
@@ -205,15 +248,15 @@ is what responded to the browser. This mechanism is simple and straight forward.
 No magic. For convenience, you may think that there&#8217;s no layout in Xitrum at all.
 There&#8217;s just the <tt class="docutils literal"><span class="pre">layout</span></tt> method and you do whatever you want with it.</p>
 <p>Typically, you create a parent class which has a common layout for many views:</p>
-<p>src/main/scala/mypackage/AppController.scala</p>
+<p>src/main/scala/mypackage/AppAction.scala</p>
 <div class="highlight-python"><pre>package mypackage
-import xitrum.Controller
+import xitrum.Action
 
-trait AppController extends Controller {
-  override def layout = renderViewNoLayout(classOf[AppController])
+trait AppAction extends Action {
+  override def layout = renderViewNoLayout(classOf[AppAction])
 }</pre>
 </div>
-<p>src/main/scalate/mypackage/AppController.jade</p>
+<p>src/main/scalate/mypackage/AppAction.jade</p>
 <div class="highlight-python"><pre>!!! 5
 html
   head
@@ -226,31 +269,32 @@ html
     != renderedView
     != jsForView</pre>
 </div>
-<p>src/main/scala/mypackage/MyController.scala</p>
+<p>src/main/scala/mypackage/MyAction.scala</p>
 <div class="highlight-python"><pre>package mypackage
-import AppController
+import xitrum.annotation.GET
 
-class MyController extends AppController {
-  def index = GET {
+@GET("myAction")
+class MyAction extends AppAction {
+  def execute() {
     respondView()
   }
 
   def hello(what: String) = "Hello %s".format(what)
 }</pre>
 </div>
-<p>scr/main/scalate/mypackage/MyController/index.jade:</p>
-<div class="highlight-python"><pre>- import mypackage.MyController
+<p>scr/main/scalate/mypackage/MyAction.jade:</p>
+<div class="highlight-python"><pre>- import mypackage.MyAction
 
-a(href={currentAction.url}) Path to the current action
-p= currentController.asInstanceOf[MyController].hello("World")</pre>
+a(href={url}) Path to the current action
+p= currentAction.asInstanceOf[MyAction].hello("World")</pre>
 </div>
 <div class="section" id="without-separate-layout-file">
 <h3>Without separate layout file<a class="headerlink" href="#without-separate-layout-file" title="Permalink to this headline">¶</a></h3>
-<p>AppController.scala</p>
-<div class="highlight-python"><pre>import xitrum.Controller
+<p>AppAction.scala</p>
+<div class="highlight-python"><pre>import xitrum.Action
 import xitrum.view.DocType
 
-trait AppController extends Controller {
+trait AppAction extends Action {
   override def layout = DocType.html5(
     &lt;html&gt;
       &lt;head&gt;
@@ -293,10 +337,12 @@ respondView(specialLayout _)</pre>
 <div class="section" id="inline-view">
 <h2>Inline view<a class="headerlink" href="#inline-view" title="Permalink to this headline">¶</a></h2>
 <p>Normally, you write view in a Scalate file. You can also write it directly:</p>
-<div class="highlight-python"><pre>import xitrum.Controller
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.GET
 
-class MyController extends Controller {
-  def index = GET {
+@GET("myAction")
+class MyAction extends Action {
+  def execute() {
     val s = "World"  // Will be automatically escaped
     respondInlineView(
       &lt;p&gt;Hello &lt;em&gt;{s}&lt;/em&gt;!&lt;/p&gt;
@@ -308,57 +354,13 @@ class MyController extends Controller {
 <div class="section" id="render-fragment">
 <h2>Render fragment<a class="headerlink" href="#render-fragment" title="Permalink to this headline">¶</a></h2>
 <p>If you want to render the frament file
-scr/main/scalate/mypackage/MyController/_myfragment.jade:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">renderFragment</span><span class="p">(</span><span class="n">classOf</span><span class="p">[</span><span class="n">MyController</span><span class="p">],</span> <span class="s">&quot;myfragment&quot;</span><span class="p">)</span>
+scr/main/scalate/mypackage/MyAction/_myfragment.jade:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">renderFragment</span><span class="p">(</span><span class="n">classOf</span><span class="p">[</span><span class="n">MyAction</span><span class="p">],</span> <span class="s">&quot;myfragment&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If MyController is the current controller, you can skip it:</p>
+<p>If MyAction is the current action, you can skip it:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">renderFragment</span><span class="p">(</span><span class="s">&quot;myfragment&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="section" id="controller-object">
-<h2>Controller object<a class="headerlink" href="#controller-object" title="Permalink to this headline">¶</a></h2>
-<p>From a controller, to refer to an action of another controller, use controller
-object like this:</p>
-<div class="highlight-python"><pre>import xitrum.Controller
-
-object LoginController extends LoginController
-class LoginController extends Controller {
-  def login = GET("login") {...}
-
-  def doLogin = POST("login") {
-    ...
-    // After login success
-    redirectTo(AdminController.index)  // &lt;-- HERE
-  }
-}
-
-object AdminController extends AdminController
-class AdminController extends Controller {
-  def index = GET("admin") {
-    ...
-    // Check if the user has not logged in, redirect him to the login page
-    redirectTo(LoginController.login)  // &lt;-- HERE
-  }
-}</pre>
-</div>
-<p>In short, you create controller object and call action methods on it.</p>
-<div class="section" id="caveat">
-<h3>Caveat<a class="headerlink" href="#caveat" title="Permalink to this headline">¶</a></h3>
-<p>From controller class, do not import everything in controller object like this:</p>
-<div class="highlight-python"><pre>object LoginController extends LoginController
-class LoginController extends Controller {
-  import LoginController._
-  ...
-}</pre>
-</div>
-<p>Doing that will cause many strange runtime error in the Xitrum framework, like this:</p>
-<div class="highlight-python"><pre>java.lang.NullPointerException: null
-  at xitrum.scope.request.RequestEnv.request(RequestEnv.scala:58) ~[xitrum_2.9.2.jar:1.9.8]
-  at xitrum.scope.request.ExtEnv$class.cookies(ExtEnv.scala:26) ~[xitrum_2.9.2.jar:1.9.8]
-  ...</pre>
-</div>
 </div>
 </div>
 </div>
@@ -371,7 +373,9 @@ class LoginController extends Controller {
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Controller, action, and view</a><ul>
+<li><a class="reference internal" href="#">Action and view</a><ul>
+<li><a class="reference internal" href="#normal-action">Normal action</a></li>
+<li><a class="reference internal" href="#actor-action">Actor action</a></li>
 <li><a class="reference internal" href="#respond-to-client">Respond to client</a></li>
 <li><a class="reference internal" href="#respond-template-view-file">Respond template view file</a><ul>
 <li><a class="reference internal" href="#id1">Mustache</a></li>
@@ -385,10 +389,6 @@ class LoginController extends Controller {
 </li>
 <li><a class="reference internal" href="#inline-view">Inline view</a></li>
 <li><a class="reference internal" href="#render-fragment">Render fragment</a></li>
-<li><a class="reference internal" href="#controller-object">Controller object</a><ul>
-<li><a class="reference internal" href="#caveat">Caveat</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -401,7 +401,7 @@ class LoginController extends Controller {
                         title="next chapter">RESTful APIs</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/controller_action_view.txt"
+    <li><a href="_sources/action_view.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -433,7 +433,7 @@ class LoginController extends Controller {
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Netty handlers &mdash; Xitrum 1.22 documentation</title>
+    <title>Netty handlers &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="Dependencies" href="deps.html" />
     <link rel="prev" title="HOWTO" href="howto.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="howto.html" title="HOWTO"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,13 +52,15 @@
             
   <div class="section" id="netty-handlers">
 <h1>Netty handlers<a class="headerlink" href="#netty-handlers" title="Permalink to this headline">¶</a></h1>
-<p>This chapter is a little advanced, normally you don&#8217;t need to read.</p>
+<p>This chapter is advanced. You must have knowlege about <a class="reference external" href="http://netty.io/">Netty</a>.</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Rack_(Web_server_interface)">Rack</a>,
 <a class="reference external" href="http://en.wikipedia.org/wiki/Web_Server_Gateway_Interface">WSGI</a>, and
 <a class="reference external" href="http://en.wikipedia.org/wiki/PSGI">PSGI</a> have middleware architecture.
 You can create middleware and customize the order of middlewares.
 Xitrum is based on <a class="reference external" href="http://netty.io/">Netty</a>. Netty has the same
 thing called handlers.</p>
+<p>Xitrum lets you customize the channel pipeline of handlers. Doing this, you can
+maximize server performance for your specific use case.</p>
 <p>This chaper describes:</p>
 <ul class="simple">
 <li>Netty handler architecture</li>
@@ -67,10 +69,12 @@ thing called handlers.</p>
 </ul>
 <div class="section" id="netty-handler-architecture">
 <h2>Netty handler architecture<a class="headerlink" href="#netty-handler-architecture" title="Permalink to this headline">¶</a></h2>
+<p>For each connection, there is a channel pipeline to handle the IO data.
+A channel pipeline is a series of handlers.</p>
 <p>In Netty, there are 2 types of handlers:
 * upstream: the request direction client -&gt; server
 * downstream: the response direction server -&gt; client</p>
-<p>Please see the doc of <a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a>
+<p>Please see the doc of <a class="reference external" href="http://netty.io/3.6/api/org/jboss/netty/channel/ChannelPipeline.html">ChannelPipeline</a>
 for more information.</p>
 <div class="highlight-python"><pre>                                     I/O Request
                                    via Channel or
@@ -112,22 +116,42 @@ for more information.</p>
 +--------------------------------------------------------+</pre>
 </div>
 </div>
-<div class="section" id="xitrum-handlers">
-<h2>Xitrum handlers<a class="headerlink" href="#xitrum-handlers" title="Permalink to this headline">¶</a></h2>
-<p>See <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/handler/ChannelPipelineFactory.scala">xitrum.handler.ChannelPipelineFactory</a>.</p>
+<div class="section" id="xitrum-default-handlers">
+<h2>Xitrum default handlers<a class="headerlink" href="#xitrum-default-handlers" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/handler/ChannelPipelineFactory.scala">xitrum.handler.DefaultHttpChannelPipelineFactory</a>.</p>
 </div>
+<div class="section" id="custom-handlers">
+<h2>Custom handlers<a class="headerlink" href="#custom-handlers" title="Permalink to this headline">¶</a></h2>
+<p>When starting Xitrum server, you can pass in your own ChannelPipelineFactory:</p>
+<div class="highlight-python"><pre>import xitrum.Server
+
+object Boot {
+  def main(args: Array[String]) {
+    Server.start(myChannelPipelineFactory)
+  }
+}</pre>
+</div>
+<p>For HTTPS server, Xitrum will automatically prepend SSL handler to the result of
+<tt class="docutils literal"><span class="pre">myChannelPipelineFactory.getPipeline</span></tt>.</p>
+<p>You can reuse Xitrum handlers in your pipeline.</p>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="channel-attachement">
-<h2>Channel attachement<a class="headerlink" href="#channel-attachement" title="Permalink to this headline">¶</a></h2>
+<h3>Channel attachement<a class="headerlink" href="#channel-attachement" title="Permalink to this headline">¶</a></h3>
 <p>HttpRequest is attached to the channel using Channel#setAttachment.
 Use Channel#getAttachment to get it back.</p>
 </div>
 <div class="section" id="channel-close-event">
-<h2>Channel close event<a class="headerlink" href="#channel-close-event" title="Permalink to this headline">¶</a></h2>
-<p>To act when the connection is closed, listen to the channel&#8217;s close event: TODO</p>
+<h3>Channel close event<a class="headerlink" href="#channel-close-event" title="Permalink to this headline">¶</a></h3>
+<p>To act when the connection is closed, listen to the channel&#8217;s close event:</p>
+<div class="highlight-python"><pre>channel.getCloseFuture.addListener(new ChannelFutureListener {
+  def operationComplete(future: ChannelFuture) {
+    // Your code
+  }
+})</pre>
 </div>
-<div class="section" id="custom-handler">
-<h2>Custom handler<a class="headerlink" href="#custom-handler" title="Permalink to this headline">¶</a></h2>
-<p>TODO: improve Xitrum to let user customize the order of handlers</p>
+</div>
 </div>
 </div>
 
@@ -141,10 +165,13 @@ Use Channel#getAttachment to get it back.</p>
   <ul>
 <li><a class="reference internal" href="#">Netty handlers</a><ul>
 <li><a class="reference internal" href="#netty-handler-architecture">Netty handler architecture</a></li>
-<li><a class="reference internal" href="#xitrum-handlers">Xitrum handlers</a></li>
+<li><a class="reference internal" href="#xitrum-default-handlers">Xitrum default handlers</a></li>
+<li><a class="reference internal" href="#custom-handlers">Custom handlers</a></li>
+<li><a class="reference internal" href="#tips">Tips</a><ul>
 <li><a class="reference internal" href="#channel-attachement">Channel attachement</a></li>
 <li><a class="reference internal" href="#channel-close-event">Channel close event</a></li>
-<li><a class="reference internal" href="#custom-handler">Custom handler</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -189,7 +216,7 @@ Use Channel#getAttachment to get it back.</p>
         <li class="right" >
           <a href="howto.html" title="HOWTO"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

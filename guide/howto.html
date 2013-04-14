@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>HOWTO &mdash; Xitrum 1.22 documentation</title>
+    <title>HOWTO &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="Netty handlers" href="handler.html" />
     <link rel="prev" title="Clustering with Akka and Hazelcast" href="cluster.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="cluster.html" title="Clustering with Akka and Hazelcast"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,6 +54,41 @@
 <h1>HOWTO<a class="headerlink" href="#howto" title="Permalink to this headline">¶</a></h1>
 <p>This chapter contains various small tips. Each tip is too small to have its own
 chapter.</p>
+<div class="section" id="link-to-an-action">
+<h2>Link to an action<a class="headerlink" href="#link-to-an-action" title="Permalink to this headline">¶</a></h2>
+<p>Xitrum tries to be typesafe. Don&#8217;t write URL manually, use urlFor like this:</p>
+<div class="highlight-python"><pre>&lt;a href={url[ArticlesShow]("id" -&gt; myArticle.id)}&gt;{myArticle.title}&lt;/a&gt;</pre>
+</div>
+</div>
+<div class="section" id="redirect-to-an-action">
+<h2>Redirect to an action<a class="headerlink" href="#redirect-to-an-action" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>import xitrum.Action
+import xitrum.annotation.{GET, POST}
+
+@GET("login")
+class LoginInput extends Action {
+  def execute() {...}
+}
+
+@POST("login")
+class DoLogin extends Action {
+  def execute() {
+    ...
+    // After login success
+    redirectTo[AdminIndex]()
+  }
+}
+
+GET("admin")
+class AdminIndex extends Action {
+  def execute() {
+    ...
+    // Check if the user has not logged in, redirect him to the login page
+    redirectTo[LoginInput]()
+  }
+}</pre>
+</div>
+</div>
 <div class="section" id="determine-is-the-request-is-ajax-request">
 <h2>Determine is the request is Ajax request<a class="headerlink" href="#determine-is-the-request-is-ajax-request" title="Permalink to this headline">¶</a></h2>
 <p>Use <tt class="docutils literal"><span class="pre">isAjax</span></tt>.</p>
@@ -77,11 +112,11 @@ else
 }</pre>
 </div>
 </div>
-<div class="section" id="add-basic-authentication-to-a-controller">
-<h3>Add basic authentication to a controller<a class="headerlink" href="#add-basic-authentication-to-a-controller" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><pre>import xitrum.Controller
+<div class="section" id="add-basic-authentication-to-an-action">
+<h3>Add basic authentication to an action<a class="headerlink" href="#add-basic-authentication-to-an-action" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>import xitrum.Action
 
-class MyController extends Controller {
+class MyAction extends Action {
   beforeFilter {
     basicAuth("Realm") { (username, password) =&gt;
       username == "username" &amp;&amp; password == "password"
@@ -89,13 +124,6 @@ class MyController extends Controller {
   }
 }</pre>
 </div>
-</div>
-</div>
-<div class="section" id="link-to-an-action">
-<h2>Link to an action<a class="headerlink" href="#link-to-an-action" title="Permalink to this headline">¶</a></h2>
-<p>Xitrum tries to be typesafe.</p>
-<p>Don&#8217;t write URL manually, use urlFor like this:</p>
-<div class="highlight-python"><pre>&lt;a href={Articles.show.url("id" -&gt; myArticle.id)}&gt;{myArticle.title}&lt;/a&gt;</pre>
 </div>
 </div>
 <div class="section" id="log">
@@ -234,13 +262,14 @@ You can create and use your own template engine:</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">HOWTO</a><ul>
+<li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
+<li><a class="reference internal" href="#redirect-to-an-action">Redirect to an action</a></li>
 <li><a class="reference internal" href="#determine-is-the-request-is-ajax-request">Determine is the request is Ajax request</a></li>
 <li><a class="reference internal" href="#basic-authentication">Basic authentication</a><ul>
 <li><a class="reference internal" href="#config-basic-authentication-for-the-whole-site">Config basic authentication for the whole site</a></li>
-<li><a class="reference internal" href="#add-basic-authentication-to-a-controller">Add basic authentication to a controller</a></li>
+<li><a class="reference internal" href="#add-basic-authentication-to-an-action">Add basic authentication to an action</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#link-to-an-action">Link to an action</a></li>
 <li><a class="reference internal" href="#log">Log</a></li>
 <li><a class="reference internal" href="#load-config-files">Load config files</a><ul>
 <li><a class="reference internal" href="#json-file">JSON file</a></li>
@@ -294,7 +323,7 @@ You can create and use your own template engine:</p>
         <li class="right" >
           <a href="cluster.html" title="Clustering with Akka and Hazelcast"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Postbacks &mdash; Xitrum 1.22 documentation</title>
+    <title>Postbacks &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="XML" href="xml.html" />
     <link rel="prev" title="RESTful APIs" href="restful.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="restful.html" title="RESTful APIs"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,19 +52,28 @@
             
   <div class="section" id="postbacks">
 <h1>Postbacks<a class="headerlink" href="#postbacks" title="Permalink to this headline">¶</a></h1>
-<p>Please see the following links for the idea about postback:</p>
+<p>There are 2 main use cases of web applications:</p>
+<ul class="simple">
+<li>To serve machines: you need to create RESTful APIs for smartphones, web services
+for other web sites.</li>
+<li>To serve human users: you need to create interactive web pages.</li>
+</ul>
+<p>As a web framework, Xitrum aims to support you to solve these use cases easily.
+To solve the 1st use case, you use <a class="reference internal" href="restful.html"><em>RESTful actions</em></a>.
+To solve the 2nd use case, you can use the Ajax form postback feature in Xitrum.
+Please see the following links for the idea about postback:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Postback">http://en.wikipedia.org/wiki/Postback</a></li>
 <li><a class="reference external" href="http://nitrogenproject.com/doc/tutorial.html">http://nitrogenproject.com/doc/tutorial.html</a></li>
 </ul>
-<p>Xitrum&#8217;s Ajax form postback is inspired by <a class="reference external" href="http://nitrogenproject.com/">Nitrogen</a>.</p>
+<p>Xitrum&#8217;s postback feature is inspired by <a class="reference external" href="http://nitrogenproject.com/">Nitrogen</a>.</p>
 <div class="section" id="layout">
 <h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
-<p>AppController.scala</p>
-<div class="highlight-python"><pre>import xitrum.Controller
+<p>AppAction.scala</p>
+<div class="highlight-python"><pre>import xitrum.Action
 import xitrum.view.DocType
 
-trait AppController extends Controller {
+trait AppAction extends Action {
   override def layout = DocType.html5(
     &lt;html&gt;
       &lt;head&gt;
@@ -85,12 +94,12 @@ trait AppController extends Controller {
 <div class="section" id="form">
 <h2>Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h2>
 <p>Articles.scala</p>
-<div class="highlight-python"><pre>import xitrum.validator._
+<div class="highlight-python"><pre>import xitrum.annotation.{GET, POST, First}
+import xitrum.validator._
 
-class Articles extends AppController {
-  pathPrefix = "articles"
-
-  def show = GET(":id") {
+@GET("articles/:id")
+class ArticlesShow extends AppAction {
+  def execute() {
     val id = param("id")
     val article = Article.find(id)
     respondInlineView(
@@ -98,10 +107,14 @@ class Articles extends AppController {
       &lt;div&gt;{article.body}&lt;/div&gt;
     )
   }
+}
 
-  def nevv = first.GET("new") {  // first: force this route to be matched before "show"
+@First  // Force this route to be matched before "show"
+@GET("articles/new")
+class ArticlesNew extends AppAction {
+  def execute() {
     respondInlineView(
-      &lt;form data-postback="submit" action={create.url}&gt;
+      &lt;form data-postback="submit" action={url[ArticlesCreate]}&gt;
         &lt;label&gt;Title&lt;/label&gt;
         &lt;input type="text" name="title" class="required" /&gt;&lt;br /&gt;
 
@@ -112,8 +125,11 @@ class Articles extends AppController {
       &lt;/form&gt;
     )
   }
+}
 
-  def create = POST {
+@POST("articles")
+class ArticlesCreate extends AppAction {
+  def execute() {
     val title   = param("title")
     val body    = param("body")
     val article = Article.save(title, body)
@@ -124,22 +140,22 @@ class Articles extends AppController {
 }</pre>
 </div>
 <p>When <tt class="docutils literal"><span class="pre">submit</span></tt> JavaScript event of the form is triggered, the form will be posted back
-to <tt class="docutils literal"><span class="pre">create</span></tt>.</p>
+to <tt class="docutils literal"><span class="pre">ArticlesCreate</span></tt>.</p>
 <p><tt class="docutils literal"><span class="pre">action</span></tt> attribute of <tt class="docutils literal"><span class="pre">&lt;form&gt;</span></tt> is encrypted. The encrypted URL acts as the anti-CSRF token.</p>
 </div>
 <div class="section" id="non-form">
 <h2>Non-form<a class="headerlink" href="#non-form" title="Permalink to this headline">¶</a></h2>
 <p>Postback can be set on any element, not only form.</p>
 <p>An example with link:</p>
-<div class="highlight-python"><pre>&lt;a href="#" data-postback="click" action={AuthenticateController.logout.postbackurl}&gt;Logout&lt;/a&gt;</pre>
+<div class="highlight-python"><pre>&lt;a href="#" data-postback="click" action={postbackUrl[LogoutAction]}&gt;Logout&lt;/a&gt;</pre>
 </div>
-<p>Clicking the link above will trigger the postback to logout action of AuthenticateController.</p>
+<p>Clicking the link above will trigger the postback to LogoutAction.</p>
 </div>
 <div class="section" id="confirmation-dialog">
 <h2>Confirmation dialog<a class="headerlink" href="#confirmation-dialog" title="Permalink to this headline">¶</a></h2>
 <p>If you want to display a confirmation dialog:</p>
 <div class="highlight-python"><pre>&lt;a href="#" data-postback="click"
-            action={AuthenticateController.logout.postbackurl}
+            action={postbackUrl[LogoutAction]}
             data-confirm="Do you want to logout?"&gt;Logout&lt;/a&gt;</pre>
 </div>
 <p>If the user clicks &#8220;Cancel&#8221;, the postback will not be sent.</p>
@@ -151,12 +167,12 @@ extra params with the postback.</p>
 <p>For other elements, you do like this:</p>
 <div class="highlight-python"><pre>&lt;a href="#"
    data-postback="click"
-   action={Articles.destroy.url("id" -&gt; item.id)}
+   action={postbackUrl[ArticlesDestroy]("id" -&gt; item.id)}
    data-extra="_method=delete"
    data-confirm={"Do you want to delete %s?".format(item.name)}&gt;Delete&lt;/a&gt;</pre>
 </div>
 <p>You may also put extra params in a separate form:</p>
-<div class="highlight-python"><pre>&lt;form id="myform" data-postback="submit" action={Site.search.url}&gt;
+<div class="highlight-python"><pre>&lt;form id="myform" data-postback="submit" action={postbackUrl[SiteSearch]}&gt;
   Search:
   &lt;input type="text" name="keyword" /&gt;
 
@@ -164,7 +180,7 @@ extra params with the postback.</p>
      href="#"
      data-postback="click"
      data-extra="#myform"
-     action={Site.search.url("page" -&gt; page)}&gt;{page}&lt;/a&gt;
+     action={postbackUrl[SiteSearch]("page" -&gt; page)}&gt;{page}&lt;/a&gt;
 &lt;/form&gt;</pre>
 </div>
 <p><tt class="docutils literal"><span class="pre">#myform</span></tt> is the jQuery selector to select the form that contains extra params.</p>
@@ -229,7 +245,7 @@ extra params with the postback.</p>
         <li class="right" >
           <a href="restful.html" title="RESTful APIs"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

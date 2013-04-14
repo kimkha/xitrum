@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Upload &mdash; Xitrum 1.22 documentation</title>
+    <title>Upload &mdash; Xitrum 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.22',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 1.22 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
     <link rel="next" title="Filters" href="filter.html" />
     <link rel="prev" title="Validation" href="validation.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="validation.html" title="Validation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,7 +57,7 @@
 <h2>Normal upload<a class="headerlink" href="#normal-upload" title="Permalink to this headline">¶</a></h2>
 <p>In your upload form, remember to set <tt class="docutils literal"><span class="pre">enctype</span></tt> to <tt class="docutils literal"><span class="pre">multipart/form-data</span></tt>.</p>
 <p>my_upload.scalate:</p>
-<div class="highlight-python"><pre>form(method="post" action={MyController.myAction.url} enctype="multipart/form-data")
+<div class="highlight-python"><pre>form(method="post" action={url[MyAction]} enctype="multipart/form-data")
   != antiCSRFInput
 
   label Please select a file:
@@ -65,10 +65,10 @@
 
   button(type="submit") Upload</pre>
 </div>
-<p>myAction:</p>
+<p>MyAction:</p>
 <div class="highlight-python"><pre>val myFile = param[FileUpload]("my_file")</pre>
 </div>
-<p>myFile is an instance of <a class="reference external" href="http://static.netty.io/3.5/api/org/jboss/netty/handler/codec/http/multipart/FileUpload.html">FileUpload</a>.
+<p>myFile is an instance of <a class="reference external" href="http://netty.io/3.6/api/org/jboss/netty/handler/codec/http/multipart/FileUpload.html">FileUpload</a>.
 Use its methods to get file name, move file to a directory etc.</p>
 </div>
 <div class="section" id="ajax-upload">
@@ -132,7 +132,7 @@ Use its methods to get file name, move file to a directory etc.</p>
         <li class="right" >
           <a href="validation.html" title="Validation"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 1.22 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
