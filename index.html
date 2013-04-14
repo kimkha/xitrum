@@ -131,8 +131,8 @@ import xitrum.annotation.WEBSOCKET
 
 @WEBSOCKET("websocketEcho")
 class EchoWebSocketActor extends WebSocketActor {
-  def execute(action: Action) {
-    logger.info("onOpen, remoteIp: " + action.remoteIp)
+  def execute() {
+    logger.info("onOpen, remoteIp: " + remoteIp)
 
     context.become {
       case WebSocketText(text) =>
@@ -162,8 +162,8 @@ import xitrum.annotation.SOCKJS
 
 @SOCKJS("sockJSEcho")
 class SockJsEcho extends SockJsActor {
-  def execute(action: Action) {
-    logger.info("onOpen, remoteIp: " + action.remoteIp)
+  def execute() {
+    logger.info("onOpen, remoteIp: " + remoteIp)
 
     context.become {
       case SockJsText(text) =>
