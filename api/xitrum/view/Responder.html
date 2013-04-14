@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -46,13 +46,17 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>When responding text, charset is automatically set, as advised by Google:
 http://code.google.com/speed/page-speed/docs/rendering.html#SpecifyCharsetEarly
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="../Action.html" class="extype" name="xitrum.Action">Action</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Knockout.html" class="extype" name="xitrum.view.Knockout">Knockout</a>, <a href="Flash.html" class="extype" name="xitrum.view.Flash">Flash</a>, <a href="JS.html" class="extype" name="xitrum.view.JS">JS</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a>, <a href="../routing/JSRoutesController.html" class="extype" name="xitrum.routing.JSRoutesController">JSRoutesController</a>, <a href="../routing/JSRoutesController$.html" class="extype" name="xitrum.routing.JSRoutesController">JSRoutesController</a>, <a href="../sockjs/SockJsController.html" class="extype" name="xitrum.sockjs.SockJsController">SockJsController</a></div>
-        </div></div>
+          <div class="subClasses hiddenContent"><a href="../Action.html" class="extype" name="xitrum.Action">Action</a>, <a href="../ActionActor.html" class="extype" name="xitrum.ActionActor">ActionActor</a>, <a href="../routing/JSRoutesAction.html" class="extype" name="xitrum.routing.JSRoutesAction">JSRoutesAction</a>, <a href="../sockjs/SockJEventSourceReceive.html" class="extype" name="xitrum.sockjs.SockJEventSourceReceive">SockJEventSourceReceive</a>, <a href="../sockjs/SockJSWebsocketGET.html" class="extype" name="xitrum.sockjs.SockJSWebsocketGET">SockJSWebsocketGET</a>, <a href="../sockjs/SockJSWebsocketPOST.html" class="extype" name="xitrum.sockjs.SockJSWebsocketPOST">SockJSWebsocketPOST</a>, <a href="../sockjs/SockJsAction.html" class="extype" name="xitrum.sockjs.SockJsAction">SockJsAction</a>, <a href="../sockjs/SockJsGreeting.html" class="extype" name="xitrum.sockjs.SockJsGreeting">SockJsGreeting</a>, <a href="../sockjs/SockJsIframe.html" class="extype" name="xitrum.sockjs.SockJsIframe">SockJsIframe</a>, <a href="../sockjs/SockJsInfoGET.html" class="extype" name="xitrum.sockjs.SockJsInfoGET">SockJsInfoGET</a>, <a href="../sockjs/SockJsInfoOPTIONS.html" class="extype" name="xitrum.sockjs.SockJsInfoOPTIONS">SockJsInfoOPTIONS</a>, <a href="../sockjs/SockJsJsonPPollingReceive.html" class="extype" name="xitrum.sockjs.SockJsJsonPPollingReceive">SockJsJsonPPollingReceive</a>, <a href="../sockjs/SockJsJsonPPollingSend.html" class="extype" name="xitrum.sockjs.SockJsJsonPPollingSend">SockJsJsonPPollingSend</a>, <a href="../sockjs/SockJsNonWebSocketSessionActionActor.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionActionActor">SockJsNonWebSocketSessionActionActor</a>, <a href="../sockjs/SockJsNonWebSocketSessionReceiverActionActor.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionReceiverActionActor">SockJsNonWebSocketSessionReceiverActionActor</a>, <a href="../sockjs/SockJsXhrPollingOPTIONSReceive.html" class="extype" name="xitrum.sockjs.SockJsXhrPollingOPTIONSReceive">SockJsXhrPollingOPTIONSReceive</a>, <a href="../sockjs/SockJsXhrPollingOPTIONSSend.html" class="extype" name="xitrum.sockjs.SockJsXhrPollingOPTIONSSend">SockJsXhrPollingOPTIONSSend</a>, <a href="../sockjs/SockJsXhrPollingReceive.html" class="extype" name="xitrum.sockjs.SockJsXhrPollingReceive">SockJsXhrPollingReceive</a>, <a href="../sockjs/SockJsXhrSend.html" class="extype" name="xitrum.sockjs.SockJsXhrSend">SockJsXhrSend</a>, <a href="../sockjs/SockJsXhrStreamingOPTIONSReceive.html" class="extype" name="xitrum.sockjs.SockJsXhrStreamingOPTIONSReceive">SockJsXhrStreamingOPTIONSReceive</a>, <a href="../sockjs/SockJsXhrStreamingReceive.html" class="extype" name="xitrum.sockjs.SockJsXhrStreamingReceive">SockJsXhrStreamingReceive</a>, <a href="../sockjs/SockJshtmlfileReceive.html" class="extype" name="xitrum.sockjs.SockJshtmlfileReceive">SockJshtmlfileReceive</a></div>
+        </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
+                <span class="toggle diagram-link">Type Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph4" viewBox="0.00 0.00 256.00 158.00" height="158pt" width="256pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 154)" class="graph" id="graph1"><polygon points="-4,5 -4,-154 253,-154 253,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this trait" id="graph4_0"><a xlink:title="xitrum.view.Responder (this trait)" xlink:href="#inheritance-diagram"><polygon points="155.25,-88 62.75,-88 62.75,-62 155.25,-62 155.25,-88" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-83" x="73" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="95" text-anchor="start">Responder</text></a></g><!-- node1 --><g class="node trait" id="graph4_1"><a xlink:title="xitrum.Action" xlink:href="../Action.html#inheritance-diagram"><polygon points="145,-26 73,-26 73,-0 145,-0 145,-26" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-21" x="83" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="105" text-anchor="start">Action</text></a></g><!-- node0&#45;&gt;node1 --><g class="edge inheritance" id="graph4_0_1"><a xlink:title="Action is a subtype of Responder"><path d="M109,-56.6826C109,-46.8961 109,-34.9026 109,-26.1238" stroke="#d4d4d4" fill="none"></path><polygon points="107.25,-56.8581 109,-61.8581 110.75,-56.8581 107.25,-56.8581" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node2 --><g class="node trait" id="graph4_2"><a xlink:title="xitrum.view.JS" xlink:href="JS.html#inheritance-diagram"><polygon points="56,-150 3.55271e-15,-150 3.55271e-15,-124 56,-124 56,-150" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-145" x="10" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="32" text-anchor="start">JS</text></a></g><!-- node2&#45;&gt;node0 --><g class="edge inheritance" id="graph4_2_0"><a xlink:title="Responder is a subtype of JS"><path d="M48.4945,-120.819C62.1677,-110.691 79.9036,-97.5529 92.6328,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="47.3677,-119.476 44.3916,-123.858 49.451,-122.288 47.3677,-119.476" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node3 --><g class="node trait" id="graph4_3"><a xlink:title="xitrum.view.Flash" xlink:href="Flash.html#inheritance-diagram"><polygon points="143.25,-150 74.75,-150 74.75,-124 143.25,-124 143.25,-150" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-145" x="85" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="107" text-anchor="start">Flash</text></a></g><!-- node3&#45;&gt;node0 --><g class="edge inheritance" id="graph4_3_0"><a xlink:title="Responder is a subtype of Flash"><path d="M109,-118.683C109,-108.896 109,-96.9026 109,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="107.25,-118.858 109,-123.858 110.75,-118.858 107.25,-118.858" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node4 --><g class="node trait" id="graph4_4"><a xlink:title="xitrum.view.Knockout" xlink:href="Knockout.html#inheritance-diagram"><polygon points="248,-150 162,-150 162,-124 248,-124 248,-150" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-145" x="172" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="194" text-anchor="start">Knockout</text></a></g><!-- node4&#45;&gt;node0 --><g class="edge inheritance" id="graph4_4_0"><a xlink:title="Responder is a subtype of Knockout"><path d="M181.128,-121.08C164.868,-110.917 143.615,-97.6342 128.398,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="180.405,-122.692 185.573,-123.858 182.26,-119.724 180.405,-122.692" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+              </div></div>
         
 
       <div id="mbrsel">
@@ -297,6 +301,19 @@ http://code.google.com/speed/page-speed/docs/rendering.html#SpecifyCharsetEarly
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JS.html" class="extype" name="xitrum.view.JS">JS</a></dd></dl></div>
+    </li><li name="xitrum.view.Responder#isDoneResponding" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isDoneResponding:Boolean"></a>
+      <a id="isDoneResponding:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isDoneResponding</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -310,19 +327,6 @@ http://code.google.com/speed/page-speed/docs/rendering.html#SpecifyCharsetEarly
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="xitrum.view.Responder#isResponded" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="isResponded:Boolean"></a>
-      <a id="isResponded:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">isResponded</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      
     </li><li name="xitrum.view.JS#js$" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="js$(selector:String):String"></a>
       <a id="js$(String):String"></a>
@@ -419,15 +423,15 @@ use JSON4S or xitrum.util.Json, e.g xitrum.util.Json.generate(Seq(string)).</p><
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JS.html" class="extype" name="xitrum.view.JS">JS</a></dd></dl></div>
     </li><li name="xitrum.view.JS#jsRedirectTo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="jsRedirectTo(action:xitrum.controller.Action,params:(String,Any)*):org.jboss.netty.channel.ChannelFuture"></a>
-      <a id="jsRedirectTo(Action,(String,Any)*):ChannelFuture"></a>
+      <a id="jsRedirectTo[T&lt;:xitrum.Action](params:(String,Any)*)(implicitevidence$1:Manifest[T]):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="jsRedirectTo[T&lt;:Action]((String,Any)*)(Manifest[T]):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jsRedirectTo</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="params">params: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>)*</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">jsRedirectTo</span><span class="tparams">[<span name="T">T &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a></span>]</span><span class="params">(<span name="params">params: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>)*</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.Predef.Manifest">Manifest</span>[<span class="extype" name="xitrum.view.JS.jsRedirectTo.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JS.html" class="extype" name="xitrum.view.JS">JS</a></dd></dl></div>
@@ -502,29 +506,55 @@ Used in application layout to display the flash message right after a view is lo
 Used in Ajax request handling to respond a message and have the browser
 render it to the flash area right away.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Flash.html" class="extype" name="xitrum.view.Flash">Flash</a></dd></dl></div>
-    </li><li name="xitrum.view.Knockout#koApplyBindings" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="koApplyBindings(model:AnyRef,scopeSelector:String,syncAction:xitrum.controller.Action,js:String):Unit"></a>
-      <a id="koApplyBindings(AnyRef,String,Action,String):Unit"></a>
+    </li><li name="xitrum.view.Knockout#koApplyBindingsCs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="koApplyBindingsCs(model:AnyRef,scopeSelector:String,syncActionClass:Class[_&lt;:xitrum.Action],cs:String):Unit"></a>
+      <a id="koApplyBindingsCs(AnyRef,String,Class[_&lt;:Action],String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">koApplyBindings</span><span class="params">(<span name="model">model: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="scopeSelector">scopeSelector: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="syncAction">syncAction: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="js">js: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">koApplyBindingsCs</span><span class="params">(<span name="model">model: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="scopeSelector">scopeSelector: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="syncActionClass">syncActionClass: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="cs">cs: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Knockout.html" class="extype" name="xitrum.view.Knockout">Knockout</a></dd></dl></div>
-    </li><li name="xitrum.view.Knockout#koApplyBindings" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="koApplyBindings(model:AnyRef,syncAction:xitrum.controller.Action,js:String):Unit"></a>
-      <a id="koApplyBindings(AnyRef,Action,String):Unit"></a>
+    </li><li name="xitrum.view.Knockout#koApplyBindingsCs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="koApplyBindingsCs(model:AnyRef,syncActionClass:Class[_&lt;:xitrum.Action],cs:String):Unit"></a>
+      <a id="koApplyBindingsCs(AnyRef,Class[_&lt;:Action],String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">koApplyBindings</span><span class="params">(<span name="model">model: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="syncAction">syncAction: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="js">js: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">koApplyBindingsCs</span><span class="params">(<span name="model">model: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="syncActionClass">syncActionClass: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="cs">cs: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Knockout.html" class="extype" name="xitrum.view.Knockout">Knockout</a></dd></dl></div>
+    </li><li name="xitrum.view.Knockout#koApplyBindingsJs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="koApplyBindingsJs(model:AnyRef,scopeSelector:String,syncActionClass:Class[_&lt;:xitrum.Action],js:String):Unit"></a>
+      <a id="koApplyBindingsJs(AnyRef,String,Class[_&lt;:Action],String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">koApplyBindingsJs</span><span class="params">(<span name="model">model: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="scopeSelector">scopeSelector: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="syncActionClass">syncActionClass: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="js">js: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Knockout.html" class="extype" name="xitrum.view.Knockout">Knockout</a></dd></dl></div>
+    </li><li name="xitrum.view.Knockout#koApplyBindingsJs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="koApplyBindingsJs(model:AnyRef,syncActionClass:Class[_&lt;:xitrum.Action],js:String):Unit"></a>
+      <a id="koApplyBindingsJs(AnyRef,Class[_&lt;:Action],String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">koApplyBindingsJs</span><span class="params">(<span name="model">model: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="syncActionClass">syncActionClass: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="js">js: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Knockout.html" class="extype" name="xitrum.view.Knockout">Knockout</a></dd></dl></div>
@@ -567,6 +597,20 @@ render it to the flash area right away.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="xitrum.view.Responder#onDoneResponding" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="onDoneResponding():Unit"></a>
+      <a id="onDoneResponding():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onDoneResponding</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Called when the response or the last chunk (in case of chunked response)
+has been sent to the client.</p>
     </li><li name="xitrum.view.Responder#respond" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="respond():org.jboss.netty.channel.ChannelFuture"></a>
       <a id="respond():ChannelFuture"></a>
@@ -852,35 +896,20 @@ http://www.ne.jp/asahi/hishidama/home/tech/scala/xml.html
         <span class="name">respondView</span><span class="params">(<span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Same as respondView(action, customLayout, options),
-where action is currentAction and customLayout is the controller's layout method.</p>
+      
     </li><li name="xitrum.view.Responder#respondView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="respondView(action:xitrum.controller.Action):org.jboss.netty.channel.ChannelFuture"></a>
-      <a id="respondView(Action):ChannelFuture"></a>
+      <a id="respondView(location:Class[_&lt;:xitrum.Action]):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondView(Class[_&lt;:Action]):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondView</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">respondView</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
       
-    </li><li name="xitrum.view.Responder#respondView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="respondView(action:xitrum.controller.Action,options:Map[String,Any]):org.jboss.netty.channel.ChannelFuture"></a>
-      <a id="respondView(Action,Map[String,Any]):ChannelFuture"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">respondView</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as respondView(action, customLayout, options),
-where customLayout is the controller's layout method.</p>
     </li><li name="xitrum.view.Responder#respondView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="respondView(customLayout:()=&gt;Any):org.jboss.netty.channel.ChannelFuture"></a>
       <a id="respondView(()⇒Any):ChannelFuture"></a>
@@ -891,6 +920,19 @@ where customLayout is the controller's layout method.</p>
       </span>
       <span class="symbol">
         <span class="name">respondView</span><span class="params">(<span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.view.Responder#respondView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="respondView(customLayout:()=&gt;Any,location:Class[_&lt;:xitrum.Action]):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondView(()⇒Any,Class[_&lt;:Action]):ChannelFuture"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">respondView</span><span class="params">(<span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
       
@@ -906,74 +948,86 @@ where customLayout is the controller's layout method.</p>
         <span class="name">respondView</span><span class="params">(<span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Same as respondView(action, customLayout, options),
-where action is currentAction.</p>
-    </li><li name="xitrum.view.Responder#respondView" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="respondView(action:xitrum.controller.Action,customLayout:()=&gt;Any,options:Map[String,Any]):org.jboss.netty.channel.ChannelFuture"></a>
-      <a id="respondView(Action,()⇒Any,Map[String,Any]):ChannelFuture"></a>
+      
+    </li><li name="xitrum.view.Responder#respondView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="respondView(location:Class[_&lt;:xitrum.Action],options:Map[String,Any]):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondView(Class[_&lt;:Action],Map[String,Any]):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondView</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map()</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">respondView</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.view.Responder#respondView" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="respondView(customLayout:()=&gt;Any,location:Class[_&lt;:xitrum.Action],options:Map[String,Any]):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondView(()⇒Any,Class[_&lt;:Action],Map[String,Any]):ChannelFuture"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">respondView</span><span class="params">(<span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
 </p></dd></dl></div>
     </li><li name="xitrum.view.Responder#respondViewNoLayout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="respondViewNoLayout(controllerClass:Class[_]):org.jboss.netty.channel.ChannelFuture"></a>
-      <a id="respondViewNoLayout(Class[_]):ChannelFuture"></a>
+      <a id="respondViewNoLayout():org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondViewNoLayout():ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondViewNoLayout</span><span class="params">(<span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">respondViewNoLayout</span><span class="params">()</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
       
     </li><li name="xitrum.view.Responder#respondViewNoLayout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="respondViewNoLayout(controllerClass:Class[_],options:Map[String,Any]):org.jboss.netty.channel.ChannelFuture"></a>
-      <a id="respondViewNoLayout(Class[_],Map[String,Any]):ChannelFuture"></a>
+      <a id="respondViewNoLayout(options:Map[String,Any]):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondViewNoLayout(Map[String,Any]):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondViewNoLayout</span><span class="params">(<span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">respondViewNoLayout</span><span class="params">(<span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.view.Responder#respondViewNoLayout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="respondViewNoLayout(location:Class[_&lt;:xitrum.Action]):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondViewNoLayout(Class[_&lt;:Action]):ChannelFuture"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">respondViewNoLayout</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.view.Responder#respondViewNoLayout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="respondViewNoLayout(location:Class[_&lt;:xitrum.Action],options:Map[String,Any]):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondViewNoLayout(Class[_&lt;:Action],Map[String,Any]):ChannelFuture"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">respondViewNoLayout</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Content-Type header is set to &quot;text/html&quot;</p>
-    </li><li name="xitrum.view.Responder#respondWebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="respondWebSocket(channelBuffer:org.jboss.netty.buffer.ChannelBuffer):org.jboss.netty.channel.ChannelFuture"></a>
-      <a id="respondWebSocket(ChannelBuffer):ChannelFuture"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">respondWebSocket</span><span class="params">(<span name="channelBuffer">channelBuffer: <span class="extype" name="org.jboss.netty.buffer.ChannelBuffer">ChannelBuffer</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.view.Responder#respondWebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="respondWebSocket(text:Any):org.jboss.netty.channel.ChannelFuture"></a>
-      <a id="respondWebSocket(Any):ChannelFuture"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">respondWebSocket</span><span class="params">(<span name="text">text: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
-      </span>
-      </h4>
-      
     </li><li name="xitrum.view.Responder#respondXml" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="respondXml(any:Any):org.jboss.netty.channel.ChannelFuture"></a>
       <a id="respondXml(Any):ChannelFuture"></a>

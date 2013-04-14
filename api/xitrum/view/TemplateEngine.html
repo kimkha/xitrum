@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -50,7 +50,11 @@ for every rendering request. Thus it should be thread-safe.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+        </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
+                <span class="toggle diagram-link">Type Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph3" viewBox="0.00 0.00 172.00 120.00" height="120pt" width="172pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 169,-116 169,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this trait" id="graph3_0"><a xlink:title="xitrum.view.TemplateEngine (this trait)" xlink:href="#inheritance-diagram"><polygon points="140,-50 24,-50 24,-24 140,-24 140,-50" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-45" x="34" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-33" x="56" text-anchor="start">TemplateEngine</text></a></g><!-- node1 --><g class="node class" id="graph3_1"><a xlink:title="scala.AnyRef"><polygon points="120.25,-112 43.75,-112 43.75,-86 120.25,-86 120.25,-112" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-107" x="54" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-95" x="76" text-anchor="start">AnyRef</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph3_1_0"><a xlink:title="TemplateEngine is a subtype of AnyRef"><path d="M82,-80.6826C82,-70.8961 82,-58.9026 82,-50.1238" stroke="#d4d4d4" fill="none"></path><polygon points="80.2501,-80.8581 82,-85.8581 83.7501,-80.8581 80.2501,-80.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+              </div></div>
         
 
       <div id="mbrsel">
@@ -92,55 +96,42 @@ for every rendering request. Thus it should be thread-safe.
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
               <ol><li name="xitrum.view.TemplateEngine#renderFragment" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="renderFragment(controller:xitrum.Controller,controllerClass:Class[_],fragment:String,options:Map[String,Any]):String"></a>
-      <a id="renderFragment(Controller,Class[_],String,Map[String,Any]):String"></a>
+      <a id="renderFragment(location:Class[_&lt;:xitrum.Action],fragment:String,currentAction:xitrum.Action,options:Map[String,Any]):String"></a>
+      <a id="renderFragment(Class[_&lt;:Action],String,Action,Map[String,Any]):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderFragment</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderFragment</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="currentAction">currentAction: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders the template fragment associated with the controller.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template fragment associated with the controller.</p><p>Ex: When controller = myapp.Site, fragment = &quot;footer&quot;, and Scalate template
+      <p class="shortcomment cmt">Renders the template at the location identified by the package of the given
+action class and the given fragment.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template at the location identified by the package of the given
+action class and the given fragment.</p><p>Ex: When location = myapp.ArticleNew, fragment = form and Scalate template
 engine is used, by default the template path will be:
-src/main/scalate/myapp/Site/_footer.jade
-</p></div><dl class="paramcmts block"><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
+src/main/scalate/myapp/_form.jade
+</p></div><dl class="paramcmts block"><dt class="param">location</dt><dd class="cmt"><p>the action class used to identify the template location
+</p></dd><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
 </p></dd></dl></div>
-    </li><li name="xitrum.view.TemplateEngine#renderTemplate" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="renderTemplate(controller:xitrum.Controller,controllerClass:Class[_],options:Map[String,Any]):String"></a>
-      <a id="renderTemplate(Controller,Class[_],Map[String,Any]):String"></a>
+    </li><li name="xitrum.view.TemplateEngine#renderView" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="renderView(location:Class[_&lt;:xitrum.Action],currentAction:xitrum.Action,options:Map[String,Any]):String"></a>
+      <a id="renderView(Class[_&lt;:Action],Action,Map[String,Any]):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderView</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="currentAction">currentAction: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders the template associated with the controller.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template associated with the controller.</p><p>Ex: When controller = myapp.Site, and Scalate template
+      <p class="shortcomment cmt">Renders the template at the location identified by the given action class.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template at the location identified by the given action class.</p><p>Ex: When location = myapp.SiteIndex and Scalate template
 engine is used, by default the template path will be:
-src/main/scalate/myapp/Site.jade
-</p></div><dl class="paramcmts block"><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
-</p></dd></dl></div>
-    </li><li name="xitrum.view.TemplateEngine#renderTemplate" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="renderTemplate(controller:xitrum.Controller,action:xitrum.controller.Action,controllerName:String,actionName:String,options:Map[String,Any]):String"></a>
-      <a id="renderTemplate(Controller,Action,String,String,Map[String,Any]):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderTemplate</span><span class="params">(<span name="controller">controller: <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="controllerName">controllerName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="actionName">actionName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Renders the template associated with the action of the controller.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template associated with the action of the controller.</p><p>Ex: When controller = myapp.Site, action = index, and Scalate template
-engine is used, by default the template path will be:
-src/main/scalate/myapp/Site/index.jade
-</p></div><dl class="paramcmts block"><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
+src/main/scalate/myapp/SiteIndex.jade
+</p></div><dl class="paramcmts block"><dt class="param">location</dt><dd class="cmt"><p>the action class used to identify the template location
+</p></dd><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
 </p></dd></dl></div>
     </li></ol>
             </div>

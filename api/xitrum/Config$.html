@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../lib/template.js"></script>
       <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../lib/modernizr.custom.js"></script><script type="text/javascript" src="../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../index.html';
@@ -186,22 +186,6 @@ http://code.</p><div class="fullcomment"><div class="comment cmt"><p>Static text
 Dynamic textual responses are only compressed if they are big
 http://code.google.com/speed/page-speed/docs/payload.html#GzipCompression</p><p>Google recommends &gt; 150B-1KB
 </p></div></div>
-    </li><li name="xitrum.Config#EXECUTIORS_PER_CORE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="EXECUTIORS_PER_CORE:Int"></a>
-      <a id="EXECUTIORS_PER_CORE:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">EXECUTIORS_PER_CORE</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">In case of CPU bound, the pool size should be equal the number of cores
-http://grizzly.</p><div class="fullcomment"><div class="comment cmt"><p>In case of CPU bound, the pool size should be equal the number of cores
-http://grizzly.java.net/nonav/docs/docbkx2.0/html/bestpractices.html
-</p></div></div>
     </li><li name="xitrum.Config#actorSystem" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="actorSystem:akka.actor.ActorSystem"></a>
       <a id="actorSystem:ActorSystem"></a>
@@ -354,7 +338,7 @@ the current process!
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="xitrum.Config#hazelcastInstance" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="xitrum.Config#hazelcastInstance" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hazelcastInstance:com.hazelcast.core.HazelcastInstance"></a>
       <a id="hazelcastInstance:HazelcastInstance"></a>
       <h4 class="signature">
@@ -366,10 +350,10 @@ the current process!
         <span class="name">hazelcastInstance</span><span class="result">: <span class="extype" name="com.hazelcast.core.HazelcastInstance">HazelcastInstance</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Use lazy to avoid starting Hazelcast if it is not used
-(starting Hazelcast takes several seconds, sometimes we want to work in
-sbt console mode and don't like this overhead)
-</p>
+      <p class="shortcomment cmt">Use lazy to avoid starting Hazelcast if it is not used.</p><div class="fullcomment"><div class="comment cmt"><p>Use lazy to avoid starting Hazelcast if it is not used.
+Starting Hazelcast takes several seconds, sometimes we want to work in
+sbt console mode and don't like this overhead.
+</p></div></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -478,6 +462,21 @@ See bin/runner.sh.
       <p class="shortcomment cmt">Path to the root directory of the current project.</p><div class="fullcomment"><div class="comment cmt"><p>Path to the root directory of the current project.
 If you're familiar with Rails, this is the same as Rails.root.
 See https://github.com/ngocdaothanh/xitrum/issues/47
+</p></div></div>
+    </li><li name="xitrum.Config#routes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="routes:xitrum.routing.RouteCollection"></a>
+      <a id="routes:RouteCollection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">routes</span><span class="result">: <a href="routing/RouteCollection.html" class="extype" name="xitrum.routing.RouteCollection">RouteCollection</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Use lazy to avoid collecting routes if they are not used.</p><div class="fullcomment"><div class="comment cmt"><p>Use lazy to avoid collecting routes if they are not used.
+Sometimes we want to work in sbt console mode and don't like this overhead.
 </p></div></div>
     </li><li name="xitrum.Config#sessionStore" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sessionStore:xitrum.scope.session.SessionStore"></a>

@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -89,45 +89,6 @@
       </span>
       </h4>
       <p class="comment cmt">Non-threadsafe, non-distributed LRU cache.</p>
-    </li><li name="xitrum.util.Lookup" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="LookupextendsProductwithSerializable"></a>
-      <a id="Lookup:Lookup"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="Lookup.html"><span class="name">Lookup</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.util.LookupLocal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="LookupLocalextendsProductwithSerializable"></a>
-      <a id="LookupLocal:LookupLocal"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="LookupLocal.html"><span class="name">LookupLocal</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.util.LookupOrCreate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="LookupOrCreateextendsProductwithSerializable"></a>
-      <a id="LookupOrCreate:LookupOrCreate"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="LookupOrCreate.html"><span class="name">LookupOrCreate</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="propsMaker">propsMaker: () ⇒ <span class="extype" name="akka.actor.Props">Props</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      
     </li></ol>
             </div>
 
@@ -162,6 +123,19 @@
       </h4>
       <p class="comment cmt">This feature is implemented using Akka Remoting and Hazelcast distributed lock:
 https://groups.</p>
+    </li><li name="xitrum.util.CoffeeScriptCompiler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CoffeeScriptCompiler"></a>
+      <a id="CoffeeScriptCompiler:CoffeeScriptCompiler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CoffeeScriptCompiler$.html"><span class="name">CoffeeScriptCompiler</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Compiled script is cached.</p>
     </li><li name="xitrum.util.Gzip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Gzip"></a>
       <a id="Gzip:Gzip"></a>

@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -44,13 +44,17 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="../Action.html" class="extype" name="xitrum.Action">Action</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a>, <a href="../routing/JSRoutesController.html" class="extype" name="xitrum.routing.JSRoutesController">JSRoutesController</a>, <a href="../routing/JSRoutesController$.html" class="extype" name="xitrum.routing.JSRoutesController">JSRoutesController</a>, <a href="../sockjs/SockJsController.html" class="extype" name="xitrum.sockjs.SockJsController">SockJsController</a></div>
-        </div></div>
+          <div class="subClasses hiddenContent"><a href="../Action.html" class="extype" name="xitrum.Action">Action</a>, <a href="../ActionActor.html" class="extype" name="xitrum.ActionActor">ActionActor</a>, <a href="../routing/JSRoutesAction.html" class="extype" name="xitrum.routing.JSRoutesAction">JSRoutesAction</a>, <a href="../sockjs/SockJEventSourceReceive.html" class="extype" name="xitrum.sockjs.SockJEventSourceReceive">SockJEventSourceReceive</a>, <a href="../sockjs/SockJSWebsocketGET.html" class="extype" name="xitrum.sockjs.SockJSWebsocketGET">SockJSWebsocketGET</a>, <a href="../sockjs/SockJSWebsocketPOST.html" class="extype" name="xitrum.sockjs.SockJSWebsocketPOST">SockJSWebsocketPOST</a>, <a href="../sockjs/SockJsAction.html" class="extype" name="xitrum.sockjs.SockJsAction">SockJsAction</a>, <a href="../sockjs/SockJsGreeting.html" class="extype" name="xitrum.sockjs.SockJsGreeting">SockJsGreeting</a>, <a href="../sockjs/SockJsIframe.html" class="extype" name="xitrum.sockjs.SockJsIframe">SockJsIframe</a>, <a href="../sockjs/SockJsInfoGET.html" class="extype" name="xitrum.sockjs.SockJsInfoGET">SockJsInfoGET</a>, <a href="../sockjs/SockJsInfoOPTIONS.html" class="extype" name="xitrum.sockjs.SockJsInfoOPTIONS">SockJsInfoOPTIONS</a>, <a href="../sockjs/SockJsJsonPPollingReceive.html" class="extype" name="xitrum.sockjs.SockJsJsonPPollingReceive">SockJsJsonPPollingReceive</a>, <a href="../sockjs/SockJsJsonPPollingSend.html" class="extype" name="xitrum.sockjs.SockJsJsonPPollingSend">SockJsJsonPPollingSend</a>, <a href="../sockjs/SockJsNonWebSocketSessionActionActor.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionActionActor">SockJsNonWebSocketSessionActionActor</a>, <a href="../sockjs/SockJsNonWebSocketSessionReceiverActionActor.html" class="extype" name="xitrum.sockjs.SockJsNonWebSocketSessionReceiverActionActor">SockJsNonWebSocketSessionReceiverActionActor</a>, <a href="../sockjs/SockJsXhrPollingOPTIONSReceive.html" class="extype" name="xitrum.sockjs.SockJsXhrPollingOPTIONSReceive">SockJsXhrPollingOPTIONSReceive</a>, <a href="../sockjs/SockJsXhrPollingOPTIONSSend.html" class="extype" name="xitrum.sockjs.SockJsXhrPollingOPTIONSSend">SockJsXhrPollingOPTIONSSend</a>, <a href="../sockjs/SockJsXhrPollingReceive.html" class="extype" name="xitrum.sockjs.SockJsXhrPollingReceive">SockJsXhrPollingReceive</a>, <a href="../sockjs/SockJsXhrSend.html" class="extype" name="xitrum.sockjs.SockJsXhrSend">SockJsXhrSend</a>, <a href="../sockjs/SockJsXhrStreamingOPTIONSReceive.html" class="extype" name="xitrum.sockjs.SockJsXhrStreamingOPTIONSReceive">SockJsXhrStreamingOPTIONSReceive</a>, <a href="../sockjs/SockJsXhrStreamingReceive.html" class="extype" name="xitrum.sockjs.SockJsXhrStreamingReceive">SockJsXhrStreamingReceive</a>, <a href="../sockjs/SockJshtmlfileReceive.html" class="extype" name="xitrum.sockjs.SockJshtmlfileReceive">SockJshtmlfileReceive</a></div>
+        </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
+                <span class="toggle diagram-link">Type Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph5" viewBox="0.00 0.00 142.00 158.00" height="158pt" width="142pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 154)" class="graph" id="graph1"><polygon points="-4,5 -4,-154 139,-154 139,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this trait" id="graph5_0"><a xlink:title="xitrum.view.Renderer (this trait)" xlink:href="#inheritance-diagram"><polygon points="110,-88 24,-88 24,-62 110,-62 110,-88" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-83" x="34" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="56" text-anchor="start">Renderer</text></a></g><!-- node1 --><g class="node trait" id="graph5_1"><a xlink:title="xitrum.Action" xlink:href="../Action.html#inheritance-diagram"><polygon points="103,-26 31,-26 31,-0 103,-0 103,-26" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-21" x="41" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="63" text-anchor="start">Action</text></a></g><!-- node0&#45;&gt;node1 --><g class="edge inheritance" id="graph5_0_1"><a xlink:title="Action is a subtype of Renderer"><path d="M67,-56.6826C67,-46.8961 67,-34.9026 67,-26.1238" stroke="#d4d4d4" fill="none"></path><polygon points="65.2501,-56.8581 67,-61.8581 68.7501,-56.8581 65.2501,-56.8581" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node2 --><g class="node class" id="graph5_2"><a xlink:title="scala.AnyRef"><polygon points="105.25,-150 28.75,-150 28.75,-124 105.25,-124 105.25,-150" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-145" x="39" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="61" text-anchor="start">AnyRef</text></a></g><!-- node2&#45;&gt;node0 --><g class="edge inheritance" id="graph5_2_0"><a xlink:title="Renderer is a subtype of AnyRef"><path d="M67,-118.683C67,-108.896 67,-96.9026 67,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="65.2501,-118.858 67,-123.858 68.7501,-118.858 65.2501,-118.858" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+              </div></div>
         
 
       <div id="mbrsel">
@@ -347,6 +351,19 @@
       </h4>
       
     </li><li name="xitrum.view.Renderer#renderFragment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="renderFragment(location:Class[_&lt;:xitrum.Action],fragment:String):String"></a>
+      <a id="renderFragment(Class[_&lt;:Action],String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderFragment</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.view.Renderer#renderFragment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="renderFragment(fragment:String,options:Map[String,Any]):String"></a>
       <a id="renderFragment(String,Map[String,Any]):String"></a>
       <h4 class="signature">
@@ -358,40 +375,20 @@
         <span class="name">renderFragment</span><span class="params">(<span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders the fragment associated with the current controller class.</p>
+      
     </li><li name="xitrum.view.Renderer#renderFragment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderFragment(controllerClass:Class[_],fragment:String):String"></a>
-      <a id="renderFragment(Class[_],String):String"></a>
+      <a id="renderFragment(location:Class[_&lt;:xitrum.Action],fragment:String,options:Map[String,Any]):String"></a>
+      <a id="renderFragment(Class[_&lt;:Action],String,Map[String,Any]):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderFragment</span><span class="params">(<span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderFragment</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
-    </li><li name="xitrum.view.Renderer#renderFragment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderFragment(controllerClass:Class[_],fragment:String,options:Map[String,Any]):String"></a>
-      <a id="renderFragment(Class[_],String,Map[String,Any]):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderFragment</span><span class="params">(<span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="fragment">fragment: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Renders the template fragment inside the directory associated with the
-controller class.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template fragment inside the directory associated with the
-controller class.
-</p></div><dl class="paramcmts block"><dt class="param">controllerClass</dt><dd class="cmt"><p>should be one of the parent classes of the current
-controller because the current controller instance will be imported in the
-template as &quot;helper&quot;
-</p></dd><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
-</p></dd></dl></div>
     </li><li name="xitrum.view.Renderer#renderInlineView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="renderInlineView(inlineView:Any):String"></a>
       <a id="renderInlineView(Any):String"></a>
@@ -430,35 +427,20 @@ template as &quot;helper&quot;
         <span class="name">renderView</span><span class="params">(<span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Same as renderView(action, customLayout, options),
-where action is currentAction and customLayout is the current controller's layout method.</p>
+      
     </li><li name="xitrum.view.Renderer#renderView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderView(action:xitrum.controller.Action):String"></a>
-      <a id="renderView(Action):String"></a>
+      <a id="renderView(location:Class[_&lt;:xitrum.Action]):String"></a>
+      <a id="renderView(Class[_&lt;:Action]):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderView</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderView</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
-    </li><li name="xitrum.view.Renderer#renderView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderView(action:xitrum.controller.Action,options:Map[String,Any]):String"></a>
-      <a id="renderView(Action,Map[String,Any]):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">renderView</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as renderView(action, customLayout, options),
-where customLayout is the current controller's layout method.</p>
     </li><li name="xitrum.view.Renderer#renderView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="renderView(customLayout:()=&gt;Any):String"></a>
       <a id="renderView(()⇒Any):String"></a>
@@ -469,6 +451,19 @@ where customLayout is the current controller's layout method.</p>
       </span>
       <span class="symbol">
         <span class="name">renderView</span><span class="params">(<span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.view.Renderer#renderView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="renderView(customLayout:()=&gt;Any,location:Class[_&lt;:xitrum.Action]):String"></a>
+      <a id="renderView(()⇒Any,Class[_&lt;:Action]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderView</span><span class="params">(<span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
@@ -484,18 +479,30 @@ where customLayout is the current controller's layout method.</p>
         <span class="name">renderView</span><span class="params">(<span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Same as renderView(action, customLayout, options),
-where action is currentAction.</p>
-    </li><li name="xitrum.view.Renderer#renderView" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderView(action:xitrum.controller.Action,customLayout:()=&gt;Any,options:Map[String,Any]):String"></a>
-      <a id="renderView(Action,()⇒Any,Map[String,Any]):String"></a>
+      
+    </li><li name="xitrum.view.Renderer#renderView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="renderView(location:Class[_&lt;:xitrum.Action],options:Map[String,Any]):String"></a>
+      <a id="renderView(Class[_&lt;:Action],Map[String,Any]):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderView</span><span class="params">(<span name="action">action: <a href="../controller/Action.html" class="extype" name="xitrum.controller.Action">Action</a></span>, <span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>] = <span class="symbol">Map()</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderView</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.view.Renderer#renderView" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="renderView(customLayout:()=&gt;Any,location:Class[_&lt;:xitrum.Action],options:Map[String,Any]):String"></a>
+      <a id="renderView(()⇒Any,Class[_&lt;:Action],Map[String,Any]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderView</span><span class="params">(<span name="customLayout">customLayout: () ⇒ <span class="extype" name="scala.Any">Any</span></span>, <span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Renders the template associated with an action to &quot;renderedTemplate&quot;,
@@ -504,36 +511,57 @@ then calls the layout function.
 </p></div><dl class="paramcmts block"><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
 </p></dd></dl></div>
     </li><li name="xitrum.view.Renderer#renderViewNoLayout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="renderViewNoLayout(controllerClass:Class[_]):String"></a>
-      <a id="renderViewNoLayout(Class[_]):String"></a>
+      <a id="renderViewNoLayout():String"></a>
+      <a id="renderViewNoLayout():String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderViewNoLayout</span><span class="params">(<span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderViewNoLayout</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
-    </li><li name="xitrum.view.Renderer#renderViewNoLayout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="renderViewNoLayout(controllerClass:Class[_],options:Map[String,Any]):String"></a>
-      <a id="renderViewNoLayout(Class[_],Map[String,Any]):String"></a>
+    </li><li name="xitrum.view.Renderer#renderViewNoLayout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="renderViewNoLayout(options:Map[String,Any]):String"></a>
+      <a id="renderViewNoLayout(Map[String,Any]):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">renderViewNoLayout</span><span class="params">(<span name="controllerClass">controllerClass: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">renderViewNoLayout</span><span class="params">(<span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Renders the template (typically the layout) associated with the controller class.</p><div class="fullcomment"><div class="comment cmt"><p>Renders the template (typically the layout) associated with the controller class.
-</p></div><dl class="paramcmts block"><dt class="param">controllerClass</dt><dd class="cmt"><p>should be one of the parent classes of the current
-controller because the current controller instance will be imported in the
-template as &quot;helper&quot;
-</p></dd><dt class="param">options</dt><dd class="cmt"><p>specific to the configured template engine
-</p></dd></dl></div>
+      
+    </li><li name="xitrum.view.Renderer#renderViewNoLayout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="renderViewNoLayout(location:Class[_&lt;:xitrum.Action]):String"></a>
+      <a id="renderViewNoLayout(Class[_&lt;:Action]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderViewNoLayout</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.view.Renderer#renderViewNoLayout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="renderViewNoLayout(location:Class[_&lt;:xitrum.Action],options:Map[String,Any]):String"></a>
+      <a id="renderViewNoLayout(Class[_&lt;:Action],Map[String,Any]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">renderViewNoLayout</span><span class="params">(<span name="location">location: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <a href="../Action.html" class="extype" name="xitrum.Action">Action</a>]</span>, <span name="options">options: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
     </li><li name="xitrum.view.Renderer#renderedView" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="renderedView:Any"></a>
       <a id="renderedView:Any"></a>

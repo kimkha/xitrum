@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -63,32 +63,48 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="xitrum.routing.JSRoutesController" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="JSRoutesControllerextendsRequestEnvwithController"></a>
-      <a id="JSRoutesController:JSRoutesController"></a>
+              <ol><li name="xitrum.routing.JSRoutesAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="JSRoutesActionextendsAction"></a>
+      <a id="JSRoutesAction:JSRoutesAction"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="JSRoutesController.html"><span class="name">JSRoutesController</span></a><span class="result"> extends <a href="../scope/request/RequestEnv.html" class="extype" name="xitrum.scope.request.RequestEnv">RequestEnv</a> with <a href="../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>
+        <a href="JSRoutesAction.html"><span class="name">JSRoutesAction</span></a><span class="result"> extends <a href="../Action.html" class="extype" name="xitrum.Action">Action</a></span>
       </span>
       </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@GET</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="xitrum.routing.Route" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="RouteextendsProductwithSerializable"></a>
+      <a id="RouteextendsAnyRef"></a>
       <a id="Route:Route"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Route.html"><span class="name">Route</span></a><span class="params">(<span name="httpMethod">httpMethod: <span class="extype" name="org.jboss.netty.handler.codec.http.HttpMethod">HttpMethod</span></span>, <span name="order">order: <a href="RouteOrder$.html#RouteOrder=xitrum.routing.RouteOrder.Value" class="extmbr" name="xitrum.routing.RouteOrder.RouteOrder">RouteOrder</a></span>, <span name="compiledPattern">compiledPattern: <span class="extype" name="scala.Seq">Seq</span>[<a href="RouteToken.html" class="extype" name="xitrum.routing.RouteToken">RouteToken</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Route.html"><span class="name">Route</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      
+      <p class="comment cmt"></p>
+    </li><li name="xitrum.routing.RouteCollection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RouteCollectionextendsLogger"></a>
+      <a id="RouteCollection:RouteCollection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="RouteCollection.html"><span class="name">RouteCollection</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Direct listing is used, map is not used, so that route matching is faster.</p>
     </li><li name="xitrum.routing.RouteCollector" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RouteCollectorextendsLogger"></a>
       <a id="RouteCollector:RouteCollector"></a>
@@ -101,7 +117,7 @@
         <a href="RouteCollector.html"><span class="name">RouteCollector</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
-      <p class="comment cmt">Scan all classes to collect routes from controllers.</p>
+      <p class="comment cmt">Scan all classes to collect routes from actions.</p>
     </li><li name="xitrum.routing.RouteToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RouteTokenextendsProductwithSerializable"></a>
       <a id="RouteToken:RouteToken"></a>
@@ -117,6 +133,58 @@
       <p class="comment cmt">&quot;/articles/:id&lt;[0-9]+&gt;&quot; gives 2 tokens:
 RouteToken(&quot;articles&quot;, true, None) and
 RouteToken(&quot;id&quot;, false, Some(&quot;[0-9]+&quot;.</p>
+    </li><li name="xitrum.routing.SerializableRoute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SerializableRouteextendsSerializable"></a>
+      <a id="SerializableRoute:SerializableRoute"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SerializableRoute.html"><span class="name">SerializableRoute</span></a><span class="result"> extends <span class="extype" name="java.io.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.routing.SerializableRouteCollection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SerializableRouteCollectionextendsSerializable"></a>
+      <a id="SerializableRouteCollection:SerializableRouteCollection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SerializableRouteCollection.html"><span class="name">SerializableRouteCollection</span></a><span class="result"> extends <span class="extype" name="java.io.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.routing.SockJsClassAndOptions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SockJsClassAndOptionsextendsAnyRef"></a>
+      <a id="SockJsClassAndOptions:SockJsClassAndOptions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SockJsClassAndOptions.html"><span class="name">SockJsClassAndOptions</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.routing.SockJsRouteMap" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SockJsRouteMapextendsLogger"></a>
+      <a id="SockJsRouteMap:SockJsRouteMap"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SockJsRouteMap.html"><span class="name">SockJsRouteMap</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
+      </span>
+      </h4>
+      
     </li></ol>
             </div>
 
@@ -124,20 +192,7 @@ RouteToken(&quot;id&quot;, false, Some(&quot;[0-9]+&quot;.</p>
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="xitrum.routing.ControllerReflection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ControllerReflection"></a>
-      <a id="ControllerReflection:ControllerReflection"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="ControllerReflection$.html"><span class="name">ControllerReflection</span></a>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.routing.HttpMethodWebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="xitrum.routing.HttpMethodWebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HttpMethodWebSocket"></a>
       <a id="HttpMethodWebSocket:HttpMethodWebSocket"></a>
       <h4 class="signature">
@@ -163,16 +218,16 @@ RouteToken(&quot;id&quot;, false, Some(&quot;[0-9]+&quot;.</p>
       </span>
       </h4>
       
-    </li><li name="xitrum.routing.JSRoutesController" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="JSRoutesController"></a>
-      <a id="JSRoutesController:JSRoutesController"></a>
+    </li><li name="xitrum.routing.RouteCollection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RouteCollection"></a>
+      <a id="RouteCollection:RouteCollection"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="JSRoutesController$.html"><span class="name">JSRoutesController</span></a><span class="result"> extends <a href="JSRoutesController.html" class="extype" name="xitrum.routing.JSRoutesController">JSRoutesController</a></span>
+        <a href="RouteCollection$.html"><span class="name">RouteCollection</span></a>
       </span>
       </h4>
       
@@ -186,32 +241,6 @@ RouteToken(&quot;id&quot;, false, Some(&quot;[0-9]+&quot;.</p>
       </span>
       <span class="symbol">
         <a href="RouteCompiler$.html"><span class="name">RouteCompiler</span></a>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.routing.RouteOrder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="RouteOrder"></a>
-      <a id="RouteOrder:RouteOrder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="RouteOrder$.html"><span class="name">RouteOrder</span></a><span class="result"> extends <span class="extype" name="scala.Enumeration">Enumeration</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.routing.Routes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Routes"></a>
-      <a id="Routes:Routes"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Routes$.html"><span class="name">Routes</span></a><span class="result"> extends <a href="../Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
       </span>
       </h4>
       

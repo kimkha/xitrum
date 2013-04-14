@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../../lib/template.js"></script>
       <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -50,7 +50,11 @@
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
           <div class="subClasses hiddenContent"><a href="ParamAccess$DefaultsTo$.html" class="extype" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a></div>
-        </div></div>
+        </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
+                <span class="toggle diagram-link">Type Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph27" viewBox="0.00 0.00 228.00 158.00" height="158pt" width="228pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 154)" class="graph" id="graph1"><polygon points="-4,5 -4,-154 225,-154 225,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this trait" id="graph27_0"><a xlink:title="xitrum.scope.request.ParamAccess.LowPriorityDefaultsTo (this trait)" xlink:href="#inheritance-diagram"><polygon points="196,-88 24,-88 24,-62 196,-62 196,-88" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../../lib/trait_diagram.png" y="-83" x="34" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="56" text-anchor="start">Action.LowPriorityDefaultsTo</text></a></g><!-- node1 --><g class="node object" id="graph27_1"><a xlink:title="xitrum.scope.request.ParamAccess.DefaultsTo" xlink:href="ParamAccess$DefaultsTo$.html#inheritance-diagram"><polygon points="156,-26 64,-26 64,-0 156,-0 156,-26" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../../lib/object_diagram.png" y="-21" x="74" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="96" text-anchor="start">DefaultsTo</text></a></g><!-- node0&#45;&gt;node1 --><g class="edge inheritance" id="graph27_0_1"><a xlink:title="DefaultsTo is a subtype of Action.LowPriorityDefaultsTo"><path d="M110,-56.6826C110,-46.8961 110,-34.9026 110,-26.1238" stroke="#d4d4d4" fill="none"></path><polygon points="108.25,-56.8581 110,-61.8581 111.75,-56.8581 108.25,-56.8581" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node2 --><g class="node class" id="graph27_2"><a xlink:title="scala.AnyRef"><polygon points="148.25,-150 71.75,-150 71.75,-124 148.25,-124 148.25,-150" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../../lib/class_diagram.png" y="-145" x="82" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="104" text-anchor="start">AnyRef</text></a></g><!-- node2&#45;&gt;node0 --><g class="edge inheritance" id="graph27_2_0"><a xlink:title="Action.LowPriorityDefaultsTo is a subtype of AnyRef"><path d="M110,-118.683C110,-108.896 110,-96.9026 110,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="108.25,-118.858 110,-123.858 111.75,-118.858 108.25,-118.858" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+              </div></div>
         
 
       <div id="mbrsel">
@@ -309,14 +313,14 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="xitrum.scope.request.ParamAccess.LowPriorityDefaultsTo#overrideDefault" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="overrideDefault[A,B]:ParamAccess.this.DefaultsTo[A,B]"></a>
-      <a id="overrideDefault[A,B]:Controller.DefaultsTo[A,B]"></a>
+      <a id="overrideDefault[A,B]:Action.DefaultsTo[A,B]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">overrideDefault</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result">: <a href="../../Controller.html#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">Controller.DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.LowPriorityDefaultsTo.overrideDefault.A">A</span>, <span class="extype" name="xitrum.scope.request.ParamAccess.LowPriorityDefaultsTo.overrideDefault.B">B</span>]</span>
+        <span class="name">overrideDefault</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result">: <a href="../../Action.html#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">Action.DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.LowPriorityDefaultsTo.overrideDefault.A">A</span>, <span class="extype" name="xitrum.scope.request.ParamAccess.LowPriorityDefaultsTo.overrideDefault.B">B</span>]</span>
       </span>
       </h4>
       

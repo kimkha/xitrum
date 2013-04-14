@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../../lib/template.js"></script>
       <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -200,28 +200,28 @@ CSRF is for preventing a user to fake other user data.
               
         </dd></dl></div>
     </li><li name="xitrum.scope.session.CSRF#decrypt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="decrypt(controller:xitrum.Controller,string:String):Any"></a>
-      <a id="decrypt(Controller,String):Any"></a>
+      <a id="decrypt(action:xitrum.Action,string:String):Any"></a>
+      <a id="decrypt(Action,String):Any"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">decrypt</span><span class="params">(<span name="controller">controller: <a href="../../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="string">string: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
+        <span class="name">decrypt</span><span class="params">(<span name="action">action: <a href="../../Action.html" class="extype" name="xitrum.Action">Action</a></span>, <span name="string">string: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
       </span>
       </h4>
       
     </li><li name="xitrum.scope.session.CSRF#encrypt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="encrypt(controller:xitrum.Controller,ref:AnyRef):String"></a>
-      <a id="encrypt(Controller,AnyRef):String"></a>
+      <a id="encrypt(action:xitrum.Action,ref:AnyRef):String"></a>
+      <a id="encrypt(Action,AnyRef):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">encrypt</span><span class="params">(<span name="controller">controller: <a href="../../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>, <span name="ref">ref: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">encrypt</span><span class="params">(<span name="action">action: <a href="../../Action.html" class="extype" name="xitrum.Action">Action</a></span>, <span name="ref">ref: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">For encrypting things that need to embed the anti-CSRF token for more security.</p><div class="fullcomment"><div class="comment cmt"><p>For encrypting things that need to embed the anti-CSRF token for more security.
@@ -310,15 +310,15 @@ Otherwise you should use SecureBase64.encrypt for shorter result.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="xitrum.scope.session.CSRF#isValidToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="isValidToken(controller:xitrum.Controller):Boolean"></a>
-      <a id="isValidToken(Controller):Boolean"></a>
+      <a id="isValidToken(action:xitrum.Action):Boolean"></a>
+      <a id="isValidToken(Action):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">isValidToken</span><span class="params">(<span name="controller">controller: <a href="../../Controller.html" class="extype" name="xitrum.Controller">Controller</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">isValidToken</span><span class="params">(<span name="action">action: <a href="../../Action.html" class="extype" name="xitrum.Action">Action</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       

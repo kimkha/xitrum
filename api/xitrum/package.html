@@ -13,7 +13,7 @@
       <script type="text/javascript" src="../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../lib/template.js"></script>
       <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../lib/modernizr.custom.js"></script><script type="text/javascript" src="../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../index.html';
@@ -44,7 +44,11 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"></div>
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block diagram-container" id="content-diagram-container">
+                <span class="toggle diagram-link">Content Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="content-diagram"><svg class="package-diagram" id="graph1" viewBox="0.00 0.00 621.00 158.00" height="158pt" width="621pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 154)" class="graph" id="graph1"><polygon points="-4,5 -4,-154 618,-154 618,5 -4,5" stroke="white" fill="white"></polygon><!-- node0 --><g class="node trait" id="graph1_0"><a xlink:title="xitrum.WebSocketActor" xlink:href="WebSocketActor.html#inheritance-diagram"><polygon points="118.25,-88 -0.25,-88 -0.25,-62 118.25,-62 118.25,-88" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../lib/trait_diagram.png" y="-83" x="10" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="32" text-anchor="start">WebSocketActor</text></a></g><!-- node1 --><g class="node trait" id="graph1_1"><a xlink:title="xitrum.SockJsActor" xlink:href="SockJsActor.html#inheritance-diagram"><polygon points="237,-88 137,-88 137,-62 237,-62 237,-88" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../lib/trait_diagram.png" y="-83" x="147" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="169" text-anchor="start">SockJsActor</text></a></g><!-- node2 --><g class="node object" id="graph1_2"><a xlink:title="xitrum.Server" xlink:href="Server$.html#inheritance-diagram"><polygon points="329,-88 255,-88 255,-62 329,-62 329,-88" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../lib/object_diagram.png" y="-83" x="265" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="287" text-anchor="start">Server</text></a></g><!-- node3 --><g class="node trait" id="graph1_3"><a xlink:title="xitrum.Logger" xlink:href="Logger.html#inheritance-diagram"><polygon points="375.25,-150 300.75,-150 300.75,-124 375.25,-124 375.25,-150" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../lib/trait_diagram.png" y="-145" x="311" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="333" text-anchor="start">Logger</text></a></g><!-- node3&#45;&gt;node0 --><g class="edge inheritance" id="graph1_3_0"><a xlink:title="WebSocketActor is a subtype of Logger"><path d="M295.507,-126.862C247.204,-116.474 168.169,-99.4773 114.901,-88.0217" stroke="#d4d4d4" fill="none"></path><polygon points="295.406,-128.63 300.662,-127.97 296.142,-125.208 295.406,-128.63" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node3&#45;&gt;node1 --><g class="edge inheritance" id="graph1_3_1"><a xlink:title="SockJsActor is a subtype of Logger"><path d="M302.71,-121.977C276.779,-111.674 241.914,-97.8202 217.254,-88.0213" stroke="#d4d4d4" fill="none"></path><polygon points="302.15,-123.638 307.443,-123.858 303.443,-120.385 302.15,-123.638" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node3&#45;&gt;node2 --><g class="edge inheritance" id="graph1_3_2"><a xlink:title="Server is a subtype of Logger"><path d="M325.55,-119.761C317.905,-109.789 308.275,-97.2278 301.295,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="324.26,-120.955 328.691,-123.858 327.038,-118.825 324.26,-120.955" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node5 --><g class="node object" id="graph1_5"><a xlink:title="xitrum.Config" xlink:href="Config$.html#inheritance-diagram"><polygon points="420.25,-88 347.75,-88 347.75,-62 420.25,-62 420.25,-88" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../lib/object_diagram.png" y="-83" x="358" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="380" text-anchor="start">Config</text></a></g><!-- node3&#45;&gt;node5 --><g class="edge inheritance" id="graph1_3_5"><a xlink:title="Config is a subtype of Logger"><path d="M350.45,-119.761C358.095,-109.789 367.725,-97.2278 374.705,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="348.962,-118.825 347.309,-123.858 351.74,-120.955 348.962,-118.825" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node6 --><g class="node object" id="graph1_6"><a xlink:title="xitrum.Cache" xlink:href="Cache$.html#inheritance-diagram"><polygon points="511.25,-88 438.75,-88 438.75,-62 511.25,-62 511.25,-88" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../lib/object_diagram.png" y="-83" x="449" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="471" text-anchor="start">Cache</text></a></g><!-- node3&#45;&gt;node6 --><g class="edge inheritance" id="graph1_3_6"><a xlink:title="Cache is a subtype of Logger"><path d="M370.589,-121.727C393.972,-111.487 425.138,-97.8374 447.317,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="369.602,-120.249 365.724,-123.858 371.006,-123.455 369.602,-120.249" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node8 --><g class="node trait" id="graph1_8"><a xlink:title="xitrum.Action" xlink:href="Action.html#inheritance-diagram"><polygon points="602,-88 530,-88 530,-62 602,-62 602,-88" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../lib/trait_diagram.png" y="-83" x="540" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-71" x="562" text-anchor="start">Action</text></a></g><!-- node3&#45;&gt;node8 --><g class="edge inheritance" id="graph1_3_8"><a xlink:title="Action is a subtype of Logger"><path d="M380.256,-124.88C423.208,-113.577 489.052,-96.2495 529.716,-85.5484" stroke="#d4d4d4" fill="none"></path><polygon points="379.784,-123.194 375.394,-126.159 380.675,-126.579 379.784,-123.194" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node4 --><g class="node trait" id="graph1_4"><a xlink:title="xitrum.I18n" xlink:href="I18n.html#inheritance-diagram"><polygon points="598,-150 534,-150 534,-124 598,-124 598,-150" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../lib/trait_diagram.png" y="-145" x="544" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-133" x="566" text-anchor="start">I18n</text></a></g><!-- node4&#45;&gt;node8 --><g class="edge inheritance" id="graph1_4_8"><a xlink:title="Action is a subtype of I18n"><path d="M566,-118.683C566,-108.896 566,-96.9026 566,-88.1238" stroke="#d4d4d4" fill="none"></path><polygon points="564.25,-118.858 566,-123.858 567.75,-118.858 564.25,-118.858" stroke="#d4d4d4" fill="none"></polygon></a></g><!-- node7 --><g class="node trait" id="graph1_7"><a xlink:title="xitrum.ActionActor" xlink:href="ActionActor.html#inheritance-diagram"><polygon points="613.25,-26 518.75,-26 518.75,-0 613.25,-0 613.25,-26" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../lib/trait_diagram.png" y="-21" x="529" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9" x="551" text-anchor="start">ActionActor</text></a></g><!-- node8&#45;&gt;node7 --><g class="edge inheritance" id="graph1_8_7"><a xlink:title="ActionActor is a subtype of Action"><path d="M566,-56.6826C566,-46.8961 566,-34.9026 566,-26.1238" stroke="#d4d4d4" fill="none"></path><polygon points="564.25,-56.8581 566,-61.8581 567.75,-56.8581 564.25,-56.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+              </div></div>
         
 
       <div id="mbrsel">
@@ -63,7 +67,33 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="xitrum.BasicAuthConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="xitrum.Action" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActionextendsRequestEnvwithSessionEnvwithLoggerwithNetwithFilterwithBasicAuthwithRedirectwithUrlForwithRendererwithResponderwithI18n"></a>
+      <a id="Action:Action"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Action.html"><span class="name">Action</span></a><span class="result"> extends <a href="scope/request/RequestEnv.html" class="extype" name="xitrum.scope.request.RequestEnv">RequestEnv</a> with <a href="scope/session/SessionEnv.html" class="extype" name="xitrum.scope.session.SessionEnv">SessionEnv</a> with <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a> with <a href="action/Net.html" class="extype" name="xitrum.action.Net">Net</a> with <a href="action/Filter.html" class="extype" name="xitrum.action.Filter">Filter</a> with <a href="action/BasicAuth.html" class="extype" name="xitrum.action.BasicAuth">BasicAuth</a> with <a href="action/Redirect.html" class="extype" name="xitrum.action.Redirect">Redirect</a> with <a href="action/UrlFor.html" class="extype" name="xitrum.action.UrlFor">UrlFor</a> with <a href="view/Renderer.html" class="extype" name="xitrum.view.Renderer">Renderer</a> with <a href="view/Responder.html" class="extype" name="xitrum.view.Responder">Responder</a> with <a href="I18n.html" class="extype" name="xitrum.I18n">I18n</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Action is designed to be separated from ActionActor.</p>
+    </li><li name="xitrum.ActionActor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActionActorextendsActorwithAction"></a>
+      <a id="ActionActor:ActionActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActionActor.html"><span class="name">ActionActor</span></a><span class="result"> extends <span class="extype" name="akka.actor.Actor">Actor</span> with <a href="Action.html" class="extype" name="xitrum.Action">Action</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An actor will be created when there's request.</p>
+    </li><li name="xitrum.BasicAuthConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="BasicAuthConfigextendsAnyRef"></a>
       <a id="BasicAuthConfig:BasicAuthConfig"></a>
       <h4 class="signature">
@@ -86,32 +116,6 @@
       </span>
       <span class="symbol">
         <a href="Config.html"><span class="name">Config</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.Controller" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ControllerextendsRequestEnvwithExtEnvwithActionFactorywithLoggerwithNetwithFilterwithBasicAuthwithWebSocketwithRedirectwithUrlForwithRendererwithResponderwithI18n"></a>
-      <a id="Controller:Controller"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="Controller.html"><span class="name">Controller</span></a><span class="result"> extends <a href="scope/request/RequestEnv.html" class="extype" name="xitrum.scope.request.RequestEnv">RequestEnv</a> with <a href="scope/request/ExtEnv.html" class="extype" name="xitrum.scope.request.ExtEnv">ExtEnv</a> with <a href="controller/ActionFactory.html" class="extype" name="xitrum.controller.ActionFactory">ActionFactory</a> with <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a> with <a href="controller/Net.html" class="extype" name="xitrum.controller.Net">Net</a> with <a href="controller/Filter.html" class="extype" name="xitrum.controller.Filter">Filter</a> with <a href="controller/BasicAuth.html" class="extype" name="xitrum.controller.BasicAuth">BasicAuth</a> with <a href="controller/WebSocket.html" class="extype" name="xitrum.controller.WebSocket">WebSocket</a> with <a href="controller/Redirect.html" class="extype" name="xitrum.controller.Redirect">Redirect</a> with <a href="controller/UrlFor.html" class="extype" name="xitrum.controller.UrlFor">UrlFor</a> with <a href="view/Renderer.html" class="extype" name="xitrum.view.Renderer">Renderer</a> with <a href="view/Responder.html" class="extype" name="xitrum.view.Responder">Responder</a> with <a href="I18n.html" class="extype" name="xitrum.I18n">I18n</a></span>
-      </span>
-      </h4>
-      
-    </li><li name="xitrum.ErrorController" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ErrorControllerextendsAnyRef"></a>
-      <a id="ErrorController:ErrorController"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="ErrorController.html"><span class="name">ErrorController</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
@@ -259,16 +263,68 @@
       </span>
       </h4>
       <p class="comment cmt">By default all non-GET requests are checked for anti-CSRF token.</p>
-    </li><li name="xitrum.SockJsHandler" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="SockJsHandlerextendsLogger"></a>
-      <a id="SockJsHandler:SockJsHandler"></a>
+    </li><li name="xitrum.SockJsActor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SockJsActorextendsActorwithLogger"></a>
+      <a id="SockJsActor:SockJsActor"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">class</span>
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SockJsHandler.html"><span class="name">SockJsHandler</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
+        <a href="SockJsActor.html"><span class="name">SockJsActor</span></a><span class="result"> extends <span class="extype" name="akka.actor.Actor">Actor</span> with <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An actor will be created when there's new SockJS session.</p>
+    </li><li name="xitrum.SockJsText" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SockJsTextextendsProductwithSerializable"></a>
+      <a id="SockJsText:SockJsText"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SockJsText.html"><span class="name">SockJsText</span></a><span class="params">(<span name="text">text: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.WebSocketActor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="WebSocketActorextendsActorwithLogger"></a>
+      <a id="WebSocketActor:WebSocketActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="WebSocketActor.html"><span class="name">WebSocketActor</span></a><span class="result"> extends <span class="extype" name="akka.actor.Actor">Actor</span> with <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An actor will be created when there's request.</p>
+    </li><li name="xitrum.WebSocketBinary" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WebSocketBinaryextendsProductwithSerializable"></a>
+      <a id="WebSocketBinary:WebSocketBinary"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="WebSocketBinary.html"><span class="name">WebSocketBinary</span></a><span class="params">(<span name="bytes">bytes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.WebSocketText" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WebSocketTextextendsProductwithSerializable"></a>
+      <a id="WebSocketText:WebSocketText"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="WebSocketText.html"><span class="name">WebSocketText</span></a><span class="params">(<span name="text">text: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -305,16 +361,55 @@
       </span>
       </h4>
       <p class="comment cmt">See config/xitrum.</p>
-    </li><li name="xitrum.controller" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="controller"></a>
-      <a id="controller:controller"></a>
+    </li><li name="xitrum.Server" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Server"></a>
+      <a id="Server:Server"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Server$.html"><span class="name">Server</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="xitrum.Logger">Logger</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.WebSocketPing" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WebSocketPing"></a>
+      <a id="WebSocketPing:WebSocketPing"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WebSocketPing$.html"><span class="name">WebSocketPing</span></a><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Pong is automatically sent by Xitrum, don't send it yourself.</p>
+    </li><li name="xitrum.WebSocketPong" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WebSocketPong"></a>
+      <a id="WebSocketPong:WebSocketPong"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WebSocketPong$.html"><span class="name">WebSocketPong</span></a><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="xitrum.action" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="action"></a>
+      <a id="action:action"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a href="controller/package.html"><span class="name">controller</span></a>
+        <a href="action/package.html"><span class="name">action</span></a>
       </span>
       </h4>
       
