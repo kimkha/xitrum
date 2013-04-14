@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum 2.0 documentation</title>
+    <title>Async response &mdash; Xitrum 2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.0',
+        VERSION:     '2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 2.0 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.1 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -106,11 +106,11 @@ import xitrum.annotation.WEBSOCKET
 @WEBSOCKET("echo")
 class EchoWebSocketActor extends WebSocketActor {
   /**
-   * @param action The action just before switching to this WebSocket actor.
+   * The current action is the one just before switching to this WebSocket actor.
    * You can extract session data, request headers etc. from it, but do not use
    * respondText, respondView etc.
    */
-  def execute(action: Action) {
+  def execute() {
     logger.debug("onOpen")
 
     context.become {
@@ -190,11 +190,11 @@ import xitrum.annotation.SOCKJS
 @SOCKJS("echo")
 class EchoSockJsActor extends SockJsActor {
   /**
-   * @param action The action just before switching to this SockJS actor.
+   * The current action is the one just before switching to this SockJS actor.
    * You can extract session data, request headers etc. from it, but do not use
    * respondText, respondView etc.
    */
-  def execute(action: Action) {
+  def execute() {
     logger.info("onOpen")
 
     context.become {
@@ -360,7 +360,7 @@ respondEventSource("data2")  // Event name defaults to "message"</pre>
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
