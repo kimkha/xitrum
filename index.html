@@ -140,12 +140,14 @@ class EchoWebSocketActor extends WebSocketActor {
         respondWebSocketText(text)
 
       case WebSocketBinary(bytes) =>
-        respondWebSocketText(bytes)
+        respondWebSocketBinary(bytes)
 
       case WebSocketPing =>
-        // Xitrum automatically sends pong for you
+        // Xitrum automatically sends pong for you,
+        // you don't have to send pong yourself
 
       case WebSocketPong =>
+        // Client has received your ping
     }
   }
 
