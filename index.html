@@ -71,13 +71,14 @@ and HTTP(S) server fusion<span class="small"> on top of <a class="reference exte
             <pre><code>import xitrum.Action
 import xitrum.annotation.GET
 
-@GET("normalAction")
+@GET("url/to/HelloAction")
 class HelloAction extends Action {
   def execute() {
+    val urlToHelloActor = url[HelloActor]
     respondHtml(
       &lt;xml:group&gt;
-        &lt;p&gt;Hello World!&lt;/p&gt;
-        &lt;a href={url[HelloActor]}&gt;Actor sample&lt;/a&gt;
+        &lt;p&gt;Hello {remoteIp}!&lt;/p&gt;
+        &lt;a href={urlToHelloActor}&gt;Actor sample&lt;/a&gt;
       &lt;/xml:group&gt;
     )
   }
@@ -92,10 +93,10 @@ class HelloAction extends Action {
 import xitrum.{ActionActor, Config}
 import xitrum.annotation.GET
 
-@GET("actionActor")
+@GET("url/to/HelloActor")
 class HelloActor extends ActionActor {
   def execute() {
-    logger.info("Actor started")
+    logger.info("Actor started, remoteIp: " + remoteIp)
 
     val anotherActorRef = actorFor("someService")
     anotherActorRef ! "someRequest"
@@ -129,7 +130,7 @@ class HelloActor extends ActionActor {
 }
 import xitrum.annotation.WEBSOCKET
 
-@WEBSOCKET("websocketEcho")
+@WEBSOCKET("url/to/EchoWebSocketActor")
 class EchoWebSocketActor extends WebSocketActor {
   def execute() {
     logger.info("onOpen, remoteIp: " + remoteIp)
@@ -160,8 +161,8 @@ class EchoWebSocketActor extends WebSocketActor {
             <pre><code>import xitrum.{Action, SockJsActor, SockJsText}
 import xitrum.annotation.SOCKJS
 
-@SOCKJS("sockJSEcho")
-class SockJsEcho extends SockJsActor {
+@SOCKJS("url/to/EchoSockJsActor")
+class EchoSockJsActor extends SockJsActor {
   def execute() {
     logger.info("onOpen, remoteIp: " + remoteIp)
 
