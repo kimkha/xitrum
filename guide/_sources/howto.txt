@@ -7,14 +7,16 @@ chapter.
 Link to an action
 -----------------
 
-Xitrum tries to be typesafe. Don't write URL manually, use urlFor like this:
+Xitrum tries to be typesafe. Don't write URL manually. Do like this:
 
 ::
 
   <a href={url[ArticlesShow]("id" -> myArticle.id)}>{myArticle.title}</a>
 
-Redirect to an action
----------------------
+Redirect to another action
+--------------------------
+
+Read to know `what redirection is <http://en.wikipedia.org/wiki/URL_redirection>`_.
 
 ::
 
@@ -43,6 +45,14 @@ Redirect to an action
       redirectTo[LoginInput]()
     }
   }
+
+You can also redirect to the current action with ``redirecToThis()``.
+
+Forward to another action
+-------------------------
+
+Use ``forwardTo[AnotherAction]()``. While ``redirectTo`` above causes the browser to
+make another request, ``forwardTo`` does not.
 
 Determine is the request is Ajax request
 ----------------------------------------
@@ -245,14 +255,3 @@ You can specify a key for encryption:
 
 If no key is specified, ``secureKey`` in xitrum.conf file in config directory
 is used.
-
-Create your own template engine
--------------------------------
-
-The default template engine is Scalate.
-You can create and use your own template engine:
-
-1. Create a class that implements `xitrum.view.TemplateEngine <https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/view/TemplateEngine.scala>`_
-2. Set that class in `xitrum.conf <https://github.com/ngocdaothanh/xitrum-new/blob/master/config/xitrum.conf#L47>`_
-
-For an example, see `xitrum-scalate <https://github.com/ngocdaothanh/xitrum-scalate>`_.

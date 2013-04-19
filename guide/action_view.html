@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Action and view &mdash; Xitrum 2.1 documentation</title>
+    <title>Action and view &mdash; Xitrum 2.2 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.1',
+        VERSION:     '2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 2.1 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.2 documentation" href="index.html" />
     <link rel="next" title="RESTful APIs" href="restful.html" />
     <link rel="prev" title="Development flow with SBT, Eclipse, and JRebel" href="dev.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -67,12 +67,17 @@ class HelloAction extends Action {
   }
 }</pre>
 </div>
+<p>With Action, the request is handled right away, but the number of concurrent
+connections can&#8217;t be too high. There should not be any blocking processing
+along the way request -&gt; response.</p>
 </div>
 <div class="section" id="actor-action">
 <h2>Actor action<a class="headerlink" href="#actor-action" title="Permalink to this headline">¶</a></h2>
 <p>Use when you want to do async call to outside from your action.
 If you want your action to be an actor, instead of extending xitrum.Action,
-extend xitrum.Action.Actor.</p>
+extend xitrum.ActionActor. With ActionActor, your system can handle massive
+number of concurrent connections, but the request is not handled right away.
+This is async oriented.</p>
 <p>An actor instance will be created when there&#8217;s request. It will be stopped when the
 connection is closed or when the response has been sent by respondText,
 respondView etc. methods. For chunked response, it is not stopped right away.
@@ -433,7 +438,7 @@ scr/main/scalate/mypackage/MyAction/_myfragment.jade:</p>
         <li class="right" >
           <a href="dev.html" title="Development flow with SBT, Eclipse, and JRebel"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
