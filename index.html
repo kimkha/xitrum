@@ -90,6 +90,7 @@ class HelloAction extends Action {
             <h2 class="title">Actor sample</h2>
             <p>Just annotate your actors and they will be accessible from web!</p>
             <pre><code>import scala.concurrent.duration._
+import akka.actor.ReceiveTimeout
 import xitrum.{ActionActor, Config}
 import xitrum.annotation.GET
 
