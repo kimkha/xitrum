@@ -1,6 +1,5 @@
-Xitrum is an async and clustered Scala web framework and HTTP(S) server fusion
-on top of `Netty <http://netty.io/>`_, `Akka <http://akka.io/>`_, and
-`Hazelcast <http://www.hazelcast.com/>`_.
+Xitrum is an async and clustered Scala web framework and HTTP(S) server
+on top of `Netty <http://netty.io/>`_ and `Akka <http://akka.io/>`_.
 
 ::
 
@@ -9,7 +8,7 @@ on top of `Netty <http://netty.io/>`_, `Akka <http://akka.io/>`_, and
   +--------------------+
   |        Xitrum      |
   | +----------------+ |
-  | | Web framework  | |  <-- Akka, Hazelcast --> Other instances
+  | | Web framework  | |  <-- Akka --> Other instances
   | |----------------| |
   | | HTTP(S) Server | |
   | +----------------+ |

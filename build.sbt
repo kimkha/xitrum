@@ -37,30 +37,22 @@ libraryDependencies += "com.typesafe.akka" %% "akka-remote" % "2.1.2"
 // Projects using Xitrum must provide a concrete implentation of SLF4J (Logback etc.)
 libraryDependencies += "org.slf4j" % "slf4j-api" % "1.7.5" % "provided"
 
-// For scanning routes
-libraryDependencies += "tv.cntt" %% "sclasner" % "1.6"
-
-// For (de)serializing
-libraryDependencies += "com.twitter" %% "chill" % "0.2.1"
-
 // For jsEscape
 libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.1"
 
 libraryDependencies += "org.json4s" %% "json4s-native" % "3.2.4"
 
+// For scanning routes
+libraryDependencies += "tv.cntt" %% "sclasner" % "1.6"
+
 // For i18n
 libraryDependencies += "tv.cntt" %% "scaposer" % "1.2"
 
+// For cache
+libraryDependencies += "tv.cntt" %% "cleakka" % "1.0-SNAPSHOT"
+
 // For compiling CoffeeScript to JavaScript
 libraryDependencies += "tv.cntt" % "rhinocoffeescript" % "1.6.2"
-
-// Hazelcast is used for distributed cache and SockJS --------------------------
-
-// Infinispan is good but much heavier
-libraryDependencies += "com.hazelcast" % "hazelcast" % "2.5"
-
-// Hazelcast can be configured as cluster member, lite member, or Java client
-libraryDependencies += "com.hazelcast" % "hazelcast-client" % "2.5"
 
 // xitrum.imperatively uses Scala continuation, a compiler plugin --------------
 

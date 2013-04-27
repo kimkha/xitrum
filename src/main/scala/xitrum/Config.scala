@@ -4,9 +4,6 @@ import java.io.File
 import java.nio.charset.Charset
 import scala.util.control.NonFatal
 
-import com.hazelcast.client.{ClientConfig, ClientConfigBuilder, HazelcastClient}
-import com.hazelcast.core.{Hazelcast, HazelcastInstance}
-
 import com.typesafe.config.{Config => TConfig, ConfigFactory}
 import akka.actor.ActorSystem
 
@@ -204,34 +201,6 @@ object Config extends Logger {
   /** akka.actor.ActorSystem("xitrum") */
   val actorSystem = ActorSystem(ACTOR_SYSTEM_NAME)
 
-  /**
-   * Use lazy to avoid starting Hazelcast if it is not used.
-   * Starting Hazelcast takes several seconds, sometimes we want to work in
-   * sbt console mode and don't like this overhead.
-   */
-  lazy val hazelcastInstance: HazelcastInstance = {
-    // http://www.hazelcast.com/docs/2.4/manual/multi_html/ch12s07.html
-    System.setProperty("hazelcast.logging.type", "slf4j")
-
-    // http://www.hazelcast.com/docs/2.4/manual/multi_html/ch15.html
-    // http://www.hazelcast.com/docs/2.4/manual/multi_html/ch07s03.html
-    if (xitrum.hazelcastMode == HAZELCAST_MODE_LITE_MEMBER)
-      System.setProperty("hazelcast.lite.member", "true")
-
-    if (xitrum.hazelcastMode == HAZELCAST_MODE_LITE_MEMBER || xitrum.hazelcastMode == HAZELCAST_MODE_CLUSTER_MEMBER) {
-      val path = Config.root + File.separator + "config" + File.separator + "hazelcast_cluster_or_lite_member.xml"
-      System.setProperty("hazelcast.config", path)
-
-      // null: load from "hazelcast.config" system property above
-      // http://www.hazelcast.com/docs/2.4/manual/multi_html/ch12.html
-      Hazelcast.newHazelcastInstance(null)
-    } else {
-      // https://github.com/hazelcast/hazelcast/issues/93
-      val clientConfig = new ClientConfigBuilder("hazelcast_java_client.properties").build()
-      HazelcastClient.newHazelcastClient(clientConfig)
-    }
-  }
-
   //----------------------------------------------------------------------------
 
   def warnOnDefaultSecureKey() {
@@ -239,14 +208,8 @@ object Config extends Logger {
       logger.warn("*** For security, change secureKey in config/xitrum.conf to your own! ***")
   }
 
-  /**
-   * Shutdowns Hazelcast and call System.exit(-1).
-   * Once Hazelcast is started, calling System.exit(-1) does not stop
-   * the current process!
-   */
   def exitOnError(msg: String, e: Throwable) {
     logger.error(msg, e)
-    Hazelcast.shutdownAll()
     System.exit(-1)
   }
 

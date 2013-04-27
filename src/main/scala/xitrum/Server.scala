@@ -10,7 +10,6 @@ import xitrum.handler.{
   NetOption,
   SslChannelPipelineFactory
 }
-import xitrum.util.ClusterSingletonActor
 
 object Server extends Logger {
   /**
@@ -27,13 +26,6 @@ object Server extends Logger {
    * SSL codec handler will be automatically prepended for HTTPS server.
    */
   def start(httpChannelPipelineFactory: ChannelPipelineFactory) {
-    // Because Hazelcast takes serveral seconds to start, we force it to
-    // start before the web server begins receiving requests, instead of
-    // letting it start lazily
-    Cache.cache.size()
-
-    ClusterSingletonActor.start()
-
     // templateEngine is lazy, force its initialization here
     Config.xitrum.templateEngine
 

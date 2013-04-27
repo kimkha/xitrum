@@ -14,7 +14,7 @@ import xitrum.{WebSocketActor, WebSocketBinary, WebSocketPing, WebSocketPong, We
 import xitrum.annotation._
 import xitrum.etag.NotModified
 import xitrum.scope.request.PathInfo
-import xitrum.util.{Json, ClusterSingletonActor}
+import xitrum.util.Json
 import xitrum.view.DocType
 
 // General info:

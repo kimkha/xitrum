@@ -22,7 +22,7 @@ object ResponseCacher extends Logger {
   def cacheResponse(env: HandlerEnv) {
     val cacheSecs = env.route.cacheSecs
     val key       = makeCacheKey(env)
-    if (!Cache.cache.containsKey(key)) { // Check to avoid the cost of serializing
+    if (!Cache.cache.isDefinedAt(key)) { // Check to avoid the cost of serializing
       val response          = env.response
       val cachedResponse    = serializeResponse(env.request, response)
       val positiveCacheSecs = if (cacheSecs < 0) -cacheSecs else cacheSecs
@@ -32,7 +32,7 @@ object ResponseCacher extends Logger {
 
   def getCachedResponse(env: HandlerEnv): Option[HttpResponse] = {
     val key = makeCacheKey(env)
-    Cache.getAs[CachedResponse](key).map(deserializeToResponse)
+    Cache.get[CachedResponse](key).map(deserializeToResponse)
   }
 
   //----------------------------------------------------------------------------

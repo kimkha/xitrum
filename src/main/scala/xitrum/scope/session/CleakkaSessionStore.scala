@@ -5,9 +5,8 @@ import scala.collection.mutable.HashMap
 import scala.util.control.NonFatal
 
 import org.jboss.netty.handler.codec.http.DefaultCookie
-import com.hazelcast.core.IMap
 
-import xitrum.Config
+import xitrum.{Cache, Config}
 import xitrum.util.SecureUrlSafeBase64
 
 /**
@@ -20,14 +19,6 @@ import xitrum.util.SecureUrlSafeBase64
  * Subclass of HashMap => subclass of mutable Map = Session
  */
 class HazelcastSession(val sessionId: String, val newlyCreated: Boolean) extends HashMap[String, Any]
-
-// We can use Cache, but we use a separate Hazelcast map to avoid the cost of
-// iterating through a big map as much as we can. Another reason is that the
-// application may need to config Hazelcast to persist sessions to a place
-// (disk, DB etc.) different to those for other things (cache, comet etc.).
-object HazelcastSessionStore {
-  val store = Config.hazelcastInstance.getMap("xitrum/session").asInstanceOf[IMap[String, Map[String, Any]]]
-}
 
 class HazelcastSessionStore extends SessionStore {
   def restore(env: SessionEnv): Session = {
@@ -63,7 +54,7 @@ class HazelcastSessionStore extends SessionStore {
               case Some(sessionId) =>
                 // See "store" method to know why this map is immutable
                 // immutableMap can be null because Hazelcast does not have it
-                val immutableMap = HazelcastSessionStore.store.get(sessionId)
+                val immutableMap = Cache.get(sessionId)
 
                 val ret = new HazelcastSession(sessionId, false)
                 if (immutableMap != null) ret ++= immutableMap
@@ -87,7 +78,7 @@ class HazelcastSessionStore extends SessionStore {
 
         // Remove session in Hazelcast if any
         val hSession = session.asInstanceOf[HazelcastSession]
-        if (!hSession.newlyCreated) HazelcastSessionStore.store.removeAsync(hSession.sessionId)
+        if (!hSession.newlyCreated) Cache.remove(hSession.sessionId)
       }
     } else {
       val hSession = session.asInstanceOf[HazelcastSession]
@@ -104,7 +95,7 @@ class HazelcastSessionStore extends SessionStore {
       // See "restore" method
       // Convert to immutable because mutable cannot always be deserialized later!
       val immutableMap = session.toMap
-      HazelcastSessionStore.store.put(hSession.sessionId, immutableMap)
+      Cache.put(hSession.sessionId, immutableMap)
     }
   }
 }
