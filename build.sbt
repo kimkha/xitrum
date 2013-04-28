@@ -30,10 +30,6 @@ resolvers += "SonatypeReleases" at "http://oss.sonatype.org/content/repositories
 
 libraryDependencies += "io.netty" % "netty" % "3.6.5.Final"
 
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.1.2"
-
-libraryDependencies += "com.typesafe.akka" %% "akka-remote" % "2.1.2"
-
 // Projects using Xitrum must provide a concrete implentation of SLF4J (Logback etc.)
 libraryDependencies += "org.slf4j" % "slf4j-api" % "1.7.5" % "provided"
 
@@ -63,6 +59,9 @@ addCompilerPlugin("org.scala-lang.plugins" % "continuations" % "2.10.1")
 scalacOptions += "-P:continuations:enable"
 
 //------------------------------------------------------------------------------
+
+// https://github.com/jrudolph/sbt-dependency-graph
+net.virtualvoid.sbt.graph.Plugin.graphSettings
 
 // Skip API doc generation to speedup "publish-local" while developing.
 // Comment out this line when publishing to Sonatype.
