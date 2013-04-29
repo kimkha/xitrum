@@ -19,23 +19,13 @@ import xitrum.sockjs.SockJsPrefix
 object Dispatcher {
   def dispatch(klass: Class[_], handlerEnv: HandlerEnv) {
     if (classOf[Actor].isAssignableFrom(klass)) {
-      val actorRef = Config.actorSystem.actorOf(Props {
-        val actor = ConstructorAccess.get(klass).newInstance()
-        setPathPrefixForSockJs(actor, handlerEnv)
-        actor.asInstanceOf[Actor]
-      })
+      val actorRef = Config.actorSystem.actorOf(Props(klass))
       actorRef ! handlerEnv
     } else {
       val action = ConstructorAccess.get(klass).newInstance().asInstanceOf[Action]
-      setPathPrefixForSockJs(action, handlerEnv)
       action.apply(handlerEnv)
       action.dispatchWithFailsafe()
     }
-  }
-
-  private def setPathPrefixForSockJs(instance: Any, handlerEnv: HandlerEnv) {
-    if (instance.isInstanceOf[SockJsPrefix])
-      instance.asInstanceOf[SockJsPrefix].setPathPrefix(handlerEnv.pathInfo)
   }
 }
 

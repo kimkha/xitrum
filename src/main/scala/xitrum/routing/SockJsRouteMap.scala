@@ -46,9 +46,7 @@ class SockJsRouteMap(map: Map[String, SockJsClassAndOptions]) extends Logger {
   def createSockJsActor(pathPrefix: String): ActorRef = {
     val sockJsClassAndOptions = map(pathPrefix)
     val actorClass            = sockJsClassAndOptions.actorClass
-    Config.actorSystem.actorOf(Props {
-      ConstructorAccess.get(actorClass).newInstance().asInstanceOf[Actor]
-    })
+    Config.actorSystem.actorOf(Props(actorClass))
   }
 
   /** @param sockJsHandlerClass Normal SockJsHandler subclass or object class */

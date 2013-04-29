@@ -112,11 +112,17 @@ object SockJsAction {
   }
 }
 
-trait SockJsPrefix {
+trait SockJsPrefix extends Action {
   protected var pathPrefix = ""
 
-  /** Called by Dispatcher. */
-  def setPathPrefix(pathInfo: PathInfo) {
+  protected def nLastTokensToRemoveFromPathInfo: Int
+
+  beforeFilter {
+    setPathPrefix(handlerEnv.pathInfo)
+    true
+  }
+
+  private def setPathPrefix(pathInfo: PathInfo) {
     val n       = nLastTokensToRemoveFromPathInfo
     val encoded = pathInfo.encoded
     pathPrefix =
@@ -129,11 +135,9 @@ trait SockJsPrefix {
         tokens.take(tokens.size - n).mkString("/")
       }
   }
-
-  protected def nLastTokensToRemoveFromPathInfo: Int
 }
 
-trait SockJsAction extends Action with SockJsPrefix {
+trait SockJsAction extends SockJsPrefix {
   // JSESSIONID cookie must be echoed back if sent by the client, or created
   // http://groups.google.com/group/sockjs/browse_thread/thread/71dfdff6e8f1e5f7
   // Can't use beforeFilter, see comment of pathPrefix at the top of this controller.
@@ -211,13 +215,14 @@ trait SockJsAction extends Action with SockJsPrefix {
 }
 
 trait SockJsNonWebSocketSessionActionActor extends ActionActor with SockJsAction {
-  protected def lookupOrCreateNonWebSocketSessionActor(sessionId: String) {
-    val propsMaker = () => Props(new NonWebSocketSession(self, pathPrefix, this))
-    ClusterSingletonActor.actor() ! ClusterSingletonActor.LookupOrCreate(sessionId, propsMaker)
+  protected def lookupNonWebSocketSessionActor(sessionId: String) {
+    NonWebSocketSessionManager.lookup(sessionId)
   }
 
-  protected def lookupNonWebSocketSessionActor(sessionId: String) {
-    ClusterSingletonActor.actor() ! ClusterSingletonActor.Lookup(sessionId)
+  protected def lookupOrCreateNonWebSocketSessionActor(sessionId: String) {
+    NonWebSocketSessionManager.lookupOrCreate(sessionId)
+    //val propsMaker = () => Props(new NonWebSocketSession(self, pathPrefix, this))
+    //ClusterSingletonActor.actor() ! ClusterSingletonActor.LookupOrCreate(sessionId, propsMaker)
   }
 }
 

@@ -2,7 +2,7 @@ organization := "tv.cntt"
 
 name := "xitrum"
 
-version := "2.4-SNAPSHOT"
+version := "2.5-SNAPSHOT"
 
 scalaVersion := "2.10.1"
 
@@ -46,6 +46,8 @@ libraryDependencies += "tv.cntt" %% "scaposer" % "1.2"
 
 // For cache
 libraryDependencies += "tv.cntt" %% "cleakka" % "1.0-SNAPSHOT"
+
+libraryDependencies += "com.typesafe.akka" % "akka-contrib_2.10" % "2.2-M3"
 
 // For compiling CoffeeScript to JavaScript
 libraryDependencies += "tv.cntt" % "rhinocoffeescript" % "1.6.2"
