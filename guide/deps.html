@@ -50,6 +50,7 @@
 <h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
 <p>This chapter lists all dependency libraries that Xitrum uses so that in
 your Xitrum project, you can use them directly if you want.</p>
+<img alt="_images/deps.png" src="_images/deps.png" />
 <ul class="simple">
 <li><a class="reference external" href="http://www.scala-lang.org/">Scala</a>:
 Xitrum is written in Scala language.</li>
@@ -59,12 +60,8 @@ like WebSocket and zero copy file serving.</li>
 <li><a class="reference external" href="http://hazelcast.com/">Hazelcast</a>:
 For distributing caches, server side sessions, and message queues.</li>
 <li><a class="reference external" href="http://akka.io/">Akka</a>:
-For SockJS. Akka itself has this interesting dependency which is also used by Xitrum:
-<a class="reference external" href="https://github.com/typesafehub/config">Typesafe Config</a>.</li>
-<li><a class="reference external" href="https://github.com/ngocdaothanh/xitrum-scalate">xitrum-scalate</a>,
-<a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>,
-<a class="reference external" href="https://github.com/chirino/scalamd">Scalamd</a>:
-For view template.</li>
+For SockJS. Akka depends on <a class="reference external" href="https://github.com/typesafehub/config">Typesafe Config</a>,
+which is also used by Xitrum.</li>
 <li><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Rhino">Rhino</a>:
 For Scalate to compile CoffeeScript to JavaScript.</li>
 <li><a class="reference external" href="https://github.com/json4s/json4s">JSON4S</a>:
@@ -78,17 +75,12 @@ For i18n.</li>
 For escaping JSON data.</li>
 <li><a class="reference external" href="https://github.com/twitter/chill">Twitter Chill</a>:
 For serializing and deserializing cookies and sessions.
-Chill is based on
-<a class="reference external" href="http://code.google.com/p/kryo/">Kryo</a>,
-<a class="reference external" href="http://code.google.com/p/objenesis/">Objenesis</a>,
-<a class="reference external" href="https://github.com/twitter/bijection">Bijection</a>,
-<a class="reference external" href="http://asm.ow2.org/">ASM</a>,
-<a class="reference external" href="http://commons.apache.org/proper/commons-codec/">Commons Codec</a>,
-<a class="reference external" href="http://code.google.com/p/reflectasm/">ReflectASM</a>,
-<a class="reference external" href="http://maths.uncommons.org/">Uncommons Maths</a>.</li>
+Chill is based on <a class="reference external" href="http://code.google.com/p/kryo/">Kryo</a>.</li>
 <li><a class="reference external" href="http://www.slf4j.org/">SLF4J</a>, <a class="reference external" href="http://logback.qos.ch/">Logback</a>:
 For logging.</li>
 </ul>
+<p>The default template engine in Xitrum is <a class="reference external" href="https://github.com/ngocdaothanh/xitrum-scalate">xitrum-scalate</a>.
+It depends on <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a> and <a class="reference external" href="https://github.com/chirino/scalamd">Scalamd</a>.</p>
 </div>
 
 
