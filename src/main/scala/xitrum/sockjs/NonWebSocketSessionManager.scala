@@ -20,13 +20,13 @@ object NonWebSocketSessionManager {
   private val localManager = Config.actorSystem.actorSelection("/user/" + NAME + "/" + NAME)
 
   def start() {
-    val prop = ClusterSingletonManager.props(
+    val props = ClusterSingletonManager.props(
       singletonProps     = handOverData =>
         Props(classOf[NonWebSocketSessionManager]),
       singletonName      = NAME,
       terminationMessage = PoisonPill,
       role               = None)
-    Config.actorSystem.actorOf(prop, NAME)
+    Config.actorSystem.actorOf(props, NAME)
   }
 
   def leaderSelection(leaderAddress: Option[Address]): Option[ActorSelection] =
@@ -80,13 +80,7 @@ class NonWebSocketSessionManager extends Actor {
       }
 
     case LookupAtLeader(sockJsActor, sockJsSessionId) =>
-      sessions.get(sockJsSessionId) match {
-        case None =>
-          sockJsActor ! None
-
-        case Some(nonWebSocketSession) =>
-          sockJsActor ! nonWebSocketSession
-      }
+      sockJsActor ! sessions.get(sockJsSessionId)
 
     case LookupOrCreate(sockJsActor, sockJsSessionId, pathPrefix) =>
       leaderSelection.foreach { sel =>
