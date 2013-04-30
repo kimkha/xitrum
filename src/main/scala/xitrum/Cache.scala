@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit
 import scala.util.control.NonFatal
 
 object Cache extends Logger {
-  val cache = new cleakka.Cache(10)
+  val cache = new cleakka.Cache(10)  // FIXME
 
   def remove(key: Any) {
     cache.remove(key)

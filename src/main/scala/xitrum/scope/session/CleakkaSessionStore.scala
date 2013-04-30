@@ -6,7 +6,7 @@ import scala.util.control.NonFatal
 
 import org.jboss.netty.handler.codec.http.DefaultCookie
 
-import xitrum.{Cache, Config}
+import xitrum.Config
 import xitrum.util.SecureUrlSafeBase64
 
 /**
@@ -21,6 +21,8 @@ import xitrum.util.SecureUrlSafeBase64
 class CleakkaSession(val sessionId: String, val newlyCreated: Boolean) extends HashMap[String, Any]
 
 class CleakkaSessionStore extends SessionStore {
+  private[this] val cache = new cleakka.Cache(10)  // FIXME
+
   def restore(env: SessionEnv): Session = {
     val sessionCookieName = Config.xitrum.session.cookieName
     env.requestCookies.get(sessionCookieName) match {
@@ -53,7 +55,7 @@ class CleakkaSessionStore extends SessionStore {
 
               case Some(sessionId) =>
                 // See "store" method to know why this map is immutable
-                val immutableMapo = Cache.get[Map[String, Any]](sessionId)
+                val immutableMapo = cache.get[Map[String, Any]](sessionId)
 
                 val ret = new CleakkaSession(sessionId, false)
                 immutableMapo.foreach { ret ++= _ }
@@ -77,7 +79,7 @@ class CleakkaSessionStore extends SessionStore {
 
         // Remove session in Cleakka if any
         val hSession = session.asInstanceOf[CleakkaSession]
-        if (!hSession.newlyCreated) Cache.remove(hSession.sessionId)
+        if (!hSession.newlyCreated) cache.remove(hSession.sessionId)
       }
     } else {
       val hSession = session.asInstanceOf[CleakkaSession]
@@ -94,7 +96,7 @@ class CleakkaSessionStore extends SessionStore {
       // See "restore" method
       // Convert to immutable because mutable cannot always be deserialized later!
       val immutableMap = session.toMap
-      Cache.put(hSession.sessionId, immutableMap)
+      cache.put(hSession.sessionId, immutableMap)
     }
   }
 }
