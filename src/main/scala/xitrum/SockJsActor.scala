@@ -17,7 +17,7 @@ case class SockJsText(text: String)
  * Action, see the explanation:
  * https://github.com/sockjs/sockjs-node#various-issues-and-design-considerations
  */
-trait SockJsActor extends Actor {
+trait SockJsActor extends Actor with Logger {
   // ActorRef of NonWebSocketSession, SockJSWebsocket, or SockJSRawWebsocket
   private[this] var sessionActorRef: ActorRef = _
 
