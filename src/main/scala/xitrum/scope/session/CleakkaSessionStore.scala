@@ -10,7 +10,7 @@ import xitrum.{Cache, Config}
 import xitrum.util.SecureUrlSafeBase64
 
 /**
- * @param sessionId needed to save the session to Hazelcast
+ * @param sessionId needed to save the session to Cleakka
  *
  * @param newlyCreated false means sessionId is taken from valid session cookie
  * sent by browser, true means browser did not send session cookie or did send
@@ -18,22 +18,22 @@ import xitrum.util.SecureUrlSafeBase64
  *
  * Subclass of HashMap => subclass of mutable Map = Session
  */
-class HazelcastSession(val sessionId: String, val newlyCreated: Boolean) extends HashMap[String, Any]
+class CleakkaSession(val sessionId: String, val newlyCreated: Boolean) extends HashMap[String, Any]
 
-class HazelcastSessionStore extends SessionStore {
+class CleakkaSessionStore extends SessionStore {
   def restore(env: SessionEnv): Session = {
     val sessionCookieName = Config.xitrum.session.cookieName
     env.requestCookies.get(sessionCookieName) match {
       case None =>
         val sessionId = UUID.randomUUID().toString
-        new HazelcastSession(sessionId, true)
+        new CleakkaSession(sessionId, true)
 
       case Some(encryptedSessionId) =>
         SecureUrlSafeBase64.decrypt(encryptedSessionId) match {
           case None =>
             // sessionId sent by browser is invalid, recreate
             val sessionId = UUID.randomUUID().toString
-            new HazelcastSession(sessionId, true)
+            new CleakkaSession(sessionId, true)
 
           case Some(any) =>
             val sessionIdo =
@@ -46,17 +46,17 @@ class HazelcastSessionStore extends SessionStore {
             sessionIdo match {
               case None =>
                 // sessionId sent by browser is not a String
-                // (due to the switch from CookieSessionStore to HazelcastSessionStore etc.),
+                // (due to the switch from CookieSessionStore to CleakkaSessionStore etc.),
                 // recreate
                 val sessionId = UUID.randomUUID().toString
-                new HazelcastSession(sessionId, true)
+                new CleakkaSession(sessionId, true)
 
               case Some(sessionId) =>
                 // See "store" method to know why this map is immutable
-                // immutableMap can be null because Hazelcast does not have it
+                // immutableMap can be null because Cleakka does not have it
                 val immutableMap = Cache.get(sessionId)
 
-                val ret = new HazelcastSession(sessionId, false)
+                val ret = new CleakkaSession(sessionId, false)
                 if (immutableMap != null) ret ++= immutableMap
                 ret
             }
@@ -76,12 +76,12 @@ class HazelcastSessionStore extends SessionStore {
         cookie.setMaxAge(0)
         env.responseCookies.append(cookie)
 
-        // Remove session in Hazelcast if any
-        val hSession = session.asInstanceOf[HazelcastSession]
+        // Remove session in Cleakka if any
+        val hSession = session.asInstanceOf[CleakkaSession]
         if (!hSession.newlyCreated) Cache.remove(hSession.sessionId)
       }
     } else {
-      val hSession = session.asInstanceOf[HazelcastSession]
+      val hSession = session.asInstanceOf[CleakkaSession]
       // newlyCreated: true means browser did not send session cookie or did send
       // but the cookie value is not a valid encrypted session ID
       if (hSession.newlyCreated) {
