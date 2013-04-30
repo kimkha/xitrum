@@ -9,37 +9,38 @@ import akka.contrib.pattern.ClusterSingletonManager
 import xitrum.Config
 
 case class Lookup(sockJsActor: ActorRef, sockJsSessionId: String)
-case class LookupAtLeader(sockJsActor: ActorRef, sockJsSessionId: String)
-
 case class LookupOrCreate(sockJsActor: ActorRef, sockJsSessionId: String, pathPrefix: String)
-case class LookupOrCreateAtLeader(sockJsActor: ActorRef, sockJsSessionId: String, pathPrefix: String)
 
 object NonWebSocketSessionManager {
-  private val NAME = "NonWebSocketSessionManager"
+  private val MANAGER = "NonWebSocketSessionManager"
+  private val PROXY   = "NonWebSocketSessionProxy"
 
-  private val localManager = Config.actorSystem.actorSelection("/user/" + NAME + "/" + NAME)
+  private val proxy = Config.actorSystem.actorSelection("/user/" + PROXY)
 
   def start() {
-    val props = ClusterSingletonManager.props(
+    val managerProps = ClusterSingletonManager.props(
       singletonProps     = handOverData =>
         Props(classOf[NonWebSocketSessionManager]),
-      singletonName      = NAME,
+      singletonName      = MANAGER,
       terminationMessage = PoisonPill,
       role               = None)
-    Config.actorSystem.actorOf(props, NAME)
+    Config.actorSystem.actorOf(managerProps, MANAGER)
+
+    val proxyProps = Props[NonWebSocketSessionProxy]
+    Config.actorSystem.actorOf(proxyProps, PROXY)
   }
 
   def leaderSelection(leaderAddress: Option[Address]): Option[ActorSelection] =
     leaderAddress map { a =>
-      Config.actorSystem.actorSelection(RootActorPath(a) / "user" / NAME / NAME)
+      Config.actorSystem.actorSelection(RootActorPath(a) / "user" / MANAGER / MANAGER)
     }
 
   def lookup(sockJsActor: ActorRef, sockJsSessionId: String) {
-    localManager ! Lookup(sockJsActor, sockJsSessionId)
+    proxy ! Lookup(sockJsActor, sockJsSessionId)
   }
 
   def lookupOrCreate(sockJsActor: ActorRef, sockJsSessionId: String, pathPrefix: String) {
-    localManager ! LookupOrCreate(sockJsActor, sockJsSessionId, pathPrefix)
+    proxy ! LookupOrCreate(sockJsActor, sockJsSessionId, pathPrefix)
   }
 }
 
@@ -52,42 +53,19 @@ class NonWebSocketSessionManager extends Actor {
   // Used when the current actor is the leader
   private val sessions = MMap[String, ActorRef]()
 
-  private var leaderSelection: Option[ActorSelection] = _
-
   override def preStart() {
     sessions.clear()
-    leaderSelection = None
-    Cluster(context.system).subscribe(self, classOf[ClusterEvent.LeaderChanged])
   }
 
   override def postStop() {
     sessions.clear()
-    leaderSelection = None
-    Cluster(context.system).unsubscribe(self)
   }
 
   def receive = {
-    case state: ClusterEvent.CurrentClusterState =>
-      val leaderAddress = Some(state.getLeader)
-      leaderSelection = NonWebSocketSessionManager.leaderSelection(leaderAddress)
-
-    case ClusterEvent.LeaderChanged(leaderAddress) =>
-      leaderSelection = NonWebSocketSessionManager.leaderSelection(leaderAddress)
-
     case Lookup(sockJsActor, sockJsSessionId) =>
-      leaderSelection.foreach { sel =>
-        sel ! LookupAtLeader(sockJsActor, sockJsSessionId)
-      }
-
-    case LookupAtLeader(sockJsActor, sockJsSessionId) =>
       sockJsActor ! sessions.get(sockJsSessionId)
 
     case LookupOrCreate(sockJsActor, sockJsSessionId, pathPrefix) =>
-      leaderSelection.foreach { sel =>
-        sel ! LookupOrCreateAtLeader(sockJsActor, sockJsSessionId, pathPrefix)
-      }
-
-    case LookupOrCreateAtLeader(sockJsActor, sockJsSessionId, pathPrefix) =>
       sessions.get(sockJsSessionId) match {
         case None =>
           val props               = Props(classOf[NonWebSocketSession], sockJsActor, pathPrefix)
@@ -98,6 +76,39 @@ class NonWebSocketSessionManager extends Actor {
 
         case Some(nonWebSocketSession) =>
           sockJsActor ! (false, nonWebSocketSession)
+      }
+  }
+}
+
+class NonWebSocketSessionProxy extends Actor {
+  private var leaderSelection: Option[ActorSelection] = _
+
+  override def preStart() {
+    leaderSelection = None
+    Cluster(context.system).subscribe(self, classOf[ClusterEvent.LeaderChanged])
+  }
+
+  override def postStop() {
+    leaderSelection = None
+    Cluster(context.system).unsubscribe(self)
+  }
+
+  def receive = {
+    case state: ClusterEvent.CurrentClusterState =>
+      val leaderAddress = Option(state.getLeader)
+      leaderSelection = NonWebSocketSessionManager.leaderSelection(leaderAddress)
+
+    case ClusterEvent.LeaderChanged(leaderAddress) =>
+      leaderSelection = NonWebSocketSessionManager.leaderSelection(leaderAddress)
+
+    case Lookup(sockJsActor, sockJsSessionId) =>
+      leaderSelection.foreach { sel =>
+        sel ! Lookup(sockJsActor, sockJsSessionId)
+      }
+
+    case LookupOrCreate(sockJsActor, sockJsSessionId, pathPrefix) =>
+      leaderSelection.foreach { sel =>
+        sel ! LookupOrCreate(sockJsActor, sockJsSessionId, pathPrefix)
       }
   }
 }
