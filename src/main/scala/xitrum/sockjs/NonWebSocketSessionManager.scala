@@ -17,7 +17,7 @@ case class LookupOrCreateAtLeader(sockJsActor: ActorRef, sockJsSessionId: String
 object NonWebSocketSessionManager {
   private val NAME = "NonWebSocketSessionManager"
 
-  private var localManager: ActorRef = _
+  private val localManager = Config.actorSystem.actorSelection("/user/" + NAME + "/" + NAME)
 
   def start() {
     val prop = ClusterSingletonManager.props(
@@ -26,12 +26,12 @@ object NonWebSocketSessionManager {
       singletonName      = NAME,
       terminationMessage = PoisonPill,
       role               = None)
-    localManager = Config.actorSystem.actorOf(prop, NAME)
+    Config.actorSystem.actorOf(prop, NAME)
   }
 
   def leaderSelection(leaderAddress: Option[Address]): Option[ActorSelection] =
     leaderAddress map { a =>
-      Config.actorSystem.actorSelection(RootActorPath(a) / "user" / "singleton" / NAME)
+      Config.actorSystem.actorSelection(RootActorPath(a) / "user" / NAME / NAME)
     }
 
   def lookup(sockJsActor: ActorRef, sockJsSessionId: String) {
