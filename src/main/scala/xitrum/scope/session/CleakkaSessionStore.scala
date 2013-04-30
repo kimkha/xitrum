@@ -38,7 +38,7 @@ class CleakkaSessionStore extends SessionStore {
           case Some(any) =>
             val sessionIdo =
               try {
-                Some(any.asInstanceOf[String])
+                Option(any.asInstanceOf[String])
               } catch {
                 case NonFatal(e) => None
               }
@@ -53,11 +53,10 @@ class CleakkaSessionStore extends SessionStore {
 
               case Some(sessionId) =>
                 // See "store" method to know why this map is immutable
-                // immutableMap can be null because Cleakka does not have it
-                val immutableMap = Cache.get(sessionId)
+                val immutableMapo = Cache.get[Map[String, Any]](sessionId)
 
                 val ret = new CleakkaSession(sessionId, false)
-                if (immutableMap != null) ret ++= immutableMap
+                immutableMapo.foreach { ret ++= _ }
                 ret
             }
         }
