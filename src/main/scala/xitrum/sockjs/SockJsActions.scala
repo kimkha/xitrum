@@ -216,13 +216,11 @@ trait SockJsAction extends SockJsPrefix {
 
 trait SockJsNonWebSocketSessionActionActor extends ActionActor with SockJsAction {
   protected def lookupNonWebSocketSessionActor(sessionId: String) {
-    NonWebSocketSessionManager.lookup(sessionId)
+    NonWebSocketSessionManager.lookup(self, sessionId)
   }
 
   protected def lookupOrCreateNonWebSocketSessionActor(sessionId: String) {
-    NonWebSocketSessionManager.lookupOrCreate(sessionId)
-    //val propsMaker = () => Props(new NonWebSocketSession(self, pathPrefix, this))
-    //ClusterSingletonActor.actor() ! ClusterSingletonActor.LookupOrCreate(sessionId, propsMaker)
+    NonWebSocketSessionManager.lookupOrCreate(self, sessionId, pathPrefix)
   }
 }
 
@@ -859,7 +857,7 @@ class SockJSWebsocket extends WebSocketActor with SockJsPrefix {
 
     sockJsActorRef = Config.routes.sockJsRouteMap.createSockJsActor(pathPrefix)
     respondWebSocketText("o")
-    sockJsActorRef ! (self, currentAction)
+    sockJsActorRef ! self
 
     context.become {
       case WebSocketText(body) =>
@@ -917,7 +915,7 @@ class SockJSRawWebsocket extends WebSocketActor with SockJsPrefix {
 
   def execute() {
     sockJsActorRef = Config.routes.sockJsRouteMap.createSockJsActor(pathPrefix)
-    sockJsActorRef ! (self, currentAction)
+    sockJsActorRef ! self
 
     context.become {
       case WebSocketText(text) =>

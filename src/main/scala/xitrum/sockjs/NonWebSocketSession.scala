@@ -52,7 +52,7 @@ object NonWebSocketSession {
  * for subscriber for a long time.
  * See TIMEOUT_CONNECTION and TIMEOUT_HEARTBEAT in NonWebSocketSessions.
  */
-class NonWebSocketSession(var receiverClient: ActorRef, pathPrefix: String, action: Action) extends Actor {
+class NonWebSocketSession(var receiverClient: ActorRef, pathPrefix: String) extends Actor {
   import NonWebSocketSession._
 
   private[this] var sockJsActorRef: ActorRef = _
@@ -71,9 +71,8 @@ class NonWebSocketSession(var receiverClient: ActorRef, pathPrefix: String, acti
   private[this] var closed = false
 
   override def preStart() {
-    // sockJsHandler.onClose is called at postStop
     sockJsActorRef = Config.routes.sockJsRouteMap.createSockJsActor(pathPrefix)
-    sockJsActorRef ! (self, action)
+    sockJsActorRef ! self
 
     lastSubscribedAt = System.currentTimeMillis()
 

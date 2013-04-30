@@ -10,6 +10,7 @@ import xitrum.handler.{
   NetOption,
   SslChannelPipelineFactory
 }
+import xitrum.sockjs.NonWebSocketSessionManager
 
 object Server extends Logger {
   /**
@@ -26,6 +27,8 @@ object Server extends Logger {
    * SSL codec handler will be automatically prepended for HTTPS server.
    */
   def start(httpChannelPipelineFactory: ChannelPipelineFactory) {
+    NonWebSocketSessionManager.start()
+
     // templateEngine is lazy, force its initialization here
     Config.xitrum.templateEngine
 

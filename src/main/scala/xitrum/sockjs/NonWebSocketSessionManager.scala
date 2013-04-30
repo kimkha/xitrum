@@ -2,16 +2,22 @@ package xitrum.sockjs
 
 import scala.collection.mutable.{Map => MMap}
 
-import akka.actor.{Actor, ActorRef, ActorSystem, PoisonPill, Props}
+import akka.actor.{Actor, ActorRef, ActorSelection, ActorSystem, Address, PoisonPill, Props, RootActorPath}
+import akka.cluster.{Cluster, ClusterEvent}
 import akka.contrib.pattern.ClusterSingletonManager
 
 import xitrum.Config
 
-case class Lookup(sockJsSessionId: String)
-case class LookupOrCreate(sockJsSessionId: String)
+case class Lookup(sockJsActor: ActorRef, sockJsSessionId: String)
+case class LookupAtLeader(sockJsActor: ActorRef, sockJsSessionId: String)
+
+case class LookupOrCreate(sockJsActor: ActorRef, sockJsSessionId: String, pathPrefix: String)
+case class LookupOrCreateAtLeader(sockJsActor: ActorRef, sockJsSessionId: String, pathPrefix: String)
 
 object NonWebSocketSessionManager {
   private val NAME = "NonWebSocketSessionManager"
+
+  private var localManager: ActorRef = _
 
   def start() {
     val prop = ClusterSingletonManager.props(
@@ -20,17 +26,20 @@ object NonWebSocketSessionManager {
       singletonName      = NAME,
       terminationMessage = PoisonPill,
       role               = None)
-    Config.actorSystem.actorOf(prop, NAME)
+    localManager = Config.actorSystem.actorOf(prop, NAME)
   }
 
-  def lookup(sockJsSessionId: String) {
-    val sel = Config.actorSystem.actorSelection(NAME)
-    sel ! Lookup(sockJsSessionId)
+  def leaderSelection(leaderAddress: Option[Address]): Option[ActorSelection] =
+    leaderAddress map { a =>
+      Config.actorSystem.actorSelection(RootActorPath(a) / "user" / "singleton" / NAME)
+    }
+
+  def lookup(sockJsActor: ActorRef, sockJsSessionId: String) {
+    localManager ! Lookup(sockJsActor, sockJsSessionId)
   }
 
-  def lookupOrCreate(sockJsSessionId: String) {
-    val sel = Config.actorSystem.actorSelection(NAME)
-    sel ! LookupOrCreate(sockJsSessionId)
+  def lookupOrCreate(sockJsActor: ActorRef, sockJsSessionId: String, pathPrefix: String) {
+    localManager ! LookupOrCreate(sockJsActor, sockJsSessionId, pathPrefix)
   }
 }
 
@@ -40,16 +49,61 @@ object NonWebSocketSessionManager {
  * dies, all its children should die.
  */
 class NonWebSocketSessionManager extends Actor {
+  // Used when the current actor is the leader
   private val sessions = MMap[String, ActorRef]()
 
+  private var leaderSelection: Option[ActorSelection] = _
+
+  override def preStart() {
+    sessions.clear()
+    leaderSelection = None
+    Cluster(context.system).subscribe(self, classOf[ClusterEvent.LeaderChanged])
+  }
+
+  override def postStop() {
+    sessions.clear()
+    leaderSelection = None
+    Cluster(context.system).unsubscribe(self)
+  }
+
   def receive = {
-    case LookupOrCreate(sockJsSessionId) =>
+    case state: ClusterEvent.CurrentClusterState =>
+      val leaderAddress = Some(state.getLeader)
+      leaderSelection = NonWebSocketSessionManager.leaderSelection(leaderAddress)
+
+    case ClusterEvent.LeaderChanged(leaderAddress) =>
+      leaderSelection = NonWebSocketSessionManager.leaderSelection(leaderAddress)
+
+    case Lookup(sockJsActor, sockJsSessionId) =>
+      leaderSelection.foreach { sel =>
+        sel ! LookupAtLeader(sockJsActor, sockJsSessionId)
+      }
+
+    case LookupAtLeader(sockJsActor, sockJsSessionId) =>
       sessions.get(sockJsSessionId) match {
         case None =>
-          //val prop = Props(new NonWebSocketSession(self, pathPrefix, this))
+          sockJsActor ! None
 
-        case Some(actorRef) =>
-          sender ! actorRef
+        case Some(nonWebSocketSession) =>
+          sockJsActor ! nonWebSocketSession
+      }
+
+    case LookupOrCreate(sockJsActor, sockJsSessionId, pathPrefix) =>
+      leaderSelection.foreach { sel =>
+        sel ! LookupOrCreateAtLeader(sockJsActor, sockJsSessionId, pathPrefix)
+      }
+
+    case LookupOrCreateAtLeader(sockJsActor, sockJsSessionId, pathPrefix) =>
+      sessions.get(sockJsSessionId) match {
+        case None =>
+          val props               = Props(classOf[NonWebSocketSession], sockJsActor, pathPrefix)
+          val nonWebSocketSession = context.actorOf(props)
+
+          sessions(sockJsSessionId) = nonWebSocketSession
+          sockJsActor ! (true, nonWebSocketSession)
+
+        case Some(nonWebSocketSession) =>
+          sockJsActor ! (false, nonWebSocketSession)
       }
   }
 }

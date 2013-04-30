@@ -12,15 +12,18 @@ case class SockJsText(text: String)
 /**
  * An actor will be created when there's new SockJS session. It will be stopped when
  * the session is closed.
+ *
+ * Note that unlike WebSocketActor and ActionActor, SockJsActor does not extend
+ * Action, see the explanation:
+ * https://github.com/sockjs/sockjs-node#various-issues-and-design-considerations
  */
-trait SockJsActor extends Actor with Action {
-  // Ref of NonWebSocketSessionActor, SockJSWebsocket, or SockJSRawWebsocket
+trait SockJsActor extends Actor {
+  // ActorRef of NonWebSocketSession, SockJSWebsocket, or SockJSRawWebsocket
   private[this] var sessionActorRef: ActorRef = _
 
   def receive = {
-    case (sessionActorRef: ActorRef, action: Action) =>
+    case sessionActorRef: ActorRef =>
       this.sessionActorRef = sessionActorRef
-      apply(action.handlerEnv)
       execute()
   }
 
