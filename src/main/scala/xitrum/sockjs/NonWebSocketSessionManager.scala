@@ -101,7 +101,7 @@ class NonWebSocketSessionProxy extends Actor {
 
   def receive = {
     case state: ClusterEvent.CurrentClusterState =>
-      val leaderAddress = Option(state.getLeader)
+      val leaderAddress = state.leader
       leaderSelection = NonWebSocketSessionManager.leaderSelection(leaderAddress)
 
     case ClusterEvent.LeaderChanged(leaderAddress) =>
