@@ -45,9 +45,10 @@ object NonWebSocketSessionManager {
 }
 
 /**
- * Cluster singleton actor. Each node runs a NonWebSocketSessionManager. The
- * leader is in charge of creating NonWebSocketSessions as its children. When it
- * dies, all its children should die.
+ * Cluster singleton actor. All nodes run NonWebSocketSessionProxy, but only the
+ * leader node runs NonWebSocketSessionManager. NonWebSocketSessionManager is in
+ * charge of creating NonWebSocketSessions as its children. When it dies, all
+ * its children should die.
  */
 class NonWebSocketSessionManager extends Actor {
   // Used when the current actor is the leader
@@ -80,6 +81,11 @@ class NonWebSocketSessionManager extends Actor {
   }
 }
 
+/**
+ * All nodes run NonWebSocketSessionProxy, but only the
+ * leader node runs NonWebSocketSessionManager. NonWebSocketSessionProxy is for
+ * determining where NonWebSocketSessionManager is.
+ */
 class NonWebSocketSessionProxy extends Actor {
   private var leaderSelection: Option[ActorSelection] = _
 
