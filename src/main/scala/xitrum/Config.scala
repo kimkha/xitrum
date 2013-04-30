@@ -99,8 +99,6 @@ class Config(val config: TConfig) extends Logger {
     }
   }
 
-  val hazelcastMode = config.getString("hazelcastMode")
-
   val session = new SessionConfig(config.getConfig("session"))
 
   val request = new RequestConfig(config.getConfig("request"))
