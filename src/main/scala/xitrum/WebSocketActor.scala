@@ -1,5 +1,6 @@
 package xitrum
 
+import scala.util.control.NonFatal
 import akka.actor.Actor
 
 import org.jboss.netty.buffer.{ChannelBuffer, ChannelBuffers}
@@ -42,11 +43,10 @@ trait WebSocketActor extends Actor with Action {
         // Can't use context.stop(self), that means context is leaked outside this actor
         addConnectionClosedListener { Config.actorSystem.stop(self) }
 
-        // Can't use dispatchWithFailsafe because it may respond normal HTTP
-        // response; we have just upgraded the connection to WebSocket protocol
-        // at acceptWebSocket
-        execute()
-        AccessLog.logWebSocketAccess(getClass.getName, this, beginTimestamp)
+        // Can't use dispatchWithFailsafe of normal Action because it may send
+        // normal HTTP response; we have just upgraded the connection to WebSocket
+        // protocol at acceptWebSocket
+        dispatchWithFailsafeWebSocket(beginTimestamp)
       } else {
         context.stop(self)
       }
@@ -109,6 +109,24 @@ trait WebSocketActor extends Actor with Action {
       channel.setReadable(true)
 
       true
+    }
+  }
+
+  private def dispatchWithFailsafeWebSocket(beginTimestamp: Long) {
+    // Can't send normal HTTP response; we have just upgraded the connection to
+    // WebSocket protocol at acceptWebSocket
+    try {
+      val passed = callBeforeFilters()
+      if (passed) {
+        callExecuteWrappedInAroundFilters()
+        callAfterFilters()
+      }
+      AccessLog.logWebSocketAccess(getClass.getName, this, beginTimestamp)
+    } catch {
+      case NonFatal(e) =>
+        logger.error("Error processing WebSocket request", e)
+        val future = channel.write(new CloseWebSocketFrame)
+        future.addListener(ChannelFutureListener.CLOSE)
     }
   }
 }
