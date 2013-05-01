@@ -6,8 +6,8 @@ import scala.collection.mutable.{ArrayBuffer, Map => MMap}
 import org.jboss.netty.handler.codec.http.HttpMethod
 
 import xitrum.{Action, Logger}
-import xitrum.scope.request.Params
-import xitrum.scope.request.PathInfo
+import xitrum.request.Params
+import xitrum.request.PathInfo
 
 object RouteCollection {
   def fromSerializable(acc: DiscoveredAcc): RouteCollection = {

@@ -1,4 +1,4 @@
-package xitrum.scope.request
+package xitrum.request
 
 import java.net.URLDecoder
 import scala.collection.mutable.ArrayBuffer

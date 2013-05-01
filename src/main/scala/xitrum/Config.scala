@@ -7,8 +7,8 @@ import scala.util.control.NonFatal
 import com.typesafe.config.{Config => TConfig, ConfigFactory}
 import akka.actor.ActorSystem
 
-import xitrum.scope.session.SessionStore
 import xitrum.routing.{DiscoveredAcc, RouteCollection, RouteCollector, SerializableRouteCollection, SockJsClassAndOptions}
+import xitrum.session.SessionStore
 import xitrum.view.TemplateEngine
 import xitrum.util.Loader
 

@@ -5,8 +5,8 @@ import scala.collection.mutable.{Map => MMap}
 import org.jboss.netty.handler.codec.http.{HttpRequest, HttpResponse}
 
 import xitrum.{Action, Logger}
-import xitrum.scope.request.RequestEnv
 import xitrum.action.Net
+import xitrum.request.RequestEnv
 
 object AccessLog extends Logger {
   def logFlashSocketPolicyFileAccess(remoteAddress: SocketAddress) {

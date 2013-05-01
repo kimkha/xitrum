@@ -12,7 +12,7 @@ import InterfaceHttpData.HttpDataType
 
 import xitrum.Config
 import xitrum.handler.HandlerEnv
-import xitrum.scope.request.{FileUploadParams, Params, PathInfo}
+import xitrum.request.{FileUploadParams, Params, PathInfo}
 
 object BodyParser {
   DiskAttribute.deleteOnExitTemporaryFile  = true  // Should delete file on exit (in normal exit)

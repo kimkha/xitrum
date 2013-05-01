@@ -11,8 +11,8 @@ import xitrum.exception.{InvalidAntiCSRFToken, InvalidInput, MissingParam, Sessi
 import xitrum.handler.{AccessLog, HandlerEnv}
 import xitrum.handler.down.ResponseCacher
 import xitrum.handler.up.Dispatcher
-import xitrum.scope.request.RequestEnv
-import xitrum.scope.session.{CSRF, SessionEnv}
+import xitrum.request.RequestEnv
+import xitrum.session.{CSRF, SessionEnv}
 import xitrum.view.{Renderer, Responder}
 
 /**

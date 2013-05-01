@@ -1,4 +1,4 @@
-package xitrum.scope.session
+package xitrum.session
 
 import java.util.UUID
 import scala.collection.mutable.HashMap

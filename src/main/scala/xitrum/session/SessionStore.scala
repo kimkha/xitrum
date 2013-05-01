@@ -1,6 +1,6 @@
-package xitrum.scope.session
+package xitrum.session
 
-import xitrum.scope.request.RequestEnv
+import xitrum.request.RequestEnv
 
 trait SessionStore {
   /**

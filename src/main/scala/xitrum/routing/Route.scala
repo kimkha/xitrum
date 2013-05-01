@@ -4,7 +4,7 @@ import scala.collection.mutable.{Map => MMap}
 import org.jboss.netty.handler.codec.http.{HttpMethod, QueryStringEncoder}
 
 import xitrum.{Config, Action}
-import xitrum.scope.request.Params
+import xitrum.request.Params
 
 /** @param cacheSecs < 0: cache action, > 0: cache page, 0: no cache */
 class Route(

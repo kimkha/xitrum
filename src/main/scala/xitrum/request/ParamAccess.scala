@@ -1,4 +1,4 @@
-package xitrum.scope.request
+package xitrum.request
 
 import scala.reflect.runtime.universe._
 

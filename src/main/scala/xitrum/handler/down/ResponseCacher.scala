@@ -11,8 +11,8 @@ import HttpHeaders.Names.{CONTENT_ENCODING, CONTENT_TYPE}
 
 import xitrum.{Cache, Config, Logger}
 import xitrum.Action
-import xitrum.scope.request.RequestEnv
 import xitrum.handler.HandlerEnv
+import xitrum.request.RequestEnv
 import xitrum.util.{Gzip, Mime}
 
 object ResponseCacher extends Logger {

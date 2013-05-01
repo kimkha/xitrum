@@ -1,4 +1,4 @@
-package xitrum.scope.session
+package xitrum.session
 
 import scala.collection.mutable.{ArrayBuffer, HashMap}
 

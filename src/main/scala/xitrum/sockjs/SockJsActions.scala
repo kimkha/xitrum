@@ -13,7 +13,7 @@ import xitrum.{Action, ActionActor, Config, SkipCSRFCheck, SockJsText}
 import xitrum.{WebSocketActor, WebSocketBinary, WebSocketPing, WebSocketPong, WebSocketText}
 import xitrum.annotation._
 import xitrum.etag.NotModified
-import xitrum.scope.request.PathInfo
+import xitrum.request.PathInfo
 import xitrum.util.Json
 import xitrum.view.DocType
 

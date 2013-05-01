@@ -10,7 +10,7 @@ import org.jboss.netty.handler.codec.http.QueryStringDecoder
 
 import xitrum.Config
 import xitrum.handler.HandlerEnv
-import xitrum.scope.request.{Params, PathInfo}
+import xitrum.request.{Params, PathInfo}
 
 @Sharable
 class UriParser extends SimpleChannelUpstreamHandler with BadClientSilencer {

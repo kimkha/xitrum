@@ -1,4 +1,4 @@
-package xitrum.scope
+package xitrum
 
 import scala.collection.mutable.{Map => MMap}
 import org.jboss.netty.handler.codec.http.multipart.FileUpload

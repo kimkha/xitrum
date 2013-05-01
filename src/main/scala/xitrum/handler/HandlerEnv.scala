@@ -6,8 +6,8 @@ import org.jboss.netty.channel.Channel
 import org.jboss.netty.handler.codec.http.{HttpRequest, HttpResponse}
 
 import xitrum.Action
+import xitrum.request.{FileUploadParams, Params, PathInfo}
 import xitrum.routing.Route
-import xitrum.scope.request.{FileUploadParams, Params, PathInfo}
 
 /**
  * Env is basically a map for sharing data between handlers. But for more
