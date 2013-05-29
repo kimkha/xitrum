@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Development flow with SBT, Eclipse, and JRebel &mdash; Xitrum 2.4 documentation</title>
+    <title>Development flow with SBT, Eclipse/IntelliJ IDEA, and JRebel &mdash; Xitrum 2.6 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4',
+        VERSION:     '2.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 2.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.6 documentation" href="index.html" />
     <link rel="next" title="Action and view" href="action_view.html" />
     <link rel="prev" title="Tutorial" href="tutorial.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,10 +50,25 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="development-flow-with-sbt-eclipse-and-jrebel">
-<h1>Development flow with SBT, Eclipse, and JRebel<a class="headerlink" href="#development-flow-with-sbt-eclipse-and-jrebel" title="Permalink to this headline">¶</a></h1>
-<p>This chapter assumes that you have installed Eclipse and
-<a class="reference external" href="http://www.scala-ide.org/">Scala plugin for Eclipse</a>.</p>
+  <div class="section" id="development-flow-with-sbt-eclipse-intellij-idea-and-jrebel">
+<h1>Development flow with SBT, Eclipse/IntelliJ IDEA, and JRebel<a class="headerlink" href="#development-flow-with-sbt-eclipse-intellij-idea-and-jrebel" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="import-the-project-to-eclipse">
+<h2>Import the project to Eclipse<a class="headerlink" href="#import-the-project-to-eclipse" title="Permalink to this headline">¶</a></h2>
+<p>You can <a class="reference external" href="http://scala-ide.org/">use Eclipse to write Scala code</a>.</p>
+<p>From the project directory, run:</p>
+<div class="highlight-python"><pre>sbt/sbt eclipse</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">.project</span></tt> file for Eclipse will be created from definitions in <tt class="docutils literal"><span class="pre">build.sbt</span></tt>.
+Now open Eclipse, and import the project.</p>
+</div>
+<div class="section" id="import-the-project-to-intellij-idea">
+<h2>Import the project to IntelliJ IDEA<a class="headerlink" href="#import-the-project-to-intellij-idea" title="Permalink to this headline">¶</a></h2>
+<p>You can also use <a class="reference external" href="http://www.jetbrains.com/idea/">IntelliJ IDEA</a>, which also
+has very good support for Scala.</p>
+<p>To generate project files for IDEA, run:</p>
+<div class="highlight-python"><pre>sbt/sbt gen-idea</pre>
+</div>
+</div>
 <div class="section" id="ignore-files">
 <h2>Ignore files<a class="headerlink" href="#ignore-files" title="Permalink to this headline">¶</a></h2>
 <p>Create a new project as described at the <a class="reference internal" href="tutorial.html"><em>tutorial</em></a>.
@@ -65,15 +80,6 @@ project/target
 routes.cache
 target</pre>
 </div>
-</div>
-<div class="section" id="import-the-project-to-eclipse">
-<h2>Import the project to Eclipse<a class="headerlink" href="#import-the-project-to-eclipse" title="Permalink to this headline">¶</a></h2>
-<p>Many people <a class="reference external" href="http://scala-ide.org/">use Eclipse to write Scala code</a>.</p>
-<p>From the project directory, run:</p>
-<div class="highlight-python"><pre>sbt/sbt eclipse</pre>
-</div>
-<p><tt class="docutils literal"><span class="pre">.project</span></tt> file for Eclipse will be created from definitions in <tt class="docutils literal"><span class="pre">build.sbt</span></tt>.
-Now open Eclipse, and import the project.</p>
 </div>
 <div class="section" id="install-jrebel">
 <h2>Install JRebel<a class="headerlink" href="#install-jrebel" title="Permalink to this headline">¶</a></h2>
@@ -124,9 +130,10 @@ automatically reload the generated .class files.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Development flow with SBT, Eclipse, and JRebel</a><ul>
-<li><a class="reference internal" href="#ignore-files">Ignore files</a></li>
+<li><a class="reference internal" href="#">Development flow with SBT, Eclipse/IntelliJ IDEA, and JRebel</a><ul>
 <li><a class="reference internal" href="#import-the-project-to-eclipse">Import the project to Eclipse</a></li>
+<li><a class="reference internal" href="#import-the-project-to-intellij-idea">Import the project to IntelliJ IDEA</a></li>
+<li><a class="reference internal" href="#ignore-files">Ignore files</a></li>
 <li><a class="reference internal" href="#install-jrebel">Install JRebel</a></li>
 <li><a class="reference internal" href="#use-jrebel">Use JRebel</a></li>
 </ul>
@@ -173,7 +180,7 @@ automatically reload the generated .class files.</p>
         <li class="right" >
           <a href="tutorial.html" title="Tutorial"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

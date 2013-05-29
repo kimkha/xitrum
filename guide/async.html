@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Async response &mdash; Xitrum 2.4 documentation</title>
+    <title>Async response &mdash; Xitrum 2.6 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4',
+        VERSION:     '2.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 2.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.6 documentation" href="index.html" />
     <link rel="next" title="Static files" href="static.html" />
     <link rel="prev" title="JavaScript and JSON" href="js.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -222,7 +222,7 @@ session, provide a unique token on a page, send it as a first thing over SockJS
 connection and validate it on the server side. In essence, this is how cookies
 work.</pre>
 </div>
-<p>To config SockJS clustering, see <a class="reference internal" href="cluster.html"><em>Clustering with Akka and Hazelcast</em></a>.</p>
+<p>To config SockJS clustering, see <a class="reference internal" href="cluster.html"><em>Clustering with Akka</em></a>.</p>
 </div>
 <div class="section" id="chunked-response">
 <h2>Chunked response<a class="headerlink" href="#chunked-response" title="Permalink to this headline">¶</a></h2>
@@ -256,6 +256,8 @@ respondLastChunk()</pre>
 <li>Headers are only sent on the first respondXXX call.</li>
 <li><a class="reference internal" href="cache.html"><em>Page and action cache</em></a> cannot be used with chunked response.</li>
 </ul>
+<p>Using chunked response together with ActionActor, you can easily implement
+<a class="reference external" href="http://www.cubrid.org/blog/dev-platform/faster-web-page-loading-with-facebook-bigpipe/">Facebook BigPipe</a>.</p>
 <div class="section" id="forever-iframe">
 <h3>Forever iframe<a class="headerlink" href="#forever-iframe" title="Permalink to this headline">¶</a></h3>
 <p>Chunked response <a class="reference external" href="http://www.shanison.com/2010/05/10/stop-the-browser-%E2%80%9Cthrobber-of-doom%E2%80%9D-while-loading-comet-forever-iframe/">can be used</a>
@@ -360,7 +362,7 @@ respondEventSource("data2")  // Event name defaults to "message"</pre>
         <li class="right" >
           <a href="js.html" title="JavaScript and JSON"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

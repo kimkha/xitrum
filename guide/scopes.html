@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Scopes &mdash; Xitrum 2.4 documentation</title>
+    <title>Scopes &mdash; Xitrum 2.6 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4',
+        VERSION:     '2.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 2.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.6 documentation" href="index.html" />
     <link rel="next" title="Validation" href="validation.html" />
     <link rel="prev" title="Serve flash socket policy file" href="flash.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="flash.html" title="Serve flash socket policy file"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -262,30 +262,38 @@ else
 <p>In config/xitrum.conf (<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/plugin/src/main/resources/xitrum_resources/config/xitrum.conf">example</a>),
 you can config the session store:</p>
 <div class="highlight-python"><pre>...
-"session": {
-  // To store sessions on client side: xitrum.scope.session.CookieSessionStore
-  // To store sessions on server side: xitrum.scope.session.HazelcastSessionStore
-  // "store": "xitrum.scope.session.CookieSessionStore",
-  "store": "xitrum.scope.session.HazelcastSessionStore",
+session {
+  # Store sessions on client side
+  store = xitrum.scope.session.CookieSessionStore
 
-  // If you run multiple sites on the same domain, make sure that there's no
-  // cookie name conflict between sites
-  "cookieName": "_session",
+  # Store sessions on server side
+  #store = xitrum.scope.session.HazelcastSessionStore
+  #store = xitrum.scope.session.UnserializableSessionStore
 
-  // Key to encrypt session cookie etc.
-  // Do not use the example below! Use your own!
-  // If you deploy your application to several instances be sure to use the same key!
-  "secureKey": "ajconghoaofuxahoi92chunghiaujivietnamlasdoclapjfltudoil98hanhphucup8"
+  # If you run multiple sites on the same domain, make sure that there's no
+  # cookie name conflict between sites
+  cookieName = _session
+
+  # Key to encrypt session cookie etc.
+  # Do not use the example below! Use your own!
+  # If you deploy your application to several instances be sure to use the same key!
+  secureKey = ajconghoaofuxahoi92chunghiaujivietnamlasdoclapjfltudoil98hanhphucup8
 }
 ...</pre>
 </div>
-<p>If you run a cluster of Xitrum web servers and store sessions on server side,
-setup session replication by <a class="reference internal" href="cluster.html"><em>configuring Hazelcast</em></a>.</p>
-<p>The two default session stores are enough for normal cases.
+<p>Server side session store is recommended when using continuations-based actions,
+since serialized continuations are usually too big to store in cookies.</p>
+<p>HazelcastSessionStore is cluster-aware, but things you store in it must be serializable.</p>
+<p>If you must store unserializable things, use UnserializableSessionStore.
+If you use UnserializableSessionStore and still want to run a Xitrum cluster,
+you must use a load balancer with sticky sessions configured.</p>
+<p>The three default session stores above are enough for normal cases.
 But if you have a special case and want to implement your own session store,
 extend
-<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/scope/session/SessionStore.scala">SessionStore</a>
-and implement the two methods.</p>
+<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/session/SessionStore.scala">SessionStore</a>
+or
+<a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/session/ServerSessionStore.scala">ServerSessionStore</a>
+and implement the abstract methods.</p>
 <p>Then to tell Xitrum to use your session store, set its class name to xitrum.conf.</p>
 <p>Good read:
 <a class="reference external" href="http://www.technicalinfo.net/papers/WebBasedSessionManagement.html">Web Based Session Management - Best practices in managing HTTP-based client sessions</a>.</p>
@@ -380,7 +388,7 @@ and <tt class="docutils literal"><span class="pre">isAdmin</span></tt>.</p>
         <li class="right" >
           <a href="flash.html" title="Serve flash socket policy file"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

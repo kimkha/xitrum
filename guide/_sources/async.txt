@@ -202,7 +202,7 @@ See `Various issues and design considerations <https://github.com/sockjs/sockjs-
   connection and validate it on the server side. In essence, this is how cookies
   work.
 
-To config SockJS clustering, see :doc:`Clustering with Akka and Hazelcast </cluster>`.
+To config SockJS clustering, see :doc:`Clustering with Akka </cluster>`.
 
 Chunked response
 ----------------
@@ -238,6 +238,9 @@ Notes:
 
 * Headers are only sent on the first respondXXX call.
 * :doc:`Page and action cache </cache>` cannot be used with chunked response.
+
+Using chunked response together with ActionActor, you can easily implement
+`Facebook BigPipe <http://www.cubrid.org/blog/dev-platform/faster-web-page-loading-with-facebook-bigpipe/>`_.
 
 Forever iframe
 ~~~~~~~~~~~~~~

@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; Xitrum 2.4 documentation</title>
+    <title>Introduction &mdash; Xitrum 2.6 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '2.4',
+        VERSION:     '2.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Xitrum 2.4 documentation" href="index.html" />
+    <link rel="top" title="Xitrum 2.6 documentation" href="index.html" />
     <link rel="next" title="Tutorial" href="tutorial.html" />
     <link rel="prev" title="Xitrum Guide" href="index.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="index.html" title="Xitrum Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,7 +57,7 @@
 +--------------------+
 |    Xitrum fusion   |
 | +----------------+ |
-| | Web framework  | |  &lt;-- Akka, Hazelcast --&gt; Other instances
+| | Web framework  | |  &lt;-- Akka cluster --&gt; Other instances
 | |----------------| |
 | | HTTP(S) Server | |
 | +----------------+ |
@@ -66,8 +66,7 @@
 +--------------------+</pre>
 </div>
 <p>Xitrum is an async and clustered Scala web framework and HTTP(S) server fusion
-on top of <a class="reference external" href="http://netty.io/">Netty</a>, <a class="reference external" href="http://akka.io/">Akka</a>, and
-<a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a>.</p>
+on top of <a class="reference external" href="http://netty.io/">Netty</a> and <a class="reference external" href="http://akka.io/">Akka</a>.</p>
 <p>From <a class="reference external" href="https://groups.google.com/group/xitrum-framework/msg/d6de4865a8576d39">a user</a>:</p>
 <blockquote>
 <div><p>Wow, this is a really impressive body of work, arguably the most
@@ -106,10 +105,8 @@ Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe w
 <li>Views can be written in a separate <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
 template file or Scala inline XML. Both are typesafe.</li>
 <li>Sessions can be stored in cookies (more scalable) or clustered <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> (more secure).
-Hazelcast is recommended when using continuations-based actions, since serialized
-continuations are usually too big to store in cookies. Hazelcast also gives
-in-process (thus faster and simpler to use) distribued cache and pubsub, you
-don&#8217;t need separate cache and pubsub servers.</li>
+Hazelcast also gives in-process (thus faster and simpler to use) distribued cache,
+you don&#8217;t need separate cache servers. The same is for pubsub feature in Akka.</li>
 <li><a class="reference external" href="http://docs.jquery.com/Plugins/validation">jQuery Validation</a> is integrated
 for browser side and server side validation.</li>
 <li>i18n using <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_gettext">GNU gettext</a>.
@@ -193,7 +190,7 @@ its <a class="reference external" href="http://groups.google.com/group/xitrum-fr
         <li class="right" >
           <a href="index.html" title="Xitrum Guide"
              >previous</a> |</li>
-        <li><a href="index.html">Xitrum 2.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Xitrum 2.6 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
