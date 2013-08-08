@@ -9,11 +9,6 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
-      <script type="text/javascript" src="../../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -50,7 +45,7 @@
         </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
                 <span class="toggle diagram-link">Type Hierarchy</span>
                 <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
-                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph58" viewBox="0.00 0.00 166.00 120.00" height="120pt" width="166pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 163,-116 163,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph58_0"><a xlink:title="xitrum.scope.session.ServerSession (this class)" xlink:href="#inheritance-diagram"><polygon points="133.25,-50 24.75,-50 24.75,-24 133.25,-24 133.25,-50" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../../lib/class_diagram.png" y="-45" x="35" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-33" x="57" text-anchor="start">ServerSession</text></a></g><!-- node1 --><g class="node class" id="graph58_1"><a xlink:title="scala.collection.mutable.HashMap"><polygon points="149.25,-112 8.75,-112 8.75,-86 149.25,-86 149.25,-112" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../../lib/class_diagram.png" y="-107" x="19" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-95" x="41" text-anchor="start">HashMap[String, Any]</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph58_1_0"><a xlink:title="ServerSession is a subtype of HashMap[String, Any]"><path d="M79,-80.6826C79,-70.8961 79,-58.9026 79,-50.1238" stroke="#d4d4d4" fill="none"></path><polygon points="77.2501,-80.8581 79,-85.8581 80.7501,-80.8581 77.2501,-80.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph54" viewBox="0.00 0.00 164.00 120.00" height="120pt" width="164pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 161,-116 161,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph54_0"><a xlink:title="xitrum.scope.session.ServerSession (this class)" xlink:href="#inheritance-diagram"><polygon points="132,-50 24,-50 24,-24 132,-24 132,-50" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../../lib/class_diagram.png" y="-45" x="34" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-34.6667" x="56" text-anchor="start">ServerSession</text></a></g><!-- node1 --><g class="node class" id="graph54_1"><a xlink:title="scala.collection.mutable.HashMap"><polygon points="148,-112 8,-112 8,-86 148,-86 148,-112" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../../lib/class_diagram.png" y="-107" x="18" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-96.6667" x="40" text-anchor="start">HashMap[String, Any]</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph54_1_0"><a xlink:title="ServerSession is a subtype of HashMap[String, Any]"><path d="M78,-80.6463C78,-70.8429 78,-59.003 78,-50.1297" stroke="#d4d4d4" fill="none"></path><polygon points="76.2501,-80.8514 78,-85.8514 79.7501,-80.8514 76.2501,-80.8514" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
               </div></div>
         
 
@@ -1061,7 +1056,10 @@ but the cookie value is not a valid encrypted session ID</p><p>Subclass of HashM
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.collection.IterableLike#find" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -2912,7 +2910,10 @@ but the cookie value is not a valid encrypted session ID</p><p>Subclass of HashM
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -2928,7 +2929,10 @@ but the cookie value is not a valid encrypted session ID</p><p>Subclass of HashM
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -2944,7 +2948,10 @@ but the cookie value is not a valid encrypted session ID</p><p>Subclass of HashM
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.collection.mutable.Map#withDefault" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -3161,7 +3168,6 @@ but the cookie value is not a valid encrypted session ID</p><p>Subclass of HashM
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script><script defer="defer" type="text/javascript" id="modernizr-custom-js" src="../../../lib/modernizr.custom.js"></script><script defer="defer" type="text/javascript" id="diagrams-js" src="../../../lib/diagrams.js"></script>
     </body>
       </html>

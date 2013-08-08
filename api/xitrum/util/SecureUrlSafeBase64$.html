@@ -9,11 +9,6 @@
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../lib/template.js"></script>
-      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -181,46 +176,49 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="xitrum.util.SecureUrlSafeBase64#decrypt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="decrypt(base64String:String,key:String,forCookie:Boolean):Option[AnyRef]"></a>
-      <a id="decrypt(String,String,Boolean):Option[AnyRef]"></a>
+      <a id="decrypt(base64String:String,key:String,forCookie:Boolean):Option[Any]"></a>
+      <a id="decrypt(String,String,Boolean):Option[Any]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">decrypt</span><span class="params">(<span name="base64String">base64String: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="forCookie">forCookie: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
+        <span class="name">decrypt</span><span class="params">(<span name="base64String">base64String: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="forCookie">forCookie: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Any">Any</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">base64String</dt><dd class="cmt"><p>may contain optional padding (&quot;=&quot; characters)</p></dd><dt class="param">forCookie</dt><dd class="cmt"><p>If true, tries to GZIP uncompress if the input is compressed
 </p></dd></dl></div>
     </li><li name="xitrum.util.SecureUrlSafeBase64#decrypt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="decrypt(base64String:String,forCookie:Boolean):Option[AnyRef]"></a>
-      <a id="decrypt(String,Boolean):Option[AnyRef]"></a>
+      <a id="decrypt(base64String:String,forCookie:Boolean):Option[Any]"></a>
+      <a id="decrypt(String,Boolean):Option[Any]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">decrypt</span><span class="params">(<span name="base64String">base64String: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="forCookie">forCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
+        <span class="name">decrypt</span><span class="params">(<span name="base64String">base64String: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="forCookie">forCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Any">Any</span>]</span>
       </span>
       </h4>
       
     </li><li name="xitrum.util.SecureUrlSafeBase64#encrypt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="encrypt(ref:AnyRef,key:String,forCookie:Boolean):String"></a>
-      <a id="encrypt(AnyRef,String,Boolean):String"></a>
+      <a id="encrypt(any:Any,key:String,forCookie:Boolean):String"></a>
+      <a id="encrypt(Any,String,Boolean):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">encrypt</span><span class="params">(<span name="ref">ref: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="forCookie">forCookie: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">encrypt</span><span class="params">(<span name="any">any: <span class="extype" name="scala.Any">Any</span></span>, <span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="forCookie">forCookie: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">The result contains no padding (&quot;=&quot; characters) so that it can be used as
@@ -229,15 +227,15 @@ request parameter name. (Netty POST body decoder prohibits &quot;=&quot; in para
 </p></div><dl class="paramcmts block"><dt class="param">forCookie</dt><dd class="cmt"><p>If true, tries to GZIP compress if &gt; 4KB; the result may &gt; 4KB
 </p></dd></dl></div>
     </li><li name="xitrum.util.SecureUrlSafeBase64#encrypt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="encrypt(ref:AnyRef,forCookie:Boolean):String"></a>
-      <a id="encrypt(AnyRef,Boolean):String"></a>
+      <a id="encrypt(any:Any,forCookie:Boolean):String"></a>
+      <a id="encrypt(Any,Boolean):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">encrypt</span><span class="params">(<span name="ref">ref: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="forCookie">forCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">encrypt</span><span class="params">(<span name="any">any: <span class="extype" name="scala.Any">Any</span></span>, <span name="forCookie">forCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       
@@ -280,7 +278,10 @@ request parameter name. (Netty POST body decoder prohibits &quot;=&quot; in para
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -400,7 +401,10 @@ request parameter name. (Netty POST body decoder prohibits &quot;=&quot; in para
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -416,7 +420,10 @@ request parameter name. (Netty POST body decoder prohibits &quot;=&quot; in para
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -432,7 +439,10 @@ request parameter name. (Netty POST body decoder prohibits &quot;=&quot; in para
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li></ol>
@@ -464,7 +474,6 @@ request parameter name. (Netty POST body decoder prohibits &quot;=&quot; in para
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../lib/template.js"></script><script defer="defer" type="text/javascript" id="modernizr-custom-js" src="../../lib/modernizr.custom.js"></script><script defer="defer" type="text/javascript" id="diagrams-js" src="../../lib/diagrams.js"></script>
     </body>
       </html>

@@ -9,11 +9,6 @@
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../lib/template.js"></script>
-      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      <script type="text/javascript" src="../../lib/modernizr.custom.js"></script><script type="text/javascript" src="../../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -53,7 +48,7 @@
         </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
                 <span class="toggle diagram-link">Type Hierarchy</span>
                 <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
-                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph39" viewBox="0.00 0.00 260.00 120.00" height="120pt" width="260pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 257,-116 257,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph39_0"><a xlink:title="xitrum.sockjs.SockJsXhrPollingOPTIONSReceive (this class)" xlink:href="#inheritance-diagram"><polygon points="227.25,-50 24.75,-50 24.75,-24 227.25,-24 227.25,-50" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-45" x="35" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-33" x="57" text-anchor="start">SockJsXhrPollingOPTIONSReceive</text></a></g><!-- node1 --><g class="node trait" id="graph39_1"><a xlink:title="xitrum.sockjs.SockJsAction" xlink:href="SockJsAction.html#inheritance-diagram"><polygon points="178,-112 74,-112 74,-86 178,-86 178,-112" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-107" x="84" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-95" x="106" text-anchor="start">SockJsAction</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph39_1_0"><a xlink:title="SockJsXhrPollingOPTIONSReceive is a subtype of SockJsAction"><path d="M126,-80.6826C126,-70.8961 126,-58.9026 126,-50.1238" stroke="#d4d4d4" fill="none"></path><polygon points="124.25,-80.8581 126,-85.8581 127.75,-80.8581 124.25,-80.8581" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph35" viewBox="0.00 0.00 252.00 120.00" height="120pt" width="252pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 116)" class="graph" id="graph1"><polygon points="-4,5 -4,-116 249,-116 249,5 -4,5" stroke="white" fill="white"></polygon><g class="cluster" id="graph2"></g><g class="cluster" id="graph3"></g><!-- node0 --><g class="node this class" id="graph35_0"><a xlink:title="xitrum.sockjs.SockJsXhrPollingOPTIONSReceive (this class)" xlink:href="#inheritance-diagram"><polygon points="220,-50 24,-50 24,-24 220,-24 220,-50" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-45" x="34" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-34.6667" x="56" text-anchor="start">SockJsXhrPollingOPTIONSReceive</text></a></g><!-- node1 --><g class="node trait" id="graph35_1"><a xlink:title="xitrum.sockjs.SockJsAction" xlink:href="SockJsAction.html#inheritance-diagram"><polygon points="175,-112 69,-112 69,-86 175,-86 175,-112" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-107" x="79" preserveAspectRatio="xMinYMin meet" height="16px" width="16px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-96.6667" x="101" text-anchor="start">SockJsAction</text></a></g><!-- node1&#45;&gt;node0 --><g class="edge inheritance" id="graph35_1_0"><a xlink:title="SockJsXhrPollingOPTIONSReceive is a subtype of SockJsAction"><path d="M122,-80.6463C122,-70.8429 122,-59.003 122,-50.1297" stroke="#d4d4d4" fill="none"></path><polygon points="120.25,-80.8514 122,-85.8514 123.75,-80.8514 120.25,-80.8514" stroke="#d4d4d4" fill="none"></polygon></a></g></g></svg></div>
               </div></div>
         
 
@@ -547,7 +542,10 @@ to let the user in.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="xitrum.sockjs.SockJsAction#closeWithLastChunk" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -564,15 +562,15 @@ to let the user in.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="SockJsAction.html" class="extype" name="xitrum.sockjs.SockJsAction">SockJsAction</a></dd></dl></div>
     </li><li name="xitrum.scope.request.ParamAccess#convertText" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="convertText[T](value:String)(implicitevidence$5:reflect.runtime.universe.TypeTag[T]):T"></a>
-      <a id="convertText[T](String)(scala.reflect.api.JavaUniverse.TypeTag[T]):T"></a>
+      <a id="convertText[T](value:String)(implicitm:Manifest[T]):T"></a>
+      <a id="convertText[T](String)(Manifest[T]):T"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">convertText</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.convertText.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="xitrum.scope.request.ParamAccess.convertText.T">T</span></span>
+        <span class="name">convertText</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <span class="extype" name="scala.Predef.Manifest">Manifest</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.convertText.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="xitrum.scope.request.ParamAccess.convertText.T">T</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Applications may override this method to convert to more types.</p><div class="fullcomment"><div class="comment cmt"><p>Applications may override this method to convert to more types.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../scope/request/ParamAccess.html" class="extype" name="xitrum.scope.request.ParamAccess">ParamAccess</a></dd></dl></div>
@@ -669,7 +667,10 @@ Actions have to implement this method.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="xitrum.view.Flash#flash" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -1170,54 +1171,54 @@ has been sent to the client.</p><div class="fullcomment"><div class="comment cmt
 has been sent to the client.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../view/Responder.html" class="extype" name="xitrum.view.Responder">Responder</a></dd></dl></div>
     </li><li name="xitrum.scope.request.ParamAccess#param" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="param[T](key:String,coll:xitrum.scope.request.Params)(implicitevidence$1:reflect.runtime.universe.TypeTag[T],implicitd:ParamAccess.this.DefaultsTo[T,String]):T"></a>
-      <a id="param[T](String,Params)(scala.reflect.api.JavaUniverse.TypeTag[T],DefaultsTo[T,String]):T"></a>
+      <a id="param[T](key:String,coll:xitrum.scope.request.Params)(implicite:ParamAccess.this.DefaultsTo[T,String],implicitm:Manifest[T]):T"></a>
+      <a id="param[T](String,Params)(DefaultsTo[T,String],Manifest[T]):T"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">param</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="coll">coll: <a href="../scope/request/package.html#Params=scala.collection.mutable.Map[String,Seq[String]]" class="extmbr" name="xitrum.scope.request.Params">Params</a> = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.param.T">T</span>]</span>, <span name="d">d: <a href="#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.param.T">T</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="xitrum.scope.request.ParamAccess.param.T">T</span></span>
+        <span class="name">param</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="coll">coll: <a href="../scope/request/package.html#Params=scala.collection.mutable.Map[String,Seq[String]]" class="extmbr" name="xitrum.scope.request.Params">Params</a> = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="e">e: <a href="#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.param.T">T</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="m">m: <span class="extype" name="scala.Predef.Manifest">Manifest</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.param.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="xitrum.scope.request.ParamAccess.param.T">T</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../scope/request/ParamAccess.html" class="extype" name="xitrum.scope.request.ParamAccess">ParamAccess</a></dd></dl></div>
     </li><li name="xitrum.scope.request.ParamAccess#paramo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="paramo[T](key:String,coll:xitrum.scope.request.Params)(implicitevidence$2:reflect.runtime.universe.TypeTag[T],implicitd:ParamAccess.this.DefaultsTo[T,String]):Option[T]"></a>
-      <a id="paramo[T](String,Params)(scala.reflect.api.JavaUniverse.TypeTag[T],DefaultsTo[T,String]):Option[T]"></a>
+      <a id="paramo[T](key:String,coll:xitrum.scope.request.Params)(implicite:ParamAccess.this.DefaultsTo[T,String],implicitm:Manifest[T]):Option[T]"></a>
+      <a id="paramo[T](String,Params)(DefaultsTo[T,String],Manifest[T]):Option[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">paramo</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="coll">coll: <a href="../scope/request/package.html#Params=scala.collection.mutable.Map[String,Seq[String]]" class="extmbr" name="xitrum.scope.request.Params">Params</a> = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramo.T">T</span>]</span>, <span name="d">d: <a href="#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramo.T">T</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramo.T">T</span>]</span>
+        <span class="name">paramo</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="coll">coll: <a href="../scope/request/package.html#Params=scala.collection.mutable.Map[String,Seq[String]]" class="extmbr" name="xitrum.scope.request.Params">Params</a> = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="e">e: <a href="#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramo.T">T</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="m">m: <span class="extype" name="scala.Predef.Manifest">Manifest</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramo.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramo.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../scope/request/ParamAccess.html" class="extype" name="xitrum.scope.request.ParamAccess">ParamAccess</a></dd></dl></div>
     </li><li name="xitrum.scope.request.ParamAccess#params" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="params[T](key:String,coll:xitrum.scope.request.Params)(implicitevidence$3:reflect.runtime.universe.TypeTag[T],implicitd:ParamAccess.this.DefaultsTo[T,String]):Seq[T]"></a>
-      <a id="params[T](String,Params)(scala.reflect.api.JavaUniverse.TypeTag[T],DefaultsTo[T,String]):Seq[T]"></a>
+      <a id="params[T](key:String,coll:xitrum.scope.request.Params)(implicite:ParamAccess.this.DefaultsTo[T,String],implicitm:Manifest[T]):Seq[T]"></a>
+      <a id="params[T](String,Params)(DefaultsTo[T,String],Manifest[T]):Seq[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">params</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="coll">coll: <a href="../scope/request/package.html#Params=scala.collection.mutable.Map[String,Seq[String]]" class="extmbr" name="xitrum.scope.request.Params">Params</a> = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.params.T">T</span>]</span>, <span name="d">d: <a href="#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.params.T">T</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.params.T">T</span>]</span>
+        <span class="name">params</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="coll">coll: <a href="../scope/request/package.html#Params=scala.collection.mutable.Map[String,Seq[String]]" class="extmbr" name="xitrum.scope.request.Params">Params</a> = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="e">e: <a href="#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.params.T">T</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="m">m: <span class="extype" name="scala.Predef.Manifest">Manifest</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.params.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.params.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../scope/request/ParamAccess.html" class="extype" name="xitrum.scope.request.ParamAccess">ParamAccess</a></dd></dl></div>
     </li><li name="xitrum.scope.request.ParamAccess#paramso" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="paramso[T](key:String,coll:xitrum.scope.request.Params)(implicitevidence$4:reflect.runtime.universe.TypeTag[T],implicitd:ParamAccess.this.DefaultsTo[T,String]):Option[Seq[T]]"></a>
-      <a id="paramso[T](String,Params)(scala.reflect.api.JavaUniverse.TypeTag[T],DefaultsTo[T,String]):Option[Seq[T]]"></a>
+      <a id="paramso[T](key:String,coll:xitrum.scope.request.Params)(implicite:ParamAccess.this.DefaultsTo[T,String],implicitm:Manifest[T]):Option[Seq[T]]"></a>
+      <a id="paramso[T](String,Params)(DefaultsTo[T,String],Manifest[T]):Option[Seq[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">paramso</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="coll">coll: <a href="../scope/request/package.html#Params=scala.collection.mutable.Map[String,Seq[String]]" class="extmbr" name="xitrum.scope.request.Params">Params</a> = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramso.T">T</span>]</span>, <span name="d">d: <a href="#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramso.T">T</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramso.T">T</span>]]</span>
+        <span class="name">paramso</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="coll">coll: <a href="../scope/request/package.html#Params=scala.collection.mutable.Map[String,Seq[String]]" class="extmbr" name="xitrum.scope.request.Params">Params</a> = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="e">e: <a href="#DefaultsTo[A,B]extendsAnyRef" class="extmbr" name="xitrum.scope.request.ParamAccess.DefaultsTo">DefaultsTo</a>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramso.T">T</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="m">m: <span class="extype" name="scala.Predef.Manifest">Manifest</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramso.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="xitrum.scope.request.ParamAccess.paramso.T">T</span>]]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../scope/request/ParamAccess.html" class="extype" name="xitrum.scope.request.ParamAccess">ParamAccess</a></dd></dl></div>
@@ -1735,7 +1736,7 @@ a relative path.</p><p>To sanitize the path, use xitrum.util.PathSanitizer.
       </h4>
       <p class="shortcomment cmt">Content-Type header is set to &quot;application/javascript&quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Content-Type header is set to &quot;application/javascript&quot;.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../view/Responder.html" class="extype" name="xitrum.view.Responder">Responder</a></dd></dl></div>
     </li><li name="xitrum.view.Responder#respondJson" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="respondJson(obj:AnyRef):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondJson(ref:AnyRef):org.jboss.netty.channel.ChannelFuture"></a>
       <a id="respondJson(AnyRef):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1743,7 +1744,7 @@ a relative path.</p><p>To sanitize the path, use xitrum.util.PathSanitizer.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondJson</span><span class="params">(<span name="obj">obj: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">respondJson</span><span class="params">(<span name="ref">ref: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Converts the given Scala object to JSON object, and responds it.</p><div class="fullcomment"><div class="comment cmt"><p>Converts the given Scala object to JSON object, and responds it.
@@ -1753,7 +1754,7 @@ use respondJsonText(text).</p><p>Content-Type header is set to &quot;application
 It makes debugging a pain.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../view/Responder.html" class="extype" name="xitrum.view.Responder">Responder</a></dd></dl></div>
     </li><li name="xitrum.view.Responder#respondJsonP" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="respondJsonP(obj:AnyRef,function:String):org.jboss.netty.channel.ChannelFuture"></a>
+      <a id="respondJsonP(ref:AnyRef,function:String):org.jboss.netty.channel.ChannelFuture"></a>
       <a id="respondJsonP(AnyRef,String):ChannelFuture"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1761,7 +1762,7 @@ It makes debugging a pain.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">respondJsonP</span><span class="params">(<span name="obj">obj: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="function">function: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
+        <span class="name">respondJsonP</span><span class="params">(<span name="ref">ref: <span class="extype" name="scala.AnyRef">AnyRef</span></span>, <span name="function">function: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.channel.ChannelFuture">ChannelFuture</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Converts the given Scala object to JSON object, wraps it with the given
@@ -2443,7 +2444,10 @@ http://www.ne.jp/asahi/hishidama/home/tech/scala/xml.html
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -2459,7 +2463,10 @@ http://www.ne.jp/asahi/hishidama/home/tech/scala/xml.html
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -2475,7 +2482,10 @@ http://www.ne.jp/asahi/hishidama/home/tech/scala/xml.html
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="xitrum.action.Net#webSocketAbsRequestUrl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -2662,7 +2672,6 @@ http://www.ne.jp/asahi/hishidama/home/tech/scala/xml.html
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../lib/template.js"></script><script defer="defer" type="text/javascript" id="modernizr-custom-js" src="../../lib/modernizr.custom.js"></script><script defer="defer" type="text/javascript" id="diagrams-js" src="../../lib/diagrams.js"></script>
     </body>
       </html>
