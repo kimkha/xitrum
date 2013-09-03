@@ -1846,9 +1846,9 @@ If Content-Type header is not set, it is guessed from the file name.
         <span class="name">respondStreamingWithLimit</span><span class="params">(<span name="text">text: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="isEventSource">isEventSource: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">All the chunking transports are closed by the server after 128K was
-send, in order to force client to GC and reconnect.</p><div class="fullcomment"><div class="comment cmt"><p>All the chunking transports are closed by the server after 128K was
-send, in order to force client to GC and reconnect. The server doesn't have
+      <p class="shortcomment cmt">All the chunking transports are closed by the server after CHUNKED_RESPONSE_LIMIT
+bytes was sent, in order to force client to GC and reconnect.</p><div class="fullcomment"><div class="comment cmt"><p>All the chunking transports are closed by the server after CHUNKED_RESPONSE_LIMIT
+bytes was sent, in order to force client to GC and reconnect. The server doesn't have
 to send &quot;c&quot; frame.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>false if the channel will be closed when the channel write completes
 </p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="SockJsAction.html" class="extype" name="xitrum.sockjs.SockJsAction">SockJsAction</a></dd></dl></div>
