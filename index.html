@@ -209,7 +209,8 @@ and Rails Engines. You don&#8217;t have to declare all routes in a single place.
 Think of this feature as distributed routes. You can plug an app into another app.
 If you have a blog engine, you can package it as a JAR file, then you can put
 that JAR file into another app and that app automatically has blog feature!
-Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe way.</li>
+Routing is also two-way: you can recreate URLs (reverse routing) in a typesafe way.
+You can document routes using <a class="reference external" href="http://swagger.wordnik.com/">Swagger Doc</a>.</li>
 <li>Views can be written in a separate <a class="reference external" href="http://scalate.fusesource.org/">Scalate</a>
 template file or Scala inline XML. Both are typesafe.</li>
 <li>Sessions can be stored in cookies (more scalable) or clustered <a class="reference external" href="http://www.hazelcast.com/">Hazelcast</a> (more secure).
@@ -238,9 +239,9 @@ Most people are familliar with controller-first style.</li>
         <br /><br />
 
         <div class="section" id="create-new-empty-xitrum-project">
-          <h2 class="title">Create new empty Xitrum project</h2>
+          <h2 class="title">Create a new empty web project based on Xitrum</h2>
 
-          <p>To create a new empty project, download
+          <p>Download
           <a class="reference external" href="https://github.com/ngocdaothanh/xitrum-new/archive/master.zip">xitrum-new.zip</a>, unzip, then run:</p>
           <div class="highlight-python"><pre>sbt/sbt run</pre></div>
           <p>Now you have a new empty project running at <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>
@@ -250,36 +251,16 @@ Most people are familliar with controller-first style.</li>
         <div class="section" id="samples">
           <h2 class="title">News</h2>
 
-          <p><a href=https://github.com/ngocdaothanh/xitrum/blob/master/CHANGELOG>https://github.com/ngocdaothanh/xitrum/blob/master/CHANGELOG</a></p>
+          <p><a href=https://github.com/ngocdaothanh/xitrum/blob/master/CHANGELOG>CHANGELOG</a></p>
 
-          <p>
-          <em>Sep 3 2013</em><br/>
-          <a href="https://groups.google.com/forum/#!topic/xitrum-framework/vEn_ZkezlRI">Xitrum 2.8</a>
-          </p>
-          <p>
-          <em>Jul 31 2013</em><br/>
-          <a href="https://groups.google.com/forum/#!topic/xitrum-framework/HP-7VRCrWPg">Xitrum 2.7</a>
-          </p>
-          <p>
-          <em>May 29 2013</em><br/>
-          <a href="http://groups.google.com/group/xitrum-framework/browse_thread/thread/6ce9e2f2f1e8945e">Xitrum 2.6</a>
-          </p>
-          <p>
-          <em>May 7 2013</em><br/>
-          <a href="http://groups.google.com/group/xitrum-framework/browse_thread/thread/4a2e4ce69c8aeb38">Xitrum 2.5</a>
-          </p>
-          <p>
-          <em>April 28 2013</em><br/>
-          <a href="https://groups.google.com/group/xitrum-framework/browse_thread/thread/3919eb4f563485b9">Xitrum 2.4</a>
-          </p>
-          <p>
-          <em>April 21 2013</em><br/>
-          <a href="https://groups.google.com/group/xitrum-framework/browse_thread/thread/5bd171881179b5ef">Xitrum 2.3</a>
-          </p>
-          <p>
-          <em>April 15 2013</em><br/>
-          <a href="https://groups.google.com/group/xitrum-framework/browse_thread/thread/b2cb17de6d66b4fb">Xitrum 2.1</a>
-          </p>
+          <ul>
+            <li><a href="https://groups.google.com/forum/#!topic/xitrum-framework/vEn_ZkezlRI">Xitrum 2.8</a> <em>Sep 3 2013</em></li>
+            <li><a href="https://groups.google.com/forum/#!topic/xitrum-framework/HP-7VRCrWPg">Xitrum 2.7</a> <em>Jul 31 2013</em></li>
+            <li><a href="http://groups.google.com/group/xitrum-framework/browse_thread/thread/6ce9e2f2f1e8945e">Xitrum 2.6</a> <em>May 29 2013</em></li>
+            <li><a href="http://groups.google.com/group/xitrum-framework/browse_thread/thread/4a2e4ce69c8aeb38">Xitrum 2.5</a> <em>May 7 2013</em></li>
+            <li><a href="https://groups.google.com/group/xitrum-framework/browse_thread/thread/3919eb4f563485b9">Xitrum 2.4</a> <em>April 28 2013</em></li>
+            <li><a href="https://groups.google.com/group/xitrum-framework/browse_thread/thread/5bd171881179b5ef">Xitrum 2.3</a> <em>April 21 2013</em></li>
+          </ul>
         </div>
       </div>
 
@@ -299,6 +280,7 @@ Most people are familliar with controller-first style.</li>
           <p>
             <a class="reference external" href="https://github.com/ngocdaothanh/xitrum-demos">Xitrum Demos</a></br>
             <a class="reference external" href="https://github.com/ngocdaothanh/xitrum-modularized-demo">Xitrum Modulized Demo</a></br>
+            <a class="reference external" href="https://github.com/georgeOsdDev/xitrum-placeholder">Placeholder</a></br>
             <a class="reference external" href="https://github.com/ngocdaothanh/comy">Simple URL shortener</a>
           </p>
         </div>
