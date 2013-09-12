@@ -177,31 +177,123 @@ jQuery.</p>
 </div>
 </div>
 <div class="section" id="skipcsrfcheck">
-<h2>SkipCSRFCheck<a class="headerlink" href="#skipcsrfcheck" title="Permalink to this headline">¶</a></h2>
+<h2>SkipCsrfCheck<a class="headerlink" href="#skipcsrfcheck" title="Permalink to this headline">¶</a></h2>
 <p>When you create APIs for machines, e.g. smartphones, you may want to skip this
-automatic CSRF check. Add the trait xitrum.SkipCSRFCheck to you action:</p>
-<div class="highlight-python"><pre>import xitrum.{Action, SkipCSRFCheck}
+automatic CSRF check. Add the trait xitrum.SkipCsrfCheck to you action:</p>
+<div class="highlight-python"><pre>import xitrum.{Action, SkipCsrfCheck}
 import xitrum.annotatin.POST
 
-trait API extends Action with SkipCSRFCheck
+trait Api extends Action with SkipCsrfCheck
 
 @POST("api/positions")
-class LogPositionAPI extends API {
+class LogPositionAPI extends Api {
   def execute() {...}
 }
 
 @POST("api/todos")
-class CreateTodoAPI extends API {
+class CreateTodoAPI extends Api {
   def execute() {...}
 }</pre>
 </div>
 </div>
-<div class="section" id="read-entire-request-body">
-<h2>Read entire request body<a class="headerlink" href="#read-entire-request-body" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-entire-request-body">
+<h2>Getting entire request body<a class="headerlink" href="#getting-entire-request-body" title="Permalink to this headline">¶</a></h2>
 <p>To get the entire request body, use <a class="reference external" href="http://netty.io/3.6/api/org/jboss/netty/handler/codec/http/HttpRequest.html">request.getContent</a>.
 It returns <a class="reference external" href="http://netty.io/3.6/api/org/jboss/netty/buffer/ChannelBuffer.html">ChannelBuffer</a>,
 which has <tt class="docutils literal"><span class="pre">toString(Charset)</span></tt> method.</p>
 <div class="highlight-python"><pre>val body = request.getContent.toString(io.netty.util.CharsetUtil.UTF_8)</pre>
+</div>
+</div>
+<div class="section" id="documenting-api">
+<h2>Documenting API<a class="headerlink" href="#documenting-api" title="Permalink to this headline">¶</a></h2>
+<p>You can document your API with <a class="reference external" href="https://developers.helloreverb.com/swagger/">Swagger</a>
+out of the box. Add <tt class="docutils literal"><span class="pre">&#64;Swagger</span></tt> annotation on actions that need to be documented.
+Xitrum will generate <a class="reference external" href="https://github.com/wordnik/swagger-core/wiki/API-Declaration">/xitrum/swagger.json</a>
+when your app starts. This file can be used with <a class="reference external" href="https://github.com/wordnik/swagger-ui">Swagger UI</a>
+to generate interactive API documentation.</p>
+<img alt="_images/swagger.png" src="_images/swagger.png" />
+<p>Let&#8217;s see <a class="reference external" href="https://github.com/georgeOsdDev/xitrum-placeholder">an example</a>:</p>
+<div class="highlight-python"><pre>import xitrum.{Action, SkipCsrfCheck}
+
+import xitrum.annotation.GET
+import xitrum.annotation.swagger.{Swagger, SwaggerParam, SwaggerResponse}
+
+trait Api extends Action with SkipCsrfCheck
+
+@GET("image/:width")
+@Swagger(
+  summary = "Generate Square image",
+  notes   = "Format is PNG",
+  params  = Array(
+    new SwaggerParam(
+      name        = "width",
+      paramType   = "path",            // default = "path" (can be omitted)
+      valueType   = "integer",
+      required    = true,              // default = true   (can be omitted)
+      description = "Square width")),  // default = ""     (can be omitted)
+  responses = Array(
+    new SwaggerResponse(code = 400, message = "Width is invalid or too big"))
+)
+class ImageApi extends Api {
+  def execute { /*...*/ }
+}</pre>
+</div>
+<p>Read more about <a class="reference external" href="https://github.com/wordnik/swagger-core/wiki/Parameters">paramType</a>
+and <a class="reference external" href="https://github.com/wordnik/swagger-core/wiki/Datatypes">valueType</a>.</p>
+<p>/xitrum/swagger.json will look like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;basePath&quot;</span><span class="p">:</span><span class="s">&quot;http://localhost:8000&quot;</span><span class="p">,</span>
+  <span class="s">&quot;swaggerVersion&quot;</span><span class="p">:</span><span class="s">&quot;1.2&quot;</span><span class="p">,</span>
+  <span class="s">&quot;resourcePath&quot;</span><span class="p">:</span><span class="s">&quot;/xitrum/swagger.json&quot;</span><span class="p">,</span>
+  <span class="s">&quot;apis&quot;</span><span class="p">:[{</span>
+    <span class="s">&quot;path&quot;</span><span class="p">:</span><span class="s">&quot;/xitrum/swagger.json&quot;</span><span class="p">,</span>
+    <span class="s">&quot;operations&quot;</span><span class="p">:[{</span>
+      <span class="s">&quot;httpMethod&quot;</span><span class="p">:</span><span class="s">&quot;GET&quot;</span><span class="p">,</span>
+      <span class="s">&quot;summary&quot;</span><span class="p">:</span><span class="s">&quot;API doc&quot;</span><span class="p">,</span>
+      <span class="s">&quot;notes&quot;</span><span class="p">:</span><span class="s">&quot;Use this route in Swagger UI to see the doc&quot;</span><span class="p">,</span>
+      <span class="s">&quot;nickname&quot;</span><span class="p">:</span><span class="s">&quot;SwaggerAction&quot;</span><span class="p">,</span>
+      <span class="s">&quot;parameters&quot;</span><span class="p">:[],</span>
+      <span class="s">&quot;responseMessages&quot;</span><span class="p">:[]</span>
+    <span class="p">}]</span>
+  <span class="p">},{</span>
+    <span class="s">&quot;path&quot;</span><span class="p">:</span><span class="s">&quot;/image/{width}&quot;</span><span class="p">,</span>
+    <span class="s">&quot;operations&quot;</span><span class="p">:[{</span>
+      <span class="s">&quot;httpMethod&quot;</span><span class="p">:</span><span class="s">&quot;GET&quot;</span><span class="p">,</span>
+      <span class="s">&quot;summary&quot;</span><span class="p">:</span><span class="s">&quot;Generate rectangle image&quot;</span><span class="p">,</span>
+      <span class="s">&quot;notes&quot;</span><span class="p">:</span><span class="s">&quot;Format is PNG&quot;</span><span class="p">,</span>
+      <span class="s">&quot;nickname&quot;</span><span class="p">:</span><span class="s">&quot;ImageAPI&quot;</span><span class="p">,</span>
+      <span class="s">&quot;parameters&quot;</span><span class="p">:[{</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;width&quot;</span><span class="p">,</span>
+        <span class="s">&quot;paramType&quot;</span><span class="p">:</span><span class="s">&quot;path&quot;</span><span class="p">,</span>
+        <span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;integer&quot;</span><span class="p">,</span>
+        <span class="s">&quot;description&quot;</span><span class="p">:</span><span class="s">&quot;Square width&quot;</span><span class="p">,</span>
+        <span class="s">&quot;required&quot;</span><span class="p">:</span><span class="n">true</span>
+      <span class="p">}],</span>
+      <span class="s">&quot;responseMessages&quot;</span><span class="p">:[{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span><span class="s">&quot;400&quot;</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span><span class="s">&quot;Width is invalid or too big&quot;</span>
+      <span class="p">}]</span>
+    <span class="p">}]</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Swagger UI use the above information to generate interactive API doc.</p>
+<p>Swagger annotation specification:</p>
+<div class="highlight-python"><pre>Swagger
+  |-summary
+  |-notes
+  |-params
+  |   |-SwaggerParam
+  |       |-name
+  |       |-paramType:   default = "path" (can be omitted)
+  |       |-valueType
+  |       |-required:    default = true   (can be omitted)
+  |       |-description: default = ""     (can be omitted)
+  |-responses
+      |-SwaggerResponse
+          |-code
+          |-message</pre>
 </div>
 </div>
 </div>
@@ -220,8 +312,9 @@ which has <tt class="docutils literal"><span class="pre">toString(Charset)</span
 <li><a class="reference internal" href="#regex-in-route">Regex in route</a></li>
 <li><a class="reference internal" href="#anti-csrf">Anti-CSRF</a></li>
 <li><a class="reference internal" href="#anticsrfinput">antiCSRFInput</a></li>
-<li><a class="reference internal" href="#skipcsrfcheck">SkipCSRFCheck</a></li>
-<li><a class="reference internal" href="#read-entire-request-body">Read entire request body</a></li>
+<li><a class="reference internal" href="#skipcsrfcheck">SkipCsrfCheck</a></li>
+<li><a class="reference internal" href="#getting-entire-request-body">Getting entire request body</a></li>
+<li><a class="reference internal" href="#documenting-api">Documenting API</a></li>
 </ul>
 </li>
 </ul>

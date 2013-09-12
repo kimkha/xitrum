@@ -109,6 +109,7 @@ is a very good tool. To install it on CentOS, see
 </div>
 <div class="section" id="tune-linux-for-many-connections">
 <h2>Tune Linux for many connections<a class="headerlink" href="#tune-linux-for-many-connections" title="Permalink to this headline">¶</a></h2>
+<p>Note that on Mac, <a class="reference external" href="https://groups.google.com/forum/#!topic/spray-user/S-SNR2m0BWU">JDKs suffer from a serious problem with IO (NIO) performance</a>.</p>
 <p>Good read:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://www.frozentux.net/ipsysctl-tutorial/chunkyhtml/">Ipsysctl tutorial</a></li>
@@ -182,6 +183,72 @@ but you also need to tune the kernel as above.</p>
 </div>
 </div>
 </div>
+<div class="section" id="deploy-to-heroku">
+<h2>Deploy to Heroku<a class="headerlink" href="#deploy-to-heroku" title="Permalink to this headline">¶</a></h2>
+<p>You may run Xitrum at <a class="reference external" href="https://www.heroku.com/‎">Heroku</a>.</p>
+<div class="section" id="sign-up-and-create-repository">
+<h3>Sign up and create repository<a class="headerlink" href="#sign-up-and-create-repository" title="Permalink to this headline">¶</a></h3>
+<p>Following the <a class="reference external" href="https://devcenter.heroku.com/articles/quickstart">Official Document</a>,
+sign up and create git repository.</p>
+</div>
+<div class="section" id="create-procfile">
+<h3>Create Procfile<a class="headerlink" href="#create-procfile" title="Permalink to this headline">¶</a></h3>
+<p>Create Procfile and save it at project root directory. Heroku reads this file and
+executes on start. Port number is ginven by Heroku automatically as <tt class="docutils literal"><span class="pre">$PORT</span></tt>.</p>
+<div class="highlight-python"><pre>web: target/xitrum/bin/runner.sh &lt;YOUR_PACKAGE.YOUR_MAIN_CLASS&gt; $PORT</pre>
+</div>
+</div>
+<div class="section" id="change-port-setting">
+<h3>Change port setting<a class="headerlink" href="#change-port-setting" title="Permalink to this headline">¶</a></h3>
+<p>Because Heroku assigns port automatically, you need to do like this:</p>
+<p>Main (boot) class:</p>
+<div class="highlight-python"><pre>import util.Properties
+
+object Boot {
+  def main(args: Array[String]) {
+    val port = Properties.envOrElse("PORT", "8000")
+    System.setProperty("xitrum.port.http", port)
+    Server.start()
+  }
+}</pre>
+</div>
+<p>config/xitrum.conf:</p>
+<div class="highlight-python"><pre>port {
+  http              = 8000
+  # https             = 4430
+  # flashSocketPolicy = 8430  # flash_socket_policy.xml will be returned
+}</pre>
+</div>
+<p>If you want to use SSL, you need <a class="reference external" href="https://addons.heroku.com/ssl">add on</a>.</p>
+</div>
+<div class="section" id="see-log-level">
+<h3>See log level<a class="headerlink" href="#see-log-level" title="Permalink to this headline">¶</a></h3>
+<p>config/logback.xml:</p>
+<div class="highlight-python"><pre>&lt;root level="INFO"&gt;
+  &lt;appender-ref ref="CONSOLE"/&gt;
+&lt;/root&gt;</pre>
+</div>
+<p>Tail log from Heroku command:</p>
+<div class="highlight-python"><pre>heroku logs -tail</pre>
+</div>
+</div>
+<div class="section" id="create-alias-for-xitrum-package">
+<h3>Create alias for <tt class="docutils literal"><span class="pre">xitrum-package</span></tt><a class="headerlink" href="#create-alias-for-xitrum-package" title="Permalink to this headline">¶</a></h3>
+<p>At deploy time, Heroku runs <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">clean</span> <span class="pre">compile</span> <span class="pre">stage</span></tt>. So you need to add alias
+for <tt class="docutils literal"><span class="pre">xitrum-package</span></tt>.</p>
+<p>build.sbt:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">addCommandAlias</span><span class="p">(</span><span class="s">&quot;stage&quot;</span><span class="p">,</span> <span class="s">&quot;;xitrum-package&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="push-to-heroku">
+<h3>Push to Heroku<a class="headerlink" href="#push-to-heroku" title="Permalink to this headline">¶</a></h3>
+<p>Deploy process is hooked by git push.</p>
+<div class="highlight-python"><pre>git push heroku master</pre>
+</div>
+<p>See also <a class="reference external" href="https://devcenter.heroku.com/articles/getting-started-with-scala">Official document for Scala</a>.</p>
+</div>
+</div>
 </div>
 
 
@@ -201,6 +268,15 @@ but you also need to tune the kernel as above.</p>
 <li><a class="reference internal" href="#increase-open-file-limit">Increase open file limit</a></li>
 <li><a class="reference internal" href="#tune-kernel">Tune kernel</a></li>
 <li><a class="reference internal" href="#note-about-backlog">Note about backlog</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deploy-to-heroku">Deploy to Heroku</a><ul>
+<li><a class="reference internal" href="#sign-up-and-create-repository">Sign up and create repository</a></li>
+<li><a class="reference internal" href="#create-procfile">Create Procfile</a></li>
+<li><a class="reference internal" href="#change-port-setting">Change port setting</a></li>
+<li><a class="reference internal" href="#see-log-level">See log level</a></li>
+<li><a class="reference internal" href="#create-alias-for-xitrum-package">Create alias for <tt class="docutils literal"><span class="pre">xitrum-package</span></tt></a></li>
+<li><a class="reference internal" href="#push-to-heroku">Push to Heroku</a></li>
 </ul>
 </li>
 </ul>

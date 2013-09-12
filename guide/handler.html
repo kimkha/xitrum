@@ -116,10 +116,6 @@ for more information.</p>
 +--------------------------------------------------------+</pre>
 </div>
 </div>
-<div class="section" id="xitrum-default-handlers">
-<h2>Xitrum default handlers<a class="headerlink" href="#xitrum-default-handlers" title="Permalink to this headline">¶</a></h2>
-<p>See <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/handler/ChannelPipelineFactory.scala">xitrum.handler.DefaultHttpChannelPipelineFactory</a>.</p>
-</div>
 <div class="section" id="custom-handlers">
 <h2>Custom handlers<a class="headerlink" href="#custom-handlers" title="Permalink to this headline">¶</a></h2>
 <p>When starting Xitrum server, you can pass in your own ChannelPipelineFactory:</p>
@@ -135,12 +131,36 @@ object Boot {
 <tt class="docutils literal"><span class="pre">myChannelPipelineFactory.getPipeline</span></tt>.</p>
 <p>You can reuse Xitrum handlers in your pipeline.</p>
 </div>
+<div class="section" id="xitrum-default-handlers">
+<h2>Xitrum default handlers<a class="headerlink" href="#xitrum-default-handlers" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="https://github.com/ngocdaothanh/xitrum/blob/master/src/main/scala/xitrum/handler/ChannelPipelineFactory.scala">xitrum.handler.DefaultHttpChannelPipelineFactory</a>.</p>
+<p>Sharable handlers (same instances are shared among many connections) are put in
+<tt class="docutils literal"><span class="pre">DefaultHttpChannelPipelineFactory</span></tt> object so that they can be easily picked
+up by apps that want to use custom pipeline. Those apps may only want a subset
+of default handlers.</p>
+<p>When an app uses its own dispatcher (not Xitrum&#8217;s routing/dispatcher) and
+only needs Xitrum&#8217;s fast static file serving, it may use only these handlers:</p>
+<p>Upstream:</p>
+<ul class="simple">
+<li>HttpRequestDecoder</li>
+<li>noPipelining</li>
+<li>requestAttacher</li>
+<li>publicFileServer</li>
+<li>its own dispatcher</li>
+</ul>
+<p>Downstream:</p>
+<ul class="simple">
+<li>HttpResponseEncoder</li>
+<li>ChunkedWriteHandler</li>
+<li>xSendFile</li>
+</ul>
+</div>
 <div class="section" id="tips">
 <h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="channel-attachement">
-<h3>Channel attachement<a class="headerlink" href="#channel-attachement" title="Permalink to this headline">¶</a></h3>
-<p>HttpRequest is attached to the channel using Channel#setAttachment.
-Use Channel#getAttachment to get it back.</p>
+<div class="section" id="channel-attachment">
+<h3>Channel attachment<a class="headerlink" href="#channel-attachment" title="Permalink to this headline">¶</a></h3>
+<p>If you use Xitrum default handlers, HttpRequest is attached to the channel by
+requestAttacher. Use Channel#getAttachment to get it back.</p>
 </div>
 <div class="section" id="channel-close-event">
 <h3>Channel close event<a class="headerlink" href="#channel-close-event" title="Permalink to this headline">¶</a></h3>
@@ -165,10 +185,10 @@ Use Channel#getAttachment to get it back.</p>
   <ul>
 <li><a class="reference internal" href="#">Netty handlers</a><ul>
 <li><a class="reference internal" href="#netty-handler-architecture">Netty handler architecture</a></li>
-<li><a class="reference internal" href="#xitrum-default-handlers">Xitrum default handlers</a></li>
 <li><a class="reference internal" href="#custom-handlers">Custom handlers</a></li>
+<li><a class="reference internal" href="#xitrum-default-handlers">Xitrum default handlers</a></li>
 <li><a class="reference internal" href="#tips">Tips</a><ul>
-<li><a class="reference internal" href="#channel-attachement">Channel attachement</a></li>
+<li><a class="reference internal" href="#channel-attachment">Channel attachment</a></li>
 <li><a class="reference internal" href="#channel-close-event">Channel close event</a></li>
 </ul>
 </li>
