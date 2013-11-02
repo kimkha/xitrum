@@ -13,10 +13,11 @@ import akka.actor.{Actor, Props}
 import com.esotericsoftware.reflectasm.ConstructorAccess
 
 import xitrum.{Action, ActionActor, Config}
-import xitrum.handler.HandlerEnv
-import xitrum.handler.down.XSendFile
-import xitrum.sockjs.SockJsPrefix
 import xitrum.etag.NotModified
+import xitrum.handler.{AccessLog, HandlerEnv}
+import xitrum.handler.down.XSendFile
+import xitrum.scope.request.PathInfo
+import xitrum.sockjs.SockJsPrefix
 
 object Dispatcher {
   private val classOfActor = classOf[Actor]
@@ -55,11 +56,11 @@ class Dispatcher extends SimpleChannelUpstreamHandler with BadClientSilencer {
       return
     }
 
-    val env         = m.asInstanceOf[HandlerEnv]
-    val request     = env.request
-    val pathInfo    = env.pathInfo
-    val queryParams = env.queryParams
-    val bodyParams  = env.bodyParams
+    val env      = m.asInstanceOf[HandlerEnv]
+    val request  = env.request
+    val pathInfo = env.pathInfo
+
+    if (handleOPTIONS(ctx, env, request, pathInfo)) return
 
     // Look up GET if method is HEAD
     val requestMethod = if (request.getMethod == HttpMethod.HEAD) HttpMethod.GET else request.getMethod
@@ -70,33 +71,65 @@ class Dispatcher extends SimpleChannelUpstreamHandler with BadClientSilencer {
         Dispatcher.dispatch(route.klass, env)
 
       case None =>
-        // Try to fallback to index.html if it exists
-        val staticPath = Config.root + "/public" + pathInfo.decodedWithIndexHtml
-        val file       = new File(staticPath)
-        if (file.isFile && file.exists) {
-          val response = new DefaultHttpResponse(HTTP_1_1, OK)
+        if (!handleIndexHtmlFallback(ctx, env, pathInfo)) handle404(ctx, env)
+    }
+  }
 
-          if (!Config.xitrum.staticFile.revalidate)
-            NotModified.setClientCacheAggressively(response)
-
-          XSendFile.setHeader(response, staticPath, false)
-          env.response = response
+  /** @return true if the request has been handled */
+  private def handleOPTIONS(ctx: ChannelHandlerContext, env: HandlerEnv, request: HttpRequest, pathInfo: PathInfo): Boolean = {
+    if (request.getMethod == HttpMethod.OPTIONS) {
+      Config.routes.route(HttpMethod.GET,    pathInfo) orElse
+      Config.routes.route(HttpMethod.POST,   pathInfo) orElse
+      Config.routes.route(HttpMethod.PUT,    pathInfo) orElse
+      Config.routes.route(HttpMethod.PATCH,  pathInfo) orElse
+      Config.routes.route(HttpMethod.DELETE, pathInfo) match {
+        case Some((route, pathParams)) =>
+          env.route = route
+          env.response = new DefaultHttpResponse(HTTP_1_1, NO_CONTENT)
           ctx.getChannel.write(env)
-          return
-        }
+          AccessLog.logOPTIONS(request)
 
-        Config.routes.error404 match {
-          case None =>
-            val response = new DefaultHttpResponse(HTTP_1_1, NOT_FOUND)
-            XSendFile.set404Page(response, false)
-            env.response = response
-            ctx.getChannel.write(env)
+        case None =>
+          handle404(ctx, env)
+      }
+      true
+    } else {
+      false
+    }
+  }
 
-          case Some(error404) =>
-            env.pathParams = MMap.empty
-            env.response.setStatus(NOT_FOUND)
-            Dispatcher.dispatch(error404, env)
-        }
+  /** @return true if the request has been handled */
+  private def handleIndexHtmlFallback(ctx: ChannelHandlerContext, env: HandlerEnv, pathInfo: PathInfo):Boolean = {
+    // Try to fallback to index.html if it exists
+    val staticPath = Config.root + "/public" + pathInfo.decodedWithIndexHtml
+    val file       = new File(staticPath)
+    if (file.isFile && file.exists) {
+      val response = new DefaultHttpResponse(HTTP_1_1, OK)
+
+      if (!Config.xitrum.staticFile.revalidate)
+        NotModified.setClientCacheAggressively(response)
+
+      XSendFile.setHeader(response, staticPath, false)
+      env.response = response
+      ctx.getChannel.write(env)
+      true
+    } else {
+      false
+    }
+  }
+
+  private def handle404(ctx: ChannelHandlerContext, env: HandlerEnv) {
+    Config.routes.error404 match {
+      case None =>
+        val response = new DefaultHttpResponse(HTTP_1_1, NOT_FOUND)
+        XSendFile.set404Page(response, false)
+        env.response = response
+        ctx.getChannel.write(env)
+
+      case Some(error404) =>
+        env.pathParams = MMap.empty
+        env.response.setStatus(NOT_FOUND)
+        Dispatcher.dispatch(error404, env)
     }
   }
 }
