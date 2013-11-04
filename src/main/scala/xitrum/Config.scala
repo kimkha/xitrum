@@ -3,17 +3,15 @@ package xitrum
 import java.io.File
 import java.nio.charset.Charset
 import java.util.{Map => JMap}
-
 import scala.collection.JavaConverters._
 import scala.util.control.NonFatal
-
 import com.typesafe.config.{Config => TConfig, ConfigFactory}
 import akka.actor.ActorSystem
-
 import xitrum.scope.session.SessionStore
 import xitrum.routing.{DiscoveredAcc, RouteCollection, RouteCollector, SerializableRouteCollection, SockJsClassAndOptions}
 import xitrum.view.TemplateEngine
 import xitrum.util.Loader
+import xitrum.classloading.ApplicationClassloader
 
 //------------------------------------------------------------------------------
 
@@ -117,6 +115,8 @@ class ResponseConfig(config: TConfig) {
 }
 
 class Config(val config: TConfig) extends Log {
+  val classloader = new ApplicationClassloader()
+  
   val basicAuth =
     if (config.hasPath("basicAuth"))
       Some(new BasicAuthConfig(config.getConfig("basicAuth")))

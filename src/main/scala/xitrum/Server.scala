@@ -3,7 +3,6 @@ package xitrum
 import org.jboss.netty.bootstrap.ServerBootstrap
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory
 import org.jboss.netty.channel.ChannelPipelineFactory
-
 import xitrum.handler.{
   DefaultHttpChannelPipelineFactory,
   FlashSocketPolicyServer,
@@ -11,6 +10,7 @@ import xitrum.handler.{
   SslChannelPipelineFactory
 }
 import xitrum.sockjs.SockJsAction
+import xitrum.classloading.ApplicationClassloader
 
 object Server extends Log {
   /**
@@ -33,6 +33,8 @@ object Server extends Log {
     // http://doc.akka.io/docs/akka/2.0/scala/logging.html
     // http://stackoverflow.com/questions/16202501/how-can-i-override-a-typesafe-config-list-value-on-the-command-line
     System.setProperty("akka.loggers.0", "akka.event.slf4j.Slf4jLogger")
+    
+    Config.xitrum.classloader.scanAllClasses()
 
     Config.xitrum.templateEngine.start()
     Config.xitrum.cache.start()

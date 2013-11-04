@@ -2,22 +2,20 @@ package xitrum.handler.up
 
 import java.io.File
 import scala.collection.mutable.{Map => MMap}
-
 import org.jboss.netty.channel._
 import org.jboss.netty.handler.codec.http._
 import ChannelHandler.Sharable
 import HttpResponseStatus._
 import HttpVersion._
-
 import akka.actor.{Actor, Props}
 import com.esotericsoftware.reflectasm.ConstructorAccess
-
 import xitrum.{Action, ActionActor, Config}
 import xitrum.etag.NotModified
 import xitrum.handler.{AccessLog, HandlerEnv}
 import xitrum.handler.down.XSendFile
 import xitrum.scope.request.PathInfo
 import xitrum.sockjs.SockJsPrefix
+import xitrum.classloading.ApplicationClassloader
 
 object Dispatcher {
   private val classOfActor = classOf[Actor]
@@ -50,6 +48,8 @@ object Dispatcher {
 @Sharable
 class Dispatcher extends SimpleChannelUpstreamHandler with BadClientSilencer {
   override def messageReceived(ctx: ChannelHandlerContext, e: MessageEvent) {
+    Config.xitrum.classloader.detectChanges()
+    
     val m = e.getMessage
     if (!m.isInstanceOf[HandlerEnv]) {
       ctx.sendUpstream(e)
